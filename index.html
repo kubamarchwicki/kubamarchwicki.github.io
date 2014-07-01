@@ -4,17 +4,24 @@ layout: default
 
 <div class="home">
 
-  <h1>Posts</h1>
+  <div>Someday, maybe, this will become my personal site. So far I'm just fiddling with Jekyll. <br>
+    Before I write (or restore) anything sensible, let me spam you with my publish speaking:
+  </div>
+  <h1></h1>
 
   <ul class="posts">
-    {% for post in site.posts %}
       <li>
-        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        <span class="post-date">2014-05-07, Warsaw</span>
+        <a class="post-link" href="http://2014.confitura.pl/#/schedule">Confitura 2014</a>
+        <div class="post-content">
+          Java Enterprise'ish development without hassle
+          <div>
+            <blockquote>
+              Approach Java web development without over-engineered hassle, as there are simpler approaches than JPA + EJB + JSF to build the web tier of your application.
+            </blockquote>
+          </div>
+        </div>
       </li>
-    {% endfor %}
   </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>

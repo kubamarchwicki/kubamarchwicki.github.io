@@ -1,0 +1,13 @@
+language: ruby
+
+branches:
+  only:
+  - devel
+
+env:
+  global:
+    - secure: "mJX+WGp4JORTS4L4gCd+W4SZfs18dgorju04tR2dZ6aJY4n8LEraPBf7vZKNZ/rt/b6apYRADZVWbU7WKHSt8uNECMjde11DndQpugpTdSsLsBQjXUL9qX9WjjXoW4vw594J8jYXxO+U6ougxBFICZrR0V/FzsFlz9TD4RX+jeM="
+    - POST_BUILD=true
+
+script:
+    - ./build.sh

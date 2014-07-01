@@ -60,6 +60,11 @@ a:visited { color: #205caa; }
   z-index: 1;
 }
 
+.site-title i {
+  font-size: 1.2em;
+  margin: 0px 10px 0px 10px;
+}
+
 .site-nav {
   float: right;
   line-height: 56px;
@@ -120,6 +125,17 @@ a:visited { color: #205caa; }
   font-size: 15px;
   letter-spacing: -.3px;
   color: #828282;
+}
+
+.site-footer li {
+  display: inline;
+  list-style-type: none;
+  padding-right: 20px;
+}
+
+.linkedin i {
+  color:#c2c2c2;
+  font-size: 16px;
 }
 
 .github-icon-svg,
