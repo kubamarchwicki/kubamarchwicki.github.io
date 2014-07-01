@@ -1,12 +1,21 @@
 # Site settings
-title: Your awesome title
-email: your-email@domain.com
-description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
+title: Notepack 
+email: "kuba.marchwicki+blog@gmail.com"
+description: "A randomized pack of notes" 
 baseurl: ""
-url: "http://yourdomain.com"
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "http://www.marchwicki.pl"
+twitter_username: kubem 
+github_username: kubamarchwicki
 
 # Build settings
 markdown: kramdown
 permalink: pretty
+
+asciidoc: asciidoctor
+asciidoc_ext: asciidoc,adoc,ad
+
+asciidoctor:
+  attributes:
+    - hardbreaks!
+    - source-highlighter=coderay
+    - coderay-css=style
