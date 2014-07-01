@@ -1,11 +1,12 @@
 # Site settings
-title: Notepack 
+title: Notepack
 email: "kuba.marchwicki+blog@gmail.com"
-description: "A randomized pack of notes" 
+description: "A randomized pack of notes"
 baseurl: ""
 url: "http://www.marchwicki.pl"
-twitter_username: kubem 
+twitter_username: kubem
 github_username: kubamarchwicki
+linkedin_username: kubamarchwicki
 
 # Build settings
 markdown: kramdown
