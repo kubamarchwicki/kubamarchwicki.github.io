@@ -4,7 +4,7 @@ layout: default
 
 <div class="home">
 
-  {% if site.categories.speaking.size > 0 %}  
+  {% if site.categories.speaking.size > 0 %}
   <ul class="speaking forthcoming">
   {% for post in site.categories.speaking %}
     {% capture currentTime %}{{ 'now' | date: "%s" }}{% endcapture %}
