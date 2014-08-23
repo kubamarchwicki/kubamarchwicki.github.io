@@ -1,0 +1,24 @@
+---
+layout: speaking
+categories: speaking
+title: JMaghreb 2014
+speakingDate: 2014-11-04, Casablanca, Marroco
+subTitle: This might be the psychology basic for developers… starting with the design 101; take some design principles and show how they are reflected in code.
+---
+
+== Reverse engineering the clean code
+
+> {{page.subTitle}}
+
+=== Abstract
+
+There are certain usability principles: easy to learn by heart, hard to use on the daily basis – especially hard when you are an engineer. You are the brainiac, you find it naturally easy to build abstractions and then quickly start reflecting this through code. The primary objective: model the reality with classes, functions. Easy stuff – that’s the way we work. Hard stuff - empathy; we assume others build same abstractions and we are quickly on the same page. They don’t.
+
+In this session I aim to fall back to design 101; take some design principles and show how they are reflected in code. Take Krug’s “Don’t make me think” and ponder a bit about it while digging though long lines of Your Enterprise’ish Spaghetti Code Application™. The code is our user interface and same patterns apply - I’ll tackle a few of those.
+
+=== Additional resources
+
+* https://speakerdeck.com/kubamarchwicki/jee-without-hassle-pl[PDF Slides] - in Polish
+* http://htmlpreview.github.io/?https://raw.githubusercontent.com/kubamarchwicki/presentations/master/jee-without-hassle/slides-pl.html[HTML slides] - in Polish
+* https://github.com/kubamarchwicki/presentations/tree/master/jee-without-hassle[Slides source in *asciidoctor*]
+* https://github.com/kubamarchwicki/micro-java/[Code examples @ GitHub]

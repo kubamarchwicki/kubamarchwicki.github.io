@@ -1,0 +1,25 @@
+---
+layout: speaking
+categories: speaking
+title: Confitura 2014
+speakingDate: 2014-07-05, Warsaw, Poland
+subTitle: Approach Java web development without over-engineered hassle, as there are simpler approaches than JPA + EJB + JSF to build the web tier of your application.
+---
+
+== Java Enterprise'ish development without hassle
+
+> {{page.subTitle}}
+
+=== Abstract
+
+This happens in every community: You don’t need Rails, to build a web application in Ruby. You don’t need templating engine for PHP - PHP is a templating language! We over engineer and over engineer, again and again.
+
+Same happens in Java. Hibernate + EJB + JSF is not the only blessed stack for development of web application… one can argue it’s the worst. Same with Spring; no longer lighweight, no so robust - still powerful but not necessary the easiest. So what are the options for an average Java developer?
+
+In this talk I’ll walk through multiple options, for modern Java web development: easy, quick, flexible and still state of an art. Starting for just obvious unknowns like embedded jetty, though micro pure-webframeworks, smaller and bigger swiss army knifes, which try to promise both: cover most of the application stack, still keeping things robust.
+
+=== Additional resources
+
+* https://speakerdeck.com/kubamarchwicki/reverse-engineering-the-clean-code[PDF Slides]
+* http://htmlpreview.github.io/?https://github.com/kubamarchwicki/presentations/master/reverse-eng-clean-code/slides.html[HTML slides]
+* https://github.com/kubamarchwicki/presentations/tree/master/reverse-eng-clean-code[Slides source in *asciidoctor*]
