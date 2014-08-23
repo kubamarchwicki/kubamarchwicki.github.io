@@ -3,11 +3,113 @@
   <channel>
     <title>Notepack</title>
     <description>A randomized pack of notes</description>
-    <link>http://www.marchwicki.pl/</link>
-    <atom:link href="http://www.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 08 Jul 2014 11:59:55 +0000</pubDate>
-    <lastBuildDate>Tue, 08 Jul 2014 11:59:55 +0000</lastBuildDate>
-    <generator>Jekyll v2.1.0</generator>
+    <link>http://jakub.marchwicki.pl/</link>
+    <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sat, 23 Aug 2014 14:42:09 +0000</pubDate>
+    <lastBuildDate>Sat, 23 Aug 2014 14:42:09 +0000</lastBuildDate>
+    <generator>Jekyll v2.3.0</generator>
+    
+      <item>
+        <title>JMaghreb 2014</title>
+        <description>&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;reverse-engineering-the-clean-code&quot;&gt;Reverse engineering the clean code&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+&lt;blockquote&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This might be the psychology basic for developers… starting with the design 101; take some design principles and show how they are reflected in code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;abstract&quot;&gt;Abstract&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There are certain usability principles: easy to learn by heart, hard to use on the daily basis – especially hard when you are an engineer. You are the brainiac, you find it naturally easy to build abstractions and then quickly start reflecting this through code. The primary objective: model the reality with classes, functions. Easy stuff – that’s the way we work. Hard stuff - empathy; we assume others build same abstractions and we are quickly on the same page. They don’t.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In this session I aim to fall back to design 101; take some design principles and show how they are reflected in code. Take Krug’s “Don’t make me think” and ponder a bit about it while digging though long lines of Your Enterprise’ish Spaghetti Code Application™. The code is our user interface and same patterns apply - I’ll tackle a few of those.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;additional-resources&quot;&gt;Additional resources&lt;/h3&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://speakerdeck.com/kubamarchwicki/jee-without-hassle-pl&quot;&gt;PDF Slides&lt;/a&gt; - in Polish&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;http://htmlpreview.github.io/?https://raw.githubusercontent.com/kubamarchwicki/presentations/master/jee-without-hassle/slides-pl.html&quot;&gt;HTML slides&lt;/a&gt; - in Polish&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/kubamarchwicki/presentations/tree/master/jee-without-hassle&quot;&gt;Slides source in &lt;strong&gt;asciidoctor&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/kubamarchwicki/micro-java/&quot;&gt;Code examples @ GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Tue, 04 Nov 2014 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/speaking/2014/11/04/jmaghreb-2014/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/speaking/2014/11/04/jmaghreb-2014/</guid>
+        
+        
+        <category>speaking</category>
+        
+      </item>
+    
+      <item>
+        <title>Confitura 2014</title>
+        <description>&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;java-enterprise-ish-development-without-hassle&quot;&gt;Java Enterprise&amp;#8217;ish development without hassle&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+&lt;blockquote&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Approach Java web development without over-engineered hassle, as there are simpler approaches than JPA + EJB + JSF to build the web tier of your application.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;abstract&quot;&gt;Abstract&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This happens in every community: You don’t need Rails, to build a web application in Ruby. You don’t need templating engine for PHP - PHP is a templating language! We over engineer and over engineer, again and again.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Same happens in Java. Hibernate + EJB + JSF is not the only blessed stack for development of web application… one can argue it’s the worst. Same with Spring; no longer lighweight, no so robust - still powerful but not necessary the easiest. So what are the options for an average Java developer?&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In this talk I’ll walk through multiple options, for modern Java web development: easy, quick, flexible and still state of an art. Starting for just obvious unknowns like embedded jetty, though micro pure-webframeworks, smaller and bigger swiss army knifes, which try to promise both: cover most of the application stack, still keeping things robust.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;additional-resources&quot;&gt;Additional resources&lt;/h3&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://speakerdeck.com/kubamarchwicki/reverse-engineering-the-clean-code&quot;&gt;PDF Slides&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;http://htmlpreview.github.io/?https://github.com/kubamarchwicki/presentations/master/reverse-eng-clean-code/slides.html&quot;&gt;HTML slides&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/kubamarchwicki/presentations/tree/master/reverse-eng-clean-code&quot;&gt;Slides source in &lt;strong&gt;asciidoctor&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Sat, 05 Jul 2014 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/speaking/2014/07/05/confitura-2014/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/speaking/2014/07/05/confitura-2014/</guid>
+        
+        
+        <category>speaking</category>
+        
+      </item>
     
   </channel>
 </rss>
