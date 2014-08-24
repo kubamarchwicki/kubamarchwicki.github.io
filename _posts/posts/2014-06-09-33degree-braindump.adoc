@@ -1,0 +1,121 @@
+---
+layout: post
+categories: posts
+title: 33degree 2014 Braindump
+excerpt: Random notes and thoughts from sessions I've attended during 33rd Degree 2014 conference. Kraków. 9th of June 2014.
+---
+:imagesdir: /assets/2014-06-09-33degree-braindump
+
+## Think for yourself; Marry Poppendieck
+
+* What great software engineers do: Sharpen the saw (develop expertise), share responsibility (deliver a real value), see the shadow of the future (make the world a better place)
+* Positive psychology. Started by Mihaly Csikszentmihalyi - when he started to write what's good with you people as opposed to most psychologist who wrote what's bad with you.
+* Elements needed to become an expert: Coach, challenge, feedback, steady progress towards getting things done
+* Brilliant Systems. Mental model match: those developing the system and those actually using the system.
+* App idea: the education datapalooza - as the Health Data Initiative Forum. The Health Datapalooza.
+Gather, collect and open the data for everybody
+* healthcare.gov - everybody did their job, according to the spec. But all together - it didn't work.
+* moving delivery organization to engineering organization:
+** delivery organization are becoming obsolete. Analyze how the time is spent in the organization (a practical approach to large scale agile development. Gary Gruver, Mike Yound and Pat Fulghum)
+** accept you are wasting money on planning
+** lack of control is not a problem. Instant feedback is a better way to control the process
+
+image::mpoppendieck5.jpg[width="600px", caption="HP case"]
+
+image::mpoppendieck6.jpg[width="600px", caption="HP case"]
+
+image::mpoppendieck1.jpg[width="600px", caption="Two kinds of software organisations"]
+
+image::mpoppendieck2.jpg[width="600px", caption="Delivery organisation. That's pretty much my world. Product Death-match Lifecycle"]
+
+image::mpoppendieck3.jpg[width="600px", caption="How spotify build products"]
+
+image::mpoppendieck4.jpg[width="600px", caption="Think for yourself"]
+
+
+## Managers are from Mars; Ted Newards
+
+* Read more about Frederick Winslow Taylor. Taylor coined: you can't manage if you cannot measure.
+** It's said that this statement is flawed and was made up
+* Alan Cooper. "The Inmates are Running the Asylum"
+
+## Nie koduj, pisz prozę; Sławek Sobotka
+
+The best quotes from Slawek Sobotka:
+
+* wszyscy wypróżniaja sie do tego samego Gita
+* encja na twarz i pchasz
+* Metody szacowania
+** Metoda szacowania L.W.P.z.D. "Liczby Wyciągnięte Prosto z Dupy"
+** Metoda Parkinsona
+* techniki lingwistyczne przy opisie historyjki: okazuje sie ze Wasze panie od polskiego prawie programowaly
+* w obiektowych programowaniu lubimy od tylu: reguły -> znaczenie (kontekst) -> słowa
+** sesja modelowania ze smutnymi ludźmi! nie używaj bleh albo blah to używaj greckich liter. Faktura razy dwa
+** na samym końcu dobieraj słowa - jak zrozumiesz kontekst i znaczenie na podstawie reguł
+** co sie dzieje na sesji CRC zostaje na sesji CRC
+* to była młodość. Chormony budują. Pierwszy wąs i Dune2
+* dobry obiekt jest
+** apatyczny. Nie chce mu sie robić
+** introwertyczny. Obiekty nie wchodzą z butami w inne obiekty
+** samolubny. Robi tylko swoje
+* switche pisze senior, junior pisze ify
+* hiper wymiarowa macierz statusów
+* podstawowa zasada w aplikacjach biznesowych to zmapowac (map), zredukować (reduce) i zwinąć w lewo (foldleft)
+* Integracja: jeden demon sie wypróżnia a drugi sprawdza czy juz
+* Twoj model biznesu jest suma błędów poprzednich pokoleń.
+* Klucz obcy to biznes znalazł u zony w torebce. Trafiłes w czuły punkt, nie dziw się że nie chcą z Tobą gadać.
+
+image::ssobotka.jpg[width="600px"]
+
+## The missing link of agile; Paweł Badenski
+
+* minimize threat (you a run away from) and maximize reward (walk towards)
+** every social interaction on the project relates to the above
+** also feedback
+* Feedback. Is an observation not judgement
+** improve people
+* Antipatterns
+** feedback avoidance +
+Little threat in small batches (30minutes a day) is less worse than one big threat.  Avoid the lizard brain, approach feedback mindfully
+** giving advice +
+Objective feedback. From non violent communication. Refer to objectives: things you see and feel. Noone can argue with that, it's very yours
+* lizard response: fight, flight or freeze
+* TED talks on neuroscience http://blog.ketyov.com/2011/01/top-10-neuroscience-ted-talks.html
+* Emotional intelligence is the basic tool for software developer
+* corrective feedback
+** watch out bully language. Judgement
+** feedback is always subjective
+* label the feelings - it's easier to handle the emotions when you know what it is
+
+
+## Go Reactive; Roland Kuhn
+
+* starting point: the user
+** user is not necessarily a human.
+* responsiveness: always available, interactive, (near) real time
+** not http timeout! much faster, appropriate for service
+* resilience. Responsive in the face of failure
+** one failure should not take down all other containers (comportment construction as if Titanic)
+** same happens for application servers: each application server is a compartment, which cascades the other nodes.
+** asynchronous calls cause synchronous calls implies coupling
+** make somebody's else exception somebody else problem. Failer response goes to the owner, all other response returns to the user
+* CAP theorem. Consistence. Availability. Partion tolerance. Theorem is proven impossible to have all three.
+** does it really needed? Who needs it?
+** take ATMs. You cannot got all three at the same time, otherwise you won't be able to take money in certain situations (offline)
+
+
+## Saiku – taking OLAP databases into 21st century; Tomek Nurkiewicz
+
+* great talk from Tomek, heard him for the first time - my bad
+* project for BigData. OpenSource OLAP cubes.
+
+## Exploring Nashorm; Vankat Subramaniam
+
+* "JavaScript treats you like a guest in its house. It never complains and quietly laughs at you behind your back"
+* this idea: coffescript DSL run in the Server side as script with Nashorn
+
+## How to define Success at your level; Kai Gilb
+
+* focus on values. Connect stakeholder with values and derive requirements from that
+* keep iterations small. Week at most
+* http://www.gilb.com//dl820[Slides]
