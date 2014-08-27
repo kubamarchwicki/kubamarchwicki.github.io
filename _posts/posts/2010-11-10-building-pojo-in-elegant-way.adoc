@@ -3,6 +3,9 @@ layout: post
 categories: posts
 title: Building POJO in an elegant way
 excerpt: Any fool can write code computer can understand. Question is how to build human readable code. Start with a builder pattern!
+redirect_from: 
+    - /2010/11/building-a-pojo-in-an-elegant-way/
+    - /blog/2010/11/building-a-pojo-in-an-elegant-way/
 
 ---
 

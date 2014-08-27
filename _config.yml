@@ -8,7 +8,7 @@ twitter_username: kubem
 github_username: kubamarchwicki
 linkedin_username: kubamarchwicki
 
-# https://help.github.com/articles/redirects-on-github-pages
+gems: [jekyll-redirect-from]
 
 analytics:
   account: UA-439480-4
