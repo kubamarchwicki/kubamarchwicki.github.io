@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>JMaghreb 2014</title>
+    <title>Building POJO in an elegant way</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="A randomized pack of notes">
-    <link rel="canonical" href="http://jakub.marchwicki.pl/speaking/2014/11/04/jmaghreb-2014/">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2010/11/10/building-pojo-in-elegant-way/">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -73,55 +73,176 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>JMaghreb 2014</h1>
-    <p class="meta">2014-11-04, Casablanca, Marroco</p>
+    <h1>Building POJO in an elegant way</h1>
+    <p class="meta">Nov 10, 2010</p>
   </header>
 
   <article class="post-content">
-  <div class="sect1">
-<h2 id="reverse-engineering-the-clean-code">Reverse engineering the clean code</h2>
-<div class="sectionbody">
-<div class="quoteblock">
+  <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
-<p>This might be the psychology basic for developers… starting with the design 101; take some design principles and show how they are reflected in code.</p>
+<p>Any fool can write code that a computer can understand. Good programmers write code that humans can understand</p>
 </div>
 </blockquote>
+<div class="attribution">
+&#8212; Martin Fowler - Refactoring: Improving the Design of Existing Code
 </div>
-<div class="sect2">
-<h3 id="abstract">Abstract</h3>
-<div class="paragraph">
-<p>There are certain usability principles: easy to learn by heart, hard to use on the daily basis – especially hard when you are an engineer. You are the brainiac, you find it naturally easy to build abstractions and then quickly start reflecting this through code. The primary objective: model the reality with classes, functions. Easy stuff – that’s the way we work. Hard stuff - empathy; we assume others build same abstractions and we are quickly on the same page. They don’t.</p>
 </div>
 <div class="paragraph">
-<p>In this session I aim to fall back to design 101; take some design principles and show how they are reflected in code. Take Krug’s “Don’t make me think” and ponder a bit about it while digging though long lines of Your Enterprise’ish Spaghetti Code Application™. The code is our user interface and same patterns apply - I’ll tackle a few of those.</p>
+<p>In one of my recent projects I’ve come across a wonderful way of building data beans (POJOs), called builders. See how it works; imagine a fairly simple POJO.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class Person {
+  private String name;
+  private String surname;
+
+  /* getters and setters skipped for brevity */
+}</code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="additional-resources">Additional resources</h3>
+<div class="paragraph">
+<p>I can imagine two ways to instantiate this class and populate values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">	Person person = new Person();
+	person.setName(“John”);
+	person.setSurname(“Smith”);
+
+	new Person(“John”, “Smith”);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>While with this fairly simple class it doesn’t look bad, with more complicated beans, the code starts to get messy.</p>
+</div>
+<div class="paragraph">
+<p>So here comes the smart way – with builders. For each POJO create an inner class:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class Person {
+   private String name;
+   private String surname;
+
+   /* explicite constructors, getters and setters skipped */
+
+   private Person(Builder builder) {
+       this.name = builder.name;
+       this.surname = builder.surname;
+   }
+
+   public static class Builder {
+       private String name;
+       private String surname;
+
+       public Builder() {
+
+       }
+
+       public Builder withName(String name) {
+           this.name = name;
+           return this;
+       }
+
+       public Builder withSurname(String surname) {
+           this.surname = surname;
+           return this;
+       }
+
+       public Person build() {
+           return new Person(this);
+       }
+   }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So from now on creating instance of a Person looks like this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">Person person = new Person.Builder()
+  .withName(“John”)
+  .withSurname(“Smith”)
+  .build();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Nice one, isn’t it? It gets even better when the object gets more complex. The only disadvantage I found so far was a necessity to hand craft all the builders – hundreds of pretty-much-same-lines-of-code. But what are templates for?</p>
+</div>
+<div class="paragraph">
+<p>Initially, I’ve considered internal Eclipse templates. Nice, but too simple and static (I couldn’t find a way to prepare dynamic templates, based on a class I was currently developing). Nonetheless, I found quite a few guides how to leverage templates worth sharing:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://speakerdeck.com/kubamarchwicki/jee-without-hassle-pl">PDF Slides</a> - in Polish</p>
+<p><a href="http://www.tarantsov.com/eclipse/templates/" class="bare">http://www.tarantsov.com/eclipse/templates/</a></p>
 </li>
 <li>
-<p><a href="http://htmlpreview.github.io/?https://raw.githubusercontent.com/kubamarchwicki/presentations/master/jee-without-hassle/slides-pl.html">HTML slides</a> - in Polish</p>
-</li>
-<li>
-<p><a href="https://github.com/kubamarchwicki/presentations/tree/master/jee-without-hassle">Slides source in <strong>asciidoctor</strong></a></p>
-</li>
-<li>
-<p><a href="https://github.com/kubamarchwicki/micro-java/">Code examples @ GitHub</a></p>
+<p><a href="http://eclipse.dzone.com/news/effective-eclipse-custom-templ" class="bare">http://eclipse.dzone.com/news/effective-eclipse-custom-templ</a></p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>A second try was a Fast Code Eclipse plugin (which you can find here: <a href="http://fast-code.sourceforge.net/" class="bare">http://fast-code.sourceforge.net/</a>). Honestly speaking, it’s a little bit overcomplicated and I’d be rather consider something simpler (Eclipse Code Templates with dynamic fields – maybe I’d write something like that at some point). Nonetheless, Fast Code works like this:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>install plugin</p>
+</li>
+<li>
+<p>go to Window &gt; Preferences &gt; Fast Code Preferences &gt; Template Preferences</p>
+</li>
+<li>
+<p>pick up one (I’ve chosen the first one: Template Instance of Class)</p>
+</li>
+<li>
+<p>set “Number Required Classes” to 1, “Allowed File Extension” to java, “Required Getter Setter” to None and paste this in the template body:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-velocity" data-lang="velocity">private ${class_name}(Builder builder) {
+#foreach ($field in ${fields})
+   this.${field.name} = builder.${field.name};
+#end
+}
+
+public static class Builder {
+#foreach ($field in ${fields})
+   private ${field.type} ${field.name};
+#end
+
+#foreach ($field in ${fields})
+   public Builder with${field.getter.substring(3)}(${field.type} ${field.name}) {
+       this.${field.name} = ${field.name};
+       return this;
+   }
+#end
+
+public ${class_name} build() {
+           return new ${class_name}(this);
+       }
+}</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Builders in action work like this: create a new class (like the aforementioned Person, with all intended fields) and run your template:
+* Fast Code &gt; Create New Snippet (or press Shift + Ctrl + Alt + T)
+* Pick up “Instance of Class”
+* Choose the class
+* Pick up fields to be used by the builder.
+* Format your code (Shift + Ctrl + F).</p>
+</div>
+<div class="paragraph">
+<p>Works like a charm! I know that it does not as the most straightforward activity, but trust me – it really improved my productivity and improved the code quality (no more typos). I’m also aware that I’m using a tiny fraction of Fast Code functionality – but that’s a fraction I was really keen on.</p>
 </div>
   </article>
 
 </div>
-
       </div>
     </div>
 
