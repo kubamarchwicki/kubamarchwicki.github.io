@@ -1,0 +1,89 @@
+---
+layout: post
+categories: posts
+title: Measuring developers' productivity
+excerpt: I was once involved in a project about measuring developers' productivity. I wasn't happy with that and was happy it was over. However, it appeared to be a karmic experience and the project returned (as of writing these words). I thought writing a post summarizing previous findings would be a good idea for rehearsal.
+
+---
+:imagesdir: /assets/2014-08-25-measuring-developers-productivity
+
+____
+This is a work in progress. This post will evaluate with time, with two or three additional installments
+____
+
+It has been a while since my last post; probably couple years (which I can't even check cause as of writing this post, the whole blog is undergoing some changes). What is more, this is a totally different topic (compared to all those programming, java, EJB, etc). Yeah, things changes - including role and primary focus. So... here we go.
+
+This is an old story: measuring productivity, setting up KPI for developers, measuring performance through metrics. So many has failed with this, still people belive this is gonna work. This hit me about a year ago, with a "productivity" project in my current company. Since than I though everybody has forgotten; but not. The project came around just recently so this post is more of a summary and the current state of art. I decided to go that way as metrics and measurements is something many people touches - so maybe this will be beneficial to somebody, somewhere.
+
+== Motivation
+
+This is fairly simple... more work, with same number of people (dare to call them resources) within the same time box.
+
+[quote, Anonymous boss]
+____
+You should never talk about limited resources, just make them more productive
+____
+
+This is quite popular mantra I had to deal with. So as I had no other choice and the resistance was futile - I was assimilated. And there are a few things I learned which I'd like to share.
+
+Onboarded, I had to find a better motivation. That was actually pretty easy. I had a chance to work with different teams, each team being different, delivering with difference pace, quality, the overall performance. What struggled me was that the perception of the team being productive was very subjective. Still two patterns emerged: effectiveness (how fast, how cheap) and business needs (how satisfactory, how beneficial for business).
+
+In many cases people miss judge this choice between how fast and how good - but it's not the case. Those two (in my opinion) cover a single dimension. A team is considered good when it is delivering high quality stuff or was quickly responding to business needs. Obviously doing both simultaneously was the most desired state, but that proved to be exceptionally challenging and people start to cut corners. This is where bad things can happen, a alignment trap kicks in.
+
+I come across this term in Kavlin Henney keynote at Devoxx UK'2013 http://www.devoxx.com/display/UK13/Kevlin+Henney["The programmer"] which brought me over to the original MIT Sloan Management Review article (dated October 2007) http://sloanreview.mit.edu/article/avoiding-the-alignment-trap-in-it/[Avoiding the Alignment Trap in IT]
+
+The whole article is worth reading, but the overall punchline can be summarized in this picture
+
+image::alignment-trap.png[]
+
+I think the important zones are: trapped and well-oiled teams. In real life the latter knows where to stop saying: _"we developed a wrong thing. Sorry. But that's not a big problem. We did it well, so we can fix it easily"_. While the alignment team doesn't have the craft (not talking here about software craftsmanship for a reason) says: _"we have no idea what we are doing, but we have another deadline. Things doesn't go well but we don't have time to improve"_. I think this might sound familiar.
+
+== Simple but not simplistic
+
+So how to avoid the alignment trap. Even though it might seem it's not directly correlated with measuring productivity, I found it important and the basis of further work. Avoiding the alignment trap appeared to me as a pure agile: work with business, respond to change, while being flexible, adaptive, etc. As I wrote before, doing both at the same time is hard to achieve, even harder to describe. In many cases people ten to cut corners - and as shown on image - sacrifice on in favor of the other.
+
+It doesn't make much sense to focus on a single dimension. What is more, those two does not seem to be that straight forward. If we tackle effectiveness, here comes another thing to remember:
+
+[quote, Venkat Subramaniam]
+____
+It's critical to know if a low cost service is a result of higher efficiency
+or lower quality (from https://twitter.com/venkat_s/status/350639583056244736[Twitter]).
+____
+
+This might sound weird why those two parameters; after all quality it not an edge on an iron project management triangle; it's scope, time and budget.
+
+One reason is because scope is very subjective and related to business needs (alignment dimension - in a second), while budget is a derivative of time; in most IT projects `budget = people * time` where people is usually constant. Measuring one is enough, so _how efficent_ means usually _how fast_
+
+Quality is another story: it's where the shortcuts can be taken, without being visible in a short term (subject for another article). Others are visible immediately. I can imagine a team (not saying that I've seen such teams), which is highly aligned, responds to change, is aware of business needs, but doesn't really know what to do and each new requirement cause a set of new _ifs_ in code and even more _duct tape programming_
+
+And finally, what about team itself. So far we mostly tackled outcomes, but what about morale, motivation and an overall team happiness. Does it fall into an alignment dimension.
+
+This leads to a new realization, there should be four domains / perspectives for measuring teams (developers):
+
+* productivity (how fast)
+* quality (how good)
+* value (how valuable to business)
+* happiness (how motivated)
+
+I though I was pretty innovative with this outcome, but it appeared to be beginners luck. Similar approach suggested http://www.poddrzewem.pl[Tomek Włodarek] during on of this presentations http://www.poddrzewem.pl/do-pobrania/cat_view/44-prezentacje-odczyty-konferencje[Are we agile yet?].
+
+image::productivity-perspectives.png[]
+
+== Measuring productivity in wider context
+
+Now we know single metric isn't enough, multiple perspectives are desired. Before I get into particular metrics and indexes, there is one more things needs tackling: why a wider context, multiple dimensions are required. In the previous paragraph I touched it, but it was an iceberg's tip.
+
+* Evaluate on metrics
+
+== Setting up the metrics and indexes
+
+* Where to get the data from
+* Some recipes
+* Sample questionnaires
+
+== Dungeons and Dragons
+
+* 1920 Western Electric experiment (Elton Mayo)
+* Heisenberg principle for developers
+* Goodhart's law
+* Campbell's Law
