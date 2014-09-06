@@ -5,8 +5,8 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 02 Sep 2014 19:46:20 +0000</pubDate>
-    <lastBuildDate>Tue, 02 Sep 2014 19:46:20 +0000</lastBuildDate>
+    <pubDate>Sat, 06 Sep 2014 20:06:24 +0000</pubDate>
+    <lastBuildDate>Sat, 06 Sep 2014 20:06:24 +0000</lastBuildDate>
     <generator>Jekyll v2.3.0</generator>
     
       <item>
@@ -723,12 +723,26 @@ public ${class_name} build() {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Builders in action work like this: create a new class (like the aforementioned Person, with all intended fields) and run your template:
-* Fast Code &amp;gt; Create New Snippet (or press Shift + Ctrl + Alt + T)
-* Pick up “Instance of Class”
-* Choose the class
-* Pick up fields to be used by the builder.
-* Format your code (Shift + Ctrl + F).&lt;/p&gt;
+&lt;p&gt;Builders in action work like this: create a new class (like the aforementioned Person, with all intended fields) and run your template:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Fast Code &amp;gt; Create New Snippet (or press Shift + Ctrl + Alt + T)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pick up “Instance of Class”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Choose the class&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pick up fields to be used by the builder.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Format your code (Shift + Ctrl + F).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Works like a charm! I know that it does not as the most straightforward activity, but trust me – it really improved my productivity and improved the code quality (no more typos). I’m also aware that I’m using a tiny fraction of Fast Code functionality – but that’s a fraction I was really keen on.&lt;/p&gt;
