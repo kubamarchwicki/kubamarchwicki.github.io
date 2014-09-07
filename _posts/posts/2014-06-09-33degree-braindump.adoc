@@ -4,7 +4,7 @@ categories: posts
 title: 33degree 2014 Braindump
 excerpt: Random notes and thoughts from sessions I've attended during 33rd Degree 2014 conference. Kraków. 9th of June 2014.
 ---
-:imagesdir: /assets/2014-06-09-33degree-braindump
+:imagesdir: /assets/33degree-braindump
 
 ## Think for yourself; Marry Poppendieck
 

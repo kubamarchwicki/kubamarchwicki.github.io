@@ -1,0 +1,56 @@
+---
+layout: post
+categories: posts
+title: Creating own metadata schema - first feedback
+excerpt: After initial research and trial about matadata schemas, I got first valueable feedback from a subject matter expert (an information scientist). Some notes, actions and ideas how to move things forward.
+
+---
+
+The previous post {{site.url}}/2014/09/01/metadata-schemas[about metadata] was summarizing quite intensive reseach about metadata (in general), schemas, ontologies and many different things how I (together) with a team was trying to get things right.
+
+It was quite symptomatic, but the deeper I was getting into the metadata domain, the less confident I was about the overall result. Hence, I decided to reach out to some subject matter experts, professional information scientists - to get some feedback on the approach and the intermediary results we got. That was a very valueable lesson.
+
+== Good overall impression
+
+The first feedback was good. The domains / facades we've derived seemed solid. The approach was described pragmatic (focusing on the core, education domain) - we focused on the results, kept the domain in mind, aligned with the standards, but not to academic (theoretical) in the same time.
+
+The idea to domains (facades) split was accepted - which was a good news. The split was generally based upon different authors, time and context for metadata creation - which appears to be a standardized way of doing it. The creation metadata are hardly ever filled in by the same person who builds provenance metadata or handles the technical, machine generated information.
+
+== Requirements for metadata
+
+Besides the positive feedback some questions made me struggle. The first one was the toughest:
+
+____
+"Why haven't you approach building the metadata schema more like a software engineering process?" +
+"Like what?" - I asked +
+"Like with requirements!?"
+____
+
+That was mindblowing for me. I've always thought of myself as a person with agile mindset. Small steps, incremental development. Nonetheless, in this project what I did was pretty much a _big upfront design_. I tried to model a world, based on some common sense and trying to extrapolate previous experience from other domains. What's worse I tried to model it in a kind of ivory tower.
+
+It appears that information science developed a set of tools and techniques to incrementally build a schema, in a similar fashion software people build requirements. With roles, actions and goals - which sets up a foundation for a very abstract metadata discussion. From these _user stores_ (or _use cases_ if one wants to call it that way) specific terms and dictionaries will emerge, which will make the discussion on exact schemas far more easier.
+
+== Taking a step back
+
+While I was urging to choose the schema, combine them with RDF (or anything else) I've taken a step back and started with the http://www.neon-project.org/nw/Welcome_to_the_NeOn_Project[NeON project] and it's methodology for building ontology. While my goal (metadata schema) and ontology is not exactly the same - the approach should be similar in principles.
+
+So the articles I started with were:
+
+* http://kmi.open.ac.uk/events/sssw08/presentations/Gomez%20Perez-NeOn-Methodology-OntologySpecification-v3.pdf[NeOn Methodology for Building Ontology Networks]
+* http://delicias.dia.fi.upm.es/wiki/images/b/b0/ORequirementsSpecification.pdf[How to write and use the Ontology Requirements
+Specification Document]
+* http://www.neon-project.org/web-content/media/book-chapters/[Book: Introduction to the NeOn Methodology] - but I didn't get to the book
+
+The short term objective was to build a set of requirements, a driving force behind out metadata initiative. Come up with a set of roles (actors) and activities - and build the term dictionaries on top of those.
+
+Now that I've been told that - sounds to me like a perfectly legit approach.
+
+== Getting the requirements faster
+
+Information science wants to be agile (as all other sciences) - so there is also an agile'ish approach to build ontologies: http://ceur-ws.org/Vol-516/pap21.pdf[eXtreme Design with Content Ontology Design Patterns]
+
+____
+eXtreme Design with Content Ontology Design Patterns (XD): a collaborative, incremental, iterative method for pattern-based ontology design.
+____
+
+I haven't tried that one (and still it relates to the NeON methology mentioned ealier) - but this adds one more point to the reading list. Formalizing some user stories around metadata would be the next step. 

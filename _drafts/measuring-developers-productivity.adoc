@@ -5,7 +5,7 @@ title: Measuring developers' productivity
 excerpt: I was once involved in a project about measuring developers' productivity. I wasn't happy with that and was happy it was over. However, it appeared to be a karmic experience and the project returned (as of writing these words). I thought writing a post summarizing previous findings would be a good idea for rehearsal.
 
 ---
-:imagesdir: /assets/2014-08-25-measuring-developers-productivity
+:imagesdir: /assets/measuring-developers-productivity
 
 ____
 This is a work in progress. This post will evaluate with time, with two or three additional installments
