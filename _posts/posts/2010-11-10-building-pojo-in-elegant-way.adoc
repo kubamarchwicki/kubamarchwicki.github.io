@@ -129,6 +129,7 @@ public ${class_name} build() {
 ----
 
 Builders in action work like this: create a new class (like the aforementioned Person, with all intended fields) and run your template:
+
 * Fast Code > Create New Snippet (or press Shift + Ctrl + Alt + T)
 * Pick up “Instance of Class”
 * Choose the class
