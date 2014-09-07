@@ -30,11 +30,13 @@ module Jekyll
           when 'asciidoctor'
             begin
               require 'asciidoctor'
+              require 'asciidoctor-diagram'
               @setup = true
             rescue LoadError
               STDERR.puts 'You are missing a library required to convert AsciiDoc files. Please run:'
               STDERR.puts '  $ [sudo] gem install asciidoctor'
-              raise FatalException.new("Missing dependency: asciidoctor")
+              STDERR.puts '  $ [sudo] gem install asciidoctor-diagram'
+              raise FatalException.new("Missing dependency: asciidoctor, asciidoctor-diagram")
             end
           else
             STDERR.puts "Invalid AsciiDoc processor: #{@config['asciidoc']}"
@@ -43,7 +45,7 @@ module Jekyll
         end
         @setup = true
       end
-      
+
       def matches(ext)
         rgx = "\.(#{@config['asciidoc_ext'].tr ',', '|'})$"
         ext =~ Regexp.new(rgx, Regexp::IGNORECASE)

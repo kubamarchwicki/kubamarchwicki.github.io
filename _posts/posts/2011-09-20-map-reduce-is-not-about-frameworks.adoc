@@ -8,13 +8,14 @@ redirect_from:
     - /blog/2011/09/map-reduce-is-not-about-frameworks/
 
 ---
-:imagesdir: /assets/map-reduce
+:data-uri:
+:imagesdir: assets/_generated
 
 When one performs a Google search for “map reduce”, the results are usually full of frameworks: Hadoop, MangoDB, Map Redcude in Amazon Elastic… and some wikipedia articles. All those frameworks support processing of massive data sets in a ditributed fashion. But map reduce is not about framework, neither about libraries that can be included in an application nor any deployable platform (infrastructure). At least not only about these. In my opinion map reduce is more about an approach, an architecture which can be implemented in a distributed environment – not necessarily using one of the mentioned frameworks. In this post I’ll describe how I used a concept of map reduce to process a massive amount sets among multiple nodes, in an asynchronous, distributed fashion.
 
 == So, what map reduce is?
 
-[quote,, MapReduce: Simplified Data Processing on Large Clusters]
+[quote, ,MapReduce: Simplified Data Processing on Large Clusters]
 ____
 MapReduce is a programming model and an associated implementation for processing and generating large data sets. Users specify a map function that processes a key/value pair to generate a set of intermediate key/value pairs, and a reduce function that merges all intermediate values associated with the same intermediate key. footnoteref:[mapreduce, http://labs.google.com/papers/mapreduce.html]
 ____
@@ -25,7 +26,25 @@ This is Google’s definition, where MapReduce was invented. If that definition 
 
 The project which I’m involved in is a suite of SOAP web services, written in EJB3, deployed on a JBoss 4.2.x application server – first one to support JEE5 (to some extent). The diagram below briefly outlines the overall infrastructure.
 
-image::mapreduce.png[]
+[ditaa, "map-reduce", alt="Implementation view for map reduce"]
+----
+                  +------+     +------------------+
+                  |      |     |                  |
++---------+       |    b |     |                  |     +----------+
+|         |       |    a |     |                  |     |          |
+| client  |       | l  l |     |                  |     | shared   |
+| process | +---> | o  a | +-> |                  | +-> | database |
+|         |       | a  n |     |                  |     |          |
+| mapper  |       | d  c |     |                  |     | reducer  |
+|         |       |    e |     |                  |     |          |
++---------+       |    r |     |                  |     +----------+
+                  |      |     |                  |
+                  +------+     +------------------+
+
+                                application servers
+                             not clustered - stateless
+
+----
 
 There are multiple independent nodes, which are proxied by loadbalancer, to provide an even traffic distribution for each of the nodes. Underneath the application layer, there is a shared database for all the nodes. The database has it’s own replication and balancing capabilities and details of that are beyond the scope of this post. The mentioned database is primarily for business data, while any realtime information (like JMS messaging, processing data) are persisted within a local, Hypersonic database – to minimize the load on the main data stores and network contingency. The architecture can be summarized as horizontally scalable through replication (simply adding more nodes).
 This infrastructure evolved and was optimized overtime to address the main requirement: fastest possible, realtime processing of a single piece of information. This processing included both drilling down our own database, as well as decorating response data with some additional information, provided by a suite of external services (with additional webservice calls). With time our system evolved into a single ‘point-of-contact’ facade for quite a significant number of external services. That brings us to the latest requirement and indirectly to MapReduce.
