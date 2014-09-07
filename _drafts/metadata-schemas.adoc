@@ -1,0 +1,9 @@
+---
+layout: post
+categories: posts
+title: Creating own metadata schema
+
+---
+
+
+Yada yada
