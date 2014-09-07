@@ -1,0 +1,46 @@
+---
+layout: post
+categories: posts
+title: Map Reduce is not about frameworks
+excerpt: Map-reduce is a nice buzzword, an interesting concept; frameworks, frameworks, frameworks. But in fact - it's an architecture beyond frameworks...
+redirect_from:
+    - /2011/09/map-reduce-is-not-about-frameworks/
+    - /blog/2011/09/map-reduce-is-not-about-frameworks/
+
+---
+:imagesdir: /assets/map-reduce
+
+When one performs a Google search for “map reduce”, the results are usually full of frameworks: Hadoop, MangoDB, Map Redcude in Amazon Elastic… and some wikipedia articles. All those frameworks support processing of massive data sets in a ditributed fashion. But map reduce is not about framework, neither about libraries that can be included in an application nor any deployable platform (infrastructure). At least not only about these. In my opinion map reduce is more about an approach, an architecture which can be implemented in a distributed environment – not necessarily using one of the mentioned frameworks. In this post I’ll describe how I used a concept of map reduce to process a massive amount sets among multiple nodes, in an asynchronous, distributed fashion.
+
+== So, what map reduce is?
+
+[quote,, MapReduce: Simplified Data Processing on Large Clusters]
+____
+MapReduce is a programming model and an associated implementation for processing and generating large data sets. Users specify a map function that processes a key/value pair to generate a set of intermediate key/value pairs, and a reduce function that merges all intermediate values associated with the same intermediate key. footnoteref:[mapreduce, http://labs.google.com/papers/mapreduce.html]
+____
+
+This is Google’s definition, where MapReduce was invented. If that definition isn’t clear enough, Joel Spolsky wrote a great article "Can your programming language do this?" footnote:[http://www.joelonsoftware.com/items/2006/08/01.html] where here explains how this all works. I can’t disagree with what Joel wrote – “Without understanding functional programming, you can’t invent MapReduce footnoteref:[mapreduce], the algorithm that makes Google so massively scalable. The terms Map and Reduce come from Lisp and functional programming.” Nonetheless, this is not only about language capabilities and it’s definitely not about frameworks. MapReduce can be also considered from an architecture and infrastructure perspective. A massive scalability can be achieved by distributing work among nodes. Without functional programming it won’t be massively flexible, but at the moment scalability was aimed.
+
+== Some background
+
+The project which I’m involved in is a suite of SOAP web services, written in EJB3, deployed on a JBoss 4.2.x application server – first one to support JEE5 (to some extent). The diagram below briefly outlines the overall infrastructure.
+
+image::mapreduce.png[]
+
+There are multiple independent nodes, which are proxied by loadbalancer, to provide an even traffic distribution for each of the nodes. Underneath the application layer, there is a shared database for all the nodes. The database has it’s own replication and balancing capabilities and details of that are beyond the scope of this post. The mentioned database is primarily for business data, while any realtime information (like JMS messaging, processing data) are persisted within a local, Hypersonic database – to minimize the load on the main data stores and network contingency. The architecture can be summarized as horizontally scalable through replication (simply adding more nodes).
+This infrastructure evolved and was optimized overtime to address the main requirement: fastest possible, realtime processing of a single piece of information. This processing included both drilling down our own database, as well as decorating response data with some additional information, provided by a suite of external services (with additional webservice calls). With time our system evolved into a single ‘point-of-contact’ facade for quite a significant number of external services. That brings us to the latest requirement and indirectly to MapReduce.
+
+== Substituting batch processing with webservices
+
+One of the many external service which we’ve been utilizing in our solution, was also manually processed in a batch fashion; an email with CSV data was sent and the receiving party processed the data. Our solution has been doing pretty much the same, but for a single data item. Extending the system capabilities to process multiple rows, to substitute the quasi manual process seemed to be a natural evolution and that was the main objective for the project. The ‘multiple’ factor was quite scarry – up to few million records in a single process. The decision was to utilize all of the nodes, but in a more parallel fashion. What was needed was a way for robust asynchronous processing of the data and collecting the results, utilize the nodes (which are quite powerful boxes) in a maximum way and keep the load on any other machine as low as possible. That brings us to Map Reduce.
+
+== Map Reduce is everywhere
+
+So, for Map Reduce we need two things: a mapper and a reducer. In case of the described solution, the map is a simple perl script, which splits an incoming flat file into multiple chunks (not to kill a single node with all requests). The script assigns an unique process id, which as attached to the processing data. Each chunk is independently sent, through load-balancer, to any of the nodes. That triggers asynchronous processing.
+
+The ‘service gateway’ is a REST webservice – to keep it simple, straightforward and to minimize the network traffic (an alternative was SOAP). I still plan to describe deployment of RESTful web services with JBoss 4.x (which is an infrastructure I’m working with) at some point in the future. So far – it’s out of scope.
+So that is the mapper. What’s still needed is a reducer. All the services use a shared database underneath. All business critical information as stored there. It’s a clustered RDMS and is performing pretty well. That way, database become the reducer. After asynchronous processing the data (calling an external service, processing and analysing the response), the data is persisted into the database. It is easy to retrieve the data with the unique, upfront generated id.
+
+== Some conclusions
+
+The environment which is used is definitely not the latest, most cutting edge technology stack. Well, JBoss 4.2.x with Java 5 is far better than Java 1.3, but it is still not something most developers are keen on working with. Though the technology stack is not our choice and there is no way to change it or upgrade (you probably know the ‘corporate ideas’ of technology freeze – that’s the case), it’s not always a dead end. There are always things to push forward and boxes to think outside of. Many new, cutting edge ideas can be implemented at the top of ‘not-so-modern’ technology stack. It always require a little more wiring, some boilerplate code than an out-of-the-box framework, but it’s almost always worth it. After all, the fun factor is always important even in a daily job.
