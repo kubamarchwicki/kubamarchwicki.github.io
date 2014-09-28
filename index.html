@@ -6,6 +6,7 @@ redirect_from: /blog/index.html
 <div class="home">
 
   {% if site.categories.speaking.size > 0 %}
+  <p>Forthcoming speaking: </p>
   <ul class="speaking forthcoming">
   {% for post in site.categories.speaking %}
     {% capture currentTime %}{{ 'now' | date: "%s" }}{% endcapture %}
@@ -14,7 +15,6 @@ redirect_from: /blog/index.html
       <li>
         <a href="{{ post.url }}">{{ post.title }}</a>
         <span class="post-date">({{post.speakingDate}})</span>
-        <blockquote>{{post.subTitle}}</blockquote>
       </li>
     {% endif %}
   {% endfor %}

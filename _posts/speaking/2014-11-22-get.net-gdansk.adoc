@@ -1,9 +1,8 @@
 ---
 layout: speaking
 categories: speaking
-title: JMaghreb 2014
-speakingDate: 2014-11-04, Casablanca, Marroco
-link: http://jmaghreb.io/
+title: GET.NET 2014
+speakingDate: 2014-11-22, Gdańsk, Poland
 page-include: _posts/speaking/topics/reverse-engineering-clean-code.adoc
 ---
 
