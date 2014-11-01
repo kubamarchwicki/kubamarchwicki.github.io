@@ -1,0 +1,169 @@
+---
+layout: post
+categories: posts
+title: (…) testig an EJB application – Part IV (OpenEJB with vendor extensions and ejb-jar.xml)
+excerpt: Integration testing of EJB application with embedded container - OpenEJB. Going beyond the standard configuration
+redirect_from: /blog/2011/06/testing-ejb-applicatin-openejb-with-vendor-extensions-and-ejb-jar-xml/
+
+---
+
+link:{% post_url posts/2011-06-09-the-art-of-testing-an-ejb-application-openejb %}[The previous post of EJB testing featured OpenEJB bootstrapping and handling different configurations] (or better say overwriting the defaults). This time I want to focus on vendor extensions, which are not supported by OpenEJB and ways to include them in the testing context. This way I’ll tackle ejb-jar.xml files, which can provide alternate dependencies for beans in context. I’ll iterate over a sample application which is available on https://github.com/kubamarchwicki/ejb-testing[github].
+
+== The wider context
+
+I’ve already mentioned I’m using JBoss and the vendor extension which I’m referring to is a @Service annotation. JBoss does not support a @Singleton EJB annotation and @Service is supposed to be an alternative (this refers to versions 4.x and 5.x – I haven’t tested it, but I suppose @Singleton annotation works fine in JBoss6). I’ve been using JBoss @Services for two reasons: managed configuration beans and basic cache. The big advantage of a managed-bean service is that there will be only one instance of the service bean (no pooling) so the instance is effectively a singleton. That way the bean’s shared state is accessible by other clients. This is important to remember because it’s not always a desired behaviour.
+
+To put this in context of the sample-example application, lets assume an interface to our calculator application is a custom, concatenated string, which needs to be parsed (if you need a reason, let’s say we are running service manually from the jmx-console). The parser we are using works very quickly, but the initialization takes long enough to be worried about the run-time performance (quite a common non-functional requirement when a Dozer Mapper or Hibernate Validator is used – initialization takes some time). Using a service to initialize it on startup does not seem such a bad idea. Additionally, there is a requirement to change some of the configuration properties in run-time. In our particular case, the configuration is used for a flexible customizing the display. A configuration managed bean will be used to fulfil this ‘requirement’.
+
+== Services
+
+First of all, before we even get to building a service, appropriate dependencies need including. +@Service+ is a vendor extension so a jboss jar needs referencing:
+
+[source, xml]
+----
+<dependency>
+  <groupId>jboss</groupId>
+  <artifactId>jboss-annotations-ejb3</artifactId>
+</dependency>
+----
+
+That way access to +@Service+ and +@Management+ annotations is available. Building a singleton bean is as easy as adding those two annotations to a desired class:
+
+[source, java]
+----
+@Service(objectName="pl.marchwicki.view.settings:service=displaySettings")
+@Management(DisplaySettingsMBean.class)
+public class DisplaySettings implements DisplaySettingsMBean {
+  //... business methods
+}
+----
+
+Another important note: while in case of setting mbean we don’t need to any additional lifecycle methods in the interface (like start, stop, create, destroy), in case of caching bean, a start() method is very helpful. At some point of the lifecycle the mapper needs initialization. In normal EJB environment it would be @PostConstruct, but as we are using vendor specific extensions it all works slightly different. What would have normally been put to @PostConstruct, gets executed in start() method.
+
+== Successful deployment
+When the application is built and deployed we see following information in the log file (acknowledging successful deployment):
+
+----
+INFO  [EJBContainer] STARTED EJB: pl.marchwicki.ejb.frontend.StringToArrayMappingService
+    ejbName: StringToArrayMappingService
+INFO  [Mapper] Mapper initialized
+INFO  [StringToArrayMappingService] Mapper set
+INFO  [EJBContainer] STARTED EJB: pl.marchwicki.ejb.view.configuration.DisplaySettings
+    ejbName: DisplaySettings
+----
+
+Now, it’s possible to invoke the add() method from calculationFacade service, from the jmx-console. With argument “1;2;3;4” we see appropriate result in logs:
+
+----
+INFO  [STDOUT] : Result of ADD operation is: 10
+----
+
+It’s also possible to change the display template (in the displaySettings bean), so the result looks slightly different:
+
+----
+INFO  [STDOUT] @@@@@ Result of ADD operation is: 10
+----
+
+Everything works fine… however, describing the nature of JBoss ‘singletons’ was not the objective for this post. It was supposed to be about testing.
+
+== Initializing vendor specific beans in tests
+
+I must admit there was a little trick – I’ve been running maven with the skip-tests flag set. I wanted to show the application is running on the application server, to emphasize the differences and issues with OpenEJB for testing. When the tests are run, the build fails (even though everything works smooth on the server):
+
+----
+WARN - Unresolved ejb reference
+   "pl.marchwicki.ejb.view.DisplayingService/settings" in bean
+   "DisplayingService".  Will attempt resolution again at runtime.
+WARN - Injection data not found in enc:
+   jndiName='pl.marchwicki.ejb.view.DisplayingService/settings',
+   target=class pl.marchwicki.ejb.view.DisplayingService/settings
+----
+
+OpenEJB is unable to resolve the managed beans. No surprise – these are JBoss services afterall. Now it’s time for manual setup, with an ejb-jar.xml. First of all – we need to handle DisplaySettings by defining the bean as follows:
+
+[source, xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<ejb-jar>
+  <enterprise-beans>
+    <session>
+      <ejb-name>DisplaySettings</ejb-name>
+    <business-local>pl.marchwicki.ejb.view.configuration.DisplaySettingsMBean</business-local>
+      <ejb-class>pl.marchwicki.ejb.view.configuration.DisplaySettings</ejb-class>
+      <session-type>Stateless</session-type>
+      <env-entry>
+        <description>Display template</description>
+        <env-entry-name>setDisplayTemplate</env-entry-name>
+        <env-entry-type>java.lang.String</env-entry-type>
+        <env-entry-value>------- {} -------</env-entry-value>
+        <injection-target>
+	          <injection-target-class>pl.marchwicki.ejb.view.configuration.DisplaySettings</injection-target-class>
+          <injection-target-name>setDisplayTemplate</injection-target-name>
+        </injection-target>
+      </env-entry>
+    </session>
+  </enterprise-beans>
+</ejb-jar>
+----
+
+After that, the application builds successfully, tests run smoothly and an expected message shows up in the console (formatted as defined).
+
+----
+------- Result of ADD operation is: 10 -------
+----
+
+The caching service can be handled in a very similar way. Starting with a test, which obviously fails:
+
+[source, java]
+----
+public class CalculationFacadeTest {
+
+  CalculationFacadeLocal facade;
+
+  @BeforeClass
+  public void setup() throws NamingException {
+    InitialContext ctx = new InitialContext();
+    facade = (CalculationFacadeLocal) ctx.lookup("CalculationFacadeLocal");
+  }
+
+  @Test
+  public void simpleAdding() {
+    String args = "1;2;3;4";
+    String calculate = facade.add(args);
+    Assert.assertEquals("200 OK", calculate);
+  }
+}
+----
+
+----
+FAILED CONFIGURATION: @BeforeClass setup
+    javax.naming.NameNotFoundException: Name "CalculationFacadeLocal" not found.
+----
+
+OpenEJB does not handle out service annotation so a similar approach with ejb-jar.xml is required. Definition is fairly simple, so after adding both services to context… the test fails again – but more gracefully.
+
+----
+Caused by: java.lang.NullPointerException
+    at pl.marchwicki.ejb.frontend.StringToArrayMappingService.map(StringToArrayMappingService.java:18)
+----
+
+
+The cached mapper needs manual initializing – not surprise. We can add this extra step into +@BeforeClass+ method of the test (lookup the bean in the context and manually run the +start()+ method) and voila! Build successful. Surprising is that OpenEJB does not call +create()+ method on startup – even though it says so in the logs.
+
+== Beyond initialization
+
+Simple initialization is not the only useful thing about ejb-jar.xml. Let’s say we aim to mock some services – take DisplayingService. As the ‘sophisticated templates’ are not required for tests, so let’s replace them with a simplest possible implementation – displaying results to console without any formatting. As you could have noticed, OpenEJB does not give you much flexibility in what to use. Classpath is scanned, beans are created. What is more, OpenEJB does not care much if more than one implementation of the business interface is present in context. The first one is picked and wired (which I can accept to some extent). It gets worse when the application consists of multiple ears which all get wrapped into single ear on tests. After that it’s impossible to tell which implementation is used.
+
+So let’s create additional implementation of DisplayingServiceLocal. Unfortunately, even though additional bean is discovered, it’s successfully deployed – still the default implementation is used. There is no way to tell, which implementation is going to be picked up by the container (and there is not way to tell the container to pick a desired implementation).
+
+One solution is to directly reference an instance with beanName attribute within the @EJB annotation. Works like a charm, however I don’t think it’s a good practice to change the application logic to have tests running smoothly.
+
+Another, in my opinion an intuitive approach would be to use ‘after-everything-is-setup’ configuration file, override dependencies and manually wire appropriate beans. Unfortunately, that’s not possible (at least I haven’t found a way to do it). Even if alternate deployment descriptors are defined (as described in http://openejb.apache.org/3.0/alternate-descriptors.html[alternate descriptors manual page of OpenEJB]), only the first one is loaded (other are ignored). Manual wiring (of MethodController – for example) in ejb-jar.xml results with NullPointerException (cause classpath discovery is performed latter). On the other hand, a full initialization of bean in ejb-jar.xml results with a nasty javax.naming.NameAlreadyBoundException (when the classpath is scanned).
+
+I gave up. Posted question to a mailing list – see what happens. Made myself some more room to try something else – Arquillian.
+
+== Some conclusions
+
+Probably after reading all these you think OpenEJB is an overkill, a fairly complicated and not easy to use tool. I can bet you are close to give up testing (at least integration) because ‘there is now way to do it efficiently and I’ll just click the app through’. Well, you are not the first one. I’ve been there as well, nearly giving up. After a while (and a decent drilling down) I’d withdraw my initial pessimism. I agree OpenEJB is not the best tool for testing – but that’s better than nothing (fanboys note: I’ll be covering Arquillian later on – I’ve just written few seconds earlier). It works fine with end-to-end integration testing. On the other hand, the focused integration tests are fairly challenging (as you could’ve seen in this post). It all works fine a long as you are not trying to beat the game.
+
+Final thoughts; the steps and tools I’ve described in this and previous posts saved me hours of booting and restarting application server. After a while I started to implement whole change requests without touching the application server. Nevertheless, I think it’s time to move on – in the next episode I plan to fork the existing code reimplement all the tests with Arquillian. Stay tuned!
