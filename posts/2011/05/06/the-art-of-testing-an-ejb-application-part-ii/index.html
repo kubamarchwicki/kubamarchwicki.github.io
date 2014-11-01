@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The art of testing an EJB application – Part II (mocking)</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="A randomized pack of notes">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2011/05/06/the-art-of-testing-an-ejb-application-part-ii/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+    
+    <!-- google analytics async -->
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-439480-4']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"><i class="fi-folder"></i>Notepack</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>The art of testing an EJB application – Part II (mocking)</h1>
+    <p class="meta">May 6, 2011</p>
+  </header>
+
+  <article class="post-content">
+  <div class="paragraph">
+<p><a href="/posts/2011/05/02/the-art-of-testing-an-ejb-application-part-i/">The previous post on testing was more like an introduction</a> – now it’s time for some real testing. While I’ve only touched the surface with unit-unit tests, I think functional testing needs a deeper drilling. Here we go!</p>
+</div>
+<div class="sect1">
+<h2 id="service-encapsulation">Service encapsulation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Decoupling services (having one service dependent on others, that encapsulate bits and pieces of functionality) is a fairly good practices. This ties nicely with a dependency injection feature of an EJB container; beans get resolved, initiated – happy days. Surely, not only EJB container does it, but comparing CDI frameworks is not in scope of this post. It’s about focused integration testing so let me start with with a simple example – a business service utilizing the TrimService from the previous post. If we are trying to keep our tests quick and robust, we need to get into container’s shoes and perform dependency injection on our own – this is where the loosely coupling starts to be a little bit painful.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Stateless
+public class BusinessService implements BusinessServiceLocal {
+	  @EJB TrimServiceLocal trimService;
+    public BusinessMethodResponse businessMethod(TransferObject obj) {
+      //some logic
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this particular example the container does a fairly simple and straightforward job. Instantiating of this service is nothing extraordinary and there is nothing that should stop us doing the same during in tests.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class BusinessServiceTest {
+
+  BusinessService businessService;
+
+  @BeforeClass
+  public void setup() {
+    businessService = new BusinessService();
+    businessService.trimService = new TrimService();
+  }
+
+  @Test
+  public void successfulBusinessMethodForSpecificCase() {
+    TransferObject obj = new TransferObject();
+    //populate the object
+
+    BusinessMethodResponse response = businessService.businessMethod(obj);
+    Assert.assertNotNull(response);
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please note that the trimService field does not have an explicit visibility defined, which make the field of package scope. If we keep tests in the same package as the service, we can fiddle with service’s fields without any reflection API magic.</p>
+</div>
+<div class="paragraph">
+<p>Even though this can work quite smoothly, we are moving beyond unit testing (some might say some unit tests principles might be violated, because we check the behaviour of more than one class – TrimService is tested as well). I won’t be bothered about this; at some point it’s necessary to take a more holistic approach towards testing. That’s exactly what’s happening here: focused integration testing; a carefully curated set of features was chosen and tested in isolation. That way we can see how certain blocks of the application works in conjunction with other elements of the system. On the other hand, the tests are still kept relatively small and fast.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="mocking-services">Mocking services</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When the services are getting more and more complex, a simple initialization might appear troublesome, producing too much boilerplate code. There are ways to do it faster – with mockups. From two most popular mocking frameworks: EasyMock (<a href="http://easymock.org/" class="bare">http://easymock.org/</a>) and Mockito (<a href="http://mockito.org/" class="bare">http://mockito.org/</a>), I pick the latter. A quick glimpse over Mockito website should give a decent clue how it works and how it follows given-when-then principle.</p>
+</div>
+<div class="paragraph">
+<p>See an example – a configuration service which returns configuration codes from a database. A Hibernate named query is used to retrieve raw, persisted data and some additional stripping logic is applied. Given a following service,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Stateless
+public class ConfigService implements ConfigServiceLocal {
+
+  @EJB
+  CrudServiceLocal crudService;
+
+  public List&lt;String&gt; getConfigCodes(String type) {
+    List&lt;FuncConfg&gt; funcConfgResults =
+      crudService.findByNamedQuery("FuncConfg.findByType", “type”, type);
+    List&lt;String&gt; configCodes = //some additional processing
+    return configCodes;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>the process of mocking data and testing may look like this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class ConfigServiceTest {
+
+  ConfigService configService;
+
+  @BeforeClass
+  public void setup() {
+    configService = new ConfigService();
+    configService.crudService = Mockito.mock(CommonCrudService.class);
+  }
+
+  @Test
+  public void defaultTypeConfig() {
+    final String deafultType = “defaultType”;
+    Mockito.when(configService.crudService
+        .findByNamedQuery("FuncConfg.findByType", “type”, defaultType))
+        .thenReturn(defaultFuncConfgList());
+
+    List&lt;String&gt; confgCd = configService.getConfigCodes(defaultType);
+    Assert.assertNotNull(confgCd);
+    Assert.assertEquals(confgCd.size(), 10);
+    //some additional assertions
+  }
+
+  private List&lt;FuncConfg&gt; defaultFuncConfgList() {
+    //creates default list of codes
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="handling-database">Handling database</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Last, but not least – ‘talking’ to a database. This is getting us closer to an end-to-end integration testing – though the tests are still fairly robust, small and fast. In fact, what is happening here is pretty much the same what OpenEJB does when it bootstraps a database, but faster.</p>
+</div>
+<div class="paragraph">
+<p>I use this approach in two scenarios: when I want to test named queries against real data and when a snapshot of a production / test database is available and can be loaded from file, instead of handcrafting and mocking each data object individually.</p>
+</div>
+<div class="paragraph">
+<p>Let’s use the previous example of the configuration service. Mocking the crud service worked perfectly fine, but when the number of different test cases increases significantly, quite a lot of test code needs to be written. There are smarter ways to do it. In my projects I tend to use this DataSourceMockUp class which bootstraps hibernate and exposes the EntityManager.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class DataSourceMockUp {
+
+  private EntityManager entityManager;
+
+  public DataSourceMockUp(Builder builder) {
+    //bootstrap hibernate
+    Ejb3Configuration config = new Ejb3Configuration();
+    config.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect")
+        .setProperty("javax.persistence.transactionType", "RESOURCE_LOCAL")
+        .setProperty("hibernate.connection.driver_class", "org.hsqldb.jdbcDriver")
+        .setProperty("hibernate.connection.url", "jdbc:hsqldb:mem:testdb")
+        .setProperty("hibernate.connection.username", "sa")
+        .setProperty("hibernate.connection.password", "")
+        .setProperty("hibernate.connection.pool_size", "1")
+        .setProperty("hibernate.connection.autocommit", "true")
+        .setProperty("hibernate.cache.provider_class", "org.hibernate.cache.HashtableCacheProvider")
+        .setProperty("hibernate.hbm2ddl.auto", "create")
+        .setProperty("hibernate.show_sql", "true");
+
+    //add entities
+    for (Class&lt;?&gt; clazz : builder.annotatedClass) {
+      config.addAnnotatedClass(clazz);
+    }
+
+    //set up services
+    //even though the method is deprecated - this is one to be used
+    //https://forum.hibernate.org/viewtopic.php?f=10&amp;t=966871
+    EntityManagerFactory entityManagerFactory = config.createEntityManagerFactory();
+    setEntityManager(entityManagerFactory.createEntityManager());
+
+    //import initial data
+    EntityTransaction tx = getEntityManager().getTransaction();
+    tx.begin();
+
+    SchemaExport schemaExport = new SchemaExport(config.getHibernateConfiguration());
+    schemaExport.setImportFile(builder.importSqlFile);
+    schemaExport.create(true, true);
+    tx.commit();
+  }
+
+  public static class Builder {
+    private String importSqlFile;
+    private List&lt;Class&lt;?&gt;&gt; annotatedClass = new ArrayList&lt;Class&lt;?&gt;&gt;();
+
+    public Builder fromSqlFile(String importSqlFile) {
+      this.importSqlFile = importSqlFile;
+      return this;
+    }
+
+    public Builder withAnnotatedClass(Class&lt;?&gt; clazz) {
+      this.annotatedClass.add(clazz);
+      return this;
+    }
+
+    public DataSourceMockUp build() {
+      return new DataSourceMockUp(this);
+    }
+  }
+
+  public void setEntityManager(EntityManager entityManager) {
+    this.entityManager = entityManager;
+  }
+
+  public EntityManager getEntityManager() {
+    return entityManager;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With a data source mocked, the test class looks like this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class ConfigServiceTest {
+  ConfigService configService;
+
+  @BeforeClass
+  public void setup() {
+    DataSourceMockUp mockup = new DataSourceMockUp.Builder()
+        .fromSqlFile(sqlLocation)
+        .withAnnotatedClass(FuncConfg.class).build();
+
+    CommonCrudService crudService = new CommonCrudService();
+    crudService.entityManager = mockup.getEntityManager();
+
+    configService = new ConfigService();
+    configService.crudService = crudService;
+  }
+
+  @Test
+  public void getConfigCodesForDefaultType() {
+    List&lt;String&gt; codes = configService.getConfigCodes(“T”);
+    Assert.assertNotNull(codes);
+    //... and so on
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>One can argue that the same can be achieved with an OpenEJB. True, the whole container can be bootstrapped and all the services will be injected automatically (including the persistence context). However, as I’ve outlined in the first part of this series – the tests are categorised by the speed of execution and handcrafting hibernate with w pre-prepared SQL script is much faster that running the whole EJB container. What is more – it’s more hands on, errors are easier to spot and there is less magic going under the bonnet. As I am planning to show in the next post – things like error recovery, detailed configuration and so on are not 1, 2, 3 with OpenEJB. That’s why I find focused integration testing a compromise between simple unit testing and a holistic, end-to-end approach.</p>
+</div>
+</div>
+</div>
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <div class="column">
+      <ul>
+        <li><a href="/speaking">
+          <span class="icon linkedin"><i class="fi-microphone"></i></span>
+          <span class="username"> all speaking</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/kubamarchwicki">
+            <span class="icon github">
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C2C2" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <span class="username">kubamarchwicki</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/kubem">
+            <span class="icon twitter">
+              <svg version="1.1" class="twitter-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill="#C2C2C2" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27
+                c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767
+                c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206
+                C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271
+                c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469
+                c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+              </svg>
+            </span>
+            <span class="username">kubem</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/kubamarchwicki">
+            <span class="icon linkedin"><i class="fi-social-linkedin"></i></span>
+            <span class="username">kubamarchwicki</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>

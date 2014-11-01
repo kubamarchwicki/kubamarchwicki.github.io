@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>GeeCon Prague 2014</title>
+    <title>The art of testing an EJB application – Part I (Introducing)</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="A randomized pack of notes">
-    <link rel="canonical" href="http://jakub.marchwicki.pl/speaking/2014/10/23/geecon-pague-2014/">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2011/05/02/the-art-of-testing-an-ejb-application-part-i/">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -92,63 +92,95 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>GeeCon Prague 2014</h1>
-    <p class="meta">
-      <span id="speakingdate">2014-10-23, Prague, Czech Republic</span>
-      
-      - <span id="link"><a href="http://2014.geecon.cz/">http://2014.geecon.cz/</a></span>
-      
-    </p>
+    <h1>The art of testing an EJB application – Part I (Introducing)</h1>
+    <p class="meta">May 2, 2011</p>
   </header>
 
   <article class="post-content">
-  <div class="sect1">
-<h2 id="java-enterprise-ish-development-without-hassle">Java Enterprise'ish development without hassle</h2>
-<div class="sectionbody">
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Approach Java web development without over-engineered hassle, as there are simpler approaches than JPA + EJB + JSF to build the web tier of your application.</p>
-</div>
-</blockquote>
-</div>
-<div class="sect2">
-<h3 id="abstract">Abstract</h3>
-<div class="paragraph">
-<p>This happens in every community: You don’t need Rails, to build a web application in Ruby. You don’t need templating engine for PHP - PHP is a templating language! We over engineer and over engineer, again and again.</p>
+  <div class="paragraph">
+<p>It has been a while since my last post – partly because the JMS processing project I’ve <a href="about:blank">described earlier on</a> have kicked off and I was pretty busy with a real work. Nonetheless, the development is steadily coming to its end and it’s time to share some thought and observations. I’m still planning to cover the architecture – how and why it has changed, compared to the initial design I’ve described earlier on. However, for the time being I’ll focus on testing; I will describe some of ideas and observations how to approach testing of EJB 3.x services.</p>
 </div>
 <div class="paragraph">
-<p>Same happens in Java. Hibernate + EJB + JSF is not the only blessed stack for development of web application… one can argue it’s the worst. Same with Spring; no longer lighweight, no so robust - still powerful but not necessary the easiest. So what are the options for an average Java developer?</p>
+<p>This post is called “Part I” for a reason – there is a plan for multiple posts (so far I have a concept for three articles). The idea for the series came from <a href="http://jamesshore.com/Blog/Alternatives-to-Acceptance-Testing.html">James Shore article on acceptance testing</a> where he introduces three kinds of tests: unit, focused integration and end-to-end integration. One of many factors to distinguish and categorise the tests is a number of tests to run (a rate per second). I pretty much like that idea and I’ve organised this series around that notion. First part – unit tests. It should not be anything new for people familiar with the TDD. With EJB 3.x testing is getting even easier because there are no special interfaces to implement and it’s easy to instantiate a session bean with a simple new operator. These are unit tests with expected rate of hundreds per second. In part two I’ll focus on integration testing of EJB services without a container. I’ll tackle mocking data and / or other services. These tests are expected to run with pace of tens per second. Finally, I’ll deal with an EJB container (with OpenEJB) and end-to-end integration tests. These are expected to take minutes per test (the container itself can take few minutes to bootstrap).</p>
 </div>
 <div class="paragraph">
-<p>In this talk I’ll walk through multiple options, for modern Java web development: easy, quick, flexible and still state of an art. Starting for just obvious unknowns like embedded jetty, though micro pure-webframeworks, smaller and bigger swiss army knifes, which try to promise both: cover most of the application stack, still keeping things robust.</p>
+<p>That said, I’m not going to write much about the unit testing itself. Sorry if I haven’t met your expectations, but I don’t like to sound repetitive. Unit testing of an EJB service is not any different from testing any other bean. However, not to leave you with nothing, if you are not familiar with unit testing at all, here is a bunch of things to remember (formulated by Michael Feathers from www.objectmentor.com):</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="additional-resources">Additional resources</h3>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://speakerdeck.com/kubamarchwicki/jee-without-hassle-pl">PDF Slides</a> - in Polish</p>
+<p>unit test does not talk to the database</p>
 </li>
 <li>
-<p><a href="http://htmlpreview.github.io/?https://raw.githubusercontent.com/kubamarchwicki/presentations/master/jee-without-hassle/slides-pl.html">HTML slides</a> - in Polish</p>
+<p>unit test does not communicate across the network</p>
 </li>
 <li>
-<p><a href="https://github.com/kubamarchwicki/presentations/tree/master/jee-without-hassle">Slides source in <strong>asciidoctor</strong></a></p>
+<p>unit test does not touch the file system</p>
 </li>
 <li>
-<p><a href="https://github.com/kubamarchwicki/micro-java/">Code examples @ GitHub</a></p>
+<p>unit test does not require doing any special things to your environment (such as editing configuration files) to run it.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>Next, check out <a href="http://jamesshore.com/Blog/Lets-Play/Lets-Play-Test-Driven-Development.html">James Shore screencast series “Let’s play TDD”</a> to see what it’s all about.</p>
+</div>
+<div class="paragraph">
+<p>Not to leave you without a line of code, here is a dummy example you can find across every second page. Let me show you a service which pre-process a set of data sent from an external service; it crawls an object (using reflection) and trims all non-final, not empty strings properties.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public interface TrimServiceLocal {
+  public void trimObject(Object o);
+}</code></pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Stateless
+public class TrimService implements TrimServiceLocal {
+  public void trimObject(Object o);
+    //implementation goes here
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So, the test looks simple as that:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class TrimServiceTest {
+
+  TrimService trimService;
+
+  @BeforeClass
+  public void setup() {
+    trimService = new TrimService();
+  }
+
+  @Test
+  public removeWhitespaces() {
+    Name name = new Name();
+    name.setPrefix(“    Mr.”);
+    name.setFirstname(“      John     “);
+    name.setLastname(“Smith     “);
+
+    trimService.trimObject(name);
+
+    Assert.assertEquals(name.getPrefix(), “Mr.”);
+    Assert.assertEquals(name.getFirstname(), “John”);
+    Assert.assertEquals(name.getLastname(), “Smith”);
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I’ll stop here and come back in the next few days with some thoughts on more advanced, integration testing.</p>
 </div>
   </article>
 
 </div>
-
       </div>
     </div>
 

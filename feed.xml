@@ -5,8 +5,8 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 01 Nov 2014 21:21:08 +0000</pubDate>
-    <lastBuildDate>Sat, 01 Nov 2014 21:21:08 +0000</lastBuildDate>
+    <pubDate>Sat, 01 Nov 2014 22:52:10 +0000</pubDate>
+    <lastBuildDate>Sat, 01 Nov 2014 22:52:10 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -390,6 +390,186 @@ Objective feedback. From non violent communication. Refer to objectives: things 
       </item>
     
       <item>
+        <title>(…) testing EJB application – Part VI (OpenEJB test and custom JNDI lookups)</title>
+        <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This has been a while since my last post. Not that nothing happened – there has never been enough time to sit down and write those few paragraphs. I have few articles already started, but all quite far away from completion. I’ve pushing EJB testing even further (and this article will partly cover it) and focused even further on incepting such approach in the team. It looks like it’s working – the test coverage is constantly increasing from change request to change request, with new ideas being introduced. This particular one was introduced by my team mate – Greg, who was struggling with some legacy modules which were using hardcoded JNDI bindings.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;That obviously wasn’t the only thing happening recently. Additionally, there is another side project which I’ve recently started and which (I hope) will be available soon. If you are a Kindle user (or any other ebook reader – but we are targeting Kindles at first), this might be of some interest to you – preregister on &lt;a href=&quot;http://www.readpick.com&quot; class=&quot;bare&quot;&gt;http://www.readpick.com&lt;/a&gt; and stay tuned. From the technical perspective, it uses Python and Google App Engine and as the primary toolset, which made the work significantly different from a standard Java development I’ve been accustomed to. A list of helpful Python / GAE related resources in coming in a form of a blog post as well – but it needs time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Finally, last but no least, there is this little project (in size), but great in importance thing which does not leave much time for anything else – meet Jan, my son :-) Fairly obvious why everything else become much least important – he’s the most sweet of world’s sweets.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;JNDI lookups
+But let’s get back to the problems I wanted to describe. In the solution we’ve been working with, there was a separate logging module, independent and decoupled from the core functionality. The idea was: logging was not the core functionality; in production environment the logger was putting auditing data in the database, while in test the logger might not have been deployed at all or can just log to files. Important thing was not to rely on logging, with the core solution working with correctly even if the logging is not deployed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Nowadays, with JEE6 (EJB 3.1 in place) I’d address such requirement by injecting a typed instance of Instance&amp;lt;T&amp;gt; object. That way, I’d be able to check, later in code, if the dependency is satisfied or not. However, the environment I was using was EJB 3.0, did not have such a features and JNDI lookups was a way to go for us (also JMS was an option but messaging brought some additional resource consumption which we wanted to avoid).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To simplify, let’s imagine such a suite of classes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Stateless
+@LocalBinding(jndiBinding = &quot;mybindings/Logger&quot;)
+public class ExternalLogger implements ExternalLoggerLocal {
+
+  public void log(String str) {
+    System.out.println(&quot;Logging: &quot; + str);
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Stateless
+public class LoggerFacade implements LoggerFacadeLocal {
+
+  ExternalLoggerLocal log = null;
+
+  @PostConstruct
+  public void postConstruct() {
+    try {
+        InitialContext ctx = new InitialContext();
+        log = (ExternalLoggerLocal) ctx.lookup(&quot;mybindings/Logger&quot;);
+    } catch (NamingException e) {
+        e.printStackTrace();
+    }
+  }
+
+  public boolean log(String str) {
+    if (log != null) {
+      log.log(str);
+      return true;
+    }
+
+    return false;
+  }
+
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Stateless
+public class BusinessService implements BusinessServiceLocal {
+
+  @EJB
+  LoggerFacadeLocal logger;
+
+  public String doSomeImportantStuff() {
+    logger.log(&quot;Running doSomeImportantStuff()&quot;);
+    return &quot;Done&quot;;
+  }
+
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The ExternalLogger might (and that’s our case) deployed as a separate module (in a different ear file). It uses vendor specific annotation (from Jboss), @LocalBinding – to hook the service under a specific name within the JNDI index. That way, the façade can lookup the logging service in a flexible way and fall back when no implementation is deployed. If @EJB annotation was used, unsatisfied dependency would have ended up in throwing an exception – which we wanted to avoid. Façade is directly used in the application.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Obviously, the implementation shown in the examples is quite naïve but I hope it describes the problem we were facing and how it was solved.
+Despite the simplicity, this is a fully working application (JBoss 4.2.x deployable).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;the-tests-problems&quot;&gt;The tests problems&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Implementation of business logic is always only one side of the story. The other are tests and a way to cover the above logic with some reasonable tests cases. We were using OpenEJB with ApplicationComposer quite extensively and it helped us a lot in writing focused integration testing. Nonetheless, it occurred to be limited and unable to test this particular case.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Testing the negative case (the logger not deployed) was fairly simple, no bean implementing ExternalLogger interface was deployed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@RunWith(ApplicationComposer.class)
+public class NoActiveLoggerTest {
+
+  @EJB
+  LoggerFacadeLocal facade;
+
+  @Module
+  public EjbJar beans() {
+    EjbJar ejbJar = new EjbJar(&quot;loggging-app&quot;);
+    ejbJar.addEnterpriseBean(new StatelessBean(LoggerFacade.class));
+    return ejbJar;
+  }
+
+  @Test
+  public void facadeReturnsFalseOnNoActiveLogger() {
+    assertFalse(facade.log(&quot;Echo&quot;));
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Testing the successful wiring of the logger was much more troublesome. It appeared there is no way to define a specific JNDI location for a component. There were ways to do it using openejb-jar.xml file but we wanted to avoid it and handle everything within the test class, as it proved to be more maintainable.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A way for us to go was to modify the ApplicationComposer itself. Without getting much into details how the runner works (you can learn more about it from &lt;a href=&quot;/posts/2011/07/01/testing-ejb-application-openejb-without-classpath-scanning/&quot;&gt;my previous posts&lt;/a&gt; or from the &lt;a href=&quot;http://ci.apache.org/projects/openejb/examples-generated/application-composer/&quot;&gt;OpenEJB documentation&lt;/a&gt;) we were not able to output the configuration that included a specific JNDI location of a bean. Methods annotated with @Module could return EjbJar type of class, but we needed to get a level up, define a whole module with a specific JNDI. As I mentioned earlier, Greg had this idea to modify the ApplicationComposer class (which appeared to be fairly easy). The positive test case worked fine:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@RunWith(ApplicationComposer.class)
+public class ActiveLoggerTest {
+
+  @EJB
+  LoggerFacadeLocal facade;
+
+  @Module
+  public EjbModule module() {
+    EjbJar ejbJar = new EjbJar(&quot;loggging-app&quot;);
+    ejbJar.addEnterpriseBean(new StatelessBean(LoggerFacade.class));
+    ejbJar.addEnterpriseBean(new StatelessBean(ExternalLogger.class));
+
+    EjbModule ejbModule = new EjbModule(ejbJar, new OpenejbJar());
+    EjbDeployment deployment =
+      new EjbDeployment(new StatefulBean(ExternalLogger.class));
+    deployment.getJndi().add(new Jndi(&quot;mybindings/Logger&quot;, &quot;Local&quot;));
+    ejbModule.getOpenejbJar().addEjbDeployment(deployment);
+
+    return ejbModule;
+  }
+
+  @Test
+  public void facadeReturnsTrueOnActiveLoggerPresent() {
+    assertTrue(facade.log(&quot;Echo&quot;));
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The output was exactly as expected:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;INFO - Jndi(name=LoggerFacadeLocal) --&amp;gt; Ejb(deployment-id=LoggerFacade)
+INFO - Jndi(name=mybindings/Logger) --&amp;gt; Ejb(deployment-id=ExternalLogger)&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;the-modifications&quot;&gt;The modifications&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I understand that made a very specific case, which was the reason not to include it in the original runner’s code. However, as it worked for us, it might work for you as well. The patch is submitted to OpenEJB – wonder if it gets accepted (see: &lt;a href=&quot;https://issues.apache.org/jira/browse/OPENEJB-1763&quot; class=&quot;bare&quot;&gt;https://issues.apache.org/jira/browse/OPENEJB-1763&lt;/a&gt;)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Sat, 04 Feb 2012 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2012/02/04/testing-ejb-application-openejb-test-and-custom-jndi-lookups/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2012/02/04/testing-ejb-application-openejb-test-and-custom-jndi-lookups/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
+    
+      <item>
         <title>Map Reduce is not about frameworks</title>
         <description>&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;When one performs a Google search for “map reduce”, the results are usually full of frameworks: Hadoop, MangoDB, Map Redcude in Amazon Elastic… and some wikipedia articles. All those frameworks support processing of massive data sets in a ditributed fashion. But map reduce is not about framework, neither about libraries that can be included in an application nor any deployable platform (infrastructure). At least not only about these. In my opinion map reduce is more about an approach, an architecture which can be implemented in a distributed environment – not necessarily using one of the mentioned frameworks. In this post I’ll describe how I used a concept of map reduce to process a massive amount sets among multiple nodes, in an asynchronous, distributed fashion.&lt;/p&gt;
@@ -476,7 +656,7 @@ So that is the mapper. What’s still needed is a reducer. All the services use 
       </item>
     
       <item>
-        <title>(…) testing EJB application – OpenEJB without classpath scanning</title>
+        <title>(…) testing EJB application – Part V (OpenEJB without classpath scanning)</title>
         <description>&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;I’ve recently come across &lt;a href=&quot;http://blog.thecodewhisperer.com/2010/10/16/integrated-tests-are-a-scam/&quot;&gt;a very good article on integrated testing&lt;/a&gt; (with a provocative title: Integrated Test Are a Scam). The writing basically question most of my efforts and the sense of this series (as a whole) – integrated tests are bad and you should rather avoid doing it. Unit tests rocks. I cannot agree more. However, as J.B. points out there are moments when an integrated test brings some value (whew, the series saved). An this is where tools like OpenEJB proves its value. On the other hand, the way OpenEJB works pushes the user to end-to-end integration testing – SCAM!&lt;/p&gt;
 &lt;/div&gt;
@@ -484,10 +664,10 @@ So that is the mapper. What’s still needed is a reducer. All the services use 
 &lt;h2 id=&quot;the-biggest-openejb-disadvantage&quot;&gt;The biggest OpenEJB disadvantage&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Yeah, the necessity of the end-to-end testing is the biggest drawback of OpenEJB. It’s not easy to bootstrap a part of the containter (which I think I’ve shown &lt;a href=&quot;about:blank&quot;&gt;in the previous write-up&lt;/a&gt;). I found it close to impossible to be selective about which service gets deployed, which effectively means you cannot test half-baked code. If the whole application does not wire together (because the development is still in progress – for example), container does not boot, test fails (even though what’s tested is a completely independent area). This effectively makes the tools useless, when your development is test driven.&lt;/p&gt;
+&lt;p&gt;Yeah, the necessity of the end-to-end testing is the biggest drawback of OpenEJB. It’s not easy to bootstrap a part of the containter (which I think I’ve shown &lt;a href=&quot;/posts/2011/06/29/testing-ejb-application-openejb-with-vendor-extensions-and-ejb-jar-xml/&quot;&gt;in the previous write-up&lt;/a&gt;). I found it close to impossible to be selective about which service gets deployed, which effectively means you cannot test half-baked code. If the whole application does not wire together (because the development is still in progress – for example), container does not boot, test fails (even though what’s tested is a completely independent area). This effectively makes the tools useless, when your development is test driven.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;See the example of the persistence.xml, from &lt;a href=&quot;about:blank&quot;&gt;the first OpenEJB part&lt;/a&gt; – even though the database was not used in the test, a decent effort was required just to make it working. That’s what I’m tacking about and that’s the essence of the J.B.’s “Integrated Tests Are A Scam” article – hell a lot of effort is wasted in getting the stuff working, maintaining, before the actual tests are even written. This is not – in any case – critique of OpenEJB. As I wrote earlier, it’s a great tool but it looks like the way I was trying to use it was not exactly the fit for purpose. Now I know, an embeddable container for tests was the primary objective of creators, probably not. That’s why I started to think about something more tests oriented. One idea was &lt;a href=&quot;http://www.jboss.org/arquillian&quot;&gt;Arquillian&lt;/a&gt;; the other was to push OpenEJB harder, post questions to OpenEJB Users group, contact developers (as I’ve mentioned at the end of the last post – &lt;a href=&quot;http://openejb.979440.n4.nabble.com/override-annotation-based-configuration-with-ejb-jar-xml-td3628804.html&quot;&gt;see the discussion @ nabble.com&lt;/a&gt;). The later option appeared to be more agile’ish and with help from David Blevins, I found ways to test EJB without deploying the whole container. After all, it was easier to re-use that knowledge than get hands dirty with yet another technology and framework.&lt;/p&gt;
+&lt;p&gt;See the example of the persistence.xml, from &lt;a href=&quot;/posts/2011/06/09/the-art-of-testing-an-ejb-application-openejb/&quot;&gt;the first OpenEJB part&lt;/a&gt; – even though the database was not used in the test, a decent effort was required just to make it working. That’s what I’m tacking about and that’s the essence of the J.B.’s “Integrated Tests Are A Scam” article – hell a lot of effort is wasted in getting the stuff working, maintaining, before the actual tests are even written. This is not – in any case – critique of OpenEJB. As I wrote earlier, it’s a great tool but it looks like the way I was trying to use it was not exactly the fit for purpose. Now I know, an embeddable container for tests was the primary objective of creators, probably not. That’s why I started to think about something more tests oriented. One idea was &lt;a href=&quot;http://www.jboss.org/arquillian&quot;&gt;Arquillian&lt;/a&gt;; the other was to push OpenEJB harder, post questions to OpenEJB Users group, contact developers (as I’ve mentioned at the end of the last post – &lt;a href=&quot;http://openejb.979440.n4.nabble.com/override-annotation-based-configuration-with-ejb-jar-xml-td3628804.html&quot;&gt;see the discussion @ nabble.com&lt;/a&gt;). The later option appeared to be more agile’ish and with help from David Blevins, I found ways to test EJB without deploying the whole container. After all, it was easier to re-use that knowledge than get hands dirty with yet another technology and framework.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -539,9 +719,806 @@ So that is the mapper. What’s still needed is a reducer. All the services use 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Wed, 01 Jun 2011 00:00:00 +0000</pubDate>
-        <link>http://jakub.marchwicki.pl/posts/2011/06/01/testing-ejb-applicatin-openejb-without-classpath-scanning/</link>
-        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/06/01/testing-ejb-applicatin-openejb-without-classpath-scanning/</guid>
+        <pubDate>Fri, 01 Jul 2011 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2011/07/01/testing-ejb-application-openejb-without-classpath-scanning/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/07/01/testing-ejb-application-openejb-without-classpath-scanning/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
+    
+      <item>
+        <title>(…) testig an EJB application – Part IV (OpenEJB with vendor extensions and ejb-jar.xml)</title>
+        <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;/posts/2011/06/09/the-art-of-testing-an-ejb-application-openejb/&quot;&gt;The previous post of EJB testing featured OpenEJB bootstrapping and handling different configurations&lt;/a&gt; (or better say overwriting the defaults). This time I want to focus on vendor extensions, which are not supported by OpenEJB and ways to include them in the testing context. This way I’ll tackle ejb-jar.xml files, which can provide alternate dependencies for beans in context. I’ll iterate over a sample application which is available on &lt;a href=&quot;https://github.com/kubamarchwicki/ejb-testing&quot;&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;the-wider-context&quot;&gt;The wider context&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I’ve already mentioned I’m using JBoss and the vendor extension which I’m referring to is a @Service annotation. JBoss does not support a @Singleton EJB annotation and @Service is supposed to be an alternative (this refers to versions 4.x and 5.x – I haven’t tested it, but I suppose @Singleton annotation works fine in JBoss6). I’ve been using JBoss @Services for two reasons: managed configuration beans and basic cache. The big advantage of a managed-bean service is that there will be only one instance of the service bean (no pooling) so the instance is effectively a singleton. That way the bean’s shared state is accessible by other clients. This is important to remember because it’s not always a desired behaviour.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To put this in context of the sample-example application, lets assume an interface to our calculator application is a custom, concatenated string, which needs to be parsed (if you need a reason, let’s say we are running service manually from the jmx-console). The parser we are using works very quickly, but the initialization takes long enough to be worried about the run-time performance (quite a common non-functional requirement when a Dozer Mapper or Hibernate Validator is used – initialization takes some time). Using a service to initialize it on startup does not seem such a bad idea. Additionally, there is a requirement to change some of the configuration properties in run-time. In our particular case, the configuration is used for a flexible customizing the display. A configuration managed bean will be used to fulfil this ‘requirement’.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;services&quot;&gt;Services&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;First of all, before we even get to building a service, appropriate dependencies need including. @Service is a vendor extension so a jboss jar needs referencing:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;jboss&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;jboss-annotations-ejb3&amp;lt;/artifactId&amp;gt;
+&amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;That way access to @Service and @Management annotations is available. Building a singleton bean is as easy as adding those two annotations to a desired class:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Service(objectName=&quot;pl.marchwicki.view.settings:service=displaySettings&quot;)
+@Management(DisplaySettingsMBean.class)
+public class DisplaySettings implements DisplaySettingsMBean {
+  //... business methods
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Another important note: while in case of setting mbean we don’t need to any additional lifecycle methods in the interface (like start, stop, create, destroy), in case of caching bean, a start() method is very helpful. At some point of the lifecycle the mapper needs initialization. In normal EJB environment it would be @PostConstruct, but as we are using vendor specific extensions it all works slightly different. What would have normally been put to @PostConstruct, gets executed in start() method.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;successful-deployment&quot;&gt;Successful deployment&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;When the application is built and deployed we see following information in the log file (acknowledging successful deployment):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;INFO  [EJBContainer] STARTED EJB: pl.marchwicki.ejb.frontend.StringToArrayMappingService
+    ejbName: StringToArrayMappingService
+INFO  [Mapper] Mapper initialized
+INFO  [StringToArrayMappingService] Mapper set
+INFO  [EJBContainer] STARTED EJB: pl.marchwicki.ejb.view.configuration.DisplaySettings
+    ejbName: DisplaySettings&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now, it’s possible to invoke the add() method from calculationFacade service, from the jmx-console. With argument “1;2;3;4” we see appropriate result in logs:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;INFO  [STDOUT] : Result of ADD operation is: 10&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It’s also possible to change the display template (in the displaySettings bean), so the result looks slightly different:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;INFO  [STDOUT] @@@@@ Result of ADD operation is: 10&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Everything works fine… however, describing the nature of JBoss ‘singletons’ was not the objective for this post. It was supposed to be about testing.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;initializing-vendor-specific-beans-in-tests&quot;&gt;Initializing vendor specific beans in tests&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I must admit there was a little trick – I’ve been running maven with the skip-tests flag set. I wanted to show the application is running on the application server, to emphasize the differences and issues with OpenEJB for testing. When the tests are run, the build fails (even though everything works smooth on the server):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;WARN - Unresolved ejb reference
+   &quot;pl.marchwicki.ejb.view.DisplayingService/settings&quot; in bean
+   &quot;DisplayingService&quot;.  Will attempt resolution again at runtime.
+WARN - Injection data not found in enc:
+   jndiName=&#39;pl.marchwicki.ejb.view.DisplayingService/settings&#39;,
+   target=class pl.marchwicki.ejb.view.DisplayingService/settings&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;OpenEJB is unable to resolve the managed beans. No surprise – these are JBoss services afterall. Now it’s time for manual setup, with an ejb-jar.xml. First of all – we need to handle DisplaySettings by defining the bean as follows:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;
+&amp;lt;ejb-jar&amp;gt;
+  &amp;lt;enterprise-beans&amp;gt;
+    &amp;lt;session&amp;gt;
+      &amp;lt;ejb-name&amp;gt;DisplaySettings&amp;lt;/ejb-name&amp;gt;
+    &amp;lt;business-local&amp;gt;pl.marchwicki.ejb.view.configuration.DisplaySettingsMBean&amp;lt;/business-local&amp;gt;
+      &amp;lt;ejb-class&amp;gt;pl.marchwicki.ejb.view.configuration.DisplaySettings&amp;lt;/ejb-class&amp;gt;
+      &amp;lt;session-type&amp;gt;Stateless&amp;lt;/session-type&amp;gt;
+      &amp;lt;env-entry&amp;gt;
+        &amp;lt;description&amp;gt;Display template&amp;lt;/description&amp;gt;
+        &amp;lt;env-entry-name&amp;gt;setDisplayTemplate&amp;lt;/env-entry-name&amp;gt;
+        &amp;lt;env-entry-type&amp;gt;java.lang.String&amp;lt;/env-entry-type&amp;gt;
+        &amp;lt;env-entry-value&amp;gt;------- {} -------&amp;lt;/env-entry-value&amp;gt;
+        &amp;lt;injection-target&amp;gt;
+	          &amp;lt;injection-target-class&amp;gt;pl.marchwicki.ejb.view.configuration.DisplaySettings&amp;lt;/injection-target-class&amp;gt;
+          &amp;lt;injection-target-name&amp;gt;setDisplayTemplate&amp;lt;/injection-target-name&amp;gt;
+        &amp;lt;/injection-target&amp;gt;
+      &amp;lt;/env-entry&amp;gt;
+    &amp;lt;/session&amp;gt;
+  &amp;lt;/enterprise-beans&amp;gt;
+&amp;lt;/ejb-jar&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;After that, the application builds successfully, tests run smoothly and an expected message shows up in the console (formatted as defined).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;------- Result of ADD operation is: 10 -------&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The caching service can be handled in a very similar way. Starting with a test, which obviously fails:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class CalculationFacadeTest {
+
+  CalculationFacadeLocal facade;
+
+  @BeforeClass
+  public void setup() throws NamingException {
+    InitialContext ctx = new InitialContext();
+    facade = (CalculationFacadeLocal) ctx.lookup(&quot;CalculationFacadeLocal&quot;);
+  }
+
+  @Test
+  public void simpleAdding() {
+    String args = &quot;1;2;3;4&quot;;
+    String calculate = facade.add(args);
+    Assert.assertEquals(&quot;200 OK&quot;, calculate);
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;FAILED CONFIGURATION: @BeforeClass setup
+    javax.naming.NameNotFoundException: Name &quot;CalculationFacadeLocal&quot; not found.&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;OpenEJB does not handle out service annotation so a similar approach with ejb-jar.xml is required. Definition is fairly simple, so after adding both services to context… the test fails again – but more gracefully.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;Caused by: java.lang.NullPointerException
+    at pl.marchwicki.ejb.frontend.StringToArrayMappingService.map(StringToArrayMappingService.java:18)&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The cached mapper needs manual initializing – not surprise. We can add this extra step into @BeforeClass method of the test (lookup the bean in the context and manually run the start() method) and voila! Build successful. Surprising is that OpenEJB does not call create() method on startup – even though it says so in the logs.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;beyond-initialization&quot;&gt;Beyond initialization&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Simple initialization is not the only useful thing about ejb-jar.xml. Let’s say we aim to mock some services – take DisplayingService. As the ‘sophisticated templates’ are not required for tests, so let’s replace them with a simplest possible implementation – displaying results to console without any formatting. As you could have noticed, OpenEJB does not give you much flexibility in what to use. Classpath is scanned, beans are created. What is more, OpenEJB does not care much if more than one implementation of the business interface is present in context. The first one is picked and wired (which I can accept to some extent). It gets worse when the application consists of multiple ears which all get wrapped into single ear on tests. After that it’s impossible to tell which implementation is used.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;So let’s create additional implementation of DisplayingServiceLocal. Unfortunately, even though additional bean is discovered, it’s successfully deployed – still the default implementation is used. There is no way to tell, which implementation is going to be picked up by the container (and there is not way to tell the container to pick a desired implementation).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;One solution is to directly reference an instance with beanName attribute within the @EJB annotation. Works like a charm, however I don’t think it’s a good practice to change the application logic to have tests running smoothly.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Another, in my opinion an intuitive approach would be to use ‘after-everything-is-setup’ configuration file, override dependencies and manually wire appropriate beans. Unfortunately, that’s not possible (at least I haven’t found a way to do it). Even if alternate deployment descriptors are defined (as described in &lt;a href=&quot;http://openejb.apache.org/3.0/alternate-descriptors.html&quot;&gt;alternate descriptors manual page of OpenEJB&lt;/a&gt;), only the first one is loaded (other are ignored). Manual wiring (of MethodController – for example) in ejb-jar.xml results with NullPointerException (cause classpath discovery is performed latter). On the other hand, a full initialization of bean in ejb-jar.xml results with a nasty javax.naming.NameAlreadyBoundException (when the classpath is scanned).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I gave up. Posted question to a mailing list – see what happens. Made myself some more room to try something else – Arquillian.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;some-conclusions&quot;&gt;Some conclusions&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Probably after reading all these you think OpenEJB is an overkill, a fairly complicated and not easy to use tool. I can bet you are close to give up testing (at least integration) because ‘there is now way to do it efficiently and I’ll just click the app through’. Well, you are not the first one. I’ve been there as well, nearly giving up. After a while (and a decent drilling down) I’d withdraw my initial pessimism. I agree OpenEJB is not the best tool for testing – but that’s better than nothing (fanboys note: I’ll be covering Arquillian later on – I’ve just written few seconds earlier). It works fine with end-to-end integration testing. On the other hand, the focused integration tests are fairly challenging (as you could’ve seen in this post). It all works fine a long as you are not trying to beat the game.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Final thoughts; the steps and tools I’ve described in this and previous posts saved me hours of booting and restarting application server. After a while I started to implement whole change requests without touching the application server. Nevertheless, I think it’s time to move on – in the next episode I plan to fork the existing code reimplement all the tests with Arquillian. Stay tuned!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Wed, 29 Jun 2011 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2011/06/29/testing-ejb-application-openejb-with-vendor-extensions-and-ejb-jar-xml/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/06/29/testing-ejb-application-openejb-with-vendor-extensions-and-ejb-jar-xml/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
+    
+      <item>
+        <title>The art of testing an EJB application – Part III (OpenEJB)</title>
+        <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In the last two posts I’ve introduced my approach to testing (both unit and integration) and shown few ways to test bits and pieces of an enterprise application (some naive as well as more mature). This part is dedicated to tests with a fully featured EJB container, bootstrapped by the test suit. I’ll be using OpenEJB, because I’ve been using it for last few weeks in my latest project. I’ll show some basics and cover some of the more troublesome bits and pieces (which were not covered in the documentation or were not that intuitive). I must admit starting with OpenEJB wasn’t easy; in fact it was fairly frustrating experience at some point (which could have been noticed &lt;a href=&quot;http://twitter.com/kubem&quot;&gt;in my tweets&lt;/a&gt;). It’s a great a tool, but the learning curve is steep. I’m focusing on OpenEJB cause I’ve been using is the extensively. Nonetheless, it’s not the only way to test EJB application end-to-end. Alternatives are Sping (which handles @EJB annotations pretty neatly) or Arquillian (which is another approach to bootstrap the container). I’ll try to cover the latter in some future posts, but as for now – let’s start with OpenEJB.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There is one downside of OpenEJB – it bootstraps whole container and deploy all beans available in classpath. That’s not a desired behaviour in many cases. Arquillian seems to be more picky when it comes to beans for deployment. OpenEJB has some filtering capabilities as well – I’ll cover those later on in the series.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For something completely different – I thought I’d rather avoid embedding small code snippets, so I decided to host a complete working project at my GitHub space: &lt;a href=&quot;https://github.com/kubamarchwicki/ejb-testing&quot; class=&quot;bare&quot;&gt;https://github.com/kubamarchwicki/ejb-testing&lt;/a&gt; – feel free to fork.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;hello-world-application&quot;&gt;Hello world! application&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is fairly easy – there are tons of dummy EJB examples. However, I don’t like when examples are too abstract so lets assume we are building a calculator application, with services responsible for calculations and some for printing the results, etc.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public interface CalculatingServiceLocal {
+   public int add(int... args);
+   public int subtract(int... args);
+   public int multiply(int... args);
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public interface MethodControllerLocal {
+   public enum Operator {ADD, SUBTRACT, MULTIPLY};
+   public String calculate(Operator operation, String... args);
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To test this application we need to add two things to project and write the actual test. First of all it’s required to include OpenEJB in our application, in test scope.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.apache.openejb&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;openejb-core&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;3.1&amp;lt;/version&amp;gt;
+    &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
+&amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The actual test looks like this:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class MethodControllerTest {
+
+   MethodControllerLocal controller;
+
+   @BeforeClass
+   public void setup() throws NamingException {
+       InitialContext ctx = new InitialContext();
+       controller = (MethodControllerLocal) ctx
+               .lookup(&quot;MethodControllerLocal&quot;);
+   }
+
+   @Test
+   public void notSupportedOperation() {
+       String calculate = controller.calculate(Operator.MULTIPLY,
+               new String[] { &quot;1&quot;, &quot;2&quot; });
+       Assert.assertEquals(&quot;501 Not Implemented&quot;, calculate);
+   }
+
+   //... more test methods
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For this to successfully run, we need to instruct OpenEJB on how to perform the classpath discovery (see &lt;a href=&quot;http://openejb.apache.org/3.0/application-discovery-via-the-classpath.html&quot;&gt;OpenEJB application discovery via classpath manual&lt;/a&gt; for details). My personal preference is to use openejb.deployments.classpath.include and openejb.deployments.classpath.exclude as I find it more reliable that putting an empty ejb-jar.xml file in the classpath.
+In most cases this works smoothly, with a little jinx: OpenEJB goes nuts when classpath entries contains spaces (so if you use Maven and your repository is located in “Documents and Settings” folder). Moving it to a space-free folder fixes the issue.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;beyond-a-dummy-testing&quot;&gt;Beyond a dummy testing&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In most cases, most tutorials finish here: a working sample, which has nothing to do with a real life application. In my case it’s more about a working baseline to iterate upon – the day-to-day testing problems are much more complicated and require significantly more effort. There is a long list of problems which you can stumble upon when trying to test real life projects and I intend to cover at least some of those issue. To list a few I’ve encountered:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;including database in this equation (to test JPA named queries)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;getting access to an entity manager, to check what actually got persisted&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;using ejb-jar.xml to instantiate vendor specific dependencies (which are not supported by the OpenEJB – like managed beans)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;using ejb-jar.xml to inject different implementations (without changing the actual application code)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;adding-database-to-this-equation&quot;&gt;Adding database to this equation&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This sounds like a fairly common use case; an enterprise application uses database underneath. I don’t want to test database, persisting etc – I’ll just start with adding it an application. Let’s assume we need to persist calculation results. To do this, we add a basic entity and persistence.xml file to our solution.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Entity
+@Table(name = &quot;CALC_RESULTS_TB&quot;)
+public class CalculationResult implements Serializable {
+
+   private static final long serialVersionUID = -3706396749558191166L;
+
+   @Id
+   @Column(name = &quot;CALC_ID&quot;,
+	unique = true, nullable = false,
+	precision = 10, scale = 0)
+   @GeneratedValue(generator = &quot;CALC_ID_SEQ&quot;)
+   @SequenceGenerator(name = &quot;CALC_ID_SEQ&quot;, sequenceName = &quot;CALC_ID_SEQ&quot;)
+   private long id;
+
+   @Column(name = &quot;OPERATION&quot;)
+   private String operation;
+
+   @Column(name = &quot;ELEMENTS&quot;)
+   private String elements;
+
+   @Column(name = &quot;RESULT&quot;)
+   private int result;
+
+   //getters and setters
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;title&quot;&gt;persistence.xml&lt;/div&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;
+&amp;lt;persistence version=&quot;1.0&quot; xmlns=&quot;http://java.sun.com/xml/ns/persistence&quot;
+	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+	xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/persistence
+	http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd&quot;&amp;gt;
+	 &amp;lt;persistence-unit name=&quot;ejb-testing-pu&quot; transaction-type=&quot;JTA&quot;&amp;gt;
+    &amp;lt;provider&amp;gt;org.hibernate.ejb.HibernatePersistence&amp;lt;/provider&amp;gt;
+    &amp;lt;jta-data-source&amp;gt;java:/DefaultDS&amp;lt;/jta-data-source&amp;gt;
+    &amp;lt;class&amp;gt;pl.marchwicki.ejb.entity.CalculationResult&amp;lt;/class&amp;gt;
+    &amp;lt;properties&amp;gt;
+     &amp;lt;property name=&quot;hibernate.show_sql&quot; value=&quot;false&quot;/&amp;gt;
+     &amp;lt;property name=&quot;hibernate.format_sql&quot; value=&quot;true&quot;/&amp;gt;
+     &amp;lt;property name=&quot;hibernate.use_sql_comments&quot; value=&quot;true&quot;/&amp;gt;
+     &amp;lt;property name=&quot;hibernate.dialect&quot;
+		value=&quot;org.hibernate.dialect.Oracle9Dialect&quot;/&amp;gt;
+     &amp;lt;property name=&quot;hibernate.cache.use_second_level_cache&quot; value=&quot;true&quot;/&amp;gt;
+     &amp;lt;property name=&quot;hibernate.cache.use_query_cache&quot; value=&quot;true&quot; /&amp;gt;
+     &amp;lt;property name=&quot;hibernate.cache.provider_class&quot;
+		value=&quot;org.jboss.ejb3.entity.TreeCacheProviderHook&quot; /&amp;gt;
+     &amp;lt;property name=&quot;treecache.mbean.object_name&quot;
+		value=&quot;jboss.cache:service=EJB3EntityTreeCache&quot; /&amp;gt;
+     &amp;lt;property name=&quot;hibernate.cache.region_prefix&quot; value=&quot;/ejb-testing&quot; /&amp;gt;
+     &amp;lt;property name=&quot;hibernate.ejb.naming_strategy&quot;
+		value=&quot;org.hibernate.cfg.DefaultComponentSafeNamingStrategy&quot;/&amp;gt;
+    &amp;lt;/properties&amp;gt;
+ &amp;lt;/persistence-unit&amp;gt;
+&amp;lt;/persistence&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now, let’s wrap it into an ear file and deploy onto JBoss (I’ve used JBoss 4.2.3 – I know it’s an old one, but I happened I had that one installed – so the choice was obvious). On JBoss it works like a charm:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;16:06:55,827 INFO  [EJBContainer]
+          STARTED EJB: pl.marchwicki.ejb.view.DisplayingService ejbName: DisplayingService
+16:06:55,842 INFO  [EJBContainer]
+          STARTED EJB: pl.marchwicki.ejb.controllers.MethodController ejbName: MethodController
+16:06:55,858 INFO  [EJB3Deployer]
+          Deployed: [..] tmp4564005441996180815ear-0.0.1-SNAPSHOT.ear-contents/ejb-0.0.1-SNAPSHOT.jar
+16:06:55,858 INFO  [EARDeployer]
+          Started J2EE application:
+          file:/C:/_projects/_servers/jboss-4.2.3.GA/server/default/deploy/ear-0.0.1-SNAPSHOT.ear&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Unfortunately, when tests are re-executed – everything fails. SNAFU – situation normal. First of all – JBoss uses Hibernate as an JPA implementation, OpenEJB does not (I assume OpenJPA – but I haven’t been using that one as well). Secondly, persistence.xml includes some more sophisticated caching configuration.OpenEJB manual is pretty helpful here: lookup &lt;a href=&quot;http://openejb.apache.org/3.0/configuring-persistenceunits-in-tests.html&quot;&gt;configuring persistence unit in tests&lt;/a&gt;. However, more fundamental question should be answered here: what’s better for testing – two separate configurations (production and tests) or sharing same configuration only tuning (overriding it) when required. I prefer the latter – not once I had problems because I forgot updating test configuration with new entities, which cause tests fail. I’d rather satisfy test dependencies (in test scope) and override specific production properties (those related to cache, but also showing fomatted SQL in tests is pretty handy).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Additionally, (a clear coder notice) the setup() method is becoming a little boated with configuration. This can be easily moved to a jndi.properties file in the src/test/resources folder (not only the test suits become more readable, it makes the configuration reusable as well). So the configuration file for the test suit looks like this:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;java.naming.factory.initial = org.apache.openejb.client.LocalInitialContextFactory
+
+persistence unit
+ejb-testing-pu.hibernate.cache.provider_class = org.hibernate.cache.EhCacheProvider
+ejb-testing-pu.hibernate.hbm2ddl.auto = create-drop
+ejb-testing-pu.hibernate.dialect = org.hibernate.dialect.HSQLDialect
+ejb-testing-pu.hibernate.show_sql = true
+ejb-testing-pu.hibernate.format_sql = true
+ejb-testing-pu.hibernate.use_sql_comments = true
+ejb-testing-pu.hibernate.jdbc.batch_size = 0
+
+openejb.deployments.classpath.include = .*ejb-testing.*
+openejb.descriptors.output = true&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now OpenEJB works beautifully. Mission accomplished!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre&gt;===============================================
+    Default test
+    Tests run: 3, Failures: 0, Skips: 0
+===============================================&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;what-s-comming-next&quot;&gt;What’s comming next&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I know, with this post I’ve only touched the surface of OpenEJB, but that’s just to begin with something bigger. In the next part I plan to tackle ejb-jar.xml – instantiation of vendor specific beans, not handled by the OpenEJB and injecting concrete implementation of a service (when more than one is available in a classpath).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Thu, 09 Jun 2011 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2011/06/09/the-art-of-testing-an-ejb-application-openejb/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/06/09/the-art-of-testing-an-ejb-application-openejb/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
+    
+      <item>
+        <title>The art of testing an EJB application – Part II (mocking)</title>
+        <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;/posts/2011/05/02/the-art-of-testing-an-ejb-application-part-i/&quot;&gt;The previous post on testing was more like an introduction&lt;/a&gt; – now it’s time for some real testing. While I’ve only touched the surface with unit-unit tests, I think functional testing needs a deeper drilling. Here we go!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;service-encapsulation&quot;&gt;Service encapsulation&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Decoupling services (having one service dependent on others, that encapsulate bits and pieces of functionality) is a fairly good practices. This ties nicely with a dependency injection feature of an EJB container; beans get resolved, initiated – happy days. Surely, not only EJB container does it, but comparing CDI frameworks is not in scope of this post. It’s about focused integration testing so let me start with with a simple example – a business service utilizing the TrimService from the previous post. If we are trying to keep our tests quick and robust, we need to get into container’s shoes and perform dependency injection on our own – this is where the loosely coupling starts to be a little bit painful.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Stateless
+public class BusinessService implements BusinessServiceLocal {
+	  @EJB TrimServiceLocal trimService;
+    public BusinessMethodResponse businessMethod(TransferObject obj) {
+      //some logic
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In this particular example the container does a fairly simple and straightforward job. Instantiating of this service is nothing extraordinary and there is nothing that should stop us doing the same during in tests.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class BusinessServiceTest {
+
+  BusinessService businessService;
+
+  @BeforeClass
+  public void setup() {
+    businessService = new BusinessService();
+    businessService.trimService = new TrimService();
+  }
+
+  @Test
+  public void successfulBusinessMethodForSpecificCase() {
+    TransferObject obj = new TransferObject();
+    //populate the object
+
+    BusinessMethodResponse response = businessService.businessMethod(obj);
+    Assert.assertNotNull(response);
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Please note that the trimService field does not have an explicit visibility defined, which make the field of package scope. If we keep tests in the same package as the service, we can fiddle with service’s fields without any reflection API magic.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Even though this can work quite smoothly, we are moving beyond unit testing (some might say some unit tests principles might be violated, because we check the behaviour of more than one class – TrimService is tested as well). I won’t be bothered about this; at some point it’s necessary to take a more holistic approach towards testing. That’s exactly what’s happening here: focused integration testing; a carefully curated set of features was chosen and tested in isolation. That way we can see how certain blocks of the application works in conjunction with other elements of the system. On the other hand, the tests are still kept relatively small and fast.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;mocking-services&quot;&gt;Mocking services&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;When the services are getting more and more complex, a simple initialization might appear troublesome, producing too much boilerplate code. There are ways to do it faster – with mockups. From two most popular mocking frameworks: EasyMock (&lt;a href=&quot;http://easymock.org/&quot; class=&quot;bare&quot;&gt;http://easymock.org/&lt;/a&gt;) and Mockito (&lt;a href=&quot;http://mockito.org/&quot; class=&quot;bare&quot;&gt;http://mockito.org/&lt;/a&gt;), I pick the latter. A quick glimpse over Mockito website should give a decent clue how it works and how it follows given-when-then principle.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;See an example – a configuration service which returns configuration codes from a database. A Hibernate named query is used to retrieve raw, persisted data and some additional stripping logic is applied. Given a following service,&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Stateless
+public class ConfigService implements ConfigServiceLocal {
+
+  @EJB
+  CrudServiceLocal crudService;
+
+  public List&amp;lt;String&amp;gt; getConfigCodes(String type) {
+    List&amp;lt;FuncConfg&amp;gt; funcConfgResults =
+      crudService.findByNamedQuery(&quot;FuncConfg.findByType&quot;, “type”, type);
+    List&amp;lt;String&amp;gt; configCodes = //some additional processing
+    return configCodes;
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;the process of mocking data and testing may look like this&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class ConfigServiceTest {
+
+  ConfigService configService;
+
+  @BeforeClass
+  public void setup() {
+    configService = new ConfigService();
+    configService.crudService = Mockito.mock(CommonCrudService.class);
+  }
+
+  @Test
+  public void defaultTypeConfig() {
+    final String deafultType = “defaultType”;
+    Mockito.when(configService.crudService
+        .findByNamedQuery(&quot;FuncConfg.findByType&quot;, “type”, defaultType))
+        .thenReturn(defaultFuncConfgList());
+
+    List&amp;lt;String&amp;gt; confgCd = configService.getConfigCodes(defaultType);
+    Assert.assertNotNull(confgCd);
+    Assert.assertEquals(confgCd.size(), 10);
+    //some additional assertions
+  }
+
+  private List&amp;lt;FuncConfg&amp;gt; defaultFuncConfgList() {
+    //creates default list of codes
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;handling-database&quot;&gt;Handling database&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Last, but not least – ‘talking’ to a database. This is getting us closer to an end-to-end integration testing – though the tests are still fairly robust, small and fast. In fact, what is happening here is pretty much the same what OpenEJB does when it bootstraps a database, but faster.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I use this approach in two scenarios: when I want to test named queries against real data and when a snapshot of a production / test database is available and can be loaded from file, instead of handcrafting and mocking each data object individually.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Let’s use the previous example of the configuration service. Mocking the crud service worked perfectly fine, but when the number of different test cases increases significantly, quite a lot of test code needs to be written. There are smarter ways to do it. In my projects I tend to use this DataSourceMockUp class which bootstraps hibernate and exposes the EntityManager.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class DataSourceMockUp {
+
+  private EntityManager entityManager;
+
+  public DataSourceMockUp(Builder builder) {
+    //bootstrap hibernate
+    Ejb3Configuration config = new Ejb3Configuration();
+    config.setProperty(&quot;hibernate.dialect&quot;, &quot;org.hibernate.dialect.HSQLDialect&quot;)
+        .setProperty(&quot;javax.persistence.transactionType&quot;, &quot;RESOURCE_LOCAL&quot;)
+        .setProperty(&quot;hibernate.connection.driver_class&quot;, &quot;org.hsqldb.jdbcDriver&quot;)
+        .setProperty(&quot;hibernate.connection.url&quot;, &quot;jdbc:hsqldb:mem:testdb&quot;)
+        .setProperty(&quot;hibernate.connection.username&quot;, &quot;sa&quot;)
+        .setProperty(&quot;hibernate.connection.password&quot;, &quot;&quot;)
+        .setProperty(&quot;hibernate.connection.pool_size&quot;, &quot;1&quot;)
+        .setProperty(&quot;hibernate.connection.autocommit&quot;, &quot;true&quot;)
+        .setProperty(&quot;hibernate.cache.provider_class&quot;, &quot;org.hibernate.cache.HashtableCacheProvider&quot;)
+        .setProperty(&quot;hibernate.hbm2ddl.auto&quot;, &quot;create&quot;)
+        .setProperty(&quot;hibernate.show_sql&quot;, &quot;true&quot;);
+
+    //add entities
+    for (Class&amp;lt;?&amp;gt; clazz : builder.annotatedClass) {
+      config.addAnnotatedClass(clazz);
+    }
+
+    //set up services
+    //even though the method is deprecated - this is one to be used
+    //https://forum.hibernate.org/viewtopic.php?f=10&amp;amp;t=966871
+    EntityManagerFactory entityManagerFactory = config.createEntityManagerFactory();
+    setEntityManager(entityManagerFactory.createEntityManager());
+
+    //import initial data
+    EntityTransaction tx = getEntityManager().getTransaction();
+    tx.begin();
+
+    SchemaExport schemaExport = new SchemaExport(config.getHibernateConfiguration());
+    schemaExport.setImportFile(builder.importSqlFile);
+    schemaExport.create(true, true);
+    tx.commit();
+  }
+
+  public static class Builder {
+    private String importSqlFile;
+    private List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; annotatedClass = new ArrayList&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt;();
+
+    public Builder fromSqlFile(String importSqlFile) {
+      this.importSqlFile = importSqlFile;
+      return this;
+    }
+
+    public Builder withAnnotatedClass(Class&amp;lt;?&amp;gt; clazz) {
+      this.annotatedClass.add(clazz);
+      return this;
+    }
+
+    public DataSourceMockUp build() {
+      return new DataSourceMockUp(this);
+    }
+  }
+
+  public void setEntityManager(EntityManager entityManager) {
+    this.entityManager = entityManager;
+  }
+
+  public EntityManager getEntityManager() {
+    return entityManager;
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;With a data source mocked, the test class looks like this&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class ConfigServiceTest {
+  ConfigService configService;
+
+  @BeforeClass
+  public void setup() {
+    DataSourceMockUp mockup = new DataSourceMockUp.Builder()
+        .fromSqlFile(sqlLocation)
+        .withAnnotatedClass(FuncConfg.class).build();
+
+    CommonCrudService crudService = new CommonCrudService();
+    crudService.entityManager = mockup.getEntityManager();
+
+    configService = new ConfigService();
+    configService.crudService = crudService;
+  }
+
+  @Test
+  public void getConfigCodesForDefaultType() {
+    List&amp;lt;String&amp;gt; codes = configService.getConfigCodes(“T”);
+    Assert.assertNotNull(codes);
+    //... and so on
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;One can argue that the same can be achieved with an OpenEJB. True, the whole container can be bootstrapped and all the services will be injected automatically (including the persistence context). However, as I’ve outlined in the first part of this series – the tests are categorised by the speed of execution and handcrafting hibernate with w pre-prepared SQL script is much faster that running the whole EJB container. What is more – it’s more hands on, errors are easier to spot and there is less magic going under the bonnet. As I am planning to show in the next post – things like error recovery, detailed configuration and so on are not 1, 2, 3 with OpenEJB. That’s why I find focused integration testing a compromise between simple unit testing and a holistic, end-to-end approach.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Fri, 06 May 2011 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2011/05/06/the-art-of-testing-an-ejb-application-part-ii/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/05/06/the-art-of-testing-an-ejb-application-part-ii/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
+    
+      <item>
+        <title>The art of testing an EJB application – Part I (Introducing)</title>
+        <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It has been a while since my last post – partly because the JMS processing project I’ve &lt;a href=&quot;about:blank&quot;&gt;described earlier on&lt;/a&gt; have kicked off and I was pretty busy with a real work. Nonetheless, the development is steadily coming to its end and it’s time to share some thought and observations. I’m still planning to cover the architecture – how and why it has changed, compared to the initial design I’ve described earlier on. However, for the time being I’ll focus on testing; I will describe some of ideas and observations how to approach testing of EJB 3.x services.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This post is called “Part I” for a reason – there is a plan for multiple posts (so far I have a concept for three articles). The idea for the series came from &lt;a href=&quot;http://jamesshore.com/Blog/Alternatives-to-Acceptance-Testing.html&quot;&gt;James Shore article on acceptance testing&lt;/a&gt; where he introduces three kinds of tests: unit, focused integration and end-to-end integration. One of many factors to distinguish and categorise the tests is a number of tests to run (a rate per second). I pretty much like that idea and I’ve organised this series around that notion. First part – unit tests. It should not be anything new for people familiar with the TDD. With EJB 3.x testing is getting even easier because there are no special interfaces to implement and it’s easy to instantiate a session bean with a simple new operator. These are unit tests with expected rate of hundreds per second. In part two I’ll focus on integration testing of EJB services without a container. I’ll tackle mocking data and / or other services. These tests are expected to run with pace of tens per second. Finally, I’ll deal with an EJB container (with OpenEJB) and end-to-end integration tests. These are expected to take minutes per test (the container itself can take few minutes to bootstrap).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;That said, I’m not going to write much about the unit testing itself. Sorry if I haven’t met your expectations, but I don’t like to sound repetitive. Unit testing of an EJB service is not any different from testing any other bean. However, not to leave you with nothing, if you are not familiar with unit testing at all, here is a bunch of things to remember (formulated by Michael Feathers from www.objectmentor.com):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;unit test does not talk to the database&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;unit test does not communicate across the network&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;unit test does not touch the file system&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;unit test does not require doing any special things to your environment (such as editing configuration files) to run it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Next, check out &lt;a href=&quot;http://jamesshore.com/Blog/Lets-Play/Lets-Play-Test-Driven-Development.html&quot;&gt;James Shore screencast series “Let’s play TDD”&lt;/a&gt; to see what it’s all about.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Not to leave you without a line of code, here is a dummy example you can find across every second page. Let me show you a service which pre-process a set of data sent from an external service; it crawls an object (using reflection) and trims all non-final, not empty strings properties.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public interface TrimServiceLocal {
+  public void trimObject(Object o);
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Stateless
+public class TrimService implements TrimServiceLocal {
+  public void trimObject(Object o);
+    //implementation goes here
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;So, the test looks simple as that:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class TrimServiceTest {
+
+  TrimService trimService;
+
+  @BeforeClass
+  public void setup() {
+    trimService = new TrimService();
+  }
+
+  @Test
+  public removeWhitespaces() {
+    Name name = new Name();
+    name.setPrefix(“    Mr.”);
+    name.setFirstname(“      John     “);
+    name.setLastname(“Smith     “);
+
+    trimService.trimObject(name);
+
+    Assert.assertEquals(name.getPrefix(), “Mr.”);
+    Assert.assertEquals(name.getFirstname(), “John”);
+    Assert.assertEquals(name.getLastname(), “Smith”);
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I’ll stop here and come back in the next few days with some thoughts on more advanced, integration testing.&lt;/p&gt;
+&lt;/div&gt;</description>
+        <pubDate>Mon, 02 May 2011 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2011/05/02/the-art-of-testing-an-ejb-application-part-i/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/05/02/the-art-of-testing-an-ejb-application-part-i/</guid>
         
         
         <category>posts</category>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The art of testing an EJB application – Part III (OpenEJB)</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="A randomized pack of notes">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2011/06/09/the-art-of-testing-an-ejb-application-openejb/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+    
+    <!-- google analytics async -->
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-439480-4']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"><i class="fi-folder"></i>Notepack</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>The art of testing an EJB application – Part III (OpenEJB)</h1>
+    <p class="meta">Jun 9, 2011</p>
+  </header>
+
+  <article class="post-content">
+  <div class="paragraph">
+<p>In the last two posts I’ve introduced my approach to testing (both unit and integration) and shown few ways to test bits and pieces of an enterprise application (some naive as well as more mature). This part is dedicated to tests with a fully featured EJB container, bootstrapped by the test suit. I’ll be using OpenEJB, because I’ve been using it for last few weeks in my latest project. I’ll show some basics and cover some of the more troublesome bits and pieces (which were not covered in the documentation or were not that intuitive). I must admit starting with OpenEJB wasn’t easy; in fact it was fairly frustrating experience at some point (which could have been noticed <a href="http://twitter.com/kubem">in my tweets</a>). It’s a great a tool, but the learning curve is steep. I’m focusing on OpenEJB cause I’ve been using is the extensively. Nonetheless, it’s not the only way to test EJB application end-to-end. Alternatives are Sping (which handles @EJB annotations pretty neatly) or Arquillian (which is another approach to bootstrap the container). I’ll try to cover the latter in some future posts, but as for now – let’s start with OpenEJB.</p>
+</div>
+<div class="paragraph">
+<p>There is one downside of OpenEJB – it bootstraps whole container and deploy all beans available in classpath. That’s not a desired behaviour in many cases. Arquillian seems to be more picky when it comes to beans for deployment. OpenEJB has some filtering capabilities as well – I’ll cover those later on in the series.</p>
+</div>
+<div class="paragraph">
+<p>For something completely different – I thought I’d rather avoid embedding small code snippets, so I decided to host a complete working project at my GitHub space: <a href="https://github.com/kubamarchwicki/ejb-testing" class="bare">https://github.com/kubamarchwicki/ejb-testing</a> – feel free to fork.</p>
+</div>
+<div class="sect1">
+<h2 id="hello-world-application">Hello world! application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is fairly easy – there are tons of dummy EJB examples. However, I don’t like when examples are too abstract so lets assume we are building a calculator application, with services responsible for calculations and some for printing the results, etc.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public interface CalculatingServiceLocal {
+   public int add(int... args);
+   public int subtract(int... args);
+   public int multiply(int... args);
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public interface MethodControllerLocal {
+   public enum Operator {ADD, SUBTRACT, MULTIPLY};
+   public String calculate(Operator operation, String... args);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To test this application we need to add two things to project and write the actual test. First of all it’s required to include OpenEJB in our application, in test scope.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.openejb&lt;/groupId&gt;
+    &lt;artifactId&gt;openejb-core&lt;/artifactId&gt;
+    &lt;version&gt;3.1&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The actual test looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class MethodControllerTest {
+
+   MethodControllerLocal controller;
+
+   @BeforeClass
+   public void setup() throws NamingException {
+       InitialContext ctx = new InitialContext();
+       controller = (MethodControllerLocal) ctx
+               .lookup("MethodControllerLocal");
+   }
+
+   @Test
+   public void notSupportedOperation() {
+       String calculate = controller.calculate(Operator.MULTIPLY,
+               new String[] { "1", "2" });
+       Assert.assertEquals("501 Not Implemented", calculate);
+   }
+
+   //... more test methods
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For this to successfully run, we need to instruct OpenEJB on how to perform the classpath discovery (see <a href="http://openejb.apache.org/3.0/application-discovery-via-the-classpath.html">OpenEJB application discovery via classpath manual</a> for details). My personal preference is to use openejb.deployments.classpath.include and openejb.deployments.classpath.exclude as I find it more reliable that putting an empty ejb-jar.xml file in the classpath.
+In most cases this works smoothly, with a little jinx: OpenEJB goes nuts when classpath entries contains spaces (so if you use Maven and your repository is located in “Documents and Settings” folder). Moving it to a space-free folder fixes the issue.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="beyond-a-dummy-testing">Beyond a dummy testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In most cases, most tutorials finish here: a working sample, which has nothing to do with a real life application. In my case it’s more about a working baseline to iterate upon – the day-to-day testing problems are much more complicated and require significantly more effort. There is a long list of problems which you can stumble upon when trying to test real life projects and I intend to cover at least some of those issue. To list a few I’ve encountered:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>including database in this equation (to test JPA named queries)</p>
+</li>
+<li>
+<p>getting access to an entity manager, to check what actually got persisted</p>
+</li>
+<li>
+<p>using ejb-jar.xml to instantiate vendor specific dependencies (which are not supported by the OpenEJB – like managed beans)</p>
+</li>
+<li>
+<p>using ejb-jar.xml to inject different implementations (without changing the actual application code)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adding-database-to-this-equation">Adding database to this equation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This sounds like a fairly common use case; an enterprise application uses database underneath. I don’t want to test database, persisting etc – I’ll just start with adding it an application. Let’s assume we need to persist calculation results. To do this, we add a basic entity and persistence.xml file to our solution.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Entity
+@Table(name = "CALC_RESULTS_TB")
+public class CalculationResult implements Serializable {
+
+   private static final long serialVersionUID = -3706396749558191166L;
+
+   @Id
+   @Column(name = "CALC_ID",
+	unique = true, nullable = false,
+	precision = 10, scale = 0)
+   @GeneratedValue(generator = "CALC_ID_SEQ")
+   @SequenceGenerator(name = "CALC_ID_SEQ", sequenceName = "CALC_ID_SEQ")
+   private long id;
+
+   @Column(name = "OPERATION")
+   private String operation;
+
+   @Column(name = "ELEMENTS")
+   private String elements;
+
+   @Column(name = "RESULT")
+   private int result;
+
+   //getters and setters
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">persistence.xml</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+	http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"&gt;
+	 &lt;persistence-unit name="ejb-testing-pu" transaction-type="JTA"&gt;
+    &lt;provider&gt;org.hibernate.ejb.HibernatePersistence&lt;/provider&gt;
+    &lt;jta-data-source&gt;java:/DefaultDS&lt;/jta-data-source&gt;
+    &lt;class&gt;pl.marchwicki.ejb.entity.CalculationResult&lt;/class&gt;
+    &lt;properties&gt;
+     &lt;property name="hibernate.show_sql" value="false"/&gt;
+     &lt;property name="hibernate.format_sql" value="true"/&gt;
+     &lt;property name="hibernate.use_sql_comments" value="true"/&gt;
+     &lt;property name="hibernate.dialect"
+		value="org.hibernate.dialect.Oracle9Dialect"/&gt;
+     &lt;property name="hibernate.cache.use_second_level_cache" value="true"/&gt;
+     &lt;property name="hibernate.cache.use_query_cache" value="true" /&gt;
+     &lt;property name="hibernate.cache.provider_class"
+		value="org.jboss.ejb3.entity.TreeCacheProviderHook" /&gt;
+     &lt;property name="treecache.mbean.object_name"
+		value="jboss.cache:service=EJB3EntityTreeCache" /&gt;
+     &lt;property name="hibernate.cache.region_prefix" value="/ejb-testing" /&gt;
+     &lt;property name="hibernate.ejb.naming_strategy"
+		value="org.hibernate.cfg.DefaultComponentSafeNamingStrategy"/&gt;
+    &lt;/properties&gt;
+ &lt;/persistence-unit&gt;
+&lt;/persistence&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, let’s wrap it into an ear file and deploy onto JBoss (I’ve used JBoss 4.2.3 – I know it’s an old one, but I happened I had that one installed – so the choice was obvious). On JBoss it works like a charm:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>16:06:55,827 INFO  [EJBContainer]
+          STARTED EJB: pl.marchwicki.ejb.view.DisplayingService ejbName: DisplayingService
+16:06:55,842 INFO  [EJBContainer]
+          STARTED EJB: pl.marchwicki.ejb.controllers.MethodController ejbName: MethodController
+16:06:55,858 INFO  [EJB3Deployer]
+          Deployed: [..] tmp4564005441996180815ear-0.0.1-SNAPSHOT.ear-contents/ejb-0.0.1-SNAPSHOT.jar
+16:06:55,858 INFO  [EARDeployer]
+          Started J2EE application:
+          file:/C:/_projects/_servers/jboss-4.2.3.GA/server/default/deploy/ear-0.0.1-SNAPSHOT.ear</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Unfortunately, when tests are re-executed – everything fails. SNAFU – situation normal. First of all – JBoss uses Hibernate as an JPA implementation, OpenEJB does not (I assume OpenJPA – but I haven’t been using that one as well). Secondly, persistence.xml includes some more sophisticated caching configuration.OpenEJB manual is pretty helpful here: lookup <a href="http://openejb.apache.org/3.0/configuring-persistenceunits-in-tests.html">configuring persistence unit in tests</a>. However, more fundamental question should be answered here: what’s better for testing – two separate configurations (production and tests) or sharing same configuration only tuning (overriding it) when required. I prefer the latter – not once I had problems because I forgot updating test configuration with new entities, which cause tests fail. I’d rather satisfy test dependencies (in test scope) and override specific production properties (those related to cache, but also showing fomatted SQL in tests is pretty handy).</p>
+</div>
+<div class="paragraph">
+<p>Additionally, (a clear coder notice) the setup() method is becoming a little boated with configuration. This can be easily moved to a jndi.properties file in the src/test/resources folder (not only the test suits become more readable, it makes the configuration reusable as well). So the configuration file for the test suit looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java.naming.factory.initial = org.apache.openejb.client.LocalInitialContextFactory
+
+persistence unit
+ejb-testing-pu.hibernate.cache.provider_class = org.hibernate.cache.EhCacheProvider
+ejb-testing-pu.hibernate.hbm2ddl.auto = create-drop
+ejb-testing-pu.hibernate.dialect = org.hibernate.dialect.HSQLDialect
+ejb-testing-pu.hibernate.show_sql = true
+ejb-testing-pu.hibernate.format_sql = true
+ejb-testing-pu.hibernate.use_sql_comments = true
+ejb-testing-pu.hibernate.jdbc.batch_size = 0
+
+openejb.deployments.classpath.include = .*ejb-testing.*
+openejb.descriptors.output = true</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now OpenEJB works beautifully. Mission accomplished!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>===============================================
+    Default test
+    Tests run: 3, Failures: 0, Skips: 0
+===============================================</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-s-comming-next">What’s comming next</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I know, with this post I’ve only touched the surface of OpenEJB, but that’s just to begin with something bigger. In the next part I plan to tackle ejb-jar.xml – instantiation of vendor specific beans, not handled by the OpenEJB and injecting concrete implementation of a service (when more than one is available in a classpath).</p>
+</div>
+</div>
+</div>
+  </article>
+
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <div class="column">
+      <ul>
+        <li><a href="/speaking">
+          <span class="icon linkedin"><i class="fi-microphone"></i></span>
+          <span class="username"> all speaking</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/kubamarchwicki">
+            <span class="icon github">
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C2C2" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <span class="username">kubamarchwicki</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/kubem">
+            <span class="icon twitter">
+              <svg version="1.1" class="twitter-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill="#C2C2C2" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27
+                c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767
+                c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206
+                C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271
+                c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469
+                c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+              </svg>
+            </span>
+            <span class="username">kubem</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/kubamarchwicki">
+            <span class="icon linkedin"><i class="fi-social-linkedin"></i></span>
+            <span class="username">kubamarchwicki</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    </body>
+</html>
