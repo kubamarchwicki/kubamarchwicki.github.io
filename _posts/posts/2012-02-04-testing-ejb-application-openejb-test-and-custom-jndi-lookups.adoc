@@ -1,0 +1,156 @@
+---
+layout: post
+categories: posts
+title: (…) testing EJB application – Part VI (OpenEJB test and custom JNDI lookups)
+excerpt: How to mitgate (override) hardcoded JNDI properties in integration testing
+redirect_from: /blog/2012/02/testing-ejb-application-openejb-test-and-custom-jndi-lookups/
+
+---
+
+This has been a while since my last post. Not that nothing happened – there has never been enough time to sit down and write those few paragraphs. I have few articles already started, but all quite far away from completion. I’ve pushing EJB testing even further (and this article will partly cover it) and focused even further on incepting such approach in the team. It looks like it’s working – the test coverage is constantly increasing from change request to change request, with new ideas being introduced. This particular one was introduced by my team mate – Greg, who was struggling with some legacy modules which were using hardcoded JNDI bindings.
+
+That obviously wasn’t the only thing happening recently. Additionally, there is another side project which I’ve recently started and which (I hope) will be available soon. If you are a Kindle user (or any other ebook reader – but we are targeting Kindles at first), this might be of some interest to you – preregister on http://www.readpick.com and stay tuned. From the technical perspective, it uses Python and Google App Engine and as the primary toolset, which made the work significantly different from a standard Java development I’ve been accustomed to. A list of helpful Python / GAE related resources in coming in a form of a blog post as well – but it needs time.
+
+Finally, last but no least, there is this little project (in size), but great in importance thing which does not leave much time for anything else – meet Jan, my son :-) Fairly obvious why everything else become much least important – he’s the most sweet of world’s sweets.
+
+JNDI lookups
+But let’s get back to the problems I wanted to describe. In the solution we’ve been working with, there was a separate logging module, independent and decoupled from the core functionality. The idea was: logging was not the core functionality; in production environment the logger was putting auditing data in the database, while in test the logger might not have been deployed at all or can just log to files. Important thing was not to rely on logging, with the core solution working with correctly even if the logging is not deployed.
+
+Nowadays, with JEE6 (EJB 3.1 in place) I’d address such requirement by injecting a typed instance of Instance<T> object. That way, I’d be able to check, later in code, if the dependency is satisfied or not. However, the environment I was using was EJB 3.0, did not have such a features and JNDI lookups was a way to go for us (also JMS was an option but messaging brought some additional resource consumption which we wanted to avoid).
+
+To simplify, let’s imagine such a suite of classes.
+
+[source, java]
+----
+@Stateless
+@LocalBinding(jndiBinding = "mybindings/Logger")
+public class ExternalLogger implements ExternalLoggerLocal {
+
+  public void log(String str) {
+    System.out.println("Logging: " + str);
+  }
+}
+----
+
+[source, java]
+----
+@Stateless
+public class LoggerFacade implements LoggerFacadeLocal {
+
+  ExternalLoggerLocal log = null;
+
+  @PostConstruct
+  public void postConstruct() {
+    try {
+        InitialContext ctx = new InitialContext();
+        log = (ExternalLoggerLocal) ctx.lookup("mybindings/Logger");
+    } catch (NamingException e) {
+        e.printStackTrace();
+    }
+  }
+
+  public boolean log(String str) {
+    if (log != null) {
+      log.log(str);
+      return true;
+    }
+
+    return false;
+  }
+
+}
+----
+
+[source, java]
+----
+@Stateless
+public class BusinessService implements BusinessServiceLocal {
+
+  @EJB
+  LoggerFacadeLocal logger;
+
+  public String doSomeImportantStuff() {
+    logger.log("Running doSomeImportantStuff()");
+    return "Done";
+  }
+
+}
+----
+
+The +ExternalLogger+ might (and that’s our case) deployed as a separate module (in a different ear file). It uses vendor specific annotation (from Jboss), +@LocalBinding+ – to hook the service under a specific name within the JNDI index. That way, the façade can lookup the logging service in a flexible way and fall back when no implementation is deployed. If @EJB annotation was used, unsatisfied dependency would have ended up in throwing an exception – which we wanted to avoid. Façade is directly used in the application.
+
+Obviously, the implementation shown in the examples is quite naïve but I hope it describes the problem we were facing and how it was solved.
+Despite the simplicity, this is a fully working application (JBoss 4.2.x deployable).
+
+== The tests problems
+
+Implementation of business logic is always only one side of the story. The other are tests and a way to cover the above logic with some reasonable tests cases. We were using OpenEJB with ApplicationComposer quite extensively and it helped us a lot in writing focused integration testing. Nonetheless, it occurred to be limited and unable to test this particular case.
+
+Testing the negative case (the logger not deployed) was fairly simple, no bean implementing ExternalLogger interface was deployed.
+
+[source, java]
+----
+@RunWith(ApplicationComposer.class)
+public class NoActiveLoggerTest {
+
+  @EJB
+  LoggerFacadeLocal facade;
+
+  @Module
+  public EjbJar beans() {
+    EjbJar ejbJar = new EjbJar("loggging-app");
+    ejbJar.addEnterpriseBean(new StatelessBean(LoggerFacade.class));
+    return ejbJar;
+  }
+
+  @Test
+  public void facadeReturnsFalseOnNoActiveLogger() {
+    assertFalse(facade.log("Echo"));
+  }
+}
+----
+
+Testing the successful wiring of the logger was much more troublesome. It appeared there is no way to define a specific JNDI location for a component. There were ways to do it using openejb-jar.xml file but we wanted to avoid it and handle everything within the test class, as it proved to be more maintainable.
+
+A way for us to go was to modify the ApplicationComposer itself. Without getting much into details how the runner works (you can learn more about it from link:{% post_url posts/2011-07-01-testing-ejb-application-openejb-without-classpath-scanning %}[my previous posts] or from the http://ci.apache.org/projects/openejb/examples-generated/application-composer/[OpenEJB documentation]) we were not able to output the configuration that included a specific JNDI location of a bean. Methods annotated with @Module could return EjbJar type of class, but we needed to get a level up, define a whole module with a specific JNDI. As I mentioned earlier, Greg had this idea to modify the ApplicationComposer class (which appeared to be fairly easy). The positive test case worked fine:
+
+[source, java]
+----
+@RunWith(ApplicationComposer.class)
+public class ActiveLoggerTest {
+
+  @EJB
+  LoggerFacadeLocal facade;
+
+  @Module
+  public EjbModule module() {
+    EjbJar ejbJar = new EjbJar("loggging-app");
+    ejbJar.addEnterpriseBean(new StatelessBean(LoggerFacade.class));
+    ejbJar.addEnterpriseBean(new StatelessBean(ExternalLogger.class));
+
+    EjbModule ejbModule = new EjbModule(ejbJar, new OpenejbJar());
+    EjbDeployment deployment =
+      new EjbDeployment(new StatefulBean(ExternalLogger.class));
+    deployment.getJndi().add(new Jndi("mybindings/Logger", "Local"));
+    ejbModule.getOpenejbJar().addEjbDeployment(deployment);
+
+    return ejbModule;
+  }
+
+  @Test
+  public void facadeReturnsTrueOnActiveLoggerPresent() {
+    assertTrue(facade.log("Echo"));
+  }
+}
+----
+
+The output was exactly as expected:
+
+----
+INFO - Jndi(name=LoggerFacadeLocal) --> Ejb(deployment-id=LoggerFacade)
+INFO - Jndi(name=mybindings/Logger) --> Ejb(deployment-id=ExternalLogger)
+----
+
+== The modifications
+
+I understand that made a very specific case, which was the reason not to include it in the original runner’s code. However, as it worked for us, it might work for you as well. The patch is submitted to OpenEJB – wonder if it gets accepted (see: https://issues.apache.org/jira/browse/OPENEJB-1763)
