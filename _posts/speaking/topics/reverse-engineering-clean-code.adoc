@@ -11,6 +11,10 @@ There are certain usability principles: easy to learn by heart, hard to use on t
 
 In this session I aim to fall back to design 101; take some design principles and show how they are reflected in code. Take Krug’s “Don’t make me think” and ponder a bit about it while digging though long lines of Your Enterprise’ish Spaghetti Code Application™. The code is our user interface and same patterns apply - I’ll tackle a few of those.
 
+=== Videos
+
+http://vimeo.com/100219607[Geecon 2014]
+
 === Additional resources
 
 * https://speakerdeck.com/kubamarchwicki/reverse-engineering-the-clean-code[PDF Slides]
