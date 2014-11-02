@@ -13,7 +13,8 @@ That obviously wasn’t the only thing happening recently. Additionally, there i
 
 Finally, last but no least, there is this little project (in size), but great in importance thing which does not leave much time for anything else – meet Jan, my son :-) Fairly obvious why everything else become much least important – he’s the most sweet of world’s sweets.
 
-JNDI lookups
+== JNDI lookups
+
 But let’s get back to the problems I wanted to describe. In the solution we’ve been working with, there was a separate logging module, independent and decoupled from the core functionality. The idea was: logging was not the core functionality; in production environment the logger was putting auditing data in the database, while in test the logger might not have been deployed at all or can just log to files. Important thing was not to rely on logging, with the core solution working with correctly even if the logging is not deployed.
 
 Nowadays, with JEE6 (EJB 3.1 in place) I’d address such requirement by injecting a typed instance of Instance<T> object. That way, I’d be able to check, later in code, if the dependency is satisfied or not. However, the environment I was using was EJB 3.0, did not have such a features and JNDI lookups was a way to go for us (also JMS was an option but messaging brought some additional resource consumption which we wanted to avoid).
