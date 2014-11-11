@@ -1,7 +1,7 @@
 ---
 layout: speaking
 categories: speaking
-title: JUG Gdańsk
+title: JUG Gdansk
 speakingDate: 2014-11-20, Gdańsk, Poland
 link: http://www.meetup.com/Trojmiasto-Java-User-Group/events/216407552/
 page-include: _posts/speaking/topics/reverse-engineering-clean-code.adoc
