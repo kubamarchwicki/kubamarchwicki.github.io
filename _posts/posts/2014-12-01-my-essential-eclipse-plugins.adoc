@@ -1,0 +1,42 @@
+---
+layout: post
+categories: posts
+title: My essential Eclipse plugins
+excerpt: This is my personal reminder, which Eclipse plugin I usually use - just not to look too far. Maybe you will find it useful as well.
+
+---
+Upgrading IDE (Eclipse in this case) is not something you do on daily basis. What is more, I use Eclipse more and more seldomly - mostly for trainings. That's why I tend to forget which plugins I actually use (until I'm missing them and need to remind myself how were they called). As this happened to my just recently (again) I decided to write this post with a list of plugins I find useful (so that I'll be able to come back during next upgrade... someday)
+
+== Baseline
+
+I recently started with Spring Tool Suite as my baseline. Not that I'm a Spring fan-boy. I rather consider myself from both churches: Spring and JavaEE; using both stacks as a set of tools to use in an appropriate context.
+
+I started with STS cause I find it nearly feature complete. It comes with Git, Maven plugins so that I don't have to wonder about basics.
+
+== Fiddling with the font size
+
+One of my most important usecases for Eclipse is during delivering a training (Eclipse is my primary IDE then). Hence, an ability to increase the font size is a must. I'm quite found of using https://code.google.com/p/tarlog-plugins/[tarlog-plugins] - a set of small, but useful, features to Eclipse that are develop for personal Tarlog's needs.
+
+While there are some other font size plugins like https://code.google.com/p/eclipse-fonts/[eclipse-fonts], tarlog-plugins just works with every file type (not just text-files)
+
+== Migrating workspace settings
+
+Again, due to trainings, I quite often setup a new workspace. And migrating settings from one workspace to other is a real pain in the neck. https://code.google.com/a/eclipselabs.org/p/workspacemechanic/[Workspace Mechanic] is something that makes this process really easy.
+
+[quote]
+The Workspace Mechanic automates maintenance of your Eclipse environment by tweaking preferences, adding extension locations, and so on.
+
+And this really saves my day!
+
+== Constant test status preview
+
+Trainings again. Whenever I run a refactoring or TDD session this is a life saver. Being able to constantly view the status of tests - brilliant.
+
+[quote]
+Infinitest is a Continuous Testing plugin for Eclipse and IntelliJ. Each time a change is made on the source code, Infinitest runs all the tests that might fail because of these changes.
+
+http://infinitest.github.io/[Grab Infinitest] while it's hot.
+
+== JBoss Tools
+
+This is quite simple, I'm not using it beyond managing JBoss application servers. Just to be able to showcase some code on different servers that http://tomee.apache.org/[TomEE] (which I usually use - try to stay "vendor agnostic").
