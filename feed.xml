@@ -5,20 +5,20 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 01 Dec 2014 20:07:35 +0000</pubDate>
-    <lastBuildDate>Mon, 01 Dec 2014 20:07:35 +0000</lastBuildDate>
+    <pubDate>Tue, 02 Dec 2014 01:01:42 +0000</pubDate>
+    <lastBuildDate>Tue, 02 Dec 2014 01:01:42 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
         <title>My essential Eclipse plugins</title>
         <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Upgrading IDE (Eclipse in this case) is not something you do on daily basis. What is more, I use Eclipse more and more seldomly - mostly for trainings. That&amp;#8217;s why I tend to forget which plugins I actually use (until I&amp;#8217;m missing them and need to remind myself how was it called). As this happened to my just recently (again) I decided to write this post with a list of plugins I find useful (so that I&amp;#8217;ll be able to come back during next upgrade&amp;#8230;&amp;#8203; someday)&lt;/p&gt;
+&lt;p&gt;Upgrading IDE (Eclipse in this case) is not something you do on daily basis. What is more, I use Eclipse more and more seldomly - mostly for trainings. That&amp;#8217;s why I tend to forget which plugins I actually use (until I&amp;#8217;m missing them and need to remind myself how were they called). As this happened to my just recently (again) I decided to write this post with a list of plugins I find useful (so that I&amp;#8217;ll be able to come back during next upgrade&amp;#8230;&amp;#8203; someday)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;baseline&quot;&gt;Baseline&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I recently started with Spring Tool Suite as my baseline. Not that I&amp;#8217;m a Spring fan-boy. I rather consider myself from both churches: Spring and JavaEE; considering both as a set of tools to use in an appropriate situation.&lt;/p&gt;
+&lt;p&gt;I recently started with Spring Tool Suite as my baseline. Not that I&amp;#8217;m a Spring fan-boy. I rather consider myself from both churches: Spring and JavaEE; using both stacks as a set of tools to use in an appropriate context.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;I started with STS cause I find it nearly feature complete. It comes with Git, Maven plugins so that I don&amp;#8217;t have to wonder about basics.&lt;/p&gt;
@@ -29,7 +29,7 @@
 &lt;h2 id=&quot;fiddling-with-the-font-size&quot;&gt;Fiddling with the font size&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;One of my most important usecases for Eclipse is delivering a training. So being able to increase the font size is a must. I&amp;#8217;m quite found of using &lt;a href=&quot;https://code.google.com/p/tarlog-plugins/&quot;&gt;tarlog-plugins&lt;/a&gt; - a set of small, but useful, features to Eclipse that are develop for personal Tarlog&amp;#8217;s needs.&lt;/p&gt;
+&lt;p&gt;One of my most important usecases for Eclipse is during delivering a training (Eclipse is my primary IDE then). Hence, an ability to increase the font size is a must. I&amp;#8217;m quite found of using &lt;a href=&quot;https://code.google.com/p/tarlog-plugins/&quot;&gt;tarlog-plugins&lt;/a&gt; - a set of small, but useful, features to Eclipse that are develop for personal Tarlog&amp;#8217;s needs.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;While there are some other font size plugins like &lt;a href=&quot;https://code.google.com/p/eclipse-fonts/&quot;&gt;eclipse-fonts&lt;/a&gt;, tarlog-plugins just works with every file type (not just text-files)&lt;/p&gt;
