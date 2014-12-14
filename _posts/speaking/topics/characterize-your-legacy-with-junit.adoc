@@ -1,0 +1,13 @@
+:title: Characterize your legacy with junit
+:subtitle: What is a characterization test and how it can be used to help you work with the legacy code; how to prepare and run such tests with vanilla junit
+
+== {title}
+
+> {subtitle}
+
+=== Abstract
+
+A characterization test is a mean to describe (characterize) the actual behavior of an existing piece of software, and therefore protect existing behavior of legacy code against unintended changes via automated testing.
+This term was coined by Michael Feathers and is extremelly useful when dealing with old, convoluted and beshitted systems.
+When the best strategy is to keep it working, don’t open the pandora’s box - there are other ways to go. Not perfect, but good enough. In this short session, I’ll walk through the junit rules and show how we can leverage them to describe legacy code; define a pinching points, dump the logs and reason about the results.
+All this based on some recent modifications to a JSP application, written in PHP, from times of JDK major 47 and early versions of Axis web services.
