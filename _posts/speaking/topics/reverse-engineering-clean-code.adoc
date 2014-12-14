@@ -11,6 +11,16 @@ There are certain usability principles: easy to learn by heart, hard to use on t
 
 In this session I aim to fall back to design 101; take some design principles and show how they are reflected in code. Take Krug’s “Don’t make me think” and ponder a bit about it while digging though long lines of Your Enterprise’ish Spaghetti Code Application™. The code is our user interface and same patterns apply - I’ll tackle a few of those.
 
+=== Testimonials
+
+The feedback after GET.NET 2014 surveys conference in Gdańsk
+
+* "Theoretically, the subject is nothing new. Theoretically everybody read Martin's book. Still presentation was interesting, comparison to designing UI was good. I liked it"
+* "A very good, easygoing presentation, very approachable. It was clear speaker is an experienced person, knows what's he's talking about. Quite a few valuable "soft" insights (for examples which books to read to get better in programming)".
+* "Interesting subject with a charismatic presenter"
+* "We wereexpecting more code!! But still it was very nice to listen ;)"
+* "Jakub is a great speaker, feeling easy talking to a bigger audience - funny, good contact with the group"
+
 === Videos
 
 http://vimeo.com/100219607[Geecon 2014]
