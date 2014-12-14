@@ -13,6 +13,14 @@ Same happens in Java. Hibernate + EJB + JSF is not the only blessed stack for de
 
 In this talk I’ll walk through multiple options, for modern Java web development: easy, quick, flexible and still state of an art. Starting for just obvious unknowns like embedded jetty, though micro pure-webframeworks, smaller and bigger swiss army knifes, which try to promise both: cover most of the application stack, still keeping things robust.
 
+=== Testimonials
+
+The feedback after Confitura 2014 surveys conference
+
+* "Very good presentation. On one hand effortless, on the other - with a lot of easy to remember information"
+* "I wish all presentations looked like this: quick run through some theory + lookup how the code looks in practice"
+* "Very inspiring presentation"
+
 === Videos
 
 https://www.youtube.com/watch?v=orGJZuPYgZ8[Confitura2014 - in Polish]
