@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Notepack</title>
+    <title>Test Driven GeeCON</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="A randomized pack of notes">
-    <link rel="canonical" href="http://jakub.marchwicki.pl/speaking/">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/speaking/2015/01/30/geecon-tdd/">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -89,18 +89,20 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="home">
-<div class="sect1">
-<h2 id="past-and-forthcoming-speakings">Past and forthcoming speakings</h2>
+      <div class="post">
+
+  <header class="post-header">
+    <h1>Test Driven GeeCON</h1>
+    <p class="meta">
+      <span id="speakingdate">2015-01-30, Poznań, Poland</span>
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+  <div class="sect1">
+<h2 id="characterize-your-legacy-with-junit">Characterize your legacy with junit</h2>
 <div class="sectionbody">
-<div class="ulist speakinglist forthcoming">
-<ul class="speakinglist">
-<li>
-<p><a href="/speaking/2015/01/30/geecon-tdd/" title="Characterize your legacy with junit">Test Driven GeeCON</a>: Characterize your legacy with junit
-<span class="post-date">(2015-01-30, Poznań, Poland)</span></p>
-</li>
-</ul>
-</div>
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
@@ -108,99 +110,21 @@
 </div>
 </blockquote>
 </div>
-<div class="ulist speakinglist">
-<ul class="speakinglist">
-<li>
-<p><a href="/speaking/2014/11/22/get.net-gdansk/" title="Reverse engineering the clean code">GET.NET 2014</a>: Reverse engineering the clean code
-<span class="post-date">(2014-11-22, Gdańsk, Poland)</span></p>
-</li>
-</ul>
-</div>
-<div class="quoteblock">
-<blockquote>
+<div class="sect2">
+<h3 id="abstract">Abstract</h3>
 <div class="paragraph">
-<p>This might be the psychology basic for developers… starting with the design 101; take some design principles and show how they are reflected in code.</p>
-</div>
-</blockquote>
-</div>
-<div class="ulist speakinglist">
-<ul class="speakinglist">
-<li>
-<p><a href="/speaking/2014/11/20/JUG-Gdansk/" title="Java Enterprise'ish development without hassle">JUG Gdansk</a>: Java Enterprise&#8217;ish development without hassle
-<span class="post-date">(2014-11-20, Gdańsk, Poland)</span></p>
-</li>
-</ul>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Approach Java web development without over-engineered hassle, as there are simpler approaches than JPA + EJB + JSF to build the web tier of your application.</p>
-</div>
-</blockquote>
-</div>
-<div class="ulist speakinglist">
-<ul class="speakinglist">
-<li>
-<p><a href="/speaking/2014/11/04/jmaghreb-2014/" title="Reverse engineering the clean code">JMaghreb 2014</a>: Reverse engineering the clean code
-<span class="post-date">(2014-11-04, Casablanca, Marroco)</span></p>
-</li>
-</ul>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>This might be the psychology basic for developers… starting with the design 101; take some design principles and show how they are reflected in code.</p>
-</div>
-</blockquote>
-</div>
-<div class="ulist speakinglist">
-<ul class="speakinglist">
-<li>
-<p><a href="/speaking/2014/10/23/geecon-pague-2014/" title="Java Enterprise'ish development without hassle">GeeCon Prague 2014</a>: Java Enterprise&#8217;ish development without hassle
-<span class="post-date">(2014-10-23, Prague, Czech Republic)</span></p>
-</li>
-</ul>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Approach Java web development without over-engineered hassle, as there are simpler approaches than JPA + EJB + JSF to build the web tier of your application.</p>
-</div>
-</blockquote>
-</div>
-<div class="ulist speakinglist">
-<ul class="speakinglist">
-<li>
-<p><a href="/speaking/2014/10/14/jdd-2014/" title="Java Enterprise'ish development without hassle">JDD 2014</a>: Java Enterprise&#8217;ish development without hassle
-<span class="post-date">(2014-10-14, Kraków, Poland)</span></p>
-</li>
-</ul>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Approach Java web development without over-engineered hassle, as there are simpler approaches than JPA + EJB + JSF to build the web tier of your application.</p>
-</div>
-</blockquote>
-</div>
-<div class="ulist speakinglist">
-<ul class="speakinglist">
-<li>
-<p><a href="/speaking/2014/07/05/confitura-2014/" title="Java Enterprise'ish development without hassle">Confitura 2014</a>: Java Enterprise&#8217;ish development without hassle
-<span class="post-date">(2014-07-05, Warsaw, Poland)</span></p>
-</li>
-</ul>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Approach Java web development without over-engineered hassle, as there are simpler approaches than JPA + EJB + JSF to build the web tier of your application.</p>
-</div>
-</blockquote>
+<p>A characterization test is a mean to describe (characterize) the actual behavior of an existing piece of software, and therefore protect existing behavior of legacy code against unintended changes via automated testing.
+This term was coined by Michael Feathers and is extremelly useful when dealing with old, convoluted and beshitted systems.
+When the best strategy is to keep it working, don’t open the pandora’s box - there are other ways to go. Not perfect, but good enough. In this short session, I’ll walk through the junit rules and show how we can leverage them to describe legacy code; define a pinching points, dump the logs and reason about the results.
+All this based on some recent modifications to a JSP application, written in PHP, from times of JDK major 47 and early versions of Axis web services.</p>
 </div>
 </div>
 </div>
 </div>
+  </article>
+
+</div>
+
       </div>
     </div>
 
