@@ -1,0 +1,95 @@
+---
+layout: post
+categories: posts
+title: Java EE persistence without JPA
+excerpt: A walk through an implementation of JavaEE persistence without JPA; using a 3rd party, non JPA compliant database provider.
+
+---
+
+Regulary during JavaEE trainings I conduct a question is raised: is there persistence beyond JPA. Java Persistence API is a standard on every application server; it isn't bad - it's valid for certain use cases. Nonetheless, I regulary see a need to go beyond that. That's the reason I decided to build up https://github.com/kubamarchwicki/jOOQ-javaee-example/[this example]. It shows basic configuration for jOOQ on a JavaEE 7 compliant application server (was tested with Wildfly 8.x). I will not focus on why jOOQ was chosen - it could have been any other persistence provider of you favour. This post will tackle few (three) elements of JavaEE spec which (in my opinion) were important;  handy when implementing a non JPA based "database handling" libraries
+
+== Resource producers
+
+An annotation `@javax.enterprise.inject.Produces` is used to prepare the `DSLContext` object (with a desired datasource and database dialect). The produced bean becomes injectable within an application as any other CDI bean (since CDI 1.0)
+
+[source, java, indent=2]
+----
+@Inject
+private DSLContext ctx;
+----
+
+This is a nice way to produce any application context related components (like loggers, debug data, additional configuration).
+
+== Transaction handling
+
+JavaOOQ does not provide an API for transaction handling, but it doesn't stop it from taking any DataSource (no matter how produced). Hence, if transaction can be provided externally (outside of jOOQ) a certain level of coupling between SQL statements can be provided.
+
+In this example we are using `@Transactional` annotation (since JTA 1.2).
+
+[quote]
+____
+The `javax.transaction.Transactional` annotation provides the application the ability to declaratively control transaction boundaries on CDI managed beans, as well as classes defined as managed beans by the Java EE specification, at both the class and method level where method level annotations override those at the class level.
+
+This support is provided via an implementation of CDI interceptors that conduct the necessary suspending, resuming, etc.
+____
+
+See the additional tests, which shows teh transaction is actually working. As the transaction part isn't that obvious (a border between the library and the container), I've included this small tests with Arquillian Persistence Extension to showcase how the transaction is rolled back when a unique constraint is violated. Yes, I know the data constraints are pretty naive and simplistic - but it shows the case.
+
+In case of older Application Servers (JavaEE 6), a more verbose approach is required, using a lower level `UserTransaction` API
+
+[source, java]
+----
+@Resource
+UserTransaction tx
+
+public void transactionalOperation() {}
+  try {
+    tx.begin();
+
+    //some operations on DSLContext
+
+    tx.commit();
+
+  } catch (HeuristicRollbackException |
+    RollbackException |
+    NotSupportedException |
+    HeuristicMixedException e) {
+      tx.rollback();
+      throw new RuntimeException(e);
+  }
+}
+----
+
+== Application server datasource configuration
+
+MySQL was used as a database for this example. Wildfly datasource configuration may look as follows:
+
+[source, xml]
+----
+<datasources>
+  <datasource
+    jndi-name="java:jboss/datasources/JooqExampleDS"
+    pool-name="JooqExampleDS"
+    enabled="true"
+    use-java-context="true">
+    <connection-url>
+      jdbc:mysql://localhost/jooq
+    </connection-url>
+    <driver>mysql</driver>
+    <security>
+      <user-name>username</user-name>
+      <password>password</password>
+    </security>
+  </datasource>
+  <drivers>
+    <driver name="mysql" module="com.mysql"> // <1>
+      <driver-class>com.mysql.jdbc.Driver</driver-class>
+    </driver>
+  </drivers>
+</datasources>
+----
+<1> The module needs to be defined externally - see http://wildfly.org/news/2014/02/06/GlassFish-to-WildFly-migration/[Wildfly blog for reference - Creating a Module section]
+
+== Go and see the code!
+
+So, here it goes: https://github.com/kubamarchwicki/jOOQ-javaee-example/; see if it works for you and enjoy.
