@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Notepack</title>
+    <title>Java EE persistence without JPA</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="A randomized pack of notes">
-    <link rel="canonical" href="http://jakub.marchwicki.pl/">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2015/01/18/javaee-persistance-without-jpa/">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/main.css">
@@ -89,120 +89,135 @@
 
     <div class="page-content">
       <div class="wrap">
-      <div class="home">
+      <div class="post">
 
-  
-  <p>Forthcoming speaking: </p>
-  <ul class="speaking forthcoming">
-  
-    
-    
-    
-      <li>
-        <a href="/speaking/2015/01/30/geecon-tdd/">Test Driven GeeCON</a>
-        <span class="post-date">(2015-01-30, Poznań, Poland)</span>
-      </li>
-    
-  
-    
-    
-    
-  
-    
-    
-    
-  
-    
-    
-    
-  
-    
-    
-    
-  
-    
-    
-    
-  
-    
-    
-    
-  
-  </ul>
-  
+  <header class="post-header">
+    <h1>Java EE persistence without JPA</h1>
+    <p class="meta">Jan 18, 2015</p>
+  </header>
 
-  <ul class="posts">
-    
-      <li>
-        <a href="/posts/2015/01/18/javaee-persistance-without-jpa/">Java EE persistence without JPA</a>
-        <span class="post-date">(2015-01-18)</span>
-        <blockquote>A walk through an implementation of JavaEE persistence without JPA; using a 3rd party, non JPA compliant database provider.</blockquote>
-      </li>
-    
-      <li>
-        <a href="/posts/2014/12/01/my-essential-eclipse-plugins/">My essential Eclipse plugins</a>
-        <span class="post-date">(2014-12-01)</span>
-        <blockquote>This is my personal reminder, which Eclipse plugin I usually use - just not to look too far. Maybe you will find it useful as well.</blockquote>
-      </li>
-    
-      <li>
-        <a href="/posts/2014/06/09/33degree-braindump/">33degree 2014 Braindump</a>
-        <span class="post-date">(2014-06-09)</span>
-        <blockquote>Random notes and thoughts from sessions I've attended during 33rd Degree 2014 conference. Kraków. 9th of June 2014.</blockquote>
-      </li>
-    
-      <li>
-        <a href="/posts/2012/02/04/testing-ejb-application-openejb-test-and-custom-jndi-lookups/">(…) testing EJB application – Part VI (OpenEJB test and custom JNDI lookups)</a>
-        <span class="post-date">(2012-02-04)</span>
-        <blockquote>How to mitgate (override) hardcoded JNDI properties in integration testing</blockquote>
-      </li>
-    
-      <li>
-        <a href="/posts/2011/09/20/map-reduce-is-not-about-frameworks/">Map Reduce is not about frameworks</a>
-        <span class="post-date">(2011-09-20)</span>
-        <blockquote>Map-reduce is a nice buzzword, an interesting concept; frameworks, frameworks, frameworks. But in fact - it's an architecture beyond frameworks...</blockquote>
-      </li>
-    
-      <li>
-        <a href="/posts/2011/07/01/testing-ejb-application-openejb-without-classpath-scanning/">(…) testing EJB application – Part V (OpenEJB without classpath scanning)</a>
-        <span class="post-date">(2011-07-01)</span>
-        <blockquote>Get OpenEJB integration tests run fast, without complete classpath scanning.</blockquote>
-      </li>
-    
-      <li>
-        <a href="/posts/2011/06/29/testing-ejb-application-openejb-with-vendor-extensions-and-ejb-jar-xml/">(…) testig an EJB application – Part IV (OpenEJB with vendor extensions and ejb-jar.xml)</a>
-        <span class="post-date">(2011-06-29)</span>
-        <blockquote>Integration testing of EJB application with embedded container - OpenEJB. Going beyond the standard configuration</blockquote>
-      </li>
-    
-      <li>
-        <a href="/posts/2011/06/09/the-art-of-testing-an-ejb-application-openejb/">The art of testing an EJB application – Part III (OpenEJB)</a>
-        <span class="post-date">(2011-06-09)</span>
-        <blockquote>Integration testing of EJB application with embedded container - OpenEJB</blockquote>
-      </li>
-    
-      <li>
-        <a href="/posts/2011/05/06/the-art-of-testing-an-ejb-application-part-ii/">The art of testing an EJB application – Part II (mocking)</a>
-        <span class="post-date">(2011-05-06)</span>
-        <blockquote>Using simple mocking techniques to test EJB components within context (for example database context and EntityManager)</blockquote>
-      </li>
-    
-      <li>
-        <a href="/posts/2011/05/02/the-art-of-testing-an-ejb-application-part-i/">The art of testing an EJB application – Part I (Introducing)</a>
-        <span class="post-date">(2011-05-02)</span>
-        <blockquote>Test EJBs is not that hard. After all these are just POJOs which can be tested as any other class... at least in the begining</blockquote>
-      </li>
-    
-      <li>
-        <a href="/posts/2010/11/10/building-pojo-in-elegant-way/">Building POJO in an elegant way</a>
-        <span class="post-date">(2010-11-10)</span>
-        <blockquote>Any fool can write code computer can understand. Question is how to build human readable code. Start with a builder pattern!</blockquote>
-      </li>
-    
-  </ul>
+  <article class="post-content">
+  <div class="paragraph">
+<p>Regulary during JavaEE trainings I conduct a question is raised: is there persistence beyond JPA. Java Persistence API is a standard on every application server; it isn&#8217;t bad - it&#8217;s valid for certain use cases. Nonetheless, I regulary see a need to go beyond that. That&#8217;s the reason I decided to build up <a href="https://github.com/kubamarchwicki/jOOQ-javaee-example/">this example</a>. It shows basic configuration for jOOQ on a JavaEE 7 compliant application server (was tested with Wildfly 8.x). I will not focus on why jOOQ was chosen - it could have been any other persistence provider of you favour. This post will tackle few (three) elements of JavaEE spec which (in my opinion) were important;  handy when implementing a non JPA based "database handling" libraries</p>
+</div>
+<div class="sect1">
+<h2 id="resource-producers">Resource producers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>An annotation <code>@javax.enterprise.inject.Produces</code> is used to prepare the <code>DSLContext</code> object (with a desired datasource and database dialect). The produced bean becomes injectable within an application as any other CDI bean (since CDI 1.0)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">  @Inject
+  private DSLContext ctx;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is a nice way to produce any application context related components (like loggers, debug data, additional configuration).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="transaction-handling">Transaction handling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>JavaOOQ does not provide an API for transaction handling, but it doesn&#8217;t stop it from taking any DataSource (no matter how produced). Hence, if transaction can be provided externally (outside of jOOQ) a certain level of coupling between SQL statements can be provided.</p>
+</div>
+<div class="paragraph">
+<p>In this example we are using <code>@Transactional</code> annotation (since JTA 1.2).</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>The <code>javax.transaction.Transactional</code> annotation provides the application the ability to declaratively control transaction boundaries on CDI managed beans, as well as classes defined as managed beans by the Java EE specification, at both the class and method level where method level annotations override those at the class level.</p>
+</div>
+<div class="paragraph">
+<p>This support is provided via an implementation of CDI interceptors that conduct the necessary suspending, resuming, etc.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>See the additional tests, which shows teh transaction is actually working. As the transaction part isn&#8217;t that obvious (a border between the library and the container), I&#8217;ve included this small tests with Arquillian Persistence Extension to showcase how the transaction is rolled back when a unique constraint is violated. Yes, I know the data constraints are pretty naive and simplistic - but it shows the case.</p>
+</div>
+<div class="paragraph">
+<p>In case of older Application Servers (JavaEE 6), a more verbose approach is required, using a lower level <code>UserTransaction</code> API</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Resource
+UserTransaction tx
+
+public void transactionalOperation() {}
+  try {
+    tx.begin();
+
+    //some operations on DSLContext
+
+    tx.commit();
+
+  } catch (HeuristicRollbackException |
+    RollbackException |
+    NotSupportedException |
+    HeuristicMixedException e) {
+      tx.rollback();
+      throw new RuntimeException(e);
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="application-server-datasource-configuration">Application server datasource configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MySQL was used as a database for this example. Wildfly datasource configuration may look as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;datasources&gt;
+  &lt;datasource
+    jndi-name="java:jboss/datasources/JooqExampleDS"
+    pool-name="JooqExampleDS"
+    enabled="true"
+    use-java-context="true"&gt;
+    &lt;connection-url&gt;
+      jdbc:mysql://localhost/jooq
+    &lt;/connection-url&gt;
+    &lt;driver&gt;mysql&lt;/driver&gt;
+    &lt;security&gt;
+      &lt;user-name&gt;username&lt;/user-name&gt;
+      &lt;password&gt;password&lt;/password&gt;
+    &lt;/security&gt;
+  &lt;/datasource&gt;
+  &lt;drivers&gt;
+    &lt;driver name="mysql" module="com.mysql"&gt; <b class="conum">(1)</b>
+      &lt;driver-class&gt;com.mysql.jdbc.Driver&lt;/driver-class&gt;
+    &lt;/driver&gt;
+  &lt;/drivers&gt;
+&lt;/datasources&gt;</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The module needs to be defined externally - see <a href="http://wildfly.org/news/2014/02/06/GlassFish-to-WildFly-migration/">Wildfly blog for reference - Creating a Module section</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="go-and-see-the-code">Go and see the code!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>So, here it goes: <a href="https://github.com/kubamarchwicki/jOOQ-javaee-example/" class="bare">https://github.com/kubamarchwicki/jOOQ-javaee-example/</a>; see if it works for you and enjoy.</p>
+</div>
+</div>
+</div>
+  </article>
 
 </div>
-
       </div>
     </div>
 

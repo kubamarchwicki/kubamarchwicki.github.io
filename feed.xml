@@ -5,9 +5,138 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 14 Dec 2014 21:04:34 +0000</pubDate>
-    <lastBuildDate>Sun, 14 Dec 2014 21:04:34 +0000</lastBuildDate>
+    <pubDate>Sun, 18 Jan 2015 19:17:08 +0000</pubDate>
+    <lastBuildDate>Sun, 18 Jan 2015 19:17:08 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Java EE persistence without JPA</title>
+        <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Regulary during JavaEE trainings I conduct a question is raised: is there persistence beyond JPA. Java Persistence API is a standard on every application server; it isn&amp;#8217;t bad - it&amp;#8217;s valid for certain use cases. Nonetheless, I regulary see a need to go beyond that. That&amp;#8217;s the reason I decided to build up &lt;a href=&quot;https://github.com/kubamarchwicki/jOOQ-javaee-example/&quot;&gt;this example&lt;/a&gt;. It shows basic configuration for jOOQ on a JavaEE 7 compliant application server (was tested with Wildfly 8.x). I will not focus on why jOOQ was chosen - it could have been any other persistence provider of you favour. This post will tackle few (three) elements of JavaEE spec which (in my opinion) were important;  handy when implementing a non JPA based &quot;database handling&quot; libraries&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;resource-producers&quot;&gt;Resource producers&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;An annotation &lt;code&gt;@javax.enterprise.inject.Produces&lt;/code&gt; is used to prepare the &lt;code&gt;DSLContext&lt;/code&gt; object (with a desired datasource and database dialect). The produced bean becomes injectable within an application as any other CDI bean (since CDI 1.0)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;  @Inject
+  private DSLContext ctx;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is a nice way to produce any application context related components (like loggers, debug data, additional configuration).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;transaction-handling&quot;&gt;Transaction handling&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;JavaOOQ does not provide an API for transaction handling, but it doesn&amp;#8217;t stop it from taking any DataSource (no matter how produced). Hence, if transaction can be provided externally (outside of jOOQ) a certain level of coupling between SQL statements can be provided.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In this example we are using &lt;code&gt;@Transactional&lt;/code&gt; annotation (since JTA 1.2).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+&lt;blockquote&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The &lt;code&gt;javax.transaction.Transactional&lt;/code&gt; annotation provides the application the ability to declaratively control transaction boundaries on CDI managed beans, as well as classes defined as managed beans by the Java EE specification, at both the class and method level where method level annotations override those at the class level.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This support is provided via an implementation of CDI interceptors that conduct the necessary suspending, resuming, etc.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;See the additional tests, which shows teh transaction is actually working. As the transaction part isn&amp;#8217;t that obvious (a border between the library and the container), I&amp;#8217;ve included this small tests with Arquillian Persistence Extension to showcase how the transaction is rolled back when a unique constraint is violated. Yes, I know the data constraints are pretty naive and simplistic - but it shows the case.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In case of older Application Servers (JavaEE 6), a more verbose approach is required, using a lower level &lt;code&gt;UserTransaction&lt;/code&gt; API&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Resource
+UserTransaction tx
+
+public void transactionalOperation() {}
+  try {
+    tx.begin();
+
+    //some operations on DSLContext
+
+    tx.commit();
+
+  } catch (HeuristicRollbackException |
+    RollbackException |
+    NotSupportedException |
+    HeuristicMixedException e) {
+      tx.rollback();
+      throw new RuntimeException(e);
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;application-server-datasource-configuration&quot;&gt;Application server datasource configuration&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;MySQL was used as a database for this example. Wildfly datasource configuration may look as follows:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;datasources&amp;gt;
+  &amp;lt;datasource
+    jndi-name=&quot;java:jboss/datasources/JooqExampleDS&quot;
+    pool-name=&quot;JooqExampleDS&quot;
+    enabled=&quot;true&quot;
+    use-java-context=&quot;true&quot;&amp;gt;
+    &amp;lt;connection-url&amp;gt;
+      jdbc:mysql://localhost/jooq
+    &amp;lt;/connection-url&amp;gt;
+    &amp;lt;driver&amp;gt;mysql&amp;lt;/driver&amp;gt;
+    &amp;lt;security&amp;gt;
+      &amp;lt;user-name&amp;gt;username&amp;lt;/user-name&amp;gt;
+      &amp;lt;password&amp;gt;password&amp;lt;/password&amp;gt;
+    &amp;lt;/security&amp;gt;
+  &amp;lt;/datasource&amp;gt;
+  &amp;lt;drivers&amp;gt;
+    &amp;lt;driver name=&quot;mysql&quot; module=&quot;com.mysql&quot;&amp;gt; &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;
+      &amp;lt;driver-class&amp;gt;com.mysql.jdbc.Driver&amp;lt;/driver-class&amp;gt;
+    &amp;lt;/driver&amp;gt;
+  &amp;lt;/drivers&amp;gt;
+&amp;lt;/datasources&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;colist arabic&quot;&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The module needs to be defined externally - see &lt;a href=&quot;http://wildfly.org/news/2014/02/06/GlassFish-to-WildFly-migration/&quot;&gt;Wildfly blog for reference - Creating a Module section&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;go-and-see-the-code&quot;&gt;Go and see the code!&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;So, here it goes: &lt;a href=&quot;https://github.com/kubamarchwicki/jOOQ-javaee-example/&quot; class=&quot;bare&quot;&gt;https://github.com/kubamarchwicki/jOOQ-javaee-example/&lt;/a&gt;; see if it works for you and enjoy.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Sun, 18 Jan 2015 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2015/01/18/javaee-persistance-without-jpa/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2015/01/18/javaee-persistance-without-jpa/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
     
       <item>
         <title>My essential Eclipse plugins</title>
@@ -1599,193 +1728,6 @@ public class TrimService implements TrimServiceLocal {
         <pubDate>Mon, 02 May 2011 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2011/05/02/the-art-of-testing-an-ejb-application-part-i/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/05/02/the-art-of-testing-an-ejb-application-part-i/</guid>
-        
-        
-        <category>posts</category>
-        
-      </item>
-    
-      <item>
-        <title>Building POJO in an elegant way</title>
-        <description>&lt;div class=&quot;quoteblock&quot;&gt;
-&lt;blockquote&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Any fool can write code that a computer can understand. Good programmers write code that humans can understand&lt;/p&gt;
-&lt;/div&gt;
-&lt;/blockquote&gt;
-&lt;div class=&quot;attribution&quot;&gt;
-&amp;#8212; Martin Fowler - Refactoring: Improving the Design of Existing Code
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In one of my recent projects I’ve come across a wonderful way of building data beans (POJOs), called builders. See how it works; imagine a fairly simple POJO.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class Person {
-  private String name;
-  private String surname;
-
-  /* getters and setters skipped for brevity */
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I can imagine two ways to instantiate this class and populate values:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;	Person person = new Person();
-	person.setName(“John”);
-	person.setSurname(“Smith”);
-
-	new Person(“John”, “Smith”);&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;While with this fairly simple class it doesn’t look bad, with more complicated beans, the code starts to get messy.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;So here comes the smart way – with builders. For each POJO create an inner class:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class Person {
-   private String name;
-   private String surname;
-
-   /* explicite constructors, getters and setters skipped */
-
-   private Person(Builder builder) {
-       this.name = builder.name;
-       this.surname = builder.surname;
-   }
-
-   public static class Builder {
-       private String name;
-       private String surname;
-
-       public Builder() {
-
-       }
-
-       public Builder withName(String name) {
-           this.name = name;
-           return this;
-       }
-
-       public Builder withSurname(String surname) {
-           this.surname = surname;
-           return this;
-       }
-
-       public Person build() {
-           return new Person(this);
-       }
-   }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;So from now on creating instance of a Person looks like this&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;Person person = new Person.Builder()
-  .withName(“John”)
-  .withSurname(“Smith”)
-  .build();&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Nice one, isn’t it? It gets even better when the object gets more complex. The only disadvantage I found so far was a necessity to hand craft all the builders – hundreds of pretty-much-same-lines-of-code. But what are templates for?&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Initially, I’ve considered internal Eclipse templates. Nice, but too simple and static (I couldn’t find a way to prepare dynamic templates, based on a class I was currently developing). Nonetheless, I found quite a few guides how to leverage templates worth sharing:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.tarantsov.com/eclipse/templates/&quot; class=&quot;bare&quot;&gt;http://www.tarantsov.com/eclipse/templates/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://eclipse.dzone.com/news/effective-eclipse-custom-templ&quot; class=&quot;bare&quot;&gt;http://eclipse.dzone.com/news/effective-eclipse-custom-templ&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;A second try was a Fast Code Eclipse plugin (which you can find here: &lt;a href=&quot;http://fast-code.sourceforge.net/&quot; class=&quot;bare&quot;&gt;http://fast-code.sourceforge.net/&lt;/a&gt;). Honestly speaking, it’s a little bit overcomplicated and I’d be rather consider something simpler (Eclipse Code Templates with dynamic fields – maybe I’d write something like that at some point). Nonetheless, Fast Code works like this:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;install plugin&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;go to Window &amp;gt; Preferences &amp;gt; Fast Code Preferences &amp;gt; Template Preferences&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;pick up one (I’ve chosen the first one: Template Instance of Class)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;set “Number Required Classes” to 1, “Allowed File Extension” to java, “Required Getter Setter” to None and paste this in the template body:&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-velocity&quot; data-lang=&quot;velocity&quot;&gt;private ${class_name}(Builder builder) {
-#foreach ($field in ${fields})
-   this.${field.name} = builder.${field.name};
-#end
-}
-
-public static class Builder {
-#foreach ($field in ${fields})
-   private ${field.type} ${field.name};
-#end
-
-#foreach ($field in ${fields})
-   public Builder with${field.getter.substring(3)}(${field.type} ${field.name}) {
-       this.${field.name} = ${field.name};
-       return this;
-   }
-#end
-
-public ${class_name} build() {
-           return new ${class_name}(this);
-       }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Builders in action work like this: create a new class (like the aforementioned Person, with all intended fields) and run your template:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Fast Code &amp;gt; Create New Snippet (or press Shift + Ctrl + Alt + T)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Pick up “Instance of Class”&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Choose the class&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Pick up fields to be used by the builder.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Format your code (Shift + Ctrl + F).&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Works like a charm! I know that it does not as the most straightforward activity, but trust me – it really improved my productivity and improved the code quality (no more typos). I’m also aware that I’m using a tiny fraction of Fast Code functionality – but that’s a fraction I was really keen on.&lt;/p&gt;
-&lt;/div&gt;</description>
-        <pubDate>Wed, 10 Nov 2010 00:00:00 +0000</pubDate>
-        <link>http://jakub.marchwicki.pl/posts/2010/11/10/building-pojo-in-elegant-way/</link>
-        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2010/11/10/building-pojo-in-elegant-way/</guid>
         
         
         <category>posts</category>
