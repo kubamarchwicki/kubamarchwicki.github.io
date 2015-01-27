@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="{{ site.description }}">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="alternate" type="application/atom+xml" title="{{ site.title | xml_escape }}" />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
@@ -12,7 +13,7 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    
+
     {% if site.analytics %}
     <!-- google analytics async -->
     <script type="text/javascript">
