@@ -152,7 +152,7 @@ mvn test -Dpinchpoint=true -Dtest=BusinessCodeTest
 
 === Logging part
 
-I've written at the begining we will be using junit rules to get the stuff done. Since version 4.7 jUnit provides rules, which are smarter runners - that can perform addtional actions during test (think of aspects or interceptor). `External Resource` is one of such classes
+I've written at the beginning we will be using junit rules to get the stuff done. Since version 4.7 jUnit provides rules, which are smarter runners - that can perform additional actions during test (think of aspects or interceptor). `External Resource` is one of such classes
 
 [quote]
 ____
@@ -261,4 +261,4 @@ The code snippets above is not the actual implementation. These are samples, to 
 </dependency>
 ----
 
-I'm keen on feedback (say on https://twitter.com/kubem[@kubem at twitter]) if you find it useful. For me, in my context, it worked and allow me to fairly safetly replace the webservice connector (client) in the application I really didn't want to touch. Maybe it will work for you as well. 
+I'm keen on feedback (say on https://twitter.com/kubem[@kubem at twitter]) if you find it useful. For me, in my context, it worked and allow me to fairly safety replace the webservice connector (client) in the application I really didn't want to touch. Maybe it will work for you as well. 
