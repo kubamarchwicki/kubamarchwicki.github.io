@@ -5,9 +5,343 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 27 Jan 2015 20:09:58 +0000</pubDate>
-    <lastBuildDate>Tue, 27 Jan 2015 20:09:58 +0000</lastBuildDate>
+    <pubDate>Fri, 30 Jan 2015 10:47:09 +0000</pubDate>
+    <lastBuildDate>Fri, 30 Jan 2015 10:47:09 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Characterize your legacy with junit</title>
+        <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is a blog post with is a longer read to my &lt;a href=&quot;http://2015.tdd.geecon.org/&quot;&gt;GeeCON TDD 2015&lt;/a&gt; lightning talk presentation: &lt;a href=&quot;/speaking/2015/01/30/geecon-tdd/&quot;&gt;Characterize your legacy with jUnit Rules&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;what-are-characterization-tests-and-why-cared&quot;&gt;What are characterization tests and why cared?&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;context&quot;&gt;Context&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;ve recently engaged myself into upgraded our internal, vendor provided, not supported anymore HR application.
+As we&amp;#8217;ve been refactoring one of our internal systems (upgrade from Rails 1.8 to 3.0) - it impacted a few systems nearby. Mostly due to the way Rails handled SOAP web services, which were the basis of the integration; the WSDL needed changing significantly and thus needed the HR system client classes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The whole idea was to replace existing axis stubs with new classes, keeping the interfaces backwards compatible. Rather simple task but not in this context: the app appeared to be a Java JSP web application with literally 10 class files and hundreds of JSP files with tons of logic in it (500+ lines per each JSP was a standard). A Java application in a bad PHP style.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;how-to-proceed&quot;&gt;How to proceed&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;From the application logs (around 150MB per week, as nobody though of turning of global DEBUG in log4j.properties) I could be able to figure out what classes were responsible for the web service communication - that was the starting point.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The plan was to adhere to keep it working principle:
+* extract the classes into a single jar
+* replace the classes with a lib
+* replace the lib with a new stub and client&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Few simple tasks to do. But what bothered me was how to make sure that the data structures before and after the changes are still the same. This was especially important, because the app was very fragile (to such extent that changing the order of XML tags in the SOAP request actually mattered).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;actual-tests&quot;&gt;Actual tests&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is when I was brought to characterization tests. I needed to describe the existing application and after each step, test the changes against the model (my benchmark). Hence, the flow looked pretty much like this:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;analyze the class / method in subject, gain the conceptual understanding&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;invoke the method within tests&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;log complete output / compare the output with existing log output&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;When the tests went green - I felt much safer. I know this is far from ideal testing method, but at least it has given a little of confidence in the baby steps I was making.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;where-to-start&quot;&gt;Where to start&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Ok, that was theory. Question is how to actually implement such test; recordings and assertions. The whole thing is actually pretty damn easy, especially with the last releases of JUnit. We will be leveraging Rule (ClassRule annotation to be precise) and the whole concept of TestRules.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;not-the-real-example&quot;&gt;Not the real example&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;ll not drive through the actual code, as it was damn bad and will just make the point harder to understand. To give you a clue, here is a sample of the real production code (that was how the webservice was actually code - straight from the JSP file!)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-jsp&quot; data-lang=&quot;jsp&quot;&gt;&amp;lt;%-- MAIN FRAME --%&amp;gt;
+
+&amp;lt;div style=&#39;width:100%; height:344px; display: block&#39; id=&quot;mainmenu_ifr&quot;&amp;gt;
+&amp;lt;table border=&#39;0&#39; cellspacing=&#39;0&#39; cellpadding=&#39;0&#39; width=&#39;100%&#39; style=&quot;margin-top:15px;&quot;&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td valign=&#39;top&#39; width=&quot;200&quot; align=&quot;center&quot;&amp;gt;
+
+&amp;lt;%
+String prac_pnr =(String)session.getAttribute(&quot;prac_pnr&quot;);
+if (prac_pnr ==null) prac_pnr =&quot;&quot;;
+
+
+YdpPssClient client = new YdpPssClient();
+String key=&quot;&quot;;
+String logaid=prac_pnr;
+String mode=&quot;small&quot;;
+LAOSL1.setPP_LANG(langs[lang]);
+LAOSL1.setPP_NSP(user_nsp);
+LAOSL1.setPP_NRZK(user_nrzk);
+LAOSL1.setPP_PNR(loga_pnr);
+Manager.refresh(LAOSL1,(String)session.getAttribute(&quot;AdeliaKeyPoolName&quot;));
+%&amp;gt;
+
+&amp;lt;%@ page import=&quot;org.apache.axis.encoding.Base64&quot; %&amp;gt;
+&amp;lt;%
+String encoded = Base64.encode(client.getUserFotoFromWServices(key,logaid,mode));
+%&amp;gt;
+
+&amp;lt;% if(encoded!= null) { %&amp;gt;
+  &amp;lt;IMG src=&quot;data:image/png;base64,&amp;lt;%=encoded%&amp;gt;&quot; border=&quot;0&quot; id=&quot;test&quot;&amp;gt;
+&amp;lt;% }else{ %&amp;gt;
+  &amp;lt;IMG height=&quot;177&quot; src=&quot;pics/noImage.jpg&quot; border=&quot;0&quot; id=&quot;test&quot;&amp;gt;
+&amp;lt;% } %&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To skip such convoluted code I&amp;#8217;ll use a more simple (simplistic) example.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class BusinessClass {
+
+  public String businessMethod(String param) {
+    return param.split(&quot; &quot;)[0];
+  }
+
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;And the test we will be using.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class BusinessClassTest {
+
+  @ClassRule
+  public static CharacterizationRule rule =
+      aRuleFor(BusinessClassTest.class)
+      .build();
+
+  private BusinessClass service = new BusinessClass();
+
+  @Test
+  public void just_run_the_method() {
+    final String param = &quot;first parameter&quot;
+    System.out.println(&quot;param = &quot; + param);
+    String output = service.businessMethod(param);
+    System.out.println(&quot;after split = &quot; + output);
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As you probably noticed, there are no assertions in the test. That&amp;#8217;s is deliberate - we are not asserting, because we probably don&amp;#8217;t have a clue what should be the desired outcome. What we do, is logging some output without drilling into the details.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The whole idea is to log as much as possible and use the log as the feedback is the behaviour of the class (output) is not changing. This is what Michael Feathers described as characterization test.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+&lt;blockquote&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A characterization test is a mean to describe (characterize) the actual behavior of an existing piece of software.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;attribution&quot;&gt;
+&amp;#8212; Michael Feathers&lt;br&gt;
+&lt;cite&gt;Working Effectively with Legacy Code&lt;/cite&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;the-working-example&quot;&gt;The working example&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;So, we see we need two modes for our tests: logging and verification. We should have exacly the same test code which can be run in two modes; collect all possible output and verify if the output is still the same. My approach would be to use an environment variable (flag) and pass it over during test invocation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;final public static String ENV_NAME_FOR_RECORDING = &quot;pinchpoint&quot;;
+
+private boolean isRecording() {
+  String env = System.getProperty(ENV_NAME_FOR_RECORDING);
+  return (env != null);
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;mvn test -Dpinchpoint=true -Dtest=BusinessCodeTest&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;logging-part&quot;&gt;Logging part&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;ve written at the begining we will be using junit rules to get the stuff done. Since version 4.7 jUnit provides rules, which are smarter runners - that can perform addtional actions during test (think of aspects or interceptor). &lt;code&gt;External Resource&lt;/code&gt; is one of such classes&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+&lt;blockquote&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A base class for Rules that set up an external resource before a test and tear it down afterward.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The actual logging, that save the complete output to a default temp folder, to a file named after the class undergoing the test, logging might look like so.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class FileOutputCapture extends ExternalResource {
+
+  protected void before() throws Throwable {
+    original = System.out;
+    PrintStream pos = new PrintStream(capturedStream);
+    System.setOut(pos); &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;
+  }
+
+  protected void after() {
+    System.setOut(original);    &lt;b class=&quot;conum&quot;&gt;(2)&lt;/b&gt;
+    try {
+      Files.write(outputFile.toPath(),
+      capturedStream.toByteArray(),
+      StandardOpenOption.APPEND);   &lt;b class=&quot;conum&quot;&gt;(3)&lt;/b&gt;
+    } catch (IOException e) {
+      throw new RuntimeException(&quot;File write failed! &quot;, e);
+    }
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;colist arabic&quot;&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Sustitute the standard &lt;code&gt;System.out&lt;/code&gt; with a stream to capturing all output&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Restore the original &lt;code&gt;PrintStream&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Write everything to file&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;verification-part&quot;&gt;Verification part&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now that we are good with the log, we can start refactoring the &lt;code&gt;BusinessClass&lt;/code&gt; and do the verification if the output has changed in any way. Obviously, we would need another capture, without saving to a file.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class StreamOutputCapture extends ExternalResource {
+  PrintStream original;
+
+  protected void before() throws Throwable {
+    original = System.out;
+    PrintStream pos = new PrintStream(capturedStream);
+    System.setOut(pos);
+  }
+
+  protected void after() {
+    System.setOut(original);
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Next thing is verification. Again, we will use jUnit goodies, this time a &lt;code&gt;Verifier&lt;/code&gt; class&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+&lt;blockquote&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Verifier is a base class for Rules like ErrorCollector, which turns passing test methods into failing tests if a verification check is failed&lt;/p&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class CaptureVerifier extends Verifier {
+
+  protected void verify() throws Throwable {
+    List&amp;lt;String&amp;gt; actual = ReadLines.fromStream(capturedStream);
+    List&amp;lt;String&amp;gt; original = ReadLines.fromFile(pinchFile);
+
+    Patch&amp;lt;String&amp;gt; patch = DiffUtils.diff(original, actual);
+
+    assertThat(patch, is(empty()));
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;And if something went wrong, we get a nice feedback.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-txt&quot; data-lang=&quot;txt&quot;&gt;java.lang.AssertionError:
+File:
+  &amp;lt;/tmp/com.example.BusinessClassTest.txt&amp;gt;
+read with charset &amp;lt;UTF-8&amp;gt; does not have the expected content:
+line: &amp;lt;3&amp;gt;, expected:&amp;lt;something&amp;gt; but was:&amp;lt;something else&amp;gt;
+      at com.example.BusinessClassTest.should_create_master_output_file&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;instead-of-summary&quot;&gt;Instead of summary&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The code snippets above is not the actual implementation. These are samples, to give a clue what&amp;#8217;s happening in the code. If you find this useful or interesting in any way, take a look on the actual &lt;a href=&quot;https://github.com/kubamarchwicki/junit-characterization&quot;&gt;implementation on Github&lt;/a&gt; or use it directly in your project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;dependency&amp;gt;
+  &amp;lt;groupId&amp;gt;pl.marchwicki&amp;lt;/groupId&amp;gt;
+  &amp;lt;artifactId&amp;gt;junit-characterization&amp;lt;/artifactId&amp;gt;
+  &amp;lt;packaging&amp;gt;jar&amp;lt;/packaging&amp;gt;
+  &amp;lt;version&amp;gt;0.3&amp;lt;/version&amp;gt;
+&amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;m keen on feedback (say on &lt;a href=&quot;https://twitter.com/kubem&quot;&gt;@kubem at twitter&lt;/a&gt;) if you find it useful. For me, in my context, it worked and allow me to fairly safetly replace the webservice connector (client) in the application I really didn&amp;#8217;t want to touch. Maybe it will work for you as well.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Fri, 30 Jan 2015 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2015/01/30/characterize-your-legacy-junit-rules/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2015/01/30/characterize-your-legacy-junit-rules/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
     
       <item>
         <title>Java EE persistence without JPA</title>
@@ -1636,98 +1970,6 @@ public class ConfigService implements ConfigServiceLocal {
         <pubDate>Fri, 06 May 2011 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2011/05/06/the-art-of-testing-an-ejb-application-part-ii/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/05/06/the-art-of-testing-an-ejb-application-part-ii/</guid>
-        
-        
-        <category>posts</category>
-        
-      </item>
-    
-      <item>
-        <title>The art of testing an EJB application – Part I (Introducing)</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;It has been a while since my last post – partly because the JMS processing project I’ve &lt;a href=&quot;about:blank&quot;&gt;described earlier on&lt;/a&gt; have kicked off and I was pretty busy with a real work. Nonetheless, the development is steadily coming to its end and it’s time to share some thought and observations. I’m still planning to cover the architecture – how and why it has changed, compared to the initial design I’ve described earlier on. However, for the time being I’ll focus on testing; I will describe some of ideas and observations how to approach testing of EJB 3.x services.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This post is called “Part I” for a reason – there is a plan for multiple posts (so far I have a concept for three articles). The idea for the series came from &lt;a href=&quot;http://jamesshore.com/Blog/Alternatives-to-Acceptance-Testing.html&quot;&gt;James Shore article on acceptance testing&lt;/a&gt; where he introduces three kinds of tests: unit, focused integration and end-to-end integration. One of many factors to distinguish and categorise the tests is a number of tests to run (a rate per second). I pretty much like that idea and I’ve organised this series around that notion. First part – unit tests. It should not be anything new for people familiar with the TDD. With EJB 3.x testing is getting even easier because there are no special interfaces to implement and it’s easy to instantiate a session bean with a simple new operator. These are unit tests with expected rate of hundreds per second. In part two I’ll focus on integration testing of EJB services without a container. I’ll tackle mocking data and / or other services. These tests are expected to run with pace of tens per second. Finally, I’ll deal with an EJB container (with OpenEJB) and end-to-end integration tests. These are expected to take minutes per test (the container itself can take few minutes to bootstrap).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;That said, I’m not going to write much about the unit testing itself. Sorry if I haven’t met your expectations, but I don’t like to sound repetitive. Unit testing of an EJB service is not any different from testing any other bean. However, not to leave you with nothing, if you are not familiar with unit testing at all, here is a bunch of things to remember (formulated by Michael Feathers from www.objectmentor.com):&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;unit test does not talk to the database&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;unit test does not communicate across the network&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;unit test does not touch the file system&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;unit test does not require doing any special things to your environment (such as editing configuration files) to run it.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Next, check out &lt;a href=&quot;http://jamesshore.com/Blog/Lets-Play/Lets-Play-Test-Driven-Development.html&quot;&gt;James Shore screencast series “Let’s play TDD”&lt;/a&gt; to see what it’s all about.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Not to leave you without a line of code, here is a dummy example you can find across every second page. Let me show you a service which pre-process a set of data sent from an external service; it crawls an object (using reflection) and trims all non-final, not empty strings properties.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public interface TrimServiceLocal {
-  public void trimObject(Object o);
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Stateless
-public class TrimService implements TrimServiceLocal {
-  public void trimObject(Object o);
-    //implementation goes here
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;So, the test looks simple as that:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class TrimServiceTest {
-
-  TrimService trimService;
-
-  @BeforeClass
-  public void setup() {
-    trimService = new TrimService();
-  }
-
-  @Test
-  public removeWhitespaces() {
-    Name name = new Name();
-    name.setPrefix(“    Mr.”);
-    name.setFirstname(“      John     “);
-    name.setLastname(“Smith     “);
-
-    trimService.trimObject(name);
-
-    Assert.assertEquals(name.getPrefix(), “Mr.”);
-    Assert.assertEquals(name.getFirstname(), “John”);
-    Assert.assertEquals(name.getLastname(), “Smith”);
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I’ll stop here and come back in the next few days with some thoughts on more advanced, integration testing.&lt;/p&gt;
-&lt;/div&gt;</description>
-        <pubDate>Mon, 02 May 2011 00:00:00 +0000</pubDate>
-        <link>http://jakub.marchwicki.pl/posts/2011/05/02/the-art-of-testing-an-ejb-application-part-i/</link>
-        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/05/02/the-art-of-testing-an-ejb-application-part-i/</guid>
         
         
         <category>posts</category>
