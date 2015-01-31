@@ -4,32 +4,62 @@ layout: post
 categories: posts
 excerpt: Use junit rules to leverage describing and testing legacy code; define a pinching points, dump the logs and reason about the results.
 ---
+:data-uri:
+:imagesdir: assets/_generated
 
 This is a blog post with is a longer read to my http://2015.tdd.geecon.org/[GeeCON TDD 2015] lightning talk presentation: link:{% post_url speaking/2015-01-30-geecon-tdd %}[Characterize your legacy with jUnit Rules]
 
 == What are characterization tests and why cared?
 
-=== Context
+.Context
 
-I've recently engaged myself into upgraded our internal, vendor provided, not supported anymore HR application.
+I've recently was involved in a project of upgrading our internal, vendor provided, not supported anymore HR application.
 As we've been refactoring one of our internal systems (upgrade from Rails 1.8 to 3.0) - it impacted a few systems nearby. Mostly due to the way Rails handled SOAP web services, which were the basis of the integration; the WSDL needed changing significantly and thus needed the HR system client classes.
 
 The whole idea was to replace existing axis stubs with new classes, keeping the interfaces backwards compatible. Rather simple task but not in this context: the app appeared to be a Java JSP web application with literally 10 class files and hundreds of JSP files with tons of logic in it (500+ lines per each JSP was a standard). A Java application in a bad PHP style.
 
-=== How to proceed
+What is more, this was type of integration where the order of parameters in the SOAP call were important; imagine how brittle and fragile that was.
+
+While that looked fairly simple on paper (or diagram) the reality was much harder.
+
+[ditaa, "context-diag", alt="A context diagram"]
+....
+
++------------------+                        +-------------------+
+|                  |                        |                   |
+| HR System        |                        |  Project Mgmt     |
+|                  |                        |  System           |
+| "Java"           |                        |                   |
+|                  |                        |  Rails            |
+|                  |                        |                   |
+|                  |                        |                   |
+|                  |                        |                   |
+|                  |       /+-------+       |                   |
+|      /-----------+       |  WSDL  |       |                   |
+|      |           |       +--------+       |                   |
+|      |   Client  |+-=----+ magic! |=----> |                   |
+|      | Component |       |        |       |                   |
+|      |           |       +--------/       |                   |
++------+-----------+                        +-------------------+
+
+....
+
+
+.How to proceed
 
 From the application logs (around 150MB per week, as nobody though of turning of global DEBUG in log4j.properties) I could be able to figure out what classes were responsible for the web service communication - that was the starting point.
 
 The plan was to adhere to keep it working principle:
+
 * extract the classes into a single jar
 * replace the classes with a lib
 * replace the lib with a new stub and client
 
-Few simple tasks to do. But what bothered me was how to make sure that the data structures before and after the changes are still the same. This was especially important, because the app was very fragile (to such extent that changing the order of XML tags in the SOAP request actually mattered).
+Few simple tasks to do. But what bothered me was how to make sure that the data structures before and after the changes are still the same.
 
-=== Actual tests
+.Actual tests
 
-This is when I was brought to characterization tests. I needed to describe the existing application and after each step, test the changes against the model (my benchmark). Hence, the flow looked pretty much like this:
+This is when I was started with characterization tests (the golden master). I needed to describe the existing application and after each step, test the changes against the model (my benchmark). Hence, the flow looked pretty much like this:
 
 * analyze the class / method in subject, gain the conceptual understanding
 * invoke the method within tests
@@ -85,7 +115,7 @@ String encoded = Base64.encode(client.getUserFotoFromWServices(key,logaid,mode))
 </table>
 ----
 
-To skip such convoluted code I'll use a more simple (simplistic) example.
+To skip such convoluted code I'll use a more simple (simplistic) example- our legacy method is doing just string split and return the frist token.
 
 [source, java]
 ----
@@ -98,8 +128,7 @@ public class BusinessClass {
 }
 ----
 
-And the test we will be using.
-
+And the test we will be using (actually in this case it's more like a runner than the fully blown test).
 
 [source, java]
 ----
@@ -150,7 +179,7 @@ private boolean isRecording() {
 mvn test -Dpinchpoint=true -Dtest=BusinessCodeTest
 ----
 
-=== Logging part
+.The logging part
 
 I've written at the beginning we will be using junit rules to get the stuff done. Since version 4.7 jUnit provides rules, which are smarter runners - that can perform additional actions during test (think of aspects or interceptor). `External Resource` is one of such classes
 
@@ -190,7 +219,7 @@ public class FileOutputCapture extends ExternalResource {
 
 
 
-=== Verification part
+.The verification part
 
 Now that we are good with the log, we can start refactoring the `BusinessClass` and do the verification if the output has changed in any way. Obviously, we would need another capture, without saving to a file.
 
@@ -261,4 +290,10 @@ The code snippets above is not the actual implementation. These are samples, to 
 </dependency>
 ----
 
-I'm keen on feedback (say on https://twitter.com/kubem[@kubem at twitter]) if you find it useful. For me, in my context, it worked and allow me to fairly safety replace the webservice connector (client) in the application I really didn't want to touch. Maybe it will work for you as well. 
+I'm keen on feedback (say on https://twitter.com/kubem[@kubem at twitter]) if you find it useful. For me, in my context, it worked and allow me to fairly safety replace the webservice connector (client) in the application I really didn't want to touch. Maybe it will work for you as well.
+
+Some other references to this technique (also known as the Golden Master):
+
+* http://blog.thecodewhisperer.com/2014/09/28/surviving-legacy-code-with-golden-master-and-sampling/
+
+* http://blog.adrianbolboaca.ro/2014/05/golden-master/
