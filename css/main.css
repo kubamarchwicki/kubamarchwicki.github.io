@@ -255,6 +255,15 @@ ul.speakinglist {list-style-type: none;}
   margin: 40px 0 20px;
 }
 
+.post-content .title {
+  line-height: 2;
+  font-family: "Noto Serif","DejaVu Serif",serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  text-align: left;
+  text-rendering: optimizelegibility;
+}
+
 .post-content h2 {
   font-size: 32px;
   letter-spacing: -1.25px;
