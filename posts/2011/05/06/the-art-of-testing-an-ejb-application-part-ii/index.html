@@ -5,17 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>The art of testing an EJB application – Part II (mocking)</title>
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A randomized pack of notes">
     <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2011/05/06/the-art-of-testing-an-ejb-application-part-ii/">
     <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/foundation.css"/>
+    <link rel="stylesheet" href="/css/coderay.css"/>
+    <link rel="stylesheet" href="/css/asciidoctor.css"/>
+    <script src="/js/vendor/modernizr.js"></script>    
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
 
     
     <!-- google analytics async -->
@@ -109,11 +110,11 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Stateless
-public class BusinessService implements BusinessServiceLocal {
-	  @EJB TrimServiceLocal trimService;
-    public BusinessMethodResponse businessMethod(TransferObject obj) {
-      //some logic
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Stateless</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">BusinessService</span> <span class="directive">implements</span> BusinessServiceLocal {
+          <span class="annotation">@EJB</span> TrimServiceLocal trimService;
+    <span class="directive">public</span> BusinessMethodResponse businessMethod(TransferObject obj) {
+      <span class="comment">//some logic</span>
   }
 }</code></pre>
 </div>
@@ -123,20 +124,20 @@ public class BusinessService implements BusinessServiceLocal {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class BusinessServiceTest {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">BusinessServiceTest</span> {
 
   BusinessService businessService;
 
-  @BeforeClass
-  public void setup() {
-    businessService = new BusinessService();
-    businessService.trimService = new TrimService();
+  <span class="annotation">@BeforeClass</span>
+  <span class="directive">public</span> <span class="type">void</span> setup() {
+    businessService = <span class="keyword">new</span> BusinessService();
+    businessService.trimService = <span class="keyword">new</span> TrimService();
   }
 
-  @Test
-  public void successfulBusinessMethodForSpecificCase() {
-    TransferObject obj = new TransferObject();
-    //populate the object
+  <span class="annotation">@Test</span>
+  <span class="directive">public</span> <span class="type">void</span> successfulBusinessMethodForSpecificCase() {
+    TransferObject obj = <span class="keyword">new</span> TransferObject();
+    <span class="comment">//populate the object</span>
 
     BusinessMethodResponse response = businessService.businessMethod(obj);
     Assert.assertNotNull(response);
@@ -163,17 +164,17 @@ public class BusinessService implements BusinessServiceLocal {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Stateless
-public class ConfigService implements ConfigServiceLocal {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Stateless</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ConfigService</span> <span class="directive">implements</span> ConfigServiceLocal {
 
-  @EJB
+  <span class="annotation">@EJB</span>
   CrudServiceLocal crudService;
 
-  public List&lt;String&gt; getConfigCodes(String type) {
-    List&lt;FuncConfg&gt; funcConfgResults =
-      crudService.findByNamedQuery("FuncConfg.findByType", “type”, type);
-    List&lt;String&gt; configCodes = //some additional processing
-    return configCodes;
+  <span class="directive">public</span> <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; getConfigCodes(<span class="predefined-type">String</span> type) {
+    <span class="predefined-type">List</span>&lt;FuncConfg&gt; funcConfgResults =
+      crudService.findByNamedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">FuncConfg.findByType</span><span class="delimiter">&quot;</span></span>, <span class="error">“</span>type<span class="error">”</span>, type);
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; configCodes = <span class="comment">//some additional processing</span>
+    <span class="keyword">return</span> configCodes;
   }
 }</code></pre>
 </div>
@@ -183,31 +184,31 @@ public class ConfigService implements ConfigServiceLocal {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class ConfigServiceTest {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ConfigServiceTest</span> {
 
   ConfigService configService;
 
-  @BeforeClass
-  public void setup() {
-    configService = new ConfigService();
+  <span class="annotation">@BeforeClass</span>
+  <span class="directive">public</span> <span class="type">void</span> setup() {
+    configService = <span class="keyword">new</span> ConfigService();
     configService.crudService = Mockito.mock(CommonCrudService.class);
   }
 
-  @Test
-  public void defaultTypeConfig() {
-    final String deafultType = “defaultType”;
+  <span class="annotation">@Test</span>
+  <span class="directive">public</span> <span class="type">void</span> defaultTypeConfig() {
+    <span class="directive">final</span> <span class="predefined-type">String</span> deafultType = <span class="error">“</span>defaultType<span class="error">”</span>;
     Mockito.when(configService.crudService
-        .findByNamedQuery("FuncConfg.findByType", “type”, defaultType))
+        .findByNamedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">FuncConfg.findByType</span><span class="delimiter">&quot;</span></span>, <span class="error">“</span>type<span class="error">”</span>, defaultType))
         .thenReturn(defaultFuncConfgList());
 
-    List&lt;String&gt; confgCd = configService.getConfigCodes(defaultType);
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; confgCd = configService.getConfigCodes(defaultType);
     Assert.assertNotNull(confgCd);
-    Assert.assertEquals(confgCd.size(), 10);
-    //some additional assertions
+    Assert.assertEquals(confgCd.size(), <span class="integer">10</span>);
+    <span class="comment">//some additional assertions</span>
   }
 
-  private List&lt;FuncConfg&gt; defaultFuncConfgList() {
-    //creates default list of codes
+  <span class="directive">private</span> <span class="predefined-type">List</span>&lt;FuncConfg&gt; defaultFuncConfgList() {
+    <span class="comment">//creates default list of codes</span>
   }
 }</code></pre>
 </div>
@@ -228,71 +229,71 @@ public class ConfigService implements ConfigServiceLocal {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class DataSourceMockUp {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DataSourceMockUp</span> {
 
-  private EntityManager entityManager;
+  <span class="directive">private</span> EntityManager entityManager;
 
-  public DataSourceMockUp(Builder builder) {
-    //bootstrap hibernate
-    Ejb3Configuration config = new Ejb3Configuration();
-    config.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect")
-        .setProperty("javax.persistence.transactionType", "RESOURCE_LOCAL")
-        .setProperty("hibernate.connection.driver_class", "org.hsqldb.jdbcDriver")
-        .setProperty("hibernate.connection.url", "jdbc:hsqldb:mem:testdb")
-        .setProperty("hibernate.connection.username", "sa")
-        .setProperty("hibernate.connection.password", "")
-        .setProperty("hibernate.connection.pool_size", "1")
-        .setProperty("hibernate.connection.autocommit", "true")
-        .setProperty("hibernate.cache.provider_class", "org.hibernate.cache.HashtableCacheProvider")
-        .setProperty("hibernate.hbm2ddl.auto", "create")
-        .setProperty("hibernate.show_sql", "true");
+  <span class="directive">public</span> DataSourceMockUp(Builder builder) {
+    <span class="comment">//bootstrap hibernate</span>
+    Ejb3Configuration config = <span class="keyword">new</span> Ejb3Configuration();
+    config.setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.dialect</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">org.hibernate.dialect.HSQLDialect</span><span class="delimiter">&quot;</span></span>)
+        .setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.persistence.transactionType</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">RESOURCE_LOCAL</span><span class="delimiter">&quot;</span></span>)
+        .setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.connection.driver_class</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">org.hsqldb.jdbcDriver</span><span class="delimiter">&quot;</span></span>)
+        .setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.connection.url</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">jdbc:hsqldb:mem:testdb</span><span class="delimiter">&quot;</span></span>)
+        .setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.connection.username</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">sa</span><span class="delimiter">&quot;</span></span>)
+        .setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.connection.password</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>)
+        .setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.connection.pool_size</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>)
+        .setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.connection.autocommit</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>)
+        .setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.cache.provider_class</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">org.hibernate.cache.HashtableCacheProvider</span><span class="delimiter">&quot;</span></span>)
+        .setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.hbm2ddl.auto</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">create</span><span class="delimiter">&quot;</span></span>)
+        .setProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.show_sql</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>);
 
-    //add entities
-    for (Class&lt;?&gt; clazz : builder.annotatedClass) {
+    <span class="comment">//add entities</span>
+    <span class="keyword">for</span> (<span class="predefined-type">Class</span>&lt;?&gt; clazz : builder.annotatedClass) {
       config.addAnnotatedClass(clazz);
     }
 
-    //set up services
-    //even though the method is deprecated - this is one to be used
-    //https://forum.hibernate.org/viewtopic.php?f=10&amp;t=966871
+    <span class="comment">//set up services</span>
+    <span class="comment">//even though the method is deprecated - this is one to be used</span>
+    <span class="comment">//https://forum.hibernate.org/viewtopic.php?f=10&amp;t=966871</span>
     EntityManagerFactory entityManagerFactory = config.createEntityManagerFactory();
     setEntityManager(entityManagerFactory.createEntityManager());
 
-    //import initial data
+    <span class="comment">//import initial data</span>
     EntityTransaction tx = getEntityManager().getTransaction();
     tx.begin();
 
-    SchemaExport schemaExport = new SchemaExport(config.getHibernateConfiguration());
+    SchemaExport schemaExport = <span class="keyword">new</span> SchemaExport(config.getHibernateConfiguration());
     schemaExport.setImportFile(builder.importSqlFile);
-    schemaExport.create(true, true);
+    schemaExport.create(<span class="predefined-constant">true</span>, <span class="predefined-constant">true</span>);
     tx.commit();
   }
 
-  public static class Builder {
-    private String importSqlFile;
-    private List&lt;Class&lt;?&gt;&gt; annotatedClass = new ArrayList&lt;Class&lt;?&gt;&gt;();
+  <span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">Builder</span> {
+    <span class="directive">private</span> <span class="predefined-type">String</span> importSqlFile;
+    <span class="directive">private</span> <span class="predefined-type">List</span>&lt;<span class="predefined-type">Class</span>&lt;?&gt;&gt; annotatedClass = <span class="keyword">new</span> <span class="predefined-type">ArrayList</span>&lt;<span class="predefined-type">Class</span>&lt;?&gt;&gt;();
 
-    public Builder fromSqlFile(String importSqlFile) {
-      this.importSqlFile = importSqlFile;
-      return this;
+    <span class="directive">public</span> Builder fromSqlFile(<span class="predefined-type">String</span> importSqlFile) {
+      <span class="local-variable">this</span>.importSqlFile = importSqlFile;
+      <span class="keyword">return</span> <span class="local-variable">this</span>;
     }
 
-    public Builder withAnnotatedClass(Class&lt;?&gt; clazz) {
-      this.annotatedClass.add(clazz);
-      return this;
+    <span class="directive">public</span> Builder withAnnotatedClass(<span class="predefined-type">Class</span>&lt;?&gt; clazz) {
+      <span class="local-variable">this</span>.annotatedClass.add(clazz);
+      <span class="keyword">return</span> <span class="local-variable">this</span>;
     }
 
-    public DataSourceMockUp build() {
-      return new DataSourceMockUp(this);
+    <span class="directive">public</span> DataSourceMockUp build() {
+      <span class="keyword">return</span> <span class="keyword">new</span> DataSourceMockUp(<span class="local-variable">this</span>);
     }
   }
 
-  public void setEntityManager(EntityManager entityManager) {
-    this.entityManager = entityManager;
+  <span class="directive">public</span> <span class="type">void</span> setEntityManager(EntityManager entityManager) {
+    <span class="local-variable">this</span>.entityManager = entityManager;
   }
 
-  public EntityManager getEntityManager() {
-    return entityManager;
+  <span class="directive">public</span> EntityManager getEntityManager() {
+    <span class="keyword">return</span> entityManager;
   }
 }</code></pre>
 </div>
@@ -302,27 +303,27 @@ public class ConfigService implements ConfigServiceLocal {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class ConfigServiceTest {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ConfigServiceTest</span> {
   ConfigService configService;
 
-  @BeforeClass
-  public void setup() {
-    DataSourceMockUp mockup = new DataSourceMockUp.Builder()
+  <span class="annotation">@BeforeClass</span>
+  <span class="directive">public</span> <span class="type">void</span> setup() {
+    DataSourceMockUp mockup = <span class="keyword">new</span> DataSourceMockUp.Builder()
         .fromSqlFile(sqlLocation)
         .withAnnotatedClass(FuncConfg.class).build();
 
-    CommonCrudService crudService = new CommonCrudService();
+    CommonCrudService crudService = <span class="keyword">new</span> CommonCrudService();
     crudService.entityManager = mockup.getEntityManager();
 
-    configService = new ConfigService();
+    configService = <span class="keyword">new</span> ConfigService();
     configService.crudService = crudService;
   }
 
-  @Test
-  public void getConfigCodesForDefaultType() {
-    List&lt;String&gt; codes = configService.getConfigCodes(“T”);
+  <span class="annotation">@Test</span>
+  <span class="directive">public</span> <span class="type">void</span> getConfigCodesForDefaultType() {
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; codes = configService.getConfigCodes(<span class="error">“</span>T<span class="error">”</span>);
     Assert.assertNotNull(codes);
-    //... and so on
+    <span class="comment">//... and so on</span>
   }
 }</code></pre>
 </div>
@@ -398,6 +399,19 @@ public class ConfigService implements ConfigServiceLocal {
 
 </footer>
 
+
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation/foundation.js"></script>
+    <script>
+      $(document).foundation();
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);
+    </script>
 
     </body>
 </html>

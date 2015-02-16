@@ -5,17 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>The art of testing an EJB application – Part III (OpenEJB)</title>
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A randomized pack of notes">
     <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2011/06/09/the-art-of-testing-an-ejb-application-openejb/">
     <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/foundation.css"/>
+    <link rel="stylesheet" href="/css/coderay.css"/>
+    <link rel="stylesheet" href="/css/asciidoctor.css"/>
+    <script src="/js/vendor/modernizr.js"></script>    
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
 
     
     <!-- google analytics async -->
@@ -115,18 +116,18 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public interface CalculatingServiceLocal {
-   public int add(int... args);
-   public int subtract(int... args);
-   public int multiply(int... args);
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">interface</span> <span class="class">CalculatingServiceLocal</span> {
+   <span class="directive">public</span> <span class="type">int</span> add(<span class="type">int</span>... args);
+   <span class="directive">public</span> <span class="type">int</span> subtract(<span class="type">int</span>... args);
+   <span class="directive">public</span> <span class="type">int</span> multiply(<span class="type">int</span>... args);
 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public interface MethodControllerLocal {
-   public enum Operator {ADD, SUBTRACT, MULTIPLY};
-   public String calculate(Operator operation, String... args);
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">interface</span> <span class="class">MethodControllerLocal</span> {
+   <span class="directive">public</span> <span class="type">enum</span> Operator {ADD, SUBTRACT, MULTIPLY};
+   <span class="directive">public</span> <span class="predefined-type">String</span> calculate(Operator operation, <span class="predefined-type">String</span>... args);
 }</code></pre>
 </div>
 </div>
@@ -135,12 +136,12 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
-    &lt;groupId&gt;org.apache.openejb&lt;/groupId&gt;
-    &lt;artifactId&gt;openejb-core&lt;/artifactId&gt;
-    &lt;version&gt;3.1&lt;/version&gt;
-    &lt;scope&gt;test&lt;/scope&gt;
-&lt;/dependency&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.apache.openejb<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>openejb-core<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>3.1<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;scope&gt;</span>test<span class="tag">&lt;/scope&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -148,25 +149,25 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class MethodControllerTest {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MethodControllerTest</span> {
 
    MethodControllerLocal controller;
 
-   @BeforeClass
-   public void setup() throws NamingException {
-       InitialContext ctx = new InitialContext();
+   <span class="annotation">@BeforeClass</span>
+   <span class="directive">public</span> <span class="type">void</span> setup() <span class="directive">throws</span> <span class="exception">NamingException</span> {
+       <span class="predefined-type">InitialContext</span> ctx = <span class="keyword">new</span> <span class="predefined-type">InitialContext</span>();
        controller = (MethodControllerLocal) ctx
-               .lookup("MethodControllerLocal");
+               .lookup(<span class="string"><span class="delimiter">&quot;</span><span class="content">MethodControllerLocal</span><span class="delimiter">&quot;</span></span>);
    }
 
-   @Test
-   public void notSupportedOperation() {
-       String calculate = controller.calculate(Operator.MULTIPLY,
-               new String[] { "1", "2" });
-       Assert.assertEquals("501 Not Implemented", calculate);
+   <span class="annotation">@Test</span>
+   <span class="directive">public</span> <span class="type">void</span> notSupportedOperation() {
+       <span class="predefined-type">String</span> calculate = controller.calculate(Operator.MULTIPLY,
+               <span class="keyword">new</span> <span class="predefined-type">String</span><span class="type">[]</span> { <span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span> });
+       Assert.assertEquals(<span class="string"><span class="delimiter">&quot;</span><span class="content">501 Not Implemented</span><span class="delimiter">&quot;</span></span>, calculate);
    }
 
-   //... more test methods
+   <span class="comment">//... more test methods</span>
 }</code></pre>
 </div>
 </div>
@@ -208,63 +209,63 @@ In most cases this works smoothly, with a little jinx: OpenEJB goes nuts when cl
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Entity
-@Table(name = "CALC_RESULTS_TB")
-public class CalculationResult implements Serializable {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Entity</span>
+<span class="annotation">@Table</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">CALC_RESULTS_TB</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">CalculationResult</span> <span class="directive">implements</span> <span class="predefined-type">Serializable</span> {
 
-   private static final long serialVersionUID = -3706396749558191166L;
+   <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">long</span> serialVersionUID = -<span class="integer">3706396749558191166L</span>;
 
-   @Id
-   @Column(name = "CALC_ID",
-	unique = true, nullable = false,
-	precision = 10, scale = 0)
-   @GeneratedValue(generator = "CALC_ID_SEQ")
-   @SequenceGenerator(name = "CALC_ID_SEQ", sequenceName = "CALC_ID_SEQ")
-   private long id;
+   <span class="annotation">@Id</span>
+   <span class="annotation">@Column</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">CALC_ID</span><span class="delimiter">&quot;</span></span>,
+        unique = <span class="predefined-constant">true</span>, nullable = <span class="predefined-constant">false</span>,
+        precision = <span class="integer">10</span>, scale = <span class="integer">0</span>)
+   <span class="annotation">@GeneratedValue</span>(generator = <span class="string"><span class="delimiter">&quot;</span><span class="content">CALC_ID_SEQ</span><span class="delimiter">&quot;</span></span>)
+   <span class="annotation">@SequenceGenerator</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">CALC_ID_SEQ</span><span class="delimiter">&quot;</span></span>, sequenceName = <span class="string"><span class="delimiter">&quot;</span><span class="content">CALC_ID_SEQ</span><span class="delimiter">&quot;</span></span>)
+   <span class="directive">private</span> <span class="type">long</span> id;
 
-   @Column(name = "OPERATION")
-   private String operation;
+   <span class="annotation">@Column</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">OPERATION</span><span class="delimiter">&quot;</span></span>)
+   <span class="directive">private</span> <span class="predefined-type">String</span> operation;
 
-   @Column(name = "ELEMENTS")
-   private String elements;
+   <span class="annotation">@Column</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">ELEMENTS</span><span class="delimiter">&quot;</span></span>)
+   <span class="directive">private</span> <span class="predefined-type">String</span> elements;
 
-   @Column(name = "RESULT")
-   private int result;
+   <span class="annotation">@Column</span>(name = <span class="string"><span class="delimiter">&quot;</span><span class="content">RESULT</span><span class="delimiter">&quot;</span></span>)
+   <span class="directive">private</span> <span class="type">int</span> result;
 
-   //getters and setters
+   <span class="comment">//getters and setters</span>
 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">persistence.xml</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
-	http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"&gt;
-	 &lt;persistence-unit name="ejb-testing-pu" transaction-type="JTA"&gt;
-    &lt;provider&gt;org.hibernate.ejb.HibernatePersistence&lt;/provider&gt;
-    &lt;jta-data-source&gt;java:/DefaultDS&lt;/jta-data-source&gt;
-    &lt;class&gt;pl.marchwicki.ejb.entity.CalculationResult&lt;/class&gt;
-    &lt;properties&gt;
-     &lt;property name="hibernate.show_sql" value="false"/&gt;
-     &lt;property name="hibernate.format_sql" value="true"/&gt;
-     &lt;property name="hibernate.use_sql_comments" value="true"/&gt;
-     &lt;property name="hibernate.dialect"
-		value="org.hibernate.dialect.Oracle9Dialect"/&gt;
-     &lt;property name="hibernate.cache.use_second_level_cache" value="true"/&gt;
-     &lt;property name="hibernate.cache.use_query_cache" value="true" /&gt;
-     &lt;property name="hibernate.cache.provider_class"
-		value="org.jboss.ejb3.entity.TreeCacheProviderHook" /&gt;
-     &lt;property name="treecache.mbean.object_name"
-		value="jboss.cache:service=EJB3EntityTreeCache" /&gt;
-     &lt;property name="hibernate.cache.region_prefix" value="/ejb-testing" /&gt;
-     &lt;property name="hibernate.ejb.naming_strategy"
-		value="org.hibernate.cfg.DefaultComponentSafeNamingStrategy"/&gt;
-    &lt;/properties&gt;
- &lt;/persistence-unit&gt;
-&lt;/persistence&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="tag">&lt;persistence</span> <span class="attribute-name">version</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://java.sun.com/xml/ns/persistence</span><span class="delimiter">&quot;</span></span>
+        <span class="attribute-name">xmlns:xsi</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/2001/XMLSchema-instance</span><span class="delimiter">&quot;</span></span>
+        <span class="attribute-name">xsi:schemaLocation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://java.sun.com/xml/ns/persistence</span>
+        <span class="content">http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+         <span class="tag">&lt;persistence-unit</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ejb-testing-pu</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">transaction-type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">JTA</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;provider&gt;</span>org.hibernate.ejb.HibernatePersistence<span class="tag">&lt;/provider&gt;</span>
+    <span class="tag">&lt;jta-data-source&gt;</span>java:/DefaultDS<span class="tag">&lt;/jta-data-source&gt;</span>
+    <span class="tag">&lt;class&gt;</span>pl.marchwicki.ejb.entity.CalculationResult<span class="tag">&lt;/class&gt;</span>
+    <span class="tag">&lt;properties&gt;</span>
+     <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.show_sql</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+     <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.format_sql</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+     <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.use_sql_comments</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+     <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.dialect</span><span class="delimiter">&quot;</span></span>
+                <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.hibernate.dialect.Oracle9Dialect</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+     <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.cache.use_second_level_cache</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+     <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.cache.use_query_cache</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+     <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.cache.provider_class</span><span class="delimiter">&quot;</span></span>
+                <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.jboss.ejb3.entity.TreeCacheProviderHook</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+     <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">treecache.mbean.object_name</span><span class="delimiter">&quot;</span></span>
+                <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">jboss.cache:service=EJB3EntityTreeCache</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+     <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.cache.region_prefix</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">/ejb-testing</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+     <span class="tag">&lt;property</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">hibernate.ejb.naming_strategy</span><span class="delimiter">&quot;</span></span>
+                <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.hibernate.cfg.DefaultComponentSafeNamingStrategy</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/properties&gt;</span>
+ <span class="tag">&lt;/persistence-unit&gt;</span>
+<span class="tag">&lt;/persistence&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -393,6 +394,19 @@ openejb.descriptors.output = true</pre>
 
 </footer>
 
+
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation/foundation.js"></script>
+    <script>
+      $(document).foundation();
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);
+    </script>
 
     </body>
 </html>

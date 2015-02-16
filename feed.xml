@@ -5,8 +5,8 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 31 Jan 2015 17:34:48 +0000</pubDate>
-    <lastBuildDate>Sat, 31 Jan 2015 17:34:48 +0000</lastBuildDate>
+    <pubDate>Mon, 16 Feb 2015 23:07:23 +0000</pubDate>
+    <lastBuildDate>Mon, 16 Feb 2015 23:07:23 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -97,38 +97,38 @@ As we&amp;#8217;ve been refactoring one of our internal systems (upgrade from Ra
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-jsp&quot; data-lang=&quot;jsp&quot;&gt;&amp;lt;%-- MAIN FRAME --%&amp;gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;jsp&quot;&gt;&amp;lt;%-- MAIN FRAME --%&amp;gt;
 
-&amp;lt;div style=&#39;width:100%; height:344px; display: block&#39; id=&quot;mainmenu_ifr&quot;&amp;gt;
-&amp;lt;table border=&#39;0&#39; cellspacing=&#39;0&#39; cellpadding=&#39;0&#39; width=&#39;100%&#39; style=&quot;margin-top:15px;&quot;&amp;gt;
+&amp;lt;div style=&#39;width:100%; height:344px; display: block&#39; id=&amp;quot;mainmenu_ifr&amp;quot;&amp;gt;
+&amp;lt;table border=&#39;0&#39; cellspacing=&#39;0&#39; cellpadding=&#39;0&#39; width=&#39;100%&#39; style=&amp;quot;margin-top:15px;&amp;quot;&amp;gt;
 &amp;lt;tr&amp;gt;
-&amp;lt;td valign=&#39;top&#39; width=&quot;200&quot; align=&quot;center&quot;&amp;gt;
+&amp;lt;td valign=&#39;top&#39; width=&amp;quot;200&amp;quot; align=&amp;quot;center&amp;quot;&amp;gt;
 
 &amp;lt;%
-String prac_pnr =(String)session.getAttribute(&quot;prac_pnr&quot;);
-if (prac_pnr ==null) prac_pnr =&quot;&quot;;
+String prac_pnr =(String)session.getAttribute(&amp;quot;prac_pnr&amp;quot;);
+if (prac_pnr ==null) prac_pnr =&amp;quot;&amp;quot;;
 
 
 YdpPssClient client = new YdpPssClient();
-String key=&quot;&quot;;
+String key=&amp;quot;&amp;quot;;
 String logaid=prac_pnr;
-String mode=&quot;small&quot;;
+String mode=&amp;quot;small&amp;quot;;
 LAOSL1.setPP_LANG(langs[lang]);
 LAOSL1.setPP_NSP(user_nsp);
 LAOSL1.setPP_NRZK(user_nrzk);
 LAOSL1.setPP_PNR(loga_pnr);
-Manager.refresh(LAOSL1,(String)session.getAttribute(&quot;AdeliaKeyPoolName&quot;));
+Manager.refresh(LAOSL1,(String)session.getAttribute(&amp;quot;AdeliaKeyPoolName&amp;quot;));
 %&amp;gt;
 
-&amp;lt;%@ page import=&quot;org.apache.axis.encoding.Base64&quot; %&amp;gt;
+&amp;lt;%@ page import=&amp;quot;org.apache.axis.encoding.Base64&amp;quot; %&amp;gt;
 &amp;lt;%
 String encoded = Base64.encode(client.getUserFotoFromWServices(key,logaid,mode));
 %&amp;gt;
 
 &amp;lt;% if(encoded!= null) { %&amp;gt;
-  &amp;lt;IMG src=&quot;data:image/png;base64,&amp;lt;%=encoded%&amp;gt;&quot; border=&quot;0&quot; id=&quot;test&quot;&amp;gt;
+  &amp;lt;IMG src=&amp;quot;data:image/png;base64,&amp;lt;%=encoded%&amp;gt;&amp;quot; border=&amp;quot;0&amp;quot; id=&amp;quot;test&amp;quot;&amp;gt;
 &amp;lt;% }else{ %&amp;gt;
-  &amp;lt;IMG height=&quot;177&quot; src=&quot;pics/noImage.jpg&quot; border=&quot;0&quot; id=&quot;test&quot;&amp;gt;
+  &amp;lt;IMG height=&amp;quot;177&amp;quot; src=&amp;quot;pics/noImage.jpg&amp;quot; border=&amp;quot;0&amp;quot; id=&amp;quot;test&amp;quot;&amp;gt;
 &amp;lt;% } %&amp;gt;
 &amp;lt;/td&amp;gt;
 &amp;lt;/tr&amp;gt;
@@ -140,10 +140,10 @@ String encoded = Base64.encode(client.getUserFotoFromWServices(key,logaid,mode))
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class BusinessClass {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;BusinessClass&lt;/span&gt; {
 
-  public String businessMethod(String param) {
-    return param.split(&quot; &quot;)[0];
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; businessMethod(&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; param) {
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; param.split(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt; &lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)[&lt;span class=&quot;integer&quot;&gt;0&lt;/span&gt;];
   }
 
 }&lt;/code&gt;&lt;/pre&gt;
@@ -154,21 +154,21 @@ String encoded = Base64.encode(client.getUserFotoFromWServices(key,logaid,mode))
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class BusinessClassTest {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;BusinessClassTest&lt;/span&gt; {
 
-  @ClassRule
-  public static CharacterizationRule rule =
+  &lt;span class=&quot;annotation&quot;&gt;@ClassRule&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;static&lt;/span&gt; CharacterizationRule rule =
       aRuleFor(BusinessClassTest.class)
       .build();
 
-  private BusinessClass service = new BusinessClass();
+  &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; BusinessClass service = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; BusinessClass();
 
-  @Test
-  public void just_run_the_method() {
-    final String param = &quot;first parameter&quot;
-    System.out.println(&quot;param = &quot; + param);
-    String output = service.businessMethod(param);
-    System.out.println(&quot;after split = &quot; + output);
+  &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; just_run_the_method() {
+    &lt;span class=&quot;directive&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; param = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;first parameter&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.out.println(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;param = &lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; + param);
+    &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; output = service.businessMethod(param);
+    &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.out.println(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;after split = &lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; + output);
   }
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -200,17 +200,17 @@ String encoded = Base64.encode(client.getUserFotoFromWServices(key,logaid,mode))
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;final public static String ENV_NAME_FOR_RECORDING = &quot;pinchpoint&quot;;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; ENV_NAME_FOR_RECORDING = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;pinchpoint&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;;
 
-private boolean isRecording() {
-  String env = System.getProperty(ENV_NAME_FOR_RECORDING);
-  return (env != null);
+&lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;boolean&lt;/span&gt; isRecording() {
+  &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; env = &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.getProperty(ENV_NAME_FOR_RECORDING);
+  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; (env != &lt;span class=&quot;predefined-constant&quot;&gt;null&lt;/span&gt;);
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;mvn test -Dpinchpoint=true -Dtest=BusinessCodeTest&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;shell&quot;&gt;mvn test -Dpinchpoint=true -Dtest=BusinessCodeTest&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -229,22 +229,22 @@ private boolean isRecording() {
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class FileOutputCapture extends ExternalResource {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;FileOutputCapture&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;extends&lt;/span&gt; ExternalResource {
 
-  protected void before() throws Throwable {
-    original = System.out;
-    PrintStream pos = new PrintStream(capturedStream);
-    System.setOut(pos); &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;
+  &lt;span class=&quot;directive&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; before() &lt;span class=&quot;directive&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;Throwable&lt;/span&gt; {
+    original = &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.out;
+    &lt;span class=&quot;predefined-type&quot;&gt;PrintStream&lt;/span&gt; pos = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;PrintStream&lt;/span&gt;(capturedStream);
+    &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.setOut(pos); &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;
   }
 
-  protected void after() {
-    System.setOut(original);    &lt;b class=&quot;conum&quot;&gt;(2)&lt;/b&gt;
-    try {
+  &lt;span class=&quot;directive&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; after() {
+    &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.setOut(original);    &lt;b class=&quot;conum&quot;&gt;(2)&lt;/b&gt;
+    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
       Files.write(outputFile.toPath(),
       capturedStream.toByteArray(),
       StandardOpenOption.APPEND);   &lt;b class=&quot;conum&quot;&gt;(3)&lt;/b&gt;
-    } catch (IOException e) {
-      throw new RuntimeException(&quot;File write failed! &quot;, e);
+    } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (&lt;span class=&quot;exception&quot;&gt;IOException&lt;/span&gt; e) {
+      &lt;span class=&quot;keyword&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;exception&quot;&gt;RuntimeException&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;File write failed! &lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, e);
     }
   }
 }&lt;/code&gt;&lt;/pre&gt;
@@ -269,17 +269,17 @@ private boolean isRecording() {
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class StreamOutputCapture extends ExternalResource {
-  PrintStream original;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;StreamOutputCapture&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;extends&lt;/span&gt; ExternalResource {
+  &lt;span class=&quot;predefined-type&quot;&gt;PrintStream&lt;/span&gt; original;
 
-  protected void before() throws Throwable {
-    original = System.out;
-    PrintStream pos = new PrintStream(capturedStream);
-    System.setOut(pos);
+  &lt;span class=&quot;directive&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; before() &lt;span class=&quot;directive&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;Throwable&lt;/span&gt; {
+    original = &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.out;
+    &lt;span class=&quot;predefined-type&quot;&gt;PrintStream&lt;/span&gt; pos = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;PrintStream&lt;/span&gt;(capturedStream);
+    &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.setOut(pos);
   }
 
-  protected void after() {
-    System.setOut(original);
+  &lt;span class=&quot;directive&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; after() {
+    &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.setOut(original);
   }
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -296,13 +296,13 @@ private boolean isRecording() {
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class CaptureVerifier extends Verifier {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;CaptureVerifier&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;extends&lt;/span&gt; Verifier {
 
-  protected void verify() throws Throwable {
-    List&amp;lt;String&amp;gt; actual = ReadLines.fromStream(capturedStream);
-    List&amp;lt;String&amp;gt; original = ReadLines.fromFile(pinchFile);
+  &lt;span class=&quot;directive&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; verify() &lt;span class=&quot;directive&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;Throwable&lt;/span&gt; {
+    &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&amp;gt; actual = ReadLines.fromStream(capturedStream);
+    &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&amp;gt; original = ReadLines.fromFile(pinchFile);
 
-    Patch&amp;lt;String&amp;gt; patch = DiffUtils.diff(original, actual);
+    &lt;span class=&quot;predefined-type&quot;&gt;Patch&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&amp;gt; patch = DiffUtils.diff(original, actual);
 
     assertThat(patch, is(empty()));
   }
@@ -314,7 +314,7 @@ private boolean isRecording() {
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-txt&quot; data-lang=&quot;txt&quot;&gt;java.lang.AssertionError:
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;txt&quot;&gt;java.lang.AssertionError:
 File:
   &amp;lt;/tmp/com.example.BusinessClassTest.txt&amp;gt;
 read with charset &amp;lt;UTF-8&amp;gt; does not have the expected content:
@@ -332,12 +332,12 @@ line: &amp;lt;3&amp;gt;, expected:&amp;lt;something&amp;gt; but was:&amp;lt;some
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;dependency&amp;gt;
-  &amp;lt;groupId&amp;gt;pl.marchwicki&amp;lt;/groupId&amp;gt;
-  &amp;lt;artifactId&amp;gt;junit-characterization&amp;lt;/artifactId&amp;gt;
-  &amp;lt;packaging&amp;gt;jar&amp;lt;/packaging&amp;gt;
-  &amp;lt;version&amp;gt;0.3&amp;lt;/version&amp;gt;
-&amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;pl.marchwicki&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;junit-characterization&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;packaging&amp;gt;&lt;/span&gt;jar&lt;span class=&quot;tag&quot;&gt;&amp;lt;/packaging&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;0.3&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -380,8 +380,8 @@ line: &amp;lt;3&amp;gt;, expected:&amp;lt;something&amp;gt; but was:&amp;lt;some
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;  @Inject
-  private DSLContext ctx;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;  &lt;span class=&quot;annotation&quot;&gt;@Inject&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; DSLContext ctx;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -416,23 +416,23 @@ line: &amp;lt;3&amp;gt;, expected:&amp;lt;something&amp;gt; but was:&amp;lt;some
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Resource
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Resource&lt;/span&gt;
 UserTransaction tx
 
-public void transactionalOperation() {}
-  try {
+&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; transactionalOperation() {}
+  &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
     tx.begin();
 
-    //some operations on DSLContext
+    &lt;span class=&quot;comment&quot;&gt;//some operations on DSLContext&lt;/span&gt;
 
     tx.commit();
 
-  } catch (HeuristicRollbackException |
+  } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (HeuristicRollbackException |
     RollbackException |
     NotSupportedException |
     HeuristicMixedException e) {
       tx.rollback();
-      throw new RuntimeException(e);
+      &lt;span class=&quot;keyword&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;exception&quot;&gt;RuntimeException&lt;/span&gt;(e);
   }
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -447,27 +447,27 @@ public void transactionalOperation() {}
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;datasources&amp;gt;
-  &amp;lt;datasource
-    jndi-name=&quot;java:jboss/datasources/JooqExampleDS&quot;
-    pool-name=&quot;JooqExampleDS&quot;
-    enabled=&quot;true&quot;
-    use-java-context=&quot;true&quot;&amp;gt;
-    &amp;lt;connection-url&amp;gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;datasources&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;datasource&lt;/span&gt;
+    &lt;span class=&quot;attribute-name&quot;&gt;jndi-name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;java:jboss/datasources/JooqExampleDS&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;attribute-name&quot;&gt;pool-name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;JooqExampleDS&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;attribute-name&quot;&gt;enabled&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;attribute-name&quot;&gt;use-java-context&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;connection-url&amp;gt;&lt;/span&gt;
       jdbc:mysql://localhost/jooq
-    &amp;lt;/connection-url&amp;gt;
-    &amp;lt;driver&amp;gt;mysql&amp;lt;/driver&amp;gt;
-    &amp;lt;security&amp;gt;
-      &amp;lt;user-name&amp;gt;username&amp;lt;/user-name&amp;gt;
-      &amp;lt;password&amp;gt;password&amp;lt;/password&amp;gt;
-    &amp;lt;/security&amp;gt;
-  &amp;lt;/datasource&amp;gt;
-  &amp;lt;drivers&amp;gt;
-    &amp;lt;driver name=&quot;mysql&quot; module=&quot;com.mysql&quot;&amp;gt; &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;
-      &amp;lt;driver-class&amp;gt;com.mysql.jdbc.Driver&amp;lt;/driver-class&amp;gt;
-    &amp;lt;/driver&amp;gt;
-  &amp;lt;/drivers&amp;gt;
-&amp;lt;/datasources&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/connection-url&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;driver&amp;gt;&lt;/span&gt;mysql&lt;span class=&quot;tag&quot;&gt;&amp;lt;/driver&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;security&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;user-name&amp;gt;&lt;/span&gt;username&lt;span class=&quot;tag&quot;&gt;&amp;lt;/user-name&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;password&amp;gt;&lt;/span&gt;password&lt;span class=&quot;tag&quot;&gt;&amp;lt;/password&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/security&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/datasource&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;drivers&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;driver&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;mysql&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;module&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;com.mysql&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt; &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;driver-class&amp;gt;&lt;/span&gt;com.mysql.jdbc.Driver&lt;span class=&quot;tag&quot;&gt;&amp;lt;/driver-class&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/driver&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/drivers&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/datasources&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;colist arabic&quot;&gt;
@@ -977,40 +977,40 @@ Objective feedback. From non violent communication. Refer to objectives: things 
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Stateless
-@LocalBinding(jndiBinding = &quot;mybindings/Logger&quot;)
-public class ExternalLogger implements ExternalLoggerLocal {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Stateless&lt;/span&gt;
+&lt;span class=&quot;annotation&quot;&gt;@LocalBinding&lt;/span&gt;(jndiBinding = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;mybindings/Logger&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;ExternalLogger&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;implements&lt;/span&gt; ExternalLoggerLocal {
 
-  public void log(String str) {
-    System.out.println(&quot;Logging: &quot; + str);
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; log(&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; str) {
+    &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.out.println(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Logging: &lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; + str);
   }
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Stateless
-public class LoggerFacade implements LoggerFacadeLocal {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Stateless&lt;/span&gt;
+&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;LoggerFacade&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;implements&lt;/span&gt; LoggerFacadeLocal {
 
-  ExternalLoggerLocal log = null;
+  ExternalLoggerLocal log = &lt;span class=&quot;predefined-constant&quot;&gt;null&lt;/span&gt;;
 
-  @PostConstruct
-  public void postConstruct() {
-    try {
-        InitialContext ctx = new InitialContext();
-        log = (ExternalLoggerLocal) ctx.lookup(&quot;mybindings/Logger&quot;);
-    } catch (NamingException e) {
+  &lt;span class=&quot;annotation&quot;&gt;@PostConstruct&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; postConstruct() {
+    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
+        &lt;span class=&quot;predefined-type&quot;&gt;InitialContext&lt;/span&gt; ctx = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;InitialContext&lt;/span&gt;();
+        log = (ExternalLoggerLocal) ctx.lookup(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;mybindings/Logger&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
+    } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (&lt;span class=&quot;exception&quot;&gt;NamingException&lt;/span&gt; e) {
         e.printStackTrace();
     }
   }
 
-  public boolean log(String str) {
-    if (log != null) {
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;boolean&lt;/span&gt; log(&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; str) {
+    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (log != &lt;span class=&quot;predefined-constant&quot;&gt;null&lt;/span&gt;) {
       log.log(str);
-      return true;
+      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;predefined-constant&quot;&gt;true&lt;/span&gt;;
     }
 
-    return false;
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;predefined-constant&quot;&gt;false&lt;/span&gt;;
   }
 
 }&lt;/code&gt;&lt;/pre&gt;
@@ -1018,15 +1018,15 @@ public class LoggerFacade implements LoggerFacadeLocal {
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Stateless
-public class BusinessService implements BusinessServiceLocal {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Stateless&lt;/span&gt;
+&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;BusinessService&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;implements&lt;/span&gt; BusinessServiceLocal {
 
-  @EJB
+  &lt;span class=&quot;annotation&quot;&gt;@EJB&lt;/span&gt;
   LoggerFacadeLocal logger;
 
-  public String doSomeImportantStuff() {
-    logger.log(&quot;Running doSomeImportantStuff()&quot;);
-    return &quot;Done&quot;;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; doSomeImportantStuff() {
+    logger.log(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Running doSomeImportantStuff()&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Done&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;;
   }
 
 }&lt;/code&gt;&lt;/pre&gt;
@@ -1052,22 +1052,22 @@ Despite the simplicity, this is a fully working application (JBoss 4.2.x deploya
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@RunWith(ApplicationComposer.class)
-public class NoActiveLoggerTest {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@RunWith&lt;/span&gt;(ApplicationComposer.class)
+&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;NoActiveLoggerTest&lt;/span&gt; {
 
-  @EJB
+  &lt;span class=&quot;annotation&quot;&gt;@EJB&lt;/span&gt;
   LoggerFacadeLocal facade;
 
-  @Module
-  public EjbJar beans() {
-    EjbJar ejbJar = new EjbJar(&quot;loggging-app&quot;);
-    ejbJar.addEnterpriseBean(new StatelessBean(LoggerFacade.class));
-    return ejbJar;
+  &lt;span class=&quot;annotation&quot;&gt;@Module&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; EjbJar beans() {
+    EjbJar ejbJar = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; EjbJar(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;loggging-app&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
+    ejbJar.addEnterpriseBean(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StatelessBean(LoggerFacade.class));
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ejbJar;
   }
 
-  @Test
-  public void facadeReturnsFalseOnNoActiveLogger() {
-    assertFalse(facade.log(&quot;Echo&quot;));
+  &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; facadeReturnsFalseOnNoActiveLogger() {
+    assertFalse(facade.log(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Echo&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;));
   }
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1080,30 +1080,30 @@ public class NoActiveLoggerTest {
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@RunWith(ApplicationComposer.class)
-public class ActiveLoggerTest {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@RunWith&lt;/span&gt;(ApplicationComposer.class)
+&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;ActiveLoggerTest&lt;/span&gt; {
 
-  @EJB
+  &lt;span class=&quot;annotation&quot;&gt;@EJB&lt;/span&gt;
   LoggerFacadeLocal facade;
 
-  @Module
-  public EjbModule module() {
-    EjbJar ejbJar = new EjbJar(&quot;loggging-app&quot;);
-    ejbJar.addEnterpriseBean(new StatelessBean(LoggerFacade.class));
-    ejbJar.addEnterpriseBean(new StatelessBean(ExternalLogger.class));
+  &lt;span class=&quot;annotation&quot;&gt;@Module&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; EjbModule module() {
+    EjbJar ejbJar = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; EjbJar(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;loggging-app&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
+    ejbJar.addEnterpriseBean(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StatelessBean(LoggerFacade.class));
+    ejbJar.addEnterpriseBean(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StatelessBean(ExternalLogger.class));
 
-    EjbModule ejbModule = new EjbModule(ejbJar, new OpenejbJar());
+    EjbModule ejbModule = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; EjbModule(ejbJar, &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; OpenejbJar());
     EjbDeployment deployment =
-      new EjbDeployment(new StatefulBean(ExternalLogger.class));
-    deployment.getJndi().add(new Jndi(&quot;mybindings/Logger&quot;, &quot;Local&quot;));
+      &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; EjbDeployment(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StatefulBean(ExternalLogger.class));
+    deployment.getJndi().add(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Jndi(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;mybindings/Logger&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Local&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;));
     ejbModule.getOpenejbJar().addEjbDeployment(deployment);
 
-    return ejbModule;
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ejbModule;
   }
 
-  @Test
-  public void facadeReturnsTrueOnActiveLoggerPresent() {
-    assertTrue(facade.log(&quot;Echo&quot;));
+  &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; facadeReturnsTrueOnActiveLoggerPresent() {
+    assertTrue(facade.log(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Echo&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;));
   }
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1246,21 +1246,21 @@ So that is the mapper. What’s still needed is a reducer. All the services use 
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class MethodControllerTest extends AbstractOpenEJBTestNG {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;MethodControllerTest&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;extends&lt;/span&gt; AbstractOpenEJBTestNG {
 
-  @EJB
+  &lt;span class=&quot;annotation&quot;&gt;@EJB&lt;/span&gt;
   MethodControllerLocal controller;
 
-  @Module
-  public EjbJar beans() {
-    EjbJar ejbJar = new EjbJar(&quot;calculation-beans&quot;);
-    ejbJar.addEnterpriseBean(new StatelessBean(TestingDisplayingService.class));
-    ejbJar.addEnterpriseBean(new StatelessBean(CalculatingService.class));
-    ejbJar.addEnterpriseBean(new StatelessBean(MethodController.class));
-    return ejbJar;
+  &lt;span class=&quot;annotation&quot;&gt;@Module&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; EjbJar beans() {
+    EjbJar ejbJar = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; EjbJar(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;calculation-beans&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
+    ejbJar.addEnterpriseBean(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StatelessBean(TestingDisplayingService.class));
+    ejbJar.addEnterpriseBean(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StatelessBean(CalculatingService.class));
+    ejbJar.addEnterpriseBean(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StatelessBean(MethodController.class));
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ejbJar;
   }
 
-  //... some test methods
+  &lt;span class=&quot;comment&quot;&gt;//... some test methods&lt;/span&gt;
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1319,10 +1319,10 @@ So that is the mapper. What’s still needed is a reducer. All the services use 
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;dependency&amp;gt;
-  &amp;lt;groupId&amp;gt;jboss&amp;lt;/groupId&amp;gt;
-  &amp;lt;artifactId&amp;gt;jboss-annotations-ejb3&amp;lt;/artifactId&amp;gt;
-&amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;jboss&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;jboss-annotations-ejb3&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1330,10 +1330,10 @@ So that is the mapper. What’s still needed is a reducer. All the services use 
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Service(objectName=&quot;pl.marchwicki.view.settings:service=displaySettings&quot;)
-@Management(DisplaySettingsMBean.class)
-public class DisplaySettings implements DisplaySettingsMBean {
-  //... business methods
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Service&lt;/span&gt;(objectName=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;pl.marchwicki.view.settings:service=displaySettings&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+&lt;span class=&quot;annotation&quot;&gt;@Management&lt;/span&gt;(DisplaySettingsMBean.class)
+&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;DisplaySettings&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;implements&lt;/span&gt; DisplaySettingsMBean {
+  &lt;span class=&quot;comment&quot;&gt;//... business methods&lt;/span&gt;
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1400,27 +1400,27 @@ WARN - Injection data not found in enc:
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;
-&amp;lt;ejb-jar&amp;gt;
-  &amp;lt;enterprise-beans&amp;gt;
-    &amp;lt;session&amp;gt;
-      &amp;lt;ejb-name&amp;gt;DisplaySettings&amp;lt;/ejb-name&amp;gt;
-    &amp;lt;business-local&amp;gt;pl.marchwicki.ejb.view.configuration.DisplaySettingsMBean&amp;lt;/business-local&amp;gt;
-      &amp;lt;ejb-class&amp;gt;pl.marchwicki.ejb.view.configuration.DisplaySettings&amp;lt;/ejb-class&amp;gt;
-      &amp;lt;session-type&amp;gt;Stateless&amp;lt;/session-type&amp;gt;
-      &amp;lt;env-entry&amp;gt;
-        &amp;lt;description&amp;gt;Display template&amp;lt;/description&amp;gt;
-        &amp;lt;env-entry-name&amp;gt;setDisplayTemplate&amp;lt;/env-entry-name&amp;gt;
-        &amp;lt;env-entry-type&amp;gt;java.lang.String&amp;lt;/env-entry-type&amp;gt;
-        &amp;lt;env-entry-value&amp;gt;------- {} -------&amp;lt;/env-entry-value&amp;gt;
-        &amp;lt;injection-target&amp;gt;
-	          &amp;lt;injection-target-class&amp;gt;pl.marchwicki.ejb.view.configuration.DisplaySettings&amp;lt;/injection-target-class&amp;gt;
-          &amp;lt;injection-target-name&amp;gt;setDisplayTemplate&amp;lt;/injection-target-name&amp;gt;
-        &amp;lt;/injection-target&amp;gt;
-      &amp;lt;/env-entry&amp;gt;
-    &amp;lt;/session&amp;gt;
-  &amp;lt;/enterprise-beans&amp;gt;
-&amp;lt;/ejb-jar&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;ejb-jar&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;enterprise-beans&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;session&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;ejb-name&amp;gt;&lt;/span&gt;DisplaySettings&lt;span class=&quot;tag&quot;&gt;&amp;lt;/ejb-name&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;business-local&amp;gt;&lt;/span&gt;pl.marchwicki.ejb.view.configuration.DisplaySettingsMBean&lt;span class=&quot;tag&quot;&gt;&amp;lt;/business-local&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;ejb-class&amp;gt;&lt;/span&gt;pl.marchwicki.ejb.view.configuration.DisplaySettings&lt;span class=&quot;tag&quot;&gt;&amp;lt;/ejb-class&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;session-type&amp;gt;&lt;/span&gt;Stateless&lt;span class=&quot;tag&quot;&gt;&amp;lt;/session-type&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;env-entry&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;description&amp;gt;&lt;/span&gt;Display template&lt;span class=&quot;tag&quot;&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;env-entry-name&amp;gt;&lt;/span&gt;setDisplayTemplate&lt;span class=&quot;tag&quot;&gt;&amp;lt;/env-entry-name&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;env-entry-type&amp;gt;&lt;/span&gt;java.lang.String&lt;span class=&quot;tag&quot;&gt;&amp;lt;/env-entry-type&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;env-entry-value&amp;gt;&lt;/span&gt;------- {} -------&lt;span class=&quot;tag&quot;&gt;&amp;lt;/env-entry-value&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;injection-target&amp;gt;&lt;/span&gt;
+                  &lt;span class=&quot;tag&quot;&gt;&amp;lt;injection-target-class&amp;gt;&lt;/span&gt;pl.marchwicki.ejb.view.configuration.DisplaySettings&lt;span class=&quot;tag&quot;&gt;&amp;lt;/injection-target-class&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;tag&quot;&gt;&amp;lt;injection-target-name&amp;gt;&lt;/span&gt;setDisplayTemplate&lt;span class=&quot;tag&quot;&gt;&amp;lt;/injection-target-name&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/injection-target&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;/env-entry&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/session&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/enterprise-beans&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/ejb-jar&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1436,21 +1436,21 @@ WARN - Injection data not found in enc:
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class CalculationFacadeTest {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;CalculationFacadeTest&lt;/span&gt; {
 
   CalculationFacadeLocal facade;
 
-  @BeforeClass
-  public void setup() throws NamingException {
-    InitialContext ctx = new InitialContext();
-    facade = (CalculationFacadeLocal) ctx.lookup(&quot;CalculationFacadeLocal&quot;);
+  &lt;span class=&quot;annotation&quot;&gt;@BeforeClass&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; setup() &lt;span class=&quot;directive&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;exception&quot;&gt;NamingException&lt;/span&gt; {
+    &lt;span class=&quot;predefined-type&quot;&gt;InitialContext&lt;/span&gt; ctx = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;InitialContext&lt;/span&gt;();
+    facade = (CalculationFacadeLocal) ctx.lookup(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;CalculationFacadeLocal&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
   }
 
-  @Test
-  public void simpleAdding() {
-    String args = &quot;1;2;3;4&quot;;
-    String calculate = facade.add(args);
-    Assert.assertEquals(&quot;200 OK&quot;, calculate);
+  &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; simpleAdding() {
+    &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; args = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;1;2;3;4&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;;
+    &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; calculate = facade.add(args);
+    Assert.assertEquals(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;200 OK&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, calculate);
   }
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1534,18 +1534,18 @@ WARN - Injection data not found in enc:
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public interface CalculatingServiceLocal {
-   public int add(int... args);
-   public int subtract(int... args);
-   public int multiply(int... args);
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;CalculatingServiceLocal&lt;/span&gt; {
+   &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; add(&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt;... args);
+   &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; subtract(&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt;... args);
+   &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; multiply(&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt;... args);
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public interface MethodControllerLocal {
-   public enum Operator {ADD, SUBTRACT, MULTIPLY};
-   public String calculate(Operator operation, String... args);
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;MethodControllerLocal&lt;/span&gt; {
+   &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;enum&lt;/span&gt; Operator {ADD, SUBTRACT, MULTIPLY};
+   &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; calculate(Operator operation, &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;... args);
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1554,12 +1554,12 @@ WARN - Injection data not found in enc:
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.apache.openejb&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;openejb-core&amp;lt;/artifactId&amp;gt;
-    &amp;lt;version&amp;gt;3.1&amp;lt;/version&amp;gt;
-    &amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-&amp;lt;/dependency&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.openejb&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;openejb-core&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;3.1&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;scope&amp;gt;&lt;/span&gt;test&lt;span class=&quot;tag&quot;&gt;&amp;lt;/scope&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1567,25 +1567,25 @@ WARN - Injection data not found in enc:
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class MethodControllerTest {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;MethodControllerTest&lt;/span&gt; {
 
    MethodControllerLocal controller;
 
-   @BeforeClass
-   public void setup() throws NamingException {
-       InitialContext ctx = new InitialContext();
+   &lt;span class=&quot;annotation&quot;&gt;@BeforeClass&lt;/span&gt;
+   &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; setup() &lt;span class=&quot;directive&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;exception&quot;&gt;NamingException&lt;/span&gt; {
+       &lt;span class=&quot;predefined-type&quot;&gt;InitialContext&lt;/span&gt; ctx = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;InitialContext&lt;/span&gt;();
        controller = (MethodControllerLocal) ctx
-               .lookup(&quot;MethodControllerLocal&quot;);
+               .lookup(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;MethodControllerLocal&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
    }
 
-   @Test
-   public void notSupportedOperation() {
-       String calculate = controller.calculate(Operator.MULTIPLY,
-               new String[] { &quot;1&quot;, &quot;2&quot; });
-       Assert.assertEquals(&quot;501 Not Implemented&quot;, calculate);
+   &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
+   &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; notSupportedOperation() {
+       &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; calculate = controller.calculate(Operator.MULTIPLY,
+               &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;type&quot;&gt;[]&lt;/span&gt; { &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; });
+       Assert.assertEquals(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;501 Not Implemented&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, calculate);
    }
 
-   //... more test methods
+   &lt;span class=&quot;comment&quot;&gt;//... more test methods&lt;/span&gt;
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1627,63 +1627,63 @@ In most cases this works smoothly, with a little jinx: OpenEJB goes nuts when cl
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Entity
-@Table(name = &quot;CALC_RESULTS_TB&quot;)
-public class CalculationResult implements Serializable {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;annotation&quot;&gt;@Table&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;CALC_RESULTS_TB&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;CalculationResult&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;Serializable&lt;/span&gt; {
 
-   private static final long serialVersionUID = -3706396749558191166L;
+   &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;long&lt;/span&gt; serialVersionUID = -&lt;span class=&quot;integer&quot;&gt;3706396749558191166L&lt;/span&gt;;
 
-   @Id
-   @Column(name = &quot;CALC_ID&quot;,
-	unique = true, nullable = false,
-	precision = 10, scale = 0)
-   @GeneratedValue(generator = &quot;CALC_ID_SEQ&quot;)
-   @SequenceGenerator(name = &quot;CALC_ID_SEQ&quot;, sequenceName = &quot;CALC_ID_SEQ&quot;)
-   private long id;
+   &lt;span class=&quot;annotation&quot;&gt;@Id&lt;/span&gt;
+   &lt;span class=&quot;annotation&quot;&gt;@Column&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;CALC_ID&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
+        unique = &lt;span class=&quot;predefined-constant&quot;&gt;true&lt;/span&gt;, nullable = &lt;span class=&quot;predefined-constant&quot;&gt;false&lt;/span&gt;,
+        precision = &lt;span class=&quot;integer&quot;&gt;10&lt;/span&gt;, scale = &lt;span class=&quot;integer&quot;&gt;0&lt;/span&gt;)
+   &lt;span class=&quot;annotation&quot;&gt;@GeneratedValue&lt;/span&gt;(generator = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;CALC_ID_SEQ&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+   &lt;span class=&quot;annotation&quot;&gt;@SequenceGenerator&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;CALC_ID_SEQ&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, sequenceName = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;CALC_ID_SEQ&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+   &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;long&lt;/span&gt; id;
 
-   @Column(name = &quot;OPERATION&quot;)
-   private String operation;
+   &lt;span class=&quot;annotation&quot;&gt;@Column&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;OPERATION&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+   &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; operation;
 
-   @Column(name = &quot;ELEMENTS&quot;)
-   private String elements;
+   &lt;span class=&quot;annotation&quot;&gt;@Column&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;ELEMENTS&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+   &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; elements;
 
-   @Column(name = &quot;RESULT&quot;)
-   private int result;
+   &lt;span class=&quot;annotation&quot;&gt;@Column&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;RESULT&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+   &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; result;
 
-   //getters and setters
+   &lt;span class=&quot;comment&quot;&gt;//getters and setters&lt;/span&gt;
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;persistence.xml&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;
-&amp;lt;persistence version=&quot;1.0&quot; xmlns=&quot;http://java.sun.com/xml/ns/persistence&quot;
-	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-	xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/persistence
-	http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd&quot;&amp;gt;
-	 &amp;lt;persistence-unit name=&quot;ejb-testing-pu&quot; transaction-type=&quot;JTA&quot;&amp;gt;
-    &amp;lt;provider&amp;gt;org.hibernate.ejb.HibernatePersistence&amp;lt;/provider&amp;gt;
-    &amp;lt;jta-data-source&amp;gt;java:/DefaultDS&amp;lt;/jta-data-source&amp;gt;
-    &amp;lt;class&amp;gt;pl.marchwicki.ejb.entity.CalculationResult&amp;lt;/class&amp;gt;
-    &amp;lt;properties&amp;gt;
-     &amp;lt;property name=&quot;hibernate.show_sql&quot; value=&quot;false&quot;/&amp;gt;
-     &amp;lt;property name=&quot;hibernate.format_sql&quot; value=&quot;true&quot;/&amp;gt;
-     &amp;lt;property name=&quot;hibernate.use_sql_comments&quot; value=&quot;true&quot;/&amp;gt;
-     &amp;lt;property name=&quot;hibernate.dialect&quot;
-		value=&quot;org.hibernate.dialect.Oracle9Dialect&quot;/&amp;gt;
-     &amp;lt;property name=&quot;hibernate.cache.use_second_level_cache&quot; value=&quot;true&quot;/&amp;gt;
-     &amp;lt;property name=&quot;hibernate.cache.use_query_cache&quot; value=&quot;true&quot; /&amp;gt;
-     &amp;lt;property name=&quot;hibernate.cache.provider_class&quot;
-		value=&quot;org.jboss.ejb3.entity.TreeCacheProviderHook&quot; /&amp;gt;
-     &amp;lt;property name=&quot;treecache.mbean.object_name&quot;
-		value=&quot;jboss.cache:service=EJB3EntityTreeCache&quot; /&amp;gt;
-     &amp;lt;property name=&quot;hibernate.cache.region_prefix&quot; value=&quot;/ejb-testing&quot; /&amp;gt;
-     &amp;lt;property name=&quot;hibernate.ejb.naming_strategy&quot;
-		value=&quot;org.hibernate.cfg.DefaultComponentSafeNamingStrategy&quot;/&amp;gt;
-    &amp;lt;/properties&amp;gt;
- &amp;lt;/persistence-unit&amp;gt;
-&amp;lt;/persistence&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;persistence&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;version&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;xmlns&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;http://java.sun.com/xml/ns/persistence&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+        &lt;span class=&quot;attribute-name&quot;&gt;xmlns:xsi&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;http://www.w3.org/2001/XMLSchema-instance&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+        &lt;span class=&quot;attribute-name&quot;&gt;xsi:schemaLocation&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;http://java.sun.com/xml/ns/persistence&lt;/span&gt;
+        &lt;span class=&quot;content&quot;&gt;http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+         &lt;span class=&quot;tag&quot;&gt;&amp;lt;persistence-unit&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;ejb-testing-pu&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;transaction-type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;JTA&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;provider&amp;gt;&lt;/span&gt;org.hibernate.ejb.HibernatePersistence&lt;span class=&quot;tag&quot;&gt;&amp;lt;/provider&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;jta-data-source&amp;gt;&lt;/span&gt;java:/DefaultDS&lt;span class=&quot;tag&quot;&gt;&amp;lt;/jta-data-source&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;class&amp;gt;&lt;/span&gt;pl.marchwicki.ejb.entity.CalculationResult&lt;span class=&quot;tag&quot;&gt;&amp;lt;/class&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;properties&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.show_sql&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.format_sql&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.use_sql_comments&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.dialect&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+                &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.hibernate.dialect.Oracle9Dialect&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.cache.use_second_level_cache&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.cache.use_query_cache&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.cache.provider_class&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+                &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.jboss.ejb3.entity.TreeCacheProviderHook&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;treecache.mbean.object_name&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+                &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;jboss.cache:service=EJB3EntityTreeCache&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.cache.region_prefix&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;/ejb-testing&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
+     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.ejb.naming_strategy&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+                &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.hibernate.cfg.DefaultComponentSafeNamingStrategy&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/properties&amp;gt;&lt;/span&gt;
+ &lt;span class=&quot;tag&quot;&gt;&amp;lt;/persistence-unit&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/persistence&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1768,11 +1768,11 @@ openejb.descriptors.output = true&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Stateless
-public class BusinessService implements BusinessServiceLocal {
-	  @EJB TrimServiceLocal trimService;
-    public BusinessMethodResponse businessMethod(TransferObject obj) {
-      //some logic
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Stateless&lt;/span&gt;
+&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;BusinessService&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;implements&lt;/span&gt; BusinessServiceLocal {
+          &lt;span class=&quot;annotation&quot;&gt;@EJB&lt;/span&gt; TrimServiceLocal trimService;
+    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; BusinessMethodResponse businessMethod(TransferObject obj) {
+      &lt;span class=&quot;comment&quot;&gt;//some logic&lt;/span&gt;
   }
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1782,20 +1782,20 @@ public class BusinessService implements BusinessServiceLocal {
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class BusinessServiceTest {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;BusinessServiceTest&lt;/span&gt; {
 
   BusinessService businessService;
 
-  @BeforeClass
-  public void setup() {
-    businessService = new BusinessService();
-    businessService.trimService = new TrimService();
+  &lt;span class=&quot;annotation&quot;&gt;@BeforeClass&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; setup() {
+    businessService = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; BusinessService();
+    businessService.trimService = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; TrimService();
   }
 
-  @Test
-  public void successfulBusinessMethodForSpecificCase() {
-    TransferObject obj = new TransferObject();
-    //populate the object
+  &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; successfulBusinessMethodForSpecificCase() {
+    TransferObject obj = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; TransferObject();
+    &lt;span class=&quot;comment&quot;&gt;//populate the object&lt;/span&gt;
 
     BusinessMethodResponse response = businessService.businessMethod(obj);
     Assert.assertNotNull(response);
@@ -1822,17 +1822,17 @@ public class BusinessService implements BusinessServiceLocal {
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;@Stateless
-public class ConfigService implements ConfigServiceLocal {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Stateless&lt;/span&gt;
+&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;ConfigService&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;implements&lt;/span&gt; ConfigServiceLocal {
 
-  @EJB
+  &lt;span class=&quot;annotation&quot;&gt;@EJB&lt;/span&gt;
   CrudServiceLocal crudService;
 
-  public List&amp;lt;String&amp;gt; getConfigCodes(String type) {
-    List&amp;lt;FuncConfg&amp;gt; funcConfgResults =
-      crudService.findByNamedQuery(&quot;FuncConfg.findByType&quot;, “type”, type);
-    List&amp;lt;String&amp;gt; configCodes = //some additional processing
-    return configCodes;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&amp;gt; getConfigCodes(&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; type) {
+    &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;FuncConfg&amp;gt; funcConfgResults =
+      crudService.findByNamedQuery(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;FuncConfg.findByType&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;error&quot;&gt;“&lt;/span&gt;type&lt;span class=&quot;error&quot;&gt;”&lt;/span&gt;, type);
+    &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&amp;gt; configCodes = &lt;span class=&quot;comment&quot;&gt;//some additional processing&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; configCodes;
   }
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1842,31 +1842,31 @@ public class ConfigService implements ConfigServiceLocal {
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class ConfigServiceTest {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;ConfigServiceTest&lt;/span&gt; {
 
   ConfigService configService;
 
-  @BeforeClass
-  public void setup() {
-    configService = new ConfigService();
+  &lt;span class=&quot;annotation&quot;&gt;@BeforeClass&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; setup() {
+    configService = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ConfigService();
     configService.crudService = Mockito.mock(CommonCrudService.class);
   }
 
-  @Test
-  public void defaultTypeConfig() {
-    final String deafultType = “defaultType”;
+  &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; defaultTypeConfig() {
+    &lt;span class=&quot;directive&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; deafultType = &lt;span class=&quot;error&quot;&gt;“&lt;/span&gt;defaultType&lt;span class=&quot;error&quot;&gt;”&lt;/span&gt;;
     Mockito.when(configService.crudService
-        .findByNamedQuery(&quot;FuncConfg.findByType&quot;, “type”, defaultType))
+        .findByNamedQuery(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;FuncConfg.findByType&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;error&quot;&gt;“&lt;/span&gt;type&lt;span class=&quot;error&quot;&gt;”&lt;/span&gt;, defaultType))
         .thenReturn(defaultFuncConfgList());
 
-    List&amp;lt;String&amp;gt; confgCd = configService.getConfigCodes(defaultType);
+    &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&amp;gt; confgCd = configService.getConfigCodes(defaultType);
     Assert.assertNotNull(confgCd);
-    Assert.assertEquals(confgCd.size(), 10);
-    //some additional assertions
+    Assert.assertEquals(confgCd.size(), &lt;span class=&quot;integer&quot;&gt;10&lt;/span&gt;);
+    &lt;span class=&quot;comment&quot;&gt;//some additional assertions&lt;/span&gt;
   }
 
-  private List&amp;lt;FuncConfg&amp;gt; defaultFuncConfgList() {
-    //creates default list of codes
+  &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;FuncConfg&amp;gt; defaultFuncConfgList() {
+    &lt;span class=&quot;comment&quot;&gt;//creates default list of codes&lt;/span&gt;
   }
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1887,71 +1887,71 @@ public class ConfigService implements ConfigServiceLocal {
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class DataSourceMockUp {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;DataSourceMockUp&lt;/span&gt; {
 
-  private EntityManager entityManager;
+  &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; EntityManager entityManager;
 
-  public DataSourceMockUp(Builder builder) {
-    //bootstrap hibernate
-    Ejb3Configuration config = new Ejb3Configuration();
-    config.setProperty(&quot;hibernate.dialect&quot;, &quot;org.hibernate.dialect.HSQLDialect&quot;)
-        .setProperty(&quot;javax.persistence.transactionType&quot;, &quot;RESOURCE_LOCAL&quot;)
-        .setProperty(&quot;hibernate.connection.driver_class&quot;, &quot;org.hsqldb.jdbcDriver&quot;)
-        .setProperty(&quot;hibernate.connection.url&quot;, &quot;jdbc:hsqldb:mem:testdb&quot;)
-        .setProperty(&quot;hibernate.connection.username&quot;, &quot;sa&quot;)
-        .setProperty(&quot;hibernate.connection.password&quot;, &quot;&quot;)
-        .setProperty(&quot;hibernate.connection.pool_size&quot;, &quot;1&quot;)
-        .setProperty(&quot;hibernate.connection.autocommit&quot;, &quot;true&quot;)
-        .setProperty(&quot;hibernate.cache.provider_class&quot;, &quot;org.hibernate.cache.HashtableCacheProvider&quot;)
-        .setProperty(&quot;hibernate.hbm2ddl.auto&quot;, &quot;create&quot;)
-        .setProperty(&quot;hibernate.show_sql&quot;, &quot;true&quot;);
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; DataSourceMockUp(Builder builder) {
+    &lt;span class=&quot;comment&quot;&gt;//bootstrap hibernate&lt;/span&gt;
+    Ejb3Configuration config = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Ejb3Configuration();
+    config.setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.dialect&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.hibernate.dialect.HSQLDialect&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;javax.persistence.transactionType&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;RESOURCE_LOCAL&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.connection.driver_class&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.hsqldb.jdbcDriver&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.connection.url&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;jdbc:hsqldb:mem:testdb&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.connection.username&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;sa&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.connection.password&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.connection.pool_size&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.connection.autocommit&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.cache.provider_class&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.hibernate.cache.HashtableCacheProvider&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.hbm2ddl.auto&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
+        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.show_sql&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
 
-    //add entities
-    for (Class&amp;lt;?&amp;gt; clazz : builder.annotatedClass) {
+    &lt;span class=&quot;comment&quot;&gt;//add entities&lt;/span&gt;
+    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;predefined-type&quot;&gt;Class&lt;/span&gt;&amp;lt;?&amp;gt; clazz : builder.annotatedClass) {
       config.addAnnotatedClass(clazz);
     }
 
-    //set up services
-    //even though the method is deprecated - this is one to be used
-    //https://forum.hibernate.org/viewtopic.php?f=10&amp;amp;t=966871
+    &lt;span class=&quot;comment&quot;&gt;//set up services&lt;/span&gt;
+    &lt;span class=&quot;comment&quot;&gt;//even though the method is deprecated - this is one to be used&lt;/span&gt;
+    &lt;span class=&quot;comment&quot;&gt;//https://forum.hibernate.org/viewtopic.php?f=10&amp;amp;t=966871&lt;/span&gt;
     EntityManagerFactory entityManagerFactory = config.createEntityManagerFactory();
     setEntityManager(entityManagerFactory.createEntityManager());
 
-    //import initial data
+    &lt;span class=&quot;comment&quot;&gt;//import initial data&lt;/span&gt;
     EntityTransaction tx = getEntityManager().getTransaction();
     tx.begin();
 
-    SchemaExport schemaExport = new SchemaExport(config.getHibernateConfiguration());
+    SchemaExport schemaExport = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SchemaExport(config.getHibernateConfiguration());
     schemaExport.setImportFile(builder.importSqlFile);
-    schemaExport.create(true, true);
+    schemaExport.create(&lt;span class=&quot;predefined-constant&quot;&gt;true&lt;/span&gt;, &lt;span class=&quot;predefined-constant&quot;&gt;true&lt;/span&gt;);
     tx.commit();
   }
 
-  public static class Builder {
-    private String importSqlFile;
-    private List&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; annotatedClass = new ArrayList&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt;();
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;Builder&lt;/span&gt; {
+    &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; importSqlFile;
+    &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;Class&lt;/span&gt;&amp;lt;?&amp;gt;&amp;gt; annotatedClass = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;ArrayList&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;Class&lt;/span&gt;&amp;lt;?&amp;gt;&amp;gt;();
 
-    public Builder fromSqlFile(String importSqlFile) {
-      this.importSqlFile = importSqlFile;
-      return this;
+    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; Builder fromSqlFile(&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; importSqlFile) {
+      &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;.importSqlFile = importSqlFile;
+      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;;
     }
 
-    public Builder withAnnotatedClass(Class&amp;lt;?&amp;gt; clazz) {
-      this.annotatedClass.add(clazz);
-      return this;
+    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; Builder withAnnotatedClass(&lt;span class=&quot;predefined-type&quot;&gt;Class&lt;/span&gt;&amp;lt;?&amp;gt; clazz) {
+      &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;.annotatedClass.add(clazz);
+      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;;
     }
 
-    public DataSourceMockUp build() {
-      return new DataSourceMockUp(this);
+    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; DataSourceMockUp build() {
+      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; DataSourceMockUp(&lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;);
     }
   }
 
-  public void setEntityManager(EntityManager entityManager) {
-    this.entityManager = entityManager;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; setEntityManager(EntityManager entityManager) {
+    &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;.entityManager = entityManager;
   }
 
-  public EntityManager getEntityManager() {
-    return entityManager;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; EntityManager getEntityManager() {
+    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; entityManager;
   }
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1961,27 +1961,27 @@ public class ConfigService implements ConfigServiceLocal {
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlightjs highlight&quot;&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;public class ConfigServiceTest {
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;ConfigServiceTest&lt;/span&gt; {
   ConfigService configService;
 
-  @BeforeClass
-  public void setup() {
-    DataSourceMockUp mockup = new DataSourceMockUp.Builder()
+  &lt;span class=&quot;annotation&quot;&gt;@BeforeClass&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; setup() {
+    DataSourceMockUp mockup = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; DataSourceMockUp.Builder()
         .fromSqlFile(sqlLocation)
         .withAnnotatedClass(FuncConfg.class).build();
 
-    CommonCrudService crudService = new CommonCrudService();
+    CommonCrudService crudService = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; CommonCrudService();
     crudService.entityManager = mockup.getEntityManager();
 
-    configService = new ConfigService();
+    configService = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ConfigService();
     configService.crudService = crudService;
   }
 
-  @Test
-  public void getConfigCodesForDefaultType() {
-    List&amp;lt;String&amp;gt; codes = configService.getConfigCodes(“T”);
+  &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
+  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; getConfigCodesForDefaultType() {
+    &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&amp;gt; codes = configService.getConfigCodes(&lt;span class=&quot;error&quot;&gt;“&lt;/span&gt;T&lt;span class=&quot;error&quot;&gt;”&lt;/span&gt;);
     Assert.assertNotNull(codes);
-    //... and so on
+    &lt;span class=&quot;comment&quot;&gt;//... and so on&lt;/span&gt;
   }
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;

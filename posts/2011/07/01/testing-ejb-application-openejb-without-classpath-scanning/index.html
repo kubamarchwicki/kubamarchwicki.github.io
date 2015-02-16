@@ -5,17 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>(…) testing EJB application – Part V (OpenEJB without classpath scanning)</title>
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A randomized pack of notes">
     <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2011/07/01/testing-ejb-application-openejb-without-classpath-scanning/">
     <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/foundation.css"/>
+    <link rel="stylesheet" href="/css/coderay.css"/>
+    <link rel="stylesheet" href="/css/asciidoctor.css"/>
+    <script src="/js/vendor/modernizr.js"></script>    
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
 
     
     <!-- google analytics async -->
@@ -120,21 +121,21 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class MethodControllerTest extends AbstractOpenEJBTestNG {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MethodControllerTest</span> <span class="directive">extends</span> AbstractOpenEJBTestNG {
 
-  @EJB
+  <span class="annotation">@EJB</span>
   MethodControllerLocal controller;
 
-  @Module
-  public EjbJar beans() {
-    EjbJar ejbJar = new EjbJar("calculation-beans");
-    ejbJar.addEnterpriseBean(new StatelessBean(TestingDisplayingService.class));
-    ejbJar.addEnterpriseBean(new StatelessBean(CalculatingService.class));
-    ejbJar.addEnterpriseBean(new StatelessBean(MethodController.class));
-    return ejbJar;
+  <span class="annotation">@Module</span>
+  <span class="directive">public</span> EjbJar beans() {
+    EjbJar ejbJar = <span class="keyword">new</span> EjbJar(<span class="string"><span class="delimiter">&quot;</span><span class="content">calculation-beans</span><span class="delimiter">&quot;</span></span>);
+    ejbJar.addEnterpriseBean(<span class="keyword">new</span> StatelessBean(TestingDisplayingService.class));
+    ejbJar.addEnterpriseBean(<span class="keyword">new</span> StatelessBean(CalculatingService.class));
+    ejbJar.addEnterpriseBean(<span class="keyword">new</span> StatelessBean(MethodController.class));
+    <span class="keyword">return</span> ejbJar;
   }
 
-  //... some test methods
+  <span class="comment">//... some test methods</span>
 }</code></pre>
 </div>
 </div>
@@ -226,6 +227,19 @@
 
 </footer>
 
+
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation/foundation.js"></script>
+    <script>
+      $(document).foundation();
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);
+    </script>
 
     </body>
 </html>

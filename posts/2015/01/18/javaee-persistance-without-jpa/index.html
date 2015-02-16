@@ -5,17 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Java EE persistence without JPA</title>
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A randomized pack of notes">
     <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2015/01/18/javaee-persistance-without-jpa/">
     <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/foundation.css"/>
+    <link rel="stylesheet" href="/css/coderay.css"/>
+    <link rel="stylesheet" href="/css/asciidoctor.css"/>
+    <script src="/js/vendor/modernizr.js"></script>    
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
 
     
     <!-- google analytics async -->
@@ -109,8 +110,8 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">  @Inject
-  private DSLContext ctx;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="java">  <span class="annotation">@Inject</span>
+  <span class="directive">private</span> DSLContext ctx;</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -145,23 +146,23 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Resource
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Resource</span>
 UserTransaction tx
 
-public void transactionalOperation() {}
-  try {
+<span class="directive">public</span> <span class="type">void</span> transactionalOperation() {}
+  <span class="keyword">try</span> {
     tx.begin();
 
-    //some operations on DSLContext
+    <span class="comment">//some operations on DSLContext</span>
 
     tx.commit();
 
-  } catch (HeuristicRollbackException |
+  } <span class="keyword">catch</span> (HeuristicRollbackException |
     RollbackException |
     NotSupportedException |
     HeuristicMixedException e) {
       tx.rollback();
-      throw new RuntimeException(e);
+      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">RuntimeException</span>(e);
   }
 }</code></pre>
 </div>
@@ -176,27 +177,27 @@ public void transactionalOperation() {}
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;datasources&gt;
-  &lt;datasource
-    jndi-name="java:jboss/datasources/JooqExampleDS"
-    pool-name="JooqExampleDS"
-    enabled="true"
-    use-java-context="true"&gt;
-    &lt;connection-url&gt;
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;datasources&gt;</span>
+  <span class="tag">&lt;datasource</span>
+    <span class="attribute-name">jndi-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">java:jboss/datasources/JooqExampleDS</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">pool-name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">JooqExampleDS</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">enabled</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">use-java-context</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;connection-url&gt;</span>
       jdbc:mysql://localhost/jooq
-    &lt;/connection-url&gt;
-    &lt;driver&gt;mysql&lt;/driver&gt;
-    &lt;security&gt;
-      &lt;user-name&gt;username&lt;/user-name&gt;
-      &lt;password&gt;password&lt;/password&gt;
-    &lt;/security&gt;
-  &lt;/datasource&gt;
-  &lt;drivers&gt;
-    &lt;driver name="mysql" module="com.mysql"&gt; <b class="conum">(1)</b>
-      &lt;driver-class&gt;com.mysql.jdbc.Driver&lt;/driver-class&gt;
-    &lt;/driver&gt;
-  &lt;/drivers&gt;
-&lt;/datasources&gt;</code></pre>
+    <span class="tag">&lt;/connection-url&gt;</span>
+    <span class="tag">&lt;driver&gt;</span>mysql<span class="tag">&lt;/driver&gt;</span>
+    <span class="tag">&lt;security&gt;</span>
+      <span class="tag">&lt;user-name&gt;</span>username<span class="tag">&lt;/user-name&gt;</span>
+      <span class="tag">&lt;password&gt;</span>password<span class="tag">&lt;/password&gt;</span>
+    <span class="tag">&lt;/security&gt;</span>
+  <span class="tag">&lt;/datasource&gt;</span>
+  <span class="tag">&lt;drivers&gt;</span>
+    <span class="tag">&lt;driver</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">mysql</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">module</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">com.mysql</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <b class="conum">(1)</b>
+      <span class="tag">&lt;driver-class&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/driver-class&gt;</span>
+    <span class="tag">&lt;/driver&gt;</span>
+  <span class="tag">&lt;/drivers&gt;</span>
+<span class="tag">&lt;/datasources&gt;</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -282,6 +283,19 @@ public void transactionalOperation() {}
 
 </footer>
 
+
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation/foundation.js"></script>
+    <script>
+      $(document).foundation();
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);
+    </script>
 
     </body>
 </html>

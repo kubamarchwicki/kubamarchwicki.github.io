@@ -5,17 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>(…) testing EJB application – Part VI (OpenEJB test and custom JNDI lookups)</title>
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A randomized pack of notes">
     <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2012/02/04/testing-ejb-application-openejb-test-and-custom-jndi-lookups/">
     <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/foundation.css"/>
+    <link rel="stylesheet" href="/css/coderay.css"/>
+    <link rel="stylesheet" href="/css/asciidoctor.css"/>
+    <script src="/js/vendor/modernizr.js"></script>    
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
 
     
     <!-- google analytics async -->
@@ -121,40 +122,40 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Stateless
-@LocalBinding(jndiBinding = "mybindings/Logger")
-public class ExternalLogger implements ExternalLoggerLocal {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Stateless</span>
+<span class="annotation">@LocalBinding</span>(jndiBinding = <span class="string"><span class="delimiter">&quot;</span><span class="content">mybindings/Logger</span><span class="delimiter">&quot;</span></span>)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ExternalLogger</span> <span class="directive">implements</span> ExternalLoggerLocal {
 
-  public void log(String str) {
-    System.out.println("Logging: " + str);
+  <span class="directive">public</span> <span class="type">void</span> log(<span class="predefined-type">String</span> str) {
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">Logging: </span><span class="delimiter">&quot;</span></span> + str);
   }
 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Stateless
-public class LoggerFacade implements LoggerFacadeLocal {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Stateless</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">LoggerFacade</span> <span class="directive">implements</span> LoggerFacadeLocal {
 
-  ExternalLoggerLocal log = null;
+  ExternalLoggerLocal log = <span class="predefined-constant">null</span>;
 
-  @PostConstruct
-  public void postConstruct() {
-    try {
-        InitialContext ctx = new InitialContext();
-        log = (ExternalLoggerLocal) ctx.lookup("mybindings/Logger");
-    } catch (NamingException e) {
+  <span class="annotation">@PostConstruct</span>
+  <span class="directive">public</span> <span class="type">void</span> postConstruct() {
+    <span class="keyword">try</span> {
+        <span class="predefined-type">InitialContext</span> ctx = <span class="keyword">new</span> <span class="predefined-type">InitialContext</span>();
+        log = (ExternalLoggerLocal) ctx.lookup(<span class="string"><span class="delimiter">&quot;</span><span class="content">mybindings/Logger</span><span class="delimiter">&quot;</span></span>);
+    } <span class="keyword">catch</span> (<span class="exception">NamingException</span> e) {
         e.printStackTrace();
     }
   }
 
-  public boolean log(String str) {
-    if (log != null) {
+  <span class="directive">public</span> <span class="type">boolean</span> log(<span class="predefined-type">String</span> str) {
+    <span class="keyword">if</span> (log != <span class="predefined-constant">null</span>) {
       log.log(str);
-      return true;
+      <span class="keyword">return</span> <span class="predefined-constant">true</span>;
     }
 
-    return false;
+    <span class="keyword">return</span> <span class="predefined-constant">false</span>;
   }
 
 }</code></pre>
@@ -162,15 +163,15 @@ public class LoggerFacade implements LoggerFacadeLocal {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">@Stateless
-public class BusinessService implements BusinessServiceLocal {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Stateless</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">BusinessService</span> <span class="directive">implements</span> BusinessServiceLocal {
 
-  @EJB
+  <span class="annotation">@EJB</span>
   LoggerFacadeLocal logger;
 
-  public String doSomeImportantStuff() {
-    logger.log("Running doSomeImportantStuff()");
-    return "Done";
+  <span class="directive">public</span> <span class="predefined-type">String</span> doSomeImportantStuff() {
+    logger.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Running doSomeImportantStuff()</span><span class="delimiter">&quot;</span></span>);
+    <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Done</span><span class="delimiter">&quot;</span></span>;
   }
 
 }</code></pre>
@@ -196,22 +197,22 @@ Despite the simplicity, this is a fully working application (JBoss 4.2.x deploya
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">@RunWith(ApplicationComposer.class)
-public class NoActiveLoggerTest {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@RunWith</span>(ApplicationComposer.class)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">NoActiveLoggerTest</span> {
 
-  @EJB
+  <span class="annotation">@EJB</span>
   LoggerFacadeLocal facade;
 
-  @Module
-  public EjbJar beans() {
-    EjbJar ejbJar = new EjbJar("loggging-app");
-    ejbJar.addEnterpriseBean(new StatelessBean(LoggerFacade.class));
-    return ejbJar;
+  <span class="annotation">@Module</span>
+  <span class="directive">public</span> EjbJar beans() {
+    EjbJar ejbJar = <span class="keyword">new</span> EjbJar(<span class="string"><span class="delimiter">&quot;</span><span class="content">loggging-app</span><span class="delimiter">&quot;</span></span>);
+    ejbJar.addEnterpriseBean(<span class="keyword">new</span> StatelessBean(LoggerFacade.class));
+    <span class="keyword">return</span> ejbJar;
   }
 
-  @Test
-  public void facadeReturnsFalseOnNoActiveLogger() {
-    assertFalse(facade.log("Echo"));
+  <span class="annotation">@Test</span>
+  <span class="directive">public</span> <span class="type">void</span> facadeReturnsFalseOnNoActiveLogger() {
+    assertFalse(facade.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Echo</span><span class="delimiter">&quot;</span></span>));
   }
 }</code></pre>
 </div>
@@ -224,30 +225,30 @@ public class NoActiveLoggerTest {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">@RunWith(ApplicationComposer.class)
-public class ActiveLoggerTest {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@RunWith</span>(ApplicationComposer.class)
+<span class="directive">public</span> <span class="type">class</span> <span class="class">ActiveLoggerTest</span> {
 
-  @EJB
+  <span class="annotation">@EJB</span>
   LoggerFacadeLocal facade;
 
-  @Module
-  public EjbModule module() {
-    EjbJar ejbJar = new EjbJar("loggging-app");
-    ejbJar.addEnterpriseBean(new StatelessBean(LoggerFacade.class));
-    ejbJar.addEnterpriseBean(new StatelessBean(ExternalLogger.class));
+  <span class="annotation">@Module</span>
+  <span class="directive">public</span> EjbModule module() {
+    EjbJar ejbJar = <span class="keyword">new</span> EjbJar(<span class="string"><span class="delimiter">&quot;</span><span class="content">loggging-app</span><span class="delimiter">&quot;</span></span>);
+    ejbJar.addEnterpriseBean(<span class="keyword">new</span> StatelessBean(LoggerFacade.class));
+    ejbJar.addEnterpriseBean(<span class="keyword">new</span> StatelessBean(ExternalLogger.class));
 
-    EjbModule ejbModule = new EjbModule(ejbJar, new OpenejbJar());
+    EjbModule ejbModule = <span class="keyword">new</span> EjbModule(ejbJar, <span class="keyword">new</span> OpenejbJar());
     EjbDeployment deployment =
-      new EjbDeployment(new StatefulBean(ExternalLogger.class));
-    deployment.getJndi().add(new Jndi("mybindings/Logger", "Local"));
+      <span class="keyword">new</span> EjbDeployment(<span class="keyword">new</span> StatefulBean(ExternalLogger.class));
+    deployment.getJndi().add(<span class="keyword">new</span> Jndi(<span class="string"><span class="delimiter">&quot;</span><span class="content">mybindings/Logger</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Local</span><span class="delimiter">&quot;</span></span>));
     ejbModule.getOpenejbJar().addEjbDeployment(deployment);
 
-    return ejbModule;
+    <span class="keyword">return</span> ejbModule;
   }
 
-  @Test
-  public void facadeReturnsTrueOnActiveLoggerPresent() {
-    assertTrue(facade.log("Echo"));
+  <span class="annotation">@Test</span>
+  <span class="directive">public</span> <span class="type">void</span> facadeReturnsTrueOnActiveLoggerPresent() {
+    assertTrue(facade.log(<span class="string"><span class="delimiter">&quot;</span><span class="content">Echo</span><span class="delimiter">&quot;</span></span>));
   }
 }</code></pre>
 </div>
@@ -337,6 +338,19 @@ INFO - Jndi(name=mybindings/Logger) --&gt; Ejb(deployment-id=ExternalLogger)</pr
 
 </footer>
 
+
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation/foundation.js"></script>
+    <script>
+      $(document).foundation();
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);
+    </script>
 
     </body>
 </html>

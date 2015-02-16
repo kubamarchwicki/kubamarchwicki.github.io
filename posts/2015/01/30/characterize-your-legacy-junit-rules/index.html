@@ -5,17 +5,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Characterize your legacy with junit</title>
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A randomized pack of notes">
     <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2015/01/30/characterize-your-legacy-junit-rules/">
     <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/foundation.css"/>
+    <link rel="stylesheet" href="/css/coderay.css"/>
+    <link rel="stylesheet" href="/css/asciidoctor.css"/>
+    <script src="/js/vendor/modernizr.js"></script>    
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
 
     
     <!-- google analytics async -->
@@ -184,38 +185,38 @@ As we&#8217;ve been refactoring one of our internal systems (upgrade from Rails 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-jsp" data-lang="jsp">&lt;%-- MAIN FRAME --%&gt;
+<pre class="CodeRay highlight"><code data-lang="jsp">&lt;%-- MAIN FRAME --%&gt;
 
-&lt;div style='width:100%; height:344px; display: block' id="mainmenu_ifr"&gt;
-&lt;table border='0' cellspacing='0' cellpadding='0' width='100%' style="margin-top:15px;"&gt;
+&lt;div style='width:100%; height:344px; display: block' id=&quot;mainmenu_ifr&quot;&gt;
+&lt;table border='0' cellspacing='0' cellpadding='0' width='100%' style=&quot;margin-top:15px;&quot;&gt;
 &lt;tr&gt;
-&lt;td valign='top' width="200" align="center"&gt;
+&lt;td valign='top' width=&quot;200&quot; align=&quot;center&quot;&gt;
 
 &lt;%
-String prac_pnr =(String)session.getAttribute("prac_pnr");
-if (prac_pnr ==null) prac_pnr ="";
+String prac_pnr =(String)session.getAttribute(&quot;prac_pnr&quot;);
+if (prac_pnr ==null) prac_pnr =&quot;&quot;;
 
 
 YdpPssClient client = new YdpPssClient();
-String key="";
+String key=&quot;&quot;;
 String logaid=prac_pnr;
-String mode="small";
+String mode=&quot;small&quot;;
 LAOSL1.setPP_LANG(langs[lang]);
 LAOSL1.setPP_NSP(user_nsp);
 LAOSL1.setPP_NRZK(user_nrzk);
 LAOSL1.setPP_PNR(loga_pnr);
-Manager.refresh(LAOSL1,(String)session.getAttribute("AdeliaKeyPoolName"));
+Manager.refresh(LAOSL1,(String)session.getAttribute(&quot;AdeliaKeyPoolName&quot;));
 %&gt;
 
-&lt;%@ page import="org.apache.axis.encoding.Base64" %&gt;
+&lt;%@ page import=&quot;org.apache.axis.encoding.Base64&quot; %&gt;
 &lt;%
 String encoded = Base64.encode(client.getUserFotoFromWServices(key,logaid,mode));
 %&gt;
 
 &lt;% if(encoded!= null) { %&gt;
-  &lt;IMG src="data:image/png;base64,&lt;%=encoded%&gt;" border="0" id="test"&gt;
+  &lt;IMG src=&quot;data:image/png;base64,&lt;%=encoded%&gt;&quot; border=&quot;0&quot; id=&quot;test&quot;&gt;
 &lt;% }else{ %&gt;
-  &lt;IMG height="177" src="pics/noImage.jpg" border="0" id="test"&gt;
+  &lt;IMG height=&quot;177&quot; src=&quot;pics/noImage.jpg&quot; border=&quot;0&quot; id=&quot;test&quot;&gt;
 &lt;% } %&gt;
 &lt;/td&gt;
 &lt;/tr&gt;
@@ -227,10 +228,10 @@ String encoded = Base64.encode(client.getUserFotoFromWServices(key,logaid,mode))
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class BusinessClass {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">BusinessClass</span> {
 
-  public String businessMethod(String param) {
-    return param.split(" ")[0];
+  <span class="directive">public</span> <span class="predefined-type">String</span> businessMethod(<span class="predefined-type">String</span> param) {
+    <span class="keyword">return</span> param.split(<span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>)[<span class="integer">0</span>];
   }
 
 }</code></pre>
@@ -241,21 +242,21 @@ String encoded = Base64.encode(client.getUserFotoFromWServices(key,logaid,mode))
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class BusinessClassTest {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">BusinessClassTest</span> {
 
-  @ClassRule
-  public static CharacterizationRule rule =
+  <span class="annotation">@ClassRule</span>
+  <span class="directive">public</span> <span class="directive">static</span> CharacterizationRule rule =
       aRuleFor(BusinessClassTest.class)
       .build();
 
-  private BusinessClass service = new BusinessClass();
+  <span class="directive">private</span> BusinessClass service = <span class="keyword">new</span> BusinessClass();
 
-  @Test
-  public void just_run_the_method() {
-    final String param = "first parameter"
-    System.out.println("param = " + param);
-    String output = service.businessMethod(param);
-    System.out.println("after split = " + output);
+  <span class="annotation">@Test</span>
+  <span class="directive">public</span> <span class="type">void</span> just_run_the_method() {
+    <span class="directive">final</span> <span class="predefined-type">String</span> param = <span class="string"><span class="delimiter">&quot;</span><span class="content">first parameter</span><span class="delimiter">&quot;</span></span>
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">param = </span><span class="delimiter">&quot;</span></span> + param);
+    <span class="predefined-type">String</span> output = service.businessMethod(param);
+    <span class="predefined-type">System</span>.out.println(<span class="string"><span class="delimiter">&quot;</span><span class="content">after split = </span><span class="delimiter">&quot;</span></span> + output);
   }
 }</code></pre>
 </div>
@@ -287,17 +288,17 @@ String encoded = Base64.encode(client.getUserFotoFromWServices(key,logaid,mode))
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">final public static String ENV_NAME_FOR_RECORDING = "pinchpoint";
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">final</span> <span class="directive">public</span> <span class="directive">static</span> <span class="predefined-type">String</span> ENV_NAME_FOR_RECORDING = <span class="string"><span class="delimiter">&quot;</span><span class="content">pinchpoint</span><span class="delimiter">&quot;</span></span>;
 
-private boolean isRecording() {
-  String env = System.getProperty(ENV_NAME_FOR_RECORDING);
-  return (env != null);
+<span class="directive">private</span> <span class="type">boolean</span> isRecording() {
+  <span class="predefined-type">String</span> env = <span class="predefined-type">System</span>.getProperty(ENV_NAME_FOR_RECORDING);
+  <span class="keyword">return</span> (env != <span class="predefined-constant">null</span>);
 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-shell" data-lang="shell">mvn test -Dpinchpoint=true -Dtest=BusinessCodeTest</code></pre>
+<pre class="CodeRay highlight"><code data-lang="shell">mvn test -Dpinchpoint=true -Dtest=BusinessCodeTest</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -316,22 +317,22 @@ private boolean isRecording() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class FileOutputCapture extends ExternalResource {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">FileOutputCapture</span> <span class="directive">extends</span> ExternalResource {
 
-  protected void before() throws Throwable {
-    original = System.out;
-    PrintStream pos = new PrintStream(capturedStream);
-    System.setOut(pos); <b class="conum">(1)</b>
+  <span class="directive">protected</span> <span class="type">void</span> before() <span class="directive">throws</span> <span class="predefined-type">Throwable</span> {
+    original = <span class="predefined-type">System</span>.out;
+    <span class="predefined-type">PrintStream</span> pos = <span class="keyword">new</span> <span class="predefined-type">PrintStream</span>(capturedStream);
+    <span class="predefined-type">System</span>.setOut(pos); <b class="conum">(1)</b>
   }
 
-  protected void after() {
-    System.setOut(original);    <b class="conum">(2)</b>
-    try {
+  <span class="directive">protected</span> <span class="type">void</span> after() {
+    <span class="predefined-type">System</span>.setOut(original);    <b class="conum">(2)</b>
+    <span class="keyword">try</span> {
       Files.write(outputFile.toPath(),
       capturedStream.toByteArray(),
       StandardOpenOption.APPEND);   <b class="conum">(3)</b>
-    } catch (IOException e) {
-      throw new RuntimeException("File write failed! ", e);
+    } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
+      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">RuntimeException</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">File write failed! </span><span class="delimiter">&quot;</span></span>, e);
     }
   }
 }</code></pre>
@@ -356,17 +357,17 @@ private boolean isRecording() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class StreamOutputCapture extends ExternalResource {
-  PrintStream original;
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">StreamOutputCapture</span> <span class="directive">extends</span> ExternalResource {
+  <span class="predefined-type">PrintStream</span> original;
 
-  protected void before() throws Throwable {
-    original = System.out;
-    PrintStream pos = new PrintStream(capturedStream);
-    System.setOut(pos);
+  <span class="directive">protected</span> <span class="type">void</span> before() <span class="directive">throws</span> <span class="predefined-type">Throwable</span> {
+    original = <span class="predefined-type">System</span>.out;
+    <span class="predefined-type">PrintStream</span> pos = <span class="keyword">new</span> <span class="predefined-type">PrintStream</span>(capturedStream);
+    <span class="predefined-type">System</span>.setOut(pos);
   }
 
-  protected void after() {
-    System.setOut(original);
+  <span class="directive">protected</span> <span class="type">void</span> after() {
+    <span class="predefined-type">System</span>.setOut(original);
   }
 }</code></pre>
 </div>
@@ -383,13 +384,13 @@ private boolean isRecording() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java" data-lang="java">public class CaptureVerifier extends Verifier {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CaptureVerifier</span> <span class="directive">extends</span> Verifier {
 
-  protected void verify() throws Throwable {
-    List&lt;String&gt; actual = ReadLines.fromStream(capturedStream);
-    List&lt;String&gt; original = ReadLines.fromFile(pinchFile);
+  <span class="directive">protected</span> <span class="type">void</span> verify() <span class="directive">throws</span> <span class="predefined-type">Throwable</span> {
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; actual = ReadLines.fromStream(capturedStream);
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; original = ReadLines.fromFile(pinchFile);
 
-    Patch&lt;String&gt; patch = DiffUtils.diff(original, actual);
+    <span class="predefined-type">Patch</span>&lt;<span class="predefined-type">String</span>&gt; patch = DiffUtils.diff(original, actual);
 
     assertThat(patch, is(empty()));
   }
@@ -401,7 +402,7 @@ private boolean isRecording() {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-txt" data-lang="txt">java.lang.AssertionError:
+<pre class="CodeRay highlight"><code data-lang="txt">java.lang.AssertionError:
 File:
   &lt;/tmp/com.example.BusinessClassTest.txt&gt;
 read with charset &lt;UTF-8&gt; does not have the expected content:
@@ -419,12 +420,12 @@ line: &lt;3&gt;, expected:&lt;something&gt; but was:&lt;something else&gt;
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;dependency&gt;
-  &lt;groupId&gt;pl.marchwicki&lt;/groupId&gt;
-  &lt;artifactId&gt;junit-characterization&lt;/artifactId&gt;
-  &lt;packaging&gt;jar&lt;/packaging&gt;
-  &lt;version&gt;0.3&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>pl.marchwicki<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>junit-characterization<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;packaging&gt;</span>jar<span class="tag">&lt;/packaging&gt;</span>
+  <span class="tag">&lt;version&gt;</span>0.3<span class="tag">&lt;/version&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -511,6 +512,19 @@ line: &lt;3&gt;, expected:&lt;something&gt; but was:&lt;something else&gt;
 
 </footer>
 
+
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation/foundation.js"></script>
+    <script>
+      $(document).foundation();
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);
+    </script>
 
     </body>
 </html>
