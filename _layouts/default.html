@@ -15,5 +15,18 @@
 
     {% include footer.html %}
 
+    <script src="{{page.root}}/js/vendor/jquery.js"></script>
+    <script src="{{page.root}}/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="{{page.root}}/js/vendor/jquery.js"></script>
+    <script src="{{page.root}}/js/foundation/foundation.js"></script>
+    <script>
+      $(document).foundation();
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);
+    </script>
+
     </body>
 </html>
