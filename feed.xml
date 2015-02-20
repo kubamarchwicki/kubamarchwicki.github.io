@@ -5,8 +5,8 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 16 Feb 2015 23:07:23 +0000</pubDate>
-    <lastBuildDate>Mon, 16 Feb 2015 23:07:23 +0000</lastBuildDate>
+    <pubDate>Fri, 20 Feb 2015 11:08:18 +0000</pubDate>
+    <lastBuildDate>Fri, 20 Feb 2015 11:08:18 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -566,6 +566,102 @@ Infinitest is a Continuous Testing plugin for Eclipse and IntelliJ. Each time a 
         <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2014/12/01/my-essential-eclipse-plugins/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2014/12/01/my-essential-eclipse-plugins/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
+    
+      <item>
+        <title>GET.NET Braindump</title>
+        <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I had this enormous honour to speak (as the only Java guy) at a .NET conference. I was mainly covering clean code and good coding practices - still I found it a twist. However, it&amp;#8217;s not &lt;a href=&quot;/speaking/2014/11/22/get.net-gdansk/&quot;&gt;my &quot;Revers engineering the clean code&quot; talk&lt;/a&gt; I&amp;#8217;d like to focus on; here are some notes from Udi Dahan&amp;#8217;s keynote &quot;So you think you know pub/sub?&quot;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;so-you-think-you-know-pub-sub&quot;&gt;So you think you know pub/sub?&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Is about logical not physical data distribution&lt;/p&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;each event should be processed one&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;scale physical environment independently of logical architecture&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Isn&amp;#8217;t it what micro services are talking about?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you&amp;#8217;ve been coding for an hour and you haven&amp;#8217;t touched a single domain problem - stop. You probably writing infrastructure&amp;#8230;&amp;#8203;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Stop every hour and review what you&amp;#8217;ve done - check if that&amp;#8217;s not infrastructure&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Make the coupling visible. It&amp;#8217;s not about hiding the coupling you already have. Seek out autonomy but preserve the single source of truth.&lt;/p&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;single source of truth doesn&amp;#8217;t imply shared database&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;have a single source per context&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;design logical decoupling and later on decide on physical model - putting it onto a single database.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Events are facts. Not commands - things we would like to happen&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Two type of failures. Technical and business failures&lt;/p&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;technical failure: developers causing business failures&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;don&amp;#8217;t deal with business failures as technical problems&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sensors, stock market - client based filtering. Notify me of some data.&lt;/p&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;distributed cache&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;user machines poll the cache of the content.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;When user come along, it filters the local cache.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pub/Sub content based filtering - will be inefficient.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Sun, 23 Nov 2014 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2014/11/23/get.net-braindump/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2014/11/23/get.net-braindump/</guid>
         
         
         <category>posts</category>
@@ -1296,7 +1392,7 @@ So that is the mapper. What’s still needed is a reducer. All the services use 
       </item>
     
       <item>
-        <title>(…) testig an EJB application – Part IV (OpenEJB with vendor extensions and ejb-jar.xml)</title>
+        <title>(…) testing an EJB application – Part IV (OpenEJB with vendor extensions and ejb-jar.xml)</title>
         <description>&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;&lt;a href=&quot;/posts/2011/06/09/the-art-of-testing-an-ejb-application-openejb/&quot;&gt;The previous post of EJB testing featured OpenEJB bootstrapping and handling different configurations&lt;/a&gt; (or better say overwriting the defaults). This time I want to focus on vendor extensions, which are not supported by OpenEJB and ways to include them in the testing context. This way I’ll tackle ejb-jar.xml files, which can provide alternate dependencies for beans in context. I’ll iterate over a sample application which is available on &lt;a href=&quot;https://github.com/kubamarchwicki/ejb-testing&quot;&gt;github&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -1749,251 +1845,6 @@ openejb.descriptors.output = true&lt;/pre&gt;
         <pubDate>Thu, 09 Jun 2011 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2011/06/09/the-art-of-testing-an-ejb-application-openejb/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/06/09/the-art-of-testing-an-ejb-application-openejb/</guid>
-        
-        
-        <category>posts</category>
-        
-      </item>
-    
-      <item>
-        <title>The art of testing an EJB application – Part II (mocking)</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;/posts/2011/05/02/the-art-of-testing-an-ejb-application-part-i/&quot;&gt;The previous post on testing was more like an introduction&lt;/a&gt; – now it’s time for some real testing. While I’ve only touched the surface with unit-unit tests, I think functional testing needs a deeper drilling. Here we go!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;service-encapsulation&quot;&gt;Service encapsulation&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Decoupling services (having one service dependent on others, that encapsulate bits and pieces of functionality) is a fairly good practices. This ties nicely with a dependency injection feature of an EJB container; beans get resolved, initiated – happy days. Surely, not only EJB container does it, but comparing CDI frameworks is not in scope of this post. It’s about focused integration testing so let me start with with a simple example – a business service utilizing the TrimService from the previous post. If we are trying to keep our tests quick and robust, we need to get into container’s shoes and perform dependency injection on our own – this is where the loosely coupling starts to be a little bit painful.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Stateless&lt;/span&gt;
-&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;BusinessService&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;implements&lt;/span&gt; BusinessServiceLocal {
-          &lt;span class=&quot;annotation&quot;&gt;@EJB&lt;/span&gt; TrimServiceLocal trimService;
-    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; BusinessMethodResponse businessMethod(TransferObject obj) {
-      &lt;span class=&quot;comment&quot;&gt;//some logic&lt;/span&gt;
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In this particular example the container does a fairly simple and straightforward job. Instantiating of this service is nothing extraordinary and there is nothing that should stop us doing the same during in tests.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;BusinessServiceTest&lt;/span&gt; {
-
-  BusinessService businessService;
-
-  &lt;span class=&quot;annotation&quot;&gt;@BeforeClass&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; setup() {
-    businessService = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; BusinessService();
-    businessService.trimService = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; TrimService();
-  }
-
-  &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; successfulBusinessMethodForSpecificCase() {
-    TransferObject obj = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; TransferObject();
-    &lt;span class=&quot;comment&quot;&gt;//populate the object&lt;/span&gt;
-
-    BusinessMethodResponse response = businessService.businessMethod(obj);
-    Assert.assertNotNull(response);
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Please note that the trimService field does not have an explicit visibility defined, which make the field of package scope. If we keep tests in the same package as the service, we can fiddle with service’s fields without any reflection API magic.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Even though this can work quite smoothly, we are moving beyond unit testing (some might say some unit tests principles might be violated, because we check the behaviour of more than one class – TrimService is tested as well). I won’t be bothered about this; at some point it’s necessary to take a more holistic approach towards testing. That’s exactly what’s happening here: focused integration testing; a carefully curated set of features was chosen and tested in isolation. That way we can see how certain blocks of the application works in conjunction with other elements of the system. On the other hand, the tests are still kept relatively small and fast.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;mocking-services&quot;&gt;Mocking services&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;When the services are getting more and more complex, a simple initialization might appear troublesome, producing too much boilerplate code. There are ways to do it faster – with mockups. From two most popular mocking frameworks: EasyMock (&lt;a href=&quot;http://easymock.org/&quot; class=&quot;bare&quot;&gt;http://easymock.org/&lt;/a&gt;) and Mockito (&lt;a href=&quot;http://mockito.org/&quot; class=&quot;bare&quot;&gt;http://mockito.org/&lt;/a&gt;), I pick the latter. A quick glimpse over Mockito website should give a decent clue how it works and how it follows given-when-then principle.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;See an example – a configuration service which returns configuration codes from a database. A Hibernate named query is used to retrieve raw, persisted data and some additional stripping logic is applied. Given a following service,&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Stateless&lt;/span&gt;
-&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;ConfigService&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;implements&lt;/span&gt; ConfigServiceLocal {
-
-  &lt;span class=&quot;annotation&quot;&gt;@EJB&lt;/span&gt;
-  CrudServiceLocal crudService;
-
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&amp;gt; getConfigCodes(&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; type) {
-    &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;FuncConfg&amp;gt; funcConfgResults =
-      crudService.findByNamedQuery(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;FuncConfg.findByType&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;error&quot;&gt;“&lt;/span&gt;type&lt;span class=&quot;error&quot;&gt;”&lt;/span&gt;, type);
-    &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&amp;gt; configCodes = &lt;span class=&quot;comment&quot;&gt;//some additional processing&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; configCodes;
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;the process of mocking data and testing may look like this&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;ConfigServiceTest&lt;/span&gt; {
-
-  ConfigService configService;
-
-  &lt;span class=&quot;annotation&quot;&gt;@BeforeClass&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; setup() {
-    configService = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ConfigService();
-    configService.crudService = Mockito.mock(CommonCrudService.class);
-  }
-
-  &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; defaultTypeConfig() {
-    &lt;span class=&quot;directive&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; deafultType = &lt;span class=&quot;error&quot;&gt;“&lt;/span&gt;defaultType&lt;span class=&quot;error&quot;&gt;”&lt;/span&gt;;
-    Mockito.when(configService.crudService
-        .findByNamedQuery(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;FuncConfg.findByType&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;error&quot;&gt;“&lt;/span&gt;type&lt;span class=&quot;error&quot;&gt;”&lt;/span&gt;, defaultType))
-        .thenReturn(defaultFuncConfgList());
-
-    &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&amp;gt; confgCd = configService.getConfigCodes(defaultType);
-    Assert.assertNotNull(confgCd);
-    Assert.assertEquals(confgCd.size(), &lt;span class=&quot;integer&quot;&gt;10&lt;/span&gt;);
-    &lt;span class=&quot;comment&quot;&gt;//some additional assertions&lt;/span&gt;
-  }
-
-  &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;FuncConfg&amp;gt; defaultFuncConfgList() {
-    &lt;span class=&quot;comment&quot;&gt;//creates default list of codes&lt;/span&gt;
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;handling-database&quot;&gt;Handling database&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Last, but not least – ‘talking’ to a database. This is getting us closer to an end-to-end integration testing – though the tests are still fairly robust, small and fast. In fact, what is happening here is pretty much the same what OpenEJB does when it bootstraps a database, but faster.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I use this approach in two scenarios: when I want to test named queries against real data and when a snapshot of a production / test database is available and can be loaded from file, instead of handcrafting and mocking each data object individually.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Let’s use the previous example of the configuration service. Mocking the crud service worked perfectly fine, but when the number of different test cases increases significantly, quite a lot of test code needs to be written. There are smarter ways to do it. In my projects I tend to use this DataSourceMockUp class which bootstraps hibernate and exposes the EntityManager.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;DataSourceMockUp&lt;/span&gt; {
-
-  &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; EntityManager entityManager;
-
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; DataSourceMockUp(Builder builder) {
-    &lt;span class=&quot;comment&quot;&gt;//bootstrap hibernate&lt;/span&gt;
-    Ejb3Configuration config = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Ejb3Configuration();
-    config.setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.dialect&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.hibernate.dialect.HSQLDialect&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;javax.persistence.transactionType&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;RESOURCE_LOCAL&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.connection.driver_class&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.hsqldb.jdbcDriver&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.connection.url&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;jdbc:hsqldb:mem:testdb&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.connection.username&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;sa&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.connection.password&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.connection.pool_size&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.connection.autocommit&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.cache.provider_class&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.hibernate.cache.HashtableCacheProvider&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.hbm2ddl.auto&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-        .setProperty(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.show_sql&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
-
-    &lt;span class=&quot;comment&quot;&gt;//add entities&lt;/span&gt;
-    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;predefined-type&quot;&gt;Class&lt;/span&gt;&amp;lt;?&amp;gt; clazz : builder.annotatedClass) {
-      config.addAnnotatedClass(clazz);
-    }
-
-    &lt;span class=&quot;comment&quot;&gt;//set up services&lt;/span&gt;
-    &lt;span class=&quot;comment&quot;&gt;//even though the method is deprecated - this is one to be used&lt;/span&gt;
-    &lt;span class=&quot;comment&quot;&gt;//https://forum.hibernate.org/viewtopic.php?f=10&amp;amp;t=966871&lt;/span&gt;
-    EntityManagerFactory entityManagerFactory = config.createEntityManagerFactory();
-    setEntityManager(entityManagerFactory.createEntityManager());
-
-    &lt;span class=&quot;comment&quot;&gt;//import initial data&lt;/span&gt;
-    EntityTransaction tx = getEntityManager().getTransaction();
-    tx.begin();
-
-    SchemaExport schemaExport = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; SchemaExport(config.getHibernateConfiguration());
-    schemaExport.setImportFile(builder.importSqlFile);
-    schemaExport.create(&lt;span class=&quot;predefined-constant&quot;&gt;true&lt;/span&gt;, &lt;span class=&quot;predefined-constant&quot;&gt;true&lt;/span&gt;);
-    tx.commit();
-  }
-
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;Builder&lt;/span&gt; {
-    &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; importSqlFile;
-    &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;Class&lt;/span&gt;&amp;lt;?&amp;gt;&amp;gt; annotatedClass = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;ArrayList&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;Class&lt;/span&gt;&amp;lt;?&amp;gt;&amp;gt;();
-
-    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; Builder fromSqlFile(&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; importSqlFile) {
-      &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;.importSqlFile = importSqlFile;
-      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;;
-    }
-
-    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; Builder withAnnotatedClass(&lt;span class=&quot;predefined-type&quot;&gt;Class&lt;/span&gt;&amp;lt;?&amp;gt; clazz) {
-      &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;.annotatedClass.add(clazz);
-      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;;
-    }
-
-    &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; DataSourceMockUp build() {
-      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; DataSourceMockUp(&lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;);
-    }
-  }
-
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; setEntityManager(EntityManager entityManager) {
-    &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;.entityManager = entityManager;
-  }
-
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; EntityManager getEntityManager() {
-    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; entityManager;
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;With a data source mocked, the test class looks like this&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;ConfigServiceTest&lt;/span&gt; {
-  ConfigService configService;
-
-  &lt;span class=&quot;annotation&quot;&gt;@BeforeClass&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; setup() {
-    DataSourceMockUp mockup = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; DataSourceMockUp.Builder()
-        .fromSqlFile(sqlLocation)
-        .withAnnotatedClass(FuncConfg.class).build();
-
-    CommonCrudService crudService = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; CommonCrudService();
-    crudService.entityManager = mockup.getEntityManager();
-
-    configService = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ConfigService();
-    configService.crudService = crudService;
-  }
-
-  &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; getConfigCodesForDefaultType() {
-    &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&amp;gt; codes = configService.getConfigCodes(&lt;span class=&quot;error&quot;&gt;“&lt;/span&gt;T&lt;span class=&quot;error&quot;&gt;”&lt;/span&gt;);
-    Assert.assertNotNull(codes);
-    &lt;span class=&quot;comment&quot;&gt;//... and so on&lt;/span&gt;
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;One can argue that the same can be achieved with an OpenEJB. True, the whole container can be bootstrapped and all the services will be injected automatically (including the persistence context). However, as I’ve outlined in the first part of this series – the tests are categorised by the speed of execution and handcrafting hibernate with w pre-prepared SQL script is much faster that running the whole EJB container. What is more – it’s more hands on, errors are easier to spot and there is less magic going under the bonnet. As I am planning to show in the next post – things like error recovery, detailed configuration and so on are not 1, 2, 3 with OpenEJB. That’s why I find focused integration testing a compromise between simple unit testing and a holistic, end-to-end approach.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
-        <pubDate>Fri, 06 May 2011 00:00:00 +0000</pubDate>
-        <link>http://jakub.marchwicki.pl/posts/2011/05/06/the-art-of-testing-an-ejb-application-part-ii/</link>
-        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/05/06/the-art-of-testing-an-ejb-application-part-ii/</guid>
         
         
         <category>posts</category>
