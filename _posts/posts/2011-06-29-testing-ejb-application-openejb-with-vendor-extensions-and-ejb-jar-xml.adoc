@@ -1,7 +1,7 @@
 ---
 layout: post
 categories: posts
-title: (…) testig an EJB application – Part IV (OpenEJB with vendor extensions and ejb-jar.xml)
+title: (…) testing an EJB application – Part IV (OpenEJB with vendor extensions and ejb-jar.xml)
 excerpt: Integration testing of EJB application with embedded container - OpenEJB. Going beyond the standard configuration
 redirect_from: /blog/2011/06/testing-ejb-applicatin-openejb-with-vendor-extensions-and-ejb-jar-xml/
 
