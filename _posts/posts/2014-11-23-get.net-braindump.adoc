@@ -1,0 +1,35 @@
+---
+layout: post
+categories: posts
+title: GET.NET Braindump
+excerpt: Random notes from Udi Dahan keynote during get.net conference in Gdańsk (22/11/2014)
+---
+I had this enormous honour to speak (as the only Java guy) at a .NET conference. I was mainly covering clean code and good coding practices - still I found it a twist. However, it's not link:{% post_url speaking/2014-11-22-get.net-gdansk %}[my "Revers engineering the clean code" talk] I'd like to focus on; here are some notes from Udi Dahan's keynote "So you think you know pub/sub?"
+
+
+== So you think you know pub/sub?
+
+* Is about logical not physical data distribution
+** each event should be processed one
+** scale physical environment independently of logical architecture 
+
+* Isn't it what micro services are talking about?
+* If you've been coding for an hour and you haven't touched a single domain problem - stop. You probably writing infrastructure...
+* Stop every hour and review what you've done - check if that's not infrastructure 
+
+* Make the coupling visible. It's not about hiding the coupling you already have. Seek out autonomy but preserve the single source of truth. 
+** single source of truth doesn't imply shared database
+** have a single source per context
+** design logical decoupling and later on decide on physical model - putting it onto a single database. 
+
+* Events are facts. Not commands - things we would like to happen
+
+* Two type of failures. Technical and business failures 
+** technical failure: developers causing business failures
+** don't deal with business failures as technical problems
+
+* Sensors, stock market - client based filtering. Notify me of some data. 
+** distributed cache 
+** user machines poll the cache of the content. 
+* When user come along, it filters the local cache. 
+* Pub/Sub content based filtering - will be inefficient. 
