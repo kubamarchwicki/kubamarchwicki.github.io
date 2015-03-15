@@ -172,7 +172,7 @@
 
   <span class="directive">public</span> <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; getConfigCodes(<span class="predefined-type">String</span> type) {
     <span class="predefined-type">List</span>&lt;FuncConfg&gt; funcConfgResults =
-      crudService.findByNamedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">FuncConfg.findByType</span><span class="delimiter">&quot;</span></span>, <span class="error">“</span>type<span class="error">”</span>, type);
+      crudService.findByNamedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">FuncConfg.findByType</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>, type);
     <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; configCodes = <span class="comment">//some additional processing</span>
     <span class="keyword">return</span> configCodes;
   }
@@ -196,9 +196,9 @@
 
   <span class="annotation">@Test</span>
   <span class="directive">public</span> <span class="type">void</span> defaultTypeConfig() {
-    <span class="directive">final</span> <span class="predefined-type">String</span> deafultType = <span class="error">“</span>defaultType<span class="error">”</span>;
+    <span class="directive">final</span> <span class="predefined-type">String</span> deafultType = <span class="string"><span class="delimiter">&quot;</span><span class="content">defaultType</span><span class="delimiter">&quot;</span></span>;
     Mockito.when(configService.crudService
-        .findByNamedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">FuncConfg.findByType</span><span class="delimiter">&quot;</span></span>, <span class="error">“</span>type<span class="error">”</span>, defaultType))
+        .findByNamedQuery(<span class="string"><span class="delimiter">&quot;</span><span class="content">FuncConfg.findByType</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>, defaultType))
         .thenReturn(defaultFuncConfgList());
 
     <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; confgCd = configService.getConfigCodes(defaultType);
@@ -321,7 +321,7 @@
 
   <span class="annotation">@Test</span>
   <span class="directive">public</span> <span class="type">void</span> getConfigCodesForDefaultType() {
-    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; codes = configService.getConfigCodes(<span class="error">“</span>T<span class="error">”</span>);
+    <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; codes = configService.getConfigCodes(<span class="string"><span class="delimiter">&quot;</span><span class="content">T</span><span class="delimiter">&quot;</span></span>);
     Assert.assertNotNull(codes);
     <span class="comment">//... and so on</span>
   }
