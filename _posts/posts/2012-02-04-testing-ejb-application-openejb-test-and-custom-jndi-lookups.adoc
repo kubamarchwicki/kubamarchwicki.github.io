@@ -4,7 +4,7 @@ categories: posts
 title: (…) testing EJB application – Part VI (OpenEJB test and custom JNDI lookups)
 excerpt: How to mitgate (override) hardcoded JNDI properties in integration testing
 redirect_from: /blog/2012/02/testing-ejb-application-openejb-test-and-custom-jndi-lookups/
-
+disqus_url: http://www.marchwicki.pl/blog/2012/02/testing-ejb-application-openejb-test-and-custom-jndi-lookups/
 ---
 
 This has been a while since my last post. Not that nothing happened – there has never been enough time to sit down and write those few paragraphs. I have few articles already started, but all quite far away from completion. I’ve pushing EJB testing even further (and this article will partly cover it) and focused even further on incepting such approach in the team. It looks like it’s working – the test coverage is constantly increasing from change request to change request, with new ideas being introduced. This particular one was introduced by my team mate – Greg, who was struggling with some legacy modules which were using hardcoded JNDI bindings.

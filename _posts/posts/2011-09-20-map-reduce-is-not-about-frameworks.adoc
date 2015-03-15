@@ -4,7 +4,7 @@ categories: posts
 title: Map Reduce is not about frameworks
 excerpt: Map-reduce is a nice buzzword, an interesting concept; frameworks, frameworks, frameworks. But in fact - it's an architecture beyond frameworks...
 redirect_from: /blog/2011/09/map-reduce-is-not-about-frameworks/
-
+disqus_url: http://www.marchwicki.pl/blog/2011/09/map-reduce-is-not-about-frameworks/
 ---
 :data-uri:
 :imagesdir: assets/_generated

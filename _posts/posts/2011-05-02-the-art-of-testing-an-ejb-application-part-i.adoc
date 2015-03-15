@@ -4,7 +4,7 @@ categories: posts
 title: The art of testing an EJB application – Part I (Introducing)
 excerpt: Test EJBs is not that hard. After all these are just POJOs which can be tested as any other class... at least in the begining
 redirect_from: /blog/2011/05/the-art-of-testing-an-ejb-application-part-i/
-
+disqus_url: http://www.marchwicki.pl/blog/2011/05/the-art-of-testing-an-ejb-application-part-i/
 ---
 
 It has been a while since my last post – partly because the JMS processing project I’ve link:about:blank[described earlier on] have kicked off and I was pretty busy with a real work. Nonetheless, the development is steadily coming to its end and it’s time to share some thought and observations. I’m still planning to cover the architecture – how and why it has changed, compared to the initial design I’ve described earlier on. However, for the time being I’ll focus on testing; I will describe some of ideas and observations how to approach testing of EJB 3.x services.
