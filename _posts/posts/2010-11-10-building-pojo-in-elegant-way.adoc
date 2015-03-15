@@ -29,10 +29,10 @@ I can imagine two ways to instantiate this class and populate values:
 [source, java]
 ----
 	Person person = new Person();
-	person.setName(“John”);
-	person.setSurname(“Smith”);
+	person.setName("John");
+	person.setSurname("Smith");
 
-	new Person(“John”, “Smith”);
+	new Person("John", "Smith");
 ----
 
 While with this fairly simple class it doesn’t look bad, with more complicated beans, the code starts to get messy.
@@ -81,8 +81,8 @@ So from now on creating instance of a Person looks like this
 [source, java]
 ----
 Person person = new Person.Builder()
-  .withName(“John”)
-  .withSurname(“Smith”)
+  .withName("John")
+  .withSurname("Smith")
   .build();
 ----
 

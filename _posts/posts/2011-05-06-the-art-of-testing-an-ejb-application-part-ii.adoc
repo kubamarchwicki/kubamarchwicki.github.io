@@ -69,7 +69,7 @@ public class ConfigService implements ConfigServiceLocal {
 
   public List<String> getConfigCodes(String type) {
     List<FuncConfg> funcConfgResults =
-      crudService.findByNamedQuery("FuncConfg.findByType", “type”, type);
+      crudService.findByNamedQuery("FuncConfg.findByType", "type", type);
     List<String> configCodes = //some additional processing
     return configCodes;
   }
@@ -92,9 +92,9 @@ public class ConfigServiceTest {
 
   @Test
   public void defaultTypeConfig() {
-    final String deafultType = “defaultType”;
+    final String deafultType = "defaultType";
     Mockito.when(configService.crudService
-        .findByNamedQuery("FuncConfg.findByType", “type”, defaultType))
+        .findByNamedQuery("FuncConfg.findByType", "type", defaultType))
         .thenReturn(defaultFuncConfgList());
 
     List<String> confgCd = configService.getConfigCodes(defaultType);
@@ -210,7 +210,7 @@ public class ConfigServiceTest {
 
   @Test
   public void getConfigCodesForDefaultType() {
-    List<String> codes = configService.getConfigCodes(“T”);
+    List<String> codes = configService.getConfigCodes("T");
     Assert.assertNotNull(codes);
     //... and so on
   }
