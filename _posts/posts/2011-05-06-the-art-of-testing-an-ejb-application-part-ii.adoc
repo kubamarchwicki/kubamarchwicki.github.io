@@ -4,7 +4,7 @@ categories: posts
 title: The art of testing an EJB application – Part II (mocking)
 excerpt: Using simple mocking techniques to test EJB components within context (for example database context and EntityManager)
 redirect_from: /blog/2011/05/the-art-of-testing-an-ejb-application-part-ii/
-
+disqus_url: http://www.marchwicki.pl/blog/2011/05/the-art-of-testing-an-ejb-application-part-ii/
 ---
 
 link:{% post_url posts/2011-05-02-the-art-of-testing-an-ejb-application-part-i %}[The previous post on testing was more like an introduction] – now it’s time for some real testing. While I’ve only touched the surface with unit-unit tests, I think functional testing needs a deeper drilling. Here we go!

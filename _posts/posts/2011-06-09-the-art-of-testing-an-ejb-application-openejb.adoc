@@ -4,7 +4,7 @@ categories: posts
 title: The art of testing an EJB application – Part III (OpenEJB)
 excerpt: Integration testing of EJB application with embedded container - OpenEJB
 redirect_from: /blog/2011/06/the-art-of-testing-an-ejb-application-openejb/
-
+disqus_url: http://www.marchwicki.pl/blog/2011/06/the-art-of-testing-an-ejb-application-openejb/
 ---
 
 In the last two posts I’ve introduced my approach to testing (both unit and integration) and shown few ways to test bits and pieces of an enterprise application (some naive as well as more mature). This part is dedicated to tests with a fully featured EJB container, bootstrapped by the test suit. I’ll be using OpenEJB, because I’ve been using it for last few weeks in my latest project. I’ll show some basics and cover some of the more troublesome bits and pieces (which were not covered in the documentation or were not that intuitive). I must admit starting with OpenEJB wasn’t easy; in fact it was fairly frustrating experience at some point (which could have been noticed http://twitter.com/kubem[in my tweets]). It’s a great a tool, but the learning curve is steep. I’m focusing on OpenEJB cause I’ve been using is the extensively. Nonetheless, it’s not the only way to test EJB application end-to-end. Alternatives are Sping (which handles @EJB annotations pretty neatly) or Arquillian (which is another approach to bootstrap the container). I’ll try to cover the latter in some future posts, but as for now – let’s start with OpenEJB.

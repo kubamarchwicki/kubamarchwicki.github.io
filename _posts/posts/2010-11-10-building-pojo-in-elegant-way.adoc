@@ -4,7 +4,7 @@ categories: posts
 title: Building POJO in an elegant way
 excerpt: Any fool can write code computer can understand. Question is how to build human readable code. Start with a builder pattern!
 redirect_from: /blog/2010/11/building-a-pojo-in-an-elegant-way/
-
+disqus_url: http://www.marchwicki.pl/blog/2010/11/building-a-pojo-in-an-elegant-way/
 ---
 
 [quote, Martin Fowler - Refactoring: Improving the Design of Existing Code]

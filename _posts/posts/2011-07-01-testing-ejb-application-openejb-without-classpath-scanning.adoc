@@ -4,7 +4,7 @@ categories: posts
 title: (…) testing EJB application – Part V (OpenEJB without classpath scanning)
 excerpt: Get OpenEJB integration tests run fast, without complete classpath scanning.
 redirect_from: /blog/2011/07/testing-ejb-applicatin-openejb-without-classpath-scanning/
-
+disqus_url: http://www.marchwicki.pl/blog/2011/07/testing-ejb-applicatin-openejb-without-classpath-scanning/
 ---
 
 I’ve recently come across http://blog.thecodewhisperer.com/2010/10/16/integrated-tests-are-a-scam/[a very good article on integrated testing] (with a provocative title: Integrated Test Are a Scam). The writing basically question most of my efforts and the sense of this series (as a whole) – integrated tests are bad and you should rather avoid doing it. Unit tests rocks. I cannot agree more. However, as J.B. points out there are moments when an integrated test brings some value (whew, the series saved). An this is where tools like OpenEJB proves its value. On the other hand, the way OpenEJB works pushes the user to end-to-end integration testing – SCAM!
