@@ -1,0 +1,18 @@
+:title: Microservice everything
+:subtitle: Using microservice approach not only in highly distributed systems...
+
+== {title}
+
+> {subtitle}
+
+=== Abstract
+
+“Micro Service Architecture is an architectural concept that aims to decouple a solution by decomposing functionality into discrete services. Think of it as applying many of the principles of SOLID at an architectural level, instead of classes you've got services”. Acknowledge that and endless possibilities start to open.
+
+In this talk I’ll walk through several scenarios, where the microservice approach worked for us: from green field solutions, to handling legacy systems. The microservices in various aspects: duplicating functionality, proxing existing applications, bubbling new services on the top of existing big bull of mad. The microservice approach solving some painful problems become much easier, without “we need to rebuild it, redesign it” cliché. It appeared possibilities were endless: wrapping existing monolithic PHP application as a microservice in another PHP application, building a bubble on top of existing PHP code with dropwizard and AngularJS, wrapping some legacy ActiveX components with python Win32 extensions. All with one common denominator: HTTP as the basic dialect.
+
+=== Additional resources
+
+* https://speakerdeck.com/kubamarchwicki/microservice-everything[PDF Slides]
+* http://htmlpreview.github.io/?https://raw.githubusercontent.com/kubamarchwicki/presentations/master/microservice-everything/slides.html[HTML slides]
+* https://github.com/kubamarchwicki/presentations/tree/master/microservice-everything[Slides source in *asciidoctor*]
