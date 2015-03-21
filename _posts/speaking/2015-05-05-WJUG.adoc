@@ -1,0 +1,9 @@
+---
+layout: speaking
+categories: speaking
+title: Warsaw JUG
+speakingDate: 2015-05-05, Warszaw, Poland
+page-include: _posts/speaking/topics/microservice-everything.adoc
+---
+
+include::{{page.page-include}}[]
