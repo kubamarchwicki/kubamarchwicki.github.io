@@ -1,0 +1,10 @@
+:title: Engineer Through the Looking Glass
+:subtitle: What an engineer start to do when he becomes a manager? A what he doesn't start? 
+
+== {title}
+
+> {subtitle}
+
+=== Additional resources
+
+* http://4developers.org.pl/pl/agenda/lecture/inzynier-po-drugiej-stronie-lustra/
