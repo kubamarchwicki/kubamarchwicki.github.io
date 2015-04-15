@@ -1,0 +1,52 @@
+Na początek to łatwiejsze- kompetencje. Łatwiejsze do zdefiniowania, trudniejsze do znalezienia. Do czego poszukują to "unicorn" ;-)
+Osoba która ogarnia konceptualnie cały proces tworzenia _produktu_ (a nie czas życia projektu) od koncepcji (współpraca analityk / biznes, UX) poprzez wytworzenie (efektywne), nadzór techniczny, utrzymanie, monitoring aplikacji. 
+Oczywiście nie musi samodzielnie tego zrobić - ale jakby miał doświadczenie w każdym z obszarów, to wygodne i się przydaje (szczególnie w efektywnym ubijaniu głupich pomysłów).
+Jeżeli dla niego wsparciem ma być admin, analityk, dwóch programistów to:
+* analityk musi być także UXowcem
+* programista to senior - a w zasadzie ktoś bliski architektowi.
+
+Kluczem do powodzenia takiego przedsięwzięcia (przetargi, EU) jest to że wszystkie projekty jadą na jednej ramie technologiczniej którą firma wymusza, szef techniczny (wraz z programistami dopilnowują) i wspólnie planują tejże ewolucję.
+Myślę tutaj o podjęciu decyzji typu
+* Spring do backendu
+* MySQL / MongoDB jako baza
+* AngularJS na frontendzie
+* mobile to... PhoneGap, Natywnie, Xamarin - wszystko w zależności co robią
+* współdzielone komponenty (+ sposób definiowania api)
+* może archetyp (mavenowy)
+* narzędzia wdrożeniowe (i tutaj najlepiej jakaś chmura + może kontenery)
+
+Ergo, najważniejsze jest wyłuskanie powtarzalności pomiędzy projektami i z tego zrobić wartość. I to powinno być głównym zadaniem Kierownika Technicznego - w oparciu o analityka i programistów
+Niektórzy do tego podchodzą bardzo nabożnie: Global Design, holistyczne spojrzenie na wszystkie możliwe use case'y, procesy, pod procesy - ale moim zdaniem to zakopanie się w dokumentacji która niewiele wnosi.
+Moim zdaniem cholernie ważne aby był to praktyk którego można na rozmowie przemielić niemalże z kodu (albo dać mu zadanie programistyczne i zrobić z nim code review). I wydaje mi się że Craftmanship jest tutaj dużo ważniejszy niż konkretne frameworki i ogólna Java Ninja'owatość
+
+Poza ramą techniczną jest także rama wykonawcza (czyli sposób dowiezienia). Tutaj pojawi mi się zgrzyt:
+* outsource, ale zakładam że podwykonawcy pracują jak firma im zagra
+* przetargi (projekty)
+* które stoją w opozycji z projektami EU (które budują produkty)
+
+W przetargach wszystko mamy zafixowane (koszt, zakres, czas) natomiast w przetargach EU możemy pracować zakresem. Jako zadanie Kierownika Technicznego widziałbym ułożenie prac (ale raczej na poziomie raportowania). Zarówno jeżeli chodzi o sposób dostarczenia jak i weryfikacji tego co zostało dostarczone. 
+O właśnie - nie brakuje im w tym układzie testera, czy tę rolę pełni analityk? Takiego testera UATowca?
+
+No to to jest mniej więcej czego od siebie oczekiwałem (ale miałem dużo większy poziom i niekoniecznie ludzi którzy potrafili taką odpowiedzialność ze mną wziąć - oddelegowaną). 
+Co należy zapewnić aby chciał pracować? Minimalizować wariancję - czyli ustabilizować wejściowy strumień projektów. Tutaj głównie patrzę na sprzedaż / business development. Chociaż wiem że to ciężko bo projekty EU i przetargi wchodzą niedeterministycznie. 
+
+To co mnie zabijało to kulejąca jakość (w niektórych produktach - dług technologiczny), biznes nie uznający tego długu i krzyczący klienci. A wszystko wpadało bezpośrednio do Softwaru bo nikt dookoła nie czuł się odpowiedzialny (nawet pośrednio). W przypadku EU i przetargów takich sytuacji nie ma. Albo przynajmniej w przetargach które ja znam - jakoś łatwiej to z reguły szło. 
+No i druga rzecz, musi mieć warunki aby nie rozbijać się o pierdoły. U nas wyglądało to tak że wymagało się cholernie dużo, ale głupia sieć wifi (bez której nie byłem w stanie testować na urządzeniach mobilnych) potrafiła nie działać. O takich prozaicznych rzeczach mówię.
+
+No dobra.. to był bardzo długi wstęp - nadający się na bloga ;-) Ale chciałeś punkty. Podkradłem je z ogłoszenia z bettersolutions - do którego prawie w pewnym momencie odszedłem.
+* koordynacja wielu równoległych wysiłków wytwarzania oprogramowania we współpracy z podległym zespołem programistów i testerów, przy założeniu 50/50% kodowanie i pozostałe zadania;
+* odpowiedzialność za całokształt procesów wytwarzania oprogramowania w firmie, w tym właściwy dobór technologii i narzędzi;
+* odpowiedzialność za całość architektury tworzonych rozwiązań;
+* bycie liderem, który promuje, definiuje, dostosowuje i wdraża najlepsze praktyki, takie jak Agile oraz wszelkie udoskonalenia procesu wytwarzania oprogramowania;
+* zarządzanie techniczną stroną projektów oraz cyklem życia projektów;
+* identyfikowanie obszarów ryzyka w projektach oraz podejmowanie aktywnych działań zapobiegających sytuacjom krytycznym;
+* zapewnienie realizacji zadań przez podległy zespół, podział pracy w zespole oraz bieżąca kontrola nad postępem prac/nadzorowanie pracy;
+
+W firmie miałem pod sobą 7 zespołów, każdy po powiedzmy 7 osób. Przy aktywnym developmencie nie dało się pogodzić tych 3 ról. Dwie ok (kierownik / architekt, architekt / analityk). Przy trzech (i chaosie wynikających z przetargów) - to się nie mieściło.
+Tutaj moim zdaniem mieści się to w kategorii kierownik / architekt, czasami konsultant (strateg). 
+Ja dla moim liderów technicznych miałem zdefiniowany 3 obszary pracy (z których ich rozliczałem):
+* lider do wewnątrz - praca z zespołem, motywacja, morale
+* lider do zewnątrz - zadowolenie klienta
+* lider techniczny - jakość rozwiązania od strony architektury, stabilności itd.
+
+Myślę że tutaj nie ma racji bytu lider do wewnątrz (bo przy takim nastawieniu raczej mówimy o zespole niemalże samodzielnych specjalistów których nie trzeba niańczyć). Ten obszar nie jest najistotniejszy, i można go wspomóc (retro, rozmowy feedbackowe, KPI dla pracowników). Ale zastąpiłbym go tematami stricte PMowymi (dowożenia projektów z outsourcu). U mnie od tego miało project managerów - więc nie wymagałem aż takiego zaangażowania w PMowanie od liderów technicznych. 

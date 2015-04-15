@@ -1,0 +1,18 @@
+---
+layout: post
+categories: posts
+title: From Java to Ruby
+excerpt: So I got this crazy idea and this will be what I'll be doing for the next couple of evenings - learning Ruby the hard way.
+---
+
+So I got this crazy idea and this will be what I'll be doing for the next couple of evenings - learning Ruby the hard way. The reason was somehow yak shaving'ish: I love http://asciidoctor.org[Asciidoctor] and I use it for everything: documents, notes, presentations. While the html output is great I need to send my "docs" over to somebody and (like it or not) a mainstream format is more welcome. And here comes my struggle: getting WordML or OpenDocument Text from HTML output is cumbersome, error prone and just painful. 
+
+== Necessity is the mother of invention 
+
+I needed OpenOffice, I'll write myself an Open Office backend. There was (just a tiny) obstacle - I've never done any Ruby before. But that's suppose to change. Soon. This is a story of Jakub learning Ruby.
+
+I've considered myself a programmer - I've coding more or less on daily basis for past 10+ years, so the http://learnrubythehardway.org/[Learn the hard way series] could have been too simplistic - but on the other hand, let's start easy. What is more, https://www.ruby-lang.org/pl/documentation/ruby-from-other-languages/to-ruby-from-java/[some opinionated guides] suggested it's not going to be that complicated after all. 
+
+There was one more thing to check / experiment to conduct. For many years I've believed that learning new programming language (as long as the paradigm doesn't shift - from object oriented to functional, for example) shouldn't be that hard. Nonetheless, I've never measured it - now it's going to changes!
+
+All hands on board, learning time. This post will be an extended diary of me learning a different language. 

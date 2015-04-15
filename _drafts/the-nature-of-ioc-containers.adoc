@@ -1,0 +1,10 @@
+Recently we had an interesting conversation at the office; one of our JavaScript teams decided to go on with TypeScript and one of the struggles they had was lack of Inversion of Control container which was suitable for them. 
+
+So they started to draft their own - quite natural after all. 
+
+At some point they approach me to ask some questions and review some ideas. While overall that looked ok, we started the discussion what was their experience with dependency injection and was it beyond the classical controller injection or AngularJS approach. In fact - there wasn't. 
+
+I though woow, I think they bit off more than they can chew. So we started with a brief introduction of how a static typed language - like Java - solved the problem of IoC. Together with another colleague we run a session which was aiming to grasp two most popular IoC containers: Google Guice and Spring IoC. Discuss the approach, naming and the differences and implications.
+
+
+That was a really nice discussion. Showing multiple edge cases, implicit decisions was really valuable for everybody. Additionally, one of the outcomes was to have a look once again how JavaScript handles the dependency injection and if this is really true no one has really implement that. 
