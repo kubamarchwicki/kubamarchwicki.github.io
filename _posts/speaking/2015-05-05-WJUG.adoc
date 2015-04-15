@@ -2,7 +2,7 @@
 layout: speaking
 categories: speaking
 title: Warsaw JUG
-speakingDate: 2015-05-05, Warszaw, Poland
+speakingDate: 2015-05-05, Warsaw, Poland
 page-include: _posts/speaking/topics/microservice-everything.adoc
 ---
 
