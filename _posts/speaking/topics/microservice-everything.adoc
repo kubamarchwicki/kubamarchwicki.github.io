@@ -11,6 +11,14 @@
 
 In this talk I’ll walk through several scenarios, where the microservice approach worked for us: from green field solutions, to handling legacy systems. The microservices in various aspects: duplicating functionality, proxing existing applications, bubbling new services on the top of existing big bull of mad. The microservice approach solving some painful problems become much easier, without “we need to rebuild it, redesign it” cliché. It appeared possibilities were endless: wrapping existing monolithic PHP application as a microservice in another PHP application, building a bubble on top of existing PHP code with dropwizard and AngularJS, wrapping some legacy ActiveX components with python Win32 extensions. All with one common denominator: HTTP as the basic dialect.
 
+=== Testimonials
+
+The feedback after some [http://www.meetup.com/Warszawa-Java-User-Group-Warszawa-JUG/events/222218264/]presentations
+
+* "Ciekawa prezentacja, ciekawa narracja, bardzo dobrze przygotowany prowadzący."
+* "Prezentacja była bardzo ciekawa. Prowadzący przedstawił praktyczne doświadczenia z wprowadzania Microservice'ów w YDP, co się sprawdziło, jak przekonywał ludzi, co udało się wprowadzić (w ramach np. dostępnego budżetu oraz tolerancji biznesu), jak sobie to radzili (np. budowali fasady, a za fasadami microservice + kod legacy. Bardzo fajne, w dodatku przedstawione z dużą dawką humoru."
+
+
 === Additional resources
 
 * https://speakerdeck.com/kubamarchwicki/microservice-everything[PDF Slides]
