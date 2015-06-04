@@ -1,0 +1,126 @@
+---
+title: Wrapping Maven distribution together with a project
+layout: post
+categories: posts
+excerpt: A pro tip how to wrap Maven with your project (just list you can to it with Gradle)
+---
+
+There are few things that I've been missing in Maven, that are available in Gradle out of the box (and no, I don't want to start a holy Gradle vs. Maven war). One of those was a Gradle wrapper; I wanted to create projects which are pretty environment agnostic and download whatever needed straight form the internet. While the build and dependency management tools do their job I was always struggling with the dependency management itself. Until now.
+
+== But why?
+
+Yeah - good question. Why on Earth would I need to have a dependency management tool as a 'compile time' dependency. In my particular case it was Jenkins fault, I wanted my continuous integration environment to be just an infrastructure: an operating system, latest Java installation, Git - and the project brings what's ever required by itself. That is keeping the CI infrastructure robust with minimal project specific dependencies. 
+
+I remember 'good old times' when certain project had to be built on particular swarms due to concrete Maven version being present or some system libraries being pre-installed. This approach doesn't scale and I was eager to fix it. 
+
+== Maven wrapper
+
+While the wrapper isn't a problem for Gradle, my Maven projects were still problematic. Until I found a *maven-wrapper* - a copy of the Gradle wrapper ported for use with Apache Maven.
+footnoteref:[maven-wrapper, https://github.com/rimerosolutions/maven-wrapper]
+
+As described on the project's wiki: 
+[quote]
+the Maven Command Line Wrapper will auto-download and install Apache Maven from the Internet and then run your Maven goals. 
+
+If you are ok with manual installation, all that's needed is copying `mvnw` files and `maven` folder to your project - from say an example project.
+footnoteref:[maven-wrapper-example, https://github.com/rimerosolutions/maven-wrapper-example]
+This will make the file structure look pretty much like this.
+
+[source]
+----
+sample
+ ├── maven
+ │   ├── maven-wrapper.jar
+ │   └── maven-wrapper.properties
+ ├── src
+ │   └── main
+ │       └── java
+ ├── mvnw
+ ├── mvnw.bat
+ └── pom.xml
+----
+
+Now instead of running `mvn clean install` we can just go with `./mvnw clean install` that will do the thing. 
+
+From my perspective that was quite handy - I didn't have to maintain a particular version of Maven in my CI environment. I had it defined together with a project. A first little success. 
+
+== Automate all the things
+
+Coping files is so nineties, so the next step would be to automatically get the wrapper through the Maven build process. This sounded reasonable, cause as the developer I obviously had Maven installed locally and the wrapper was targeting the continuous integration builds, not developers' machines.
+
+Nothing easier, the Maven wrapper comes with a handy build plugin.
+
+[source, xml]
+----
+<plugin>
+    <groupId>com.rimerosolutions.maven.plugins</groupId>
+    <artifactId>wrapper-maven-plugin</artifactId>
+    <version>0.0.4</version>
+    <configuration>
+        <mavenVersion>3.3.1</mavenVersion>
+    </configuration>
+</plugin>
+----
+
+Running `mvn wrapper:wrapper` does the job and the wrapper is installed. 
+
+== Problems?
+
+That worked like a charm for a simple (very simple) project, a single project. But hey! we are doing enterprise here - our projects' structure is hardly ever flat! 
+
+So if my project gets slightly more complicated (with submodules), the Maven wrapper tasks, defined on the parent project - is repeated for each and every module. The output gets cumbersome and far from ideal.
+
+[source, xml]
+----
+sample
+ ├── maven
+ │   ├── maven-wrapper.jar
+ │   └── maven-wrapper.properties
+ ├── module
+ |   ├── maven
+ │   |   ├── maven-wrapper.jar
+ │   |   └── maven-wrapper.properties
+ |   ├── mvnw
+ |   ├── mvnw.bat
+ |   └── pom.xml
+ ├── module2
+ |   ├── maven
+ │   |   ├── maven-wrapper.jar
+ │   |   └── maven-wrapper.properties
+ |   ├── mvnw
+ |   ├── mvnw.bat
+ |   └── pom.xml
+ ├── mvnw
+ ├── mvnw.bat
+ └── pom.xml
+----
+
+I see a `MavenWrappersOverflowException`. However, as this is purely related to the Maven life cycle and parent-child relationship ('mother issues' everywhere) - this is fixable with the configuration itself. 
+
+[source, xml]
+----
+<plugin>
+    <groupId>com.rimerosolutions.maven.plugins</groupId>
+    <artifactId>wrapper-maven-plugin</artifactId>
+    <version>0.0.4</version>
+    <inherited>false</inherited>	// <1>
+    <configuration>
+        <mavenVersion>3.3.1</mavenVersion>
+    </configuration>
+</plugin>
+----           
+<1> By default, plugin configuration should be propagated to child POMs, so to break the inheritance, you could uses the `<inherited>` tag
+
+Now, we just need to run the goal for this particular project (while in the parent project's folder). This will generated the wrapper only where it's needed. 
+
+[source, bash]
+----
+mvnw wrapper:wrapper -N 	//<1>
+----
+<1> The `-N` argument stands for non-recursive builds, which prevents Maven from building submodules (only builds the project contained in the current directory).
+
+== Summary
+
+Just one thing: with the wrapper plugin and Polyglot for Maven 
+footnoteref:[polyglot-maven, https://github.com/takari/polyglot-maven] 
+I've gradually lost interest in any other build tools ;-)
