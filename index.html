@@ -5,8 +5,15 @@ redirect_from: /blog/index.html
 
 <div class="home">
 
-  {% if site.categories.speaking.size > 0 %}
-  <p>Forthcoming speaking: </p>
+  {% for post in site.categories.speaking %}
+    {% capture currentTime %}{{ 'now' | date: "%s" }}{% endcapture %}
+    {% capture speakingTime %}{{ post.speakingDate | date: "%s" }}{% endcapture %}
+    {% if speakingTime > currentTime %}
+      <p>Forthcoming speaking: </p>
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
   <ul class="speaking forthcoming">
   {% for post in site.categories.speaking %}
     {% capture currentTime %}{{ 'now' | date: "%s" }}{% endcapture %}
@@ -18,8 +25,7 @@ redirect_from: /blog/index.html
       </li>
     {% endif %}
   {% endfor %}
-  </ul>
-  {% endif %}
+  </ul>  
 
   <ul class="posts">
     {% for post in site.categories.posts %}
@@ -32,3 +38,4 @@ redirect_from: /blog/index.html
   </ul>
 
 </div>
+
