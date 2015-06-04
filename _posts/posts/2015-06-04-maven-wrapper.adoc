@@ -115,7 +115,7 @@ Now, we just need to run the goal for this particular project (while in the pare
 
 [source, bash]
 ----
-mvnw wrapper:wrapper -N 	//<1>
+mvn wrapper:wrapper -N 	//<1>
 ----
 <1> The `-N` argument stands for non-recursive builds, which prevents Maven from building submodules (only builds the project contained in the current directory).
 
