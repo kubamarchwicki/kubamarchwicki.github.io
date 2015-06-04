@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Wrapping Maven distribution together with a project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A randomized pack of notes">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2015/06/04/maven-wrapper/">
+    <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/foundation.css"/>
+    <link rel="stylesheet" href="/css/coderay.css"/>
+    <link rel="stylesheet" href="/css/asciidoctor.css"/>
+    <script src="/js/vendor/modernizr.js"></script>    
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css">
+
+    
+    <!-- google analytics async -->
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-439480-4']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"><i class="fi-folder"></i>Notepack</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>Wrapping Maven distribution together with a project</h1>
+    <p class="meta">Jun 4, 2015</p>
+  </header>
+
+  <article class="post-content">
+  <div class="paragraph">
+<p>There are few things that I&#8217;ve been missing in Maven, that are available in Gradle out of the box (and no, I don&#8217;t want to start a holy Gradle vs. Maven war). One of those was a Gradle wrapper; I wanted to create projects which are pretty environment agnostic and download whatever needed straight form the internet. While the build and dependency management tools do their job I was always struggling with the dependency management itself. Until now.</p>
+</div>
+<div class="sect1">
+<h2 id="but-why">But why?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Yeah - good question. Why on Earth would I need to have a dependency management tool as a 'compile time' dependency. In my particular case it was Jenkins fault, I wanted my continuous integration environment to be just an infrastructure: an operating system, latest Java installation, Git - and the project brings what&#8217;s ever required by itself. That is keeping the CI infrastructure robust with minimal project specific dependencies.</p>
+</div>
+<div class="paragraph">
+<p>I remember 'good old times' when certain project had to be built on particular swarms due to concrete Maven version being present or some system libraries being pre-installed. This approach doesn&#8217;t scale and I was eager to fix it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="maven-wrapper">Maven wrapper</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While the wrapper isn&#8217;t a problem for Gradle, my Maven projects were still problematic. Until I found a <strong>maven-wrapper</strong> - a copy of the Gradle wrapper ported for use with Apache Maven.
+<span class="footnote" id="_footnote_maven-wrapper">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span></p>
+</div>
+<div class="paragraph">
+<p>As described on the project&#8217;s wiki:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+the Maven Command Line Wrapper will auto-download and install Apache Maven from the Internet and then run your Maven goals.
+</blockquote>
+</div>
+<div class="paragraph">
+<p>If you are ok with manual installation, all that&#8217;s needed is copying <code>mvnw</code> files and <code>maven</code> folder to your project - from say an example project.
+<span class="footnote" id="_footnote_maven-wrapper-example">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</span>
+This will make the file structure look pretty much like this.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>sample
+ ├── maven
+ │   ├── maven-wrapper.jar
+ │   └── maven-wrapper.properties
+ ├── src
+ │   └── main
+ │       └── java
+ ├── mvnw
+ ├── mvnw.bat
+ └── pom.xml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now instead of running <code>mvn clean install</code> we can just go with <code>./mvnw clean install</code> that will do the thing.</p>
+</div>
+<div class="paragraph">
+<p>From my perspective that was quite handy - I didn&#8217;t have to maintain a particular version of Maven in my CI environment. I had it defined together with a project. A first little success.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="automate-all-the-things">Automate all the things</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Coping files is so nineties, so the next step would be to automatically get the wrapper through the Maven build process. This sounded reasonable, cause as the developer I obviously had Maven installed locally and the wrapper was targeting the continuous integration builds, not developers' machines.</p>
+</div>
+<div class="paragraph">
+<p>Nothing easier, the Maven wrapper comes with a handy build plugin.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>com.rimerosolutions.maven.plugins<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>wrapper-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>0.0.4<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;configuration&gt;</span>
+        <span class="tag">&lt;mavenVersion&gt;</span>3.3.1<span class="tag">&lt;/mavenVersion&gt;</span>
+    <span class="tag">&lt;/configuration&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Running <code>mvn wrapper:wrapper</code> does the job and the wrapper is installed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="problems">Problems?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>That worked like a charm for a simple (very simple) project, a single project. But hey! we are doing enterprise here - our projects' structure is hardly ever flat!</p>
+</div>
+<div class="paragraph">
+<p>So if my project gets slightly more complicated (with submodules), the Maven wrapper tasks, defined on the parent project - is repeated for each and every module. The output gets cumbersome and far from ideal.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml">sample
+ ├── maven
+ │   ├── maven-wrapper.jar
+ │   └── maven-wrapper.properties
+ ├── module
+ |   ├── maven
+ │   |   ├── maven-wrapper.jar
+ │   |   └── maven-wrapper.properties
+ |   ├── mvnw
+ |   ├── mvnw.bat
+ |   └── pom.xml
+ ├── module2
+ |   ├── maven
+ │   |   ├── maven-wrapper.jar
+ │   |   └── maven-wrapper.properties
+ |   ├── mvnw
+ |   ├── mvnw.bat
+ |   └── pom.xml
+ ├── mvnw
+ ├── mvnw.bat
+ └── pom.xml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I see a <code>MavenWrappersOverflowException</code>. However, as this is purely related to the Maven life cycle and parent-child relationship ('mother issues' everywhere) - this is fixable with the configuration itself.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>com.rimerosolutions.maven.plugins<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>wrapper-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>0.0.4<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;inherited&gt;</span>false<span class="tag">&lt;/inherited&gt;</span>        <b class="conum">(1)</b>
+    <span class="tag">&lt;configuration&gt;</span>
+        <span class="tag">&lt;mavenVersion&gt;</span>3.3.1<span class="tag">&lt;/mavenVersion&gt;</span>
+    <span class="tag">&lt;/configuration&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>By default, plugin configuration should be propagated to child POMs, so to break the inheritance, you could uses the <code>&lt;inherited&gt;</code> tag</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Now, we just need to run the goal for this particular project (while in the parent project&#8217;s folder). This will generated the wrapper only where it&#8217;s needed.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">mvnw wrapper:wrapper -N         <b class="conum">(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The <code>-N</code> argument stands for non-recursive builds, which prevents Maven from building submodules (only builds the project contained in the current directory).</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary">Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Just one thing: with the wrapper plugin and Polyglot for Maven
+<span class="footnote" id="_footnote_polyglot-maven">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</span>
+I&#8217;ve gradually lost interest in any other build tools ;-)</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a> <a href="https://github.com/rimerosolutions/maven-wrapper" class="bare">https://github.com/rimerosolutions/maven-wrapper</a>
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a> <a href="https://github.com/rimerosolutions/maven-wrapper-example" class="bare">https://github.com/rimerosolutions/maven-wrapper-example</a>
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a> <a href="https://github.com/takari/polyglot-maven" class="bare">https://github.com/takari/polyglot-maven</a>
+</div>
+</div>
+  </article>
+
+  
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+	    var disqus_shortname = 'jakubblog';
+	    
+
+	    /* * * DON'T EDIT BELOW THIS LINE * * */
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <div class="column">
+      <ul>
+        <li><a href="/speaking">
+          <span class="icon linkedin"><i class="fi-microphone"></i></span>
+          <span class="username"> all speaking</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/kubamarchwicki">
+            <span class="icon github">
+              <svg version="1.1" class="github-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C2C2" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761
+                c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32
+                c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472
+                c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037
+                C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65
+                c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261
+                c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082
+                c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129
+                c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            <span class="username">kubamarchwicki</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/kubem">
+            <span class="icon twitter">
+              <svg version="1.1" class="twitter-icon-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+                <path fill="#C2C2C2" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27
+                c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767
+                c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206
+                C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271
+                c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469
+                c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+              </svg>
+            </span>
+            <span class="username">kubem</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/kubamarchwicki">
+            <span class="icon linkedin"><i class="fi-social-linkedin"></i></span>
+            <span class="username">kubamarchwicki</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation/foundation.js"></script>
+    <script>
+      $(document).foundation();
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);
+    </script>
+
+    </body>
+</html>

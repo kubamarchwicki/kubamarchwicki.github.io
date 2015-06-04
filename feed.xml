@@ -5,9 +5,198 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 19 May 2015 22:22:40 +0000</pubDate>
-    <lastBuildDate>Tue, 19 May 2015 22:22:40 +0000</lastBuildDate>
+    <pubDate>Thu, 04 Jun 2015 20:21:59 +0000</pubDate>
+    <lastBuildDate>Thu, 04 Jun 2015 20:21:59 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>Wrapping Maven distribution together with a project</title>
+        <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There are few things that I&amp;#8217;ve been missing in Maven, that are available in Gradle out of the box (and no, I don&amp;#8217;t want to start a holy Gradle vs. Maven war). One of those was a Gradle wrapper; I wanted to create projects which are pretty environment agnostic and download whatever needed straight form the internet. While the build and dependency management tools do their job I was always struggling with the dependency management itself. Until now.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;but-why&quot;&gt;But why?&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Yeah - good question. Why on Earth would I need to have a dependency management tool as a &#39;compile time&#39; dependency. In my particular case it was Jenkins fault, I wanted my continuous integration environment to be just an infrastructure: an operating system, latest Java installation, Git - and the project brings what&amp;#8217;s ever required by itself. That is keeping the CI infrastructure robust with minimal project specific dependencies.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I remember &#39;good old times&#39; when certain project had to be built on particular swarms due to concrete Maven version being present or some system libraries being pre-installed. This approach doesn&amp;#8217;t scale and I was eager to fix it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;maven-wrapper&quot;&gt;Maven wrapper&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;While the wrapper isn&amp;#8217;t a problem for Gradle, my Maven projects were still problematic. Until I found a &lt;strong&gt;maven-wrapper&lt;/strong&gt; - a copy of the Gradle wrapper ported for use with Apache Maven.
+&lt;span class=&quot;footnote&quot; id=&quot;_footnote_maven-wrapper&quot;&gt;[&lt;a id=&quot;_footnoteref_1&quot; class=&quot;footnote&quot; href=&quot;#_footnote_1&quot; title=&quot;View footnote.&quot;&gt;1&lt;/a&gt;]&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As described on the project&amp;#8217;s wiki:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+&lt;blockquote&gt;
+the Maven Command Line Wrapper will auto-download and install Apache Maven from the Internet and then run your Maven goals.
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you are ok with manual installation, all that&amp;#8217;s needed is copying &lt;code&gt;mvnw&lt;/code&gt; files and &lt;code&gt;maven&lt;/code&gt; folder to your project - from say an example project.
+&lt;span class=&quot;footnote&quot; id=&quot;_footnote_maven-wrapper-example&quot;&gt;[&lt;a id=&quot;_footnoteref_2&quot; class=&quot;footnote&quot; href=&quot;#_footnote_2&quot; title=&quot;View footnote.&quot;&gt;2&lt;/a&gt;]&lt;/span&gt;
+This will make the file structure look pretty much like this.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code&gt;sample
+ ├── maven
+ │   ├── maven-wrapper.jar
+ │   └── maven-wrapper.properties
+ ├── src
+ │   └── main
+ │       └── java
+ ├── mvnw
+ ├── mvnw.bat
+ └── pom.xml&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now instead of running &lt;code&gt;mvn clean install&lt;/code&gt; we can just go with &lt;code&gt;./mvnw clean install&lt;/code&gt; that will do the thing.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;From my perspective that was quite handy - I didn&amp;#8217;t have to maintain a particular version of Maven in my CI environment. I had it defined together with a project. A first little success.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;automate-all-the-things&quot;&gt;Automate all the things&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Coping files is so nineties, so the next step would be to automatically get the wrapper through the Maven build process. This sounded reasonable, cause as the developer I obviously had Maven installed locally and the wrapper was targeting the continuous integration builds, not developers&#39; machines.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Nothing easier, the Maven wrapper comes with a handy build plugin.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.rimerosolutions.maven.plugins&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wrapper-maven-plugin&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;0.0.4&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;mavenVersion&amp;gt;&lt;/span&gt;3.3.1&lt;span class=&quot;tag&quot;&gt;&amp;lt;/mavenVersion&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Running &lt;code&gt;mvn wrapper:wrapper&lt;/code&gt; does the job and the wrapper is installed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;problems&quot;&gt;Problems?&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;That worked like a charm for a simple (very simple) project, a single project. But hey! we are doing enterprise here - our projects&#39; structure is hardly ever flat!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;So if my project gets slightly more complicated (with submodules), the Maven wrapper tasks, defined on the parent project - is repeated for each and every module. The output gets cumbersome and far from ideal.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;sample
+ ├── maven
+ │   ├── maven-wrapper.jar
+ │   └── maven-wrapper.properties
+ ├── module
+ |   ├── maven
+ │   |   ├── maven-wrapper.jar
+ │   |   └── maven-wrapper.properties
+ |   ├── mvnw
+ |   ├── mvnw.bat
+ |   └── pom.xml
+ ├── module2
+ |   ├── maven
+ │   |   ├── maven-wrapper.jar
+ │   |   └── maven-wrapper.properties
+ |   ├── mvnw
+ |   ├── mvnw.bat
+ |   └── pom.xml
+ ├── mvnw
+ ├── mvnw.bat
+ └── pom.xml&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I see a &lt;code&gt;MavenWrappersOverflowException&lt;/code&gt;. However, as this is purely related to the Maven life cycle and parent-child relationship (&#39;mother issues&#39; everywhere) - this is fixable with the configuration itself.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.rimerosolutions.maven.plugins&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wrapper-maven-plugin&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;0.0.4&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;inherited&amp;gt;&lt;/span&gt;false&lt;span class=&quot;tag&quot;&gt;&amp;lt;/inherited&amp;gt;&lt;/span&gt;        &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;mavenVersion&amp;gt;&lt;/span&gt;3.3.1&lt;span class=&quot;tag&quot;&gt;&amp;lt;/mavenVersion&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;colist arabic&quot;&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;By default, plugin configuration should be propagated to child POMs, so to break the inheritance, you could uses the &lt;code&gt;&amp;lt;inherited&amp;gt;&lt;/code&gt; tag&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now, we just need to run the goal for this particular project (while in the parent project&amp;#8217;s folder). This will generated the wrapper only where it&amp;#8217;s needed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;bash&quot;&gt;mvnw wrapper:wrapper -N         &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;colist arabic&quot;&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;-N&lt;/code&gt; argument stands for non-recursive builds, which prevents Maven from building submodules (only builds the project contained in the current directory).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Just one thing: with the wrapper plugin and Polyglot for Maven
+&lt;span class=&quot;footnote&quot; id=&quot;_footnote_polyglot-maven&quot;&gt;[&lt;a id=&quot;_footnoteref_3&quot; class=&quot;footnote&quot; href=&quot;#_footnote_3&quot; title=&quot;View footnote.&quot;&gt;3&lt;/a&gt;]&lt;/span&gt;
+I&amp;#8217;ve gradually lost interest in any other build tools ;-)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
+&lt;div class=&quot;footnote&quot; id=&quot;_footnote_1&quot;&gt;
+&lt;a href=&quot;#_footnoteref_1&quot;&gt;1&lt;/a&gt; &lt;a href=&quot;https://github.com/rimerosolutions/maven-wrapper&quot; class=&quot;bare&quot;&gt;https://github.com/rimerosolutions/maven-wrapper&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footnote&quot; id=&quot;_footnote_2&quot;&gt;
+&lt;a href=&quot;#_footnoteref_2&quot;&gt;2&lt;/a&gt; &lt;a href=&quot;https://github.com/rimerosolutions/maven-wrapper-example&quot; class=&quot;bare&quot;&gt;https://github.com/rimerosolutions/maven-wrapper-example&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&quot;footnote&quot; id=&quot;_footnote_3&quot;&gt;
+&lt;a href=&quot;#_footnoteref_3&quot;&gt;3&lt;/a&gt; &lt;a href=&quot;https://github.com/takari/polyglot-maven&quot; class=&quot;bare&quot;&gt;https://github.com/takari/polyglot-maven&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Thu, 04 Jun 2015 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2015/06/04/maven-wrapper/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2015/06/04/maven-wrapper/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
     
       <item>
         <title>Characterize your legacy with junit</title>
@@ -1605,246 +1794,6 @@ WARN - Injection data not found in enc:
         <pubDate>Wed, 29 Jun 2011 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2011/06/29/testing-ejb-application-openejb-with-vendor-extensions-and-ejb-jar-xml/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/06/29/testing-ejb-application-openejb-with-vendor-extensions-and-ejb-jar-xml/</guid>
-        
-        
-        <category>posts</category>
-        
-      </item>
-    
-      <item>
-        <title>The art of testing an EJB application – Part III (OpenEJB)</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In the last two posts I’ve introduced my approach to testing (both unit and integration) and shown few ways to test bits and pieces of an enterprise application (some naive as well as more mature). This part is dedicated to tests with a fully featured EJB container, bootstrapped by the test suit. I’ll be using OpenEJB, because I’ve been using it for last few weeks in my latest project. I’ll show some basics and cover some of the more troublesome bits and pieces (which were not covered in the documentation or were not that intuitive). I must admit starting with OpenEJB wasn’t easy; in fact it was fairly frustrating experience at some point (which could have been noticed &lt;a href=&quot;http://twitter.com/kubem&quot;&gt;in my tweets&lt;/a&gt;). It’s a great a tool, but the learning curve is steep. I’m focusing on OpenEJB cause I’ve been using is the extensively. Nonetheless, it’s not the only way to test EJB application end-to-end. Alternatives are Sping (which handles @EJB annotations pretty neatly) or Arquillian (which is another approach to bootstrap the container). I’ll try to cover the latter in some future posts, but as for now – let’s start with OpenEJB.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;There is one downside of OpenEJB – it bootstraps whole container and deploy all beans available in classpath. That’s not a desired behaviour in many cases. Arquillian seems to be more picky when it comes to beans for deployment. OpenEJB has some filtering capabilities as well – I’ll cover those later on in the series.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;For something completely different – I thought I’d rather avoid embedding small code snippets, so I decided to host a complete working project at my GitHub space: &lt;a href=&quot;https://github.com/kubamarchwicki/ejb-testing&quot; class=&quot;bare&quot;&gt;https://github.com/kubamarchwicki/ejb-testing&lt;/a&gt; – feel free to fork.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;hello-world-application&quot;&gt;Hello world! application&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is fairly easy – there are tons of dummy EJB examples. However, I don’t like when examples are too abstract so lets assume we are building a calculator application, with services responsible for calculations and some for printing the results, etc.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;CalculatingServiceLocal&lt;/span&gt; {
-   &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; add(&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt;... args);
-   &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; subtract(&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt;... args);
-   &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; multiply(&lt;span class=&quot;type&quot;&gt;int&lt;/span&gt;... args);
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;MethodControllerLocal&lt;/span&gt; {
-   &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;enum&lt;/span&gt; Operator {ADD, SUBTRACT, MULTIPLY};
-   &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; calculate(Operator operation, &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;... args);
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;To test this application we need to add two things to project and write the actual test. First of all it’s required to include OpenEJB in our application, in test scope.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.openejb&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;openejb-core&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;3.1&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;scope&amp;gt;&lt;/span&gt;test&lt;span class=&quot;tag&quot;&gt;&amp;lt;/scope&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The actual test looks like this:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;MethodControllerTest&lt;/span&gt; {
-
-   MethodControllerLocal controller;
-
-   &lt;span class=&quot;annotation&quot;&gt;@BeforeClass&lt;/span&gt;
-   &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; setup() &lt;span class=&quot;directive&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;exception&quot;&gt;NamingException&lt;/span&gt; {
-       &lt;span class=&quot;predefined-type&quot;&gt;InitialContext&lt;/span&gt; ctx = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;InitialContext&lt;/span&gt;();
-       controller = (MethodControllerLocal) ctx
-               .lookup(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;MethodControllerLocal&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
-   }
-
-   &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
-   &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; notSupportedOperation() {
-       &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; calculate = controller.calculate(Operator.MULTIPLY,
-               &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;type&quot;&gt;[]&lt;/span&gt; { &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; });
-       Assert.assertEquals(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;501 Not Implemented&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, calculate);
-   }
-
-   &lt;span class=&quot;comment&quot;&gt;//... more test methods&lt;/span&gt;
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;For this to successfully run, we need to instruct OpenEJB on how to perform the classpath discovery (see &lt;a href=&quot;http://openejb.apache.org/3.0/application-discovery-via-the-classpath.html&quot;&gt;OpenEJB application discovery via classpath manual&lt;/a&gt; for details). My personal preference is to use openejb.deployments.classpath.include and openejb.deployments.classpath.exclude as I find it more reliable that putting an empty ejb-jar.xml file in the classpath.
-In most cases this works smoothly, with a little jinx: OpenEJB goes nuts when classpath entries contains spaces (so if you use Maven and your repository is located in “Documents and Settings” folder). Moving it to a space-free folder fixes the issue.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;beyond-a-dummy-testing&quot;&gt;Beyond a dummy testing&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In most cases, most tutorials finish here: a working sample, which has nothing to do with a real life application. In my case it’s more about a working baseline to iterate upon – the day-to-day testing problems are much more complicated and require significantly more effort. There is a long list of problems which you can stumble upon when trying to test real life projects and I intend to cover at least some of those issue. To list a few I’ve encountered:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;including database in this equation (to test JPA named queries)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;getting access to an entity manager, to check what actually got persisted&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;using ejb-jar.xml to instantiate vendor specific dependencies (which are not supported by the OpenEJB – like managed beans)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;using ejb-jar.xml to inject different implementations (without changing the actual application code)&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;adding-database-to-this-equation&quot;&gt;Adding database to this equation&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This sounds like a fairly common use case; an enterprise application uses database underneath. I don’t want to test database, persisting etc – I’ll just start with adding it an application. Let’s assume we need to persist calculation results. To do this, we add a basic entity and persistence.xml file to our solution.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Entity&lt;/span&gt;
-&lt;span class=&quot;annotation&quot;&gt;@Table&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;CALC_RESULTS_TB&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;CalculationResult&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;Serializable&lt;/span&gt; {
-
-   &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;long&lt;/span&gt; serialVersionUID = -&lt;span class=&quot;integer&quot;&gt;3706396749558191166L&lt;/span&gt;;
-
-   &lt;span class=&quot;annotation&quot;&gt;@Id&lt;/span&gt;
-   &lt;span class=&quot;annotation&quot;&gt;@Column&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;CALC_ID&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
-        unique = &lt;span class=&quot;predefined-constant&quot;&gt;true&lt;/span&gt;, nullable = &lt;span class=&quot;predefined-constant&quot;&gt;false&lt;/span&gt;,
-        precision = &lt;span class=&quot;integer&quot;&gt;10&lt;/span&gt;, scale = &lt;span class=&quot;integer&quot;&gt;0&lt;/span&gt;)
-   &lt;span class=&quot;annotation&quot;&gt;@GeneratedValue&lt;/span&gt;(generator = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;CALC_ID_SEQ&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-   &lt;span class=&quot;annotation&quot;&gt;@SequenceGenerator&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;CALC_ID_SEQ&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, sequenceName = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;CALC_ID_SEQ&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-   &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;long&lt;/span&gt; id;
-
-   &lt;span class=&quot;annotation&quot;&gt;@Column&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;OPERATION&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-   &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; operation;
-
-   &lt;span class=&quot;annotation&quot;&gt;@Column&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;ELEMENTS&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-   &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; elements;
-
-   &lt;span class=&quot;annotation&quot;&gt;@Column&lt;/span&gt;(name = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;RESULT&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-   &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;int&lt;/span&gt; result;
-
-   &lt;span class=&quot;comment&quot;&gt;//getters and setters&lt;/span&gt;
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;title&quot;&gt;persistence.xml&lt;/div&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;persistence&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;version&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;xmlns&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;http://java.sun.com/xml/ns/persistence&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
-        &lt;span class=&quot;attribute-name&quot;&gt;xmlns:xsi&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;http://www.w3.org/2001/XMLSchema-instance&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
-        &lt;span class=&quot;attribute-name&quot;&gt;xsi:schemaLocation&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;http://java.sun.com/xml/ns/persistence&lt;/span&gt;
-        &lt;span class=&quot;content&quot;&gt;http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
-         &lt;span class=&quot;tag&quot;&gt;&amp;lt;persistence-unit&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;ejb-testing-pu&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;transaction-type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;JTA&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;provider&amp;gt;&lt;/span&gt;org.hibernate.ejb.HibernatePersistence&lt;span class=&quot;tag&quot;&gt;&amp;lt;/provider&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;jta-data-source&amp;gt;&lt;/span&gt;java:/DefaultDS&lt;span class=&quot;tag&quot;&gt;&amp;lt;/jta-data-source&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;class&amp;gt;&lt;/span&gt;pl.marchwicki.ejb.entity.CalculationResult&lt;span class=&quot;tag&quot;&gt;&amp;lt;/class&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;properties&amp;gt;&lt;/span&gt;
-     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.show_sql&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
-     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.format_sql&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
-     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.use_sql_comments&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
-     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.dialect&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
-                &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.hibernate.dialect.Oracle9Dialect&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
-     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.cache.use_second_level_cache&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
-     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.cache.use_query_cache&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
-     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.cache.provider_class&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
-                &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.jboss.ejb3.entity.TreeCacheProviderHook&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
-     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;treecache.mbean.object_name&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
-                &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;jboss.cache:service=EJB3EntityTreeCache&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
-     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.cache.region_prefix&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;/ejb-testing&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
-     &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;hibernate.ejb.naming_strategy&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
-                &lt;span class=&quot;attribute-name&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.hibernate.cfg.DefaultComponentSafeNamingStrategy&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/properties&amp;gt;&lt;/span&gt;
- &lt;span class=&quot;tag&quot;&gt;&amp;lt;/persistence-unit&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/persistence&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Now, let’s wrap it into an ear file and deploy onto JBoss (I’ve used JBoss 4.2.3 – I know it’s an old one, but I happened I had that one installed – so the choice was obvious). On JBoss it works like a charm:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre&gt;16:06:55,827 INFO  [EJBContainer]
-          STARTED EJB: pl.marchwicki.ejb.view.DisplayingService ejbName: DisplayingService
-16:06:55,842 INFO  [EJBContainer]
-          STARTED EJB: pl.marchwicki.ejb.controllers.MethodController ejbName: MethodController
-16:06:55,858 INFO  [EJB3Deployer]
-          Deployed: [..] tmp4564005441996180815ear-0.0.1-SNAPSHOT.ear-contents/ejb-0.0.1-SNAPSHOT.jar
-16:06:55,858 INFO  [EARDeployer]
-          Started J2EE application:
-          file:/C:/_projects/_servers/jboss-4.2.3.GA/server/default/deploy/ear-0.0.1-SNAPSHOT.ear&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Unfortunately, when tests are re-executed – everything fails. SNAFU – situation normal. First of all – JBoss uses Hibernate as an JPA implementation, OpenEJB does not (I assume OpenJPA – but I haven’t been using that one as well). Secondly, persistence.xml includes some more sophisticated caching configuration.OpenEJB manual is pretty helpful here: lookup &lt;a href=&quot;http://openejb.apache.org/3.0/configuring-persistenceunits-in-tests.html&quot;&gt;configuring persistence unit in tests&lt;/a&gt;. However, more fundamental question should be answered here: what’s better for testing – two separate configurations (production and tests) or sharing same configuration only tuning (overriding it) when required. I prefer the latter – not once I had problems because I forgot updating test configuration with new entities, which cause tests fail. I’d rather satisfy test dependencies (in test scope) and override specific production properties (those related to cache, but also showing fomatted SQL in tests is pretty handy).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Additionally, (a clear coder notice) the setup() method is becoming a little boated with configuration. This can be easily moved to a jndi.properties file in the src/test/resources folder (not only the test suits become more readable, it makes the configuration reusable as well). So the configuration file for the test suit looks like this:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre&gt;java.naming.factory.initial = org.apache.openejb.client.LocalInitialContextFactory
-
-persistence unit
-ejb-testing-pu.hibernate.cache.provider_class = org.hibernate.cache.EhCacheProvider
-ejb-testing-pu.hibernate.hbm2ddl.auto = create-drop
-ejb-testing-pu.hibernate.dialect = org.hibernate.dialect.HSQLDialect
-ejb-testing-pu.hibernate.show_sql = true
-ejb-testing-pu.hibernate.format_sql = true
-ejb-testing-pu.hibernate.use_sql_comments = true
-ejb-testing-pu.hibernate.jdbc.batch_size = 0
-
-openejb.deployments.classpath.include = .*ejb-testing.*
-openejb.descriptors.output = true&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Now OpenEJB works beautifully. Mission accomplished!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre&gt;===============================================
-    Default test
-    Tests run: 3, Failures: 0, Skips: 0
-===============================================&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;what-s-comming-next&quot;&gt;What’s comming next&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I know, with this post I’ve only touched the surface of OpenEJB, but that’s just to begin with something bigger. In the next part I plan to tackle ejb-jar.xml – instantiation of vendor specific beans, not handled by the OpenEJB and injecting concrete implementation of a service (when more than one is available in a classpath).&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
-        <pubDate>Thu, 09 Jun 2011 00:00:00 +0000</pubDate>
-        <link>http://jakub.marchwicki.pl/posts/2011/06/09/the-art-of-testing-an-ejb-application-openejb/</link>
-        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/06/09/the-art-of-testing-an-ejb-application-openejb/</guid>
         
         
         <category>posts</category>
