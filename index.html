@@ -5,35 +5,21 @@ redirect_from: /blog/index.html
 
 <div class="home">
 
-  {% for post in site.categories.speaking %}
-    {% capture currentTime %}{{ 'now' | date: "%s" }}{% endcapture %}
-    {% capture speakingTime %}{{ post.speakingDate | date: "%s" }}{% endcapture %}
-    {% if speakingTime > currentTime %}
-      <p>Forthcoming speaking: </p>
-      {% break %}
-    {% endif %}
-  {% endfor %}
-
-  <ul class="speaking forthcoming">
-  {% for post in site.categories.speaking %}
-    {% capture currentTime %}{{ 'now' | date: "%s" }}{% endcapture %}
-    {% capture speakingTime %}{{ post.speakingDate | date: "%s" }}{% endcapture %}
-    {% if speakingTime > currentTime %}
-      <li>
-        <a href="{{ post.url }}">{{ post.title }}</a>
+  <ul class="list">
+    {% for post in site.posts %}
+    
+    {% if post.categories.first == "speaking" %}
+      <li class="speaking">
+        Speaking at <a href="{{ post.url }}">{{ post.title }}</a>
         <span class="post-date">({{post.speakingDate}})</span>
       </li>
-    {% endif %}
-  {% endfor %}
-  </ul>  
-
-  <ul class="posts">
-    {% for post in site.categories.posts %}
-      <li>
+    {% else %}  
+      <li class="posts">
         <a href="{{ post.url }}">{{ post.title }}</a>
         <span class="post-date">({{post.date | date: "%Y-%m-%d"}})</span>
         <blockquote>{{ post.excerpt }}</blockquote>
       </li>
+    {% endif %}
     {% endfor %}
   </ul>
 
