@@ -13,4 +13,4 @@ rvm:
 
 sudo: false
 
-script: bundle exec rake deploy
+script: JEKYLL_ENV=production bundle exec rake deploy
