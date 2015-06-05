@@ -2,7 +2,7 @@
 title: Wrapping Maven distribution together with a project
 layout: post
 categories: posts
-excerpt: A pro tip how to wrap Maven with your project (just list you can to it with Gradle)
+excerpt: A pro tip how to wrap Maven with your project (just like you can to it with Gradle)
 ---
 
 There are few things that I've been missing in Maven, that are available in Gradle out of the box (and no, I don't want to start a holy Gradle vs. Maven war). One of those was a Gradle wrapper; I wanted to create projects which are pretty environment agnostic and download whatever needed straight form the internet. While the build and dependency management tools do their job I was always struggling with the dependency management itself. Until now.
