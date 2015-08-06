@@ -53,7 +53,7 @@ For obvious reasons http://2015.microservices.geecon.org/[GeeCON Microservices] 
 http://2015.microservices.geecon.org/[GeeCON Microservices] is obviously mostly about sessions. That's the time between breaks and keynotes, before the party. We've seen some important patterns to cluster talks around and that's how the 30 minutes sessions are structured:
 
 * Get practical. All the things you could have not thought of before starting the microservices journey: provisioning, deploying, orchestrating, managing, etc
-* Design the right thing. How big should my microservices be, what is too much and when is it loo little.
+* Design the right thing. How big should my microservices be, what is too much and when is it too little.
 * Ponder a bit. Why are we shifting, where are we rolling this big ball of mud, what are we actually doing and it this what we really need. Monoliths are still valid architecture pattern - in certain contexts. It makes certain things harder, but other can be no-brainers. We want to shed some light on these as well.
 
 == The closing keynote
@@ -66,7 +66,7 @@ At http://2015.microservices.geecon.org/[GeeCON Microservices], with so wonderfu
 
 == The location
 
-Last but not least; http://2015.microservices.geecon.org/[GeeCON Microservices] is the only conference (at least in Poland) where only 200 meters (measured) is between you and the sandy beach. Only conference where the after party may like a Miami beach party (if only Polish weather permits - that's the only thing we cannot pre-book).
+Last but not least; http://2015.microservices.geecon.org/[GeeCON Microservices] is the only conference (at least in Poland) where only 200 meters (measured) is between you and the sandy beach. Only conference where the after party may be like on a Miami beach party (if only Polish weather permits - that's the only thing we cannot pre-book).
 
 == A humble opinion
 
