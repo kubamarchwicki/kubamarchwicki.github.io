@@ -5,9 +5,150 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 11 Aug 2015 21:54:40 +0000</pubDate>
-    <lastBuildDate>Tue, 11 Aug 2015 21:54:40 +0000</lastBuildDate>
+    <pubDate>Tue, 11 Aug 2015 22:00:41 +0000</pubDate>
+    <lastBuildDate>Tue, 11 Aug 2015 22:00:41 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>GeeCON Microservices - in Sopot this September</title>
+        <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This post is kind of brought by &lt;a href=&quot;https://twitter.com/LAFK_pl/&quot;&gt;Tomek Borek&lt;/a&gt; and an inspiration coming from his &lt;a href=&quot;https://lafkblogs.wordpress.com/2015/08/05/reasons-why-i-believe-geecon-microservices-will-be-good/&quot;&gt;reasons why I believe GeeCON Microservices will be good&lt;/a&gt; post.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;ve been involved in the &lt;a href=&quot;http://2015.microservices.geecon.org/&quot;&gt;GeeCON Microservices&lt;/a&gt; since the day one and I hardly ever spoken why are we running this show, what&amp;#8217;s the story behind the agenda - cause it&amp;#8217;s not just a &lt;em&gt;fashion driven conference&lt;/em&gt;. Well, in same cases it is, as in &lt;a href=&quot;#the-success-keynote&quot;&gt;The success keynote&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A friend of mine (after reviewing this post) said I should&amp;#8217;ve made the title more marketable, like: &quot;I&amp;#8217;ll reveal some insider&amp;#8217;s knowledge about building the conference agenda and some of the talks&quot;. Well, you can treat it as such.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;a-single-track&quot;&gt;A single track&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;http://2015.microservices.geecon.org/&quot;&gt;GeeCON Microservices&lt;/a&gt; is a single day, single track conference. Our ambition wasn&amp;#8217;t to bring you largest number of speakers, enormous amount of tracks. The rationale was different: focus on a single topic and cover it from multiple perspectives. Cover it in such a way, that after these 12 sessions all attendees will have a comprehensive understanding &lt;em&gt;what&amp;#8217;s the fuzz about those microservices&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We also did want to save you hassle of choosing the best possible talk. There is no choice and all talks are best possible - we guarantee.
+As a regular conference attendee I struggle with that, always puzzled which talk is better I regularly end up talking and networking with fellow geeks. Now the choice is obvious, all talks are first class.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;a-curated-agenda&quot;&gt;A curated agenda&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;http://2015.microservices.geecon.org/&quot;&gt;GeeCON Microservices&lt;/a&gt; didn&amp;#8217;t have a call for papers. That was a conscious but a difficult choice. We made an effort to bring a variety of speakers from different domains, with huge experience. We didn&amp;#8217;t want to just praise the microservices world; we want to go a step further.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;We want to show you the upsides and downsides.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;We want to share the context: where it worked and where it didn&amp;#8217;t.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;We want to drill down the steps needed for success&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Each speaker is experienced: knowledge-wise and speaking-wise. So we did our best to bring you sessions which won&amp;#8217;t be boring and which will be held in a professional way.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;agenda&quot;&gt;Agenda&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;At &lt;a href=&quot;http://2015.microservices.geecon.org/&quot;&gt;GeeCON Microservices&lt;/a&gt; you can see we have &lt;strong&gt;three&lt;/strong&gt; (sic!) keynotes. The agenda is structured around short, 30 minutes, in-depth sessions, focusing on particular aspects of microservices world (those which we see as important). Additionally - we open and close with a bigger stories going beyond &lt;em&gt;just the microservices&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Building up an agenda is not an assignment for a single evening. There were many people involved, with many hours spent on emails, calls and Slack discussions. Not everybody we wanted, could have made it to the conference (location, timing, travel required). However some of the &#39;nos&#39; were sweet music to our ears: &lt;em&gt;&#39;It was a tough decision (I would have enjoyed the rest of the lineup a lot)&#39;&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There should be nothing to stop you from enjoying the lineup.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;the-opening-keynote&quot;&gt;The opening keynote&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;When you scan through the &lt;a href=&quot;http://2015.microservices.geecon.org/#schedule&quot;&gt;GeeCON Microservices&lt;/a&gt;schedule - a set of patterns (I hope) emerge. We are starting with Fred George&amp;#8217;s keynote &quot;It&amp;#8217;s Not Just MicroServices: Areas of focus for MicroService Success&quot; - I hope just by the title you see we don&amp;#8217;t want to follow the fashion, praise the micro architecture and treat it as a silver bullet.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We also know that microservice is not only about technology: it&amp;#8217;s about processes, roles, changing (or challenging) the organisations. That needs to be made explicit - like in Fred&amp;#8217;s keynote.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;the-success-keynote&quot;&gt;The success keynote&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For obvious reasons &lt;a href=&quot;http://2015.microservices.geecon.org/&quot;&gt;GeeCON Microservices&lt;/a&gt; is also about success stories; there are multiple of them. Adrian Trenaman (VP of Engineering from Gilt) will share his in &#39;Scaling microservices at Gilt&#39;. Gilt is not a software house, Gilt sells fashion. And they do it with distributed, fault-tolerant, scalable platform. Adrian will give some insights what they build, with all the whys and hows - to survive their daily noon peaks of traffic which exceeds the normal load by multiple orders of magnitude.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;sessions&quot;&gt;Sessions&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;http://2015.microservices.geecon.org/&quot;&gt;GeeCON Microservices&lt;/a&gt; is obviously mostly about sessions. That&amp;#8217;s the time between breaks and keynotes, before the party. We&amp;#8217;ve seen some important patterns to cluster talks around and that&amp;#8217;s how the 30 minutes sessions are structured:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Get practical. All the things you could have not thought of before starting the microservices journey: provisioning, deploying, orchestrating, managing, etc&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Design the right thing. How big should my microservices be, what is too much and when is it too little.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ponder a bit. Why are we shifting, where are we rolling this big ball of mud, what are we actually doing and it this what we really need. Monoliths are still valid architecture pattern - in certain contexts. It makes certain things harder, but other can be no-brainers. We want to shed some light on these as well.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;the-closing-keynote&quot;&gt;The closing keynote&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;After all these sessions, we hope you have an image that microservices are not about technology, just technology and only technology. It goes far beyond. We believe the closing keynote will emphasize this. Erik Dörnenburg (Head of Technology at ThoughtWorks) will bring an important topic what is the role of an architect in all these. Is it a wizard, an alpha engineer, a master builder or can architecture grow without architects.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;breaks&quot;&gt;Breaks&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;At &lt;a href=&quot;http://2015.microservices.geecon.org/&quot;&gt;GeeCON Microservices&lt;/a&gt;, with so wonderful speakers, with hundreds of years of collective experience, we wanted to give you multiple opportunities to talk, discuss, share views and opinions. Not just short coffee breaks - we did our best to balance session time with conversations time. And besides that - you still have a chance to get a geek breakfast in the morning.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;the-location&quot;&gt;The location&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Last but not least; &lt;a href=&quot;http://2015.microservices.geecon.org/&quot;&gt;GeeCON Microservices&lt;/a&gt; is the only conference (at least in Poland) where only 200 meters (measured) is between you and the sandy beach. Only conference where the after party may be like on a Miami beach party (if only Polish weather permits - that&amp;#8217;s the only thing we cannot pre-book).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;a-humble-opinion&quot;&gt;A humble opinion&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I decided to write this post because that was quite an effort for the team (as well as for me personally) to come up with such agenda, build it, book it and get it rolling. To be more precise, agreeing on the agenda was the hardest part. Building a story around it. And now - I wanted to share this story with you.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you liked it - go in and register for &lt;a href=&quot;http://2015.microservices.geecon.org/&quot;&gt;GeeCON Microservices&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Wed, 05 Aug 2015 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2015/08/05/microservice-geecon/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2015/08/05/microservice-geecon/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
     
       <item>
         <title>Wrapping Maven distribution together with a project</title>
@@ -1574,226 +1715,6 @@ So that is the mapper. What’s still needed is a reducer. All the services use 
         <pubDate>Fri, 01 Jul 2011 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2011/07/01/testing-ejb-application-openejb-without-classpath-scanning/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/07/01/testing-ejb-application-openejb-without-classpath-scanning/</guid>
-        
-        
-        <category>posts</category>
-        
-      </item>
-    
-      <item>
-        <title>(…) testing an EJB application – Part IV (OpenEJB with vendor extensions and ejb-jar.xml)</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;/posts/2011/06/09/the-art-of-testing-an-ejb-application-openejb/&quot;&gt;The previous post of EJB testing featured OpenEJB bootstrapping and handling different configurations&lt;/a&gt; (or better say overwriting the defaults). This time I want to focus on vendor extensions, which are not supported by OpenEJB and ways to include them in the testing context. This way I’ll tackle ejb-jar.xml files, which can provide alternate dependencies for beans in context. I’ll iterate over a sample application which is available on &lt;a href=&quot;https://github.com/kubamarchwicki/ejb-testing&quot;&gt;github&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;the-wider-context&quot;&gt;The wider context&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I’ve already mentioned I’m using JBoss and the vendor extension which I’m referring to is a @Service annotation. JBoss does not support a @Singleton EJB annotation and @Service is supposed to be an alternative (this refers to versions 4.x and 5.x – I haven’t tested it, but I suppose @Singleton annotation works fine in JBoss6). I’ve been using JBoss @Services for two reasons: managed configuration beans and basic cache. The big advantage of a managed-bean service is that there will be only one instance of the service bean (no pooling) so the instance is effectively a singleton. That way the bean’s shared state is accessible by other clients. This is important to remember because it’s not always a desired behaviour.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;To put this in context of the sample-example application, lets assume an interface to our calculator application is a custom, concatenated string, which needs to be parsed (if you need a reason, let’s say we are running service manually from the jmx-console). The parser we are using works very quickly, but the initialization takes long enough to be worried about the run-time performance (quite a common non-functional requirement when a Dozer Mapper or Hibernate Validator is used – initialization takes some time). Using a service to initialize it on startup does not seem such a bad idea. Additionally, there is a requirement to change some of the configuration properties in run-time. In our particular case, the configuration is used for a flexible customizing the display. A configuration managed bean will be used to fulfil this ‘requirement’.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;services&quot;&gt;Services&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;First of all, before we even get to building a service, appropriate dependencies need including. @Service is a vendor extension so a jboss jar needs referencing:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;jboss&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;jboss-annotations-ejb3&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;That way access to @Service and @Management annotations is available. Building a singleton bean is as easy as adding those two annotations to a desired class:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Service&lt;/span&gt;(objectName=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;pl.marchwicki.view.settings:service=displaySettings&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-&lt;span class=&quot;annotation&quot;&gt;@Management&lt;/span&gt;(DisplaySettingsMBean.class)
-&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;DisplaySettings&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;implements&lt;/span&gt; DisplaySettingsMBean {
-  &lt;span class=&quot;comment&quot;&gt;//... business methods&lt;/span&gt;
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Another important note: while in case of setting mbean we don’t need to any additional lifecycle methods in the interface (like start, stop, create, destroy), in case of caching bean, a start() method is very helpful. At some point of the lifecycle the mapper needs initialization. In normal EJB environment it would be @PostConstruct, but as we are using vendor specific extensions it all works slightly different. What would have normally been put to @PostConstruct, gets executed in start() method.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;successful-deployment&quot;&gt;Successful deployment&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;When the application is built and deployed we see following information in the log file (acknowledging successful deployment):&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre&gt;INFO  [EJBContainer] STARTED EJB: pl.marchwicki.ejb.frontend.StringToArrayMappingService
-    ejbName: StringToArrayMappingService
-INFO  [Mapper] Mapper initialized
-INFO  [StringToArrayMappingService] Mapper set
-INFO  [EJBContainer] STARTED EJB: pl.marchwicki.ejb.view.configuration.DisplaySettings
-    ejbName: DisplaySettings&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Now, it’s possible to invoke the add() method from calculationFacade service, from the jmx-console. With argument “1;2;3;4” we see appropriate result in logs:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre&gt;INFO  [STDOUT] : Result of ADD operation is: 10&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;It’s also possible to change the display template (in the displaySettings bean), so the result looks slightly different:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre&gt;INFO  [STDOUT] @@@@@ Result of ADD operation is: 10&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Everything works fine… however, describing the nature of JBoss ‘singletons’ was not the objective for this post. It was supposed to be about testing.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;initializing-vendor-specific-beans-in-tests&quot;&gt;Initializing vendor specific beans in tests&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I must admit there was a little trick – I’ve been running maven with the skip-tests flag set. I wanted to show the application is running on the application server, to emphasize the differences and issues with OpenEJB for testing. When the tests are run, the build fails (even though everything works smooth on the server):&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre&gt;WARN - Unresolved ejb reference
-   &quot;pl.marchwicki.ejb.view.DisplayingService/settings&quot; in bean
-   &quot;DisplayingService&quot;.  Will attempt resolution again at runtime.
-WARN - Injection data not found in enc:
-   jndiName=&#39;pl.marchwicki.ejb.view.DisplayingService/settings&#39;,
-   target=class pl.marchwicki.ejb.view.DisplayingService/settings&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;OpenEJB is unable to resolve the managed beans. No surprise – these are JBoss services afterall. Now it’s time for manual setup, with an ejb-jar.xml. First of all – we need to handle DisplaySettings by defining the bean as follows:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;ejb-jar&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;tag&quot;&gt;&amp;lt;enterprise-beans&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;session&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;tag&quot;&gt;&amp;lt;ejb-name&amp;gt;&lt;/span&gt;DisplaySettings&lt;span class=&quot;tag&quot;&gt;&amp;lt;/ejb-name&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;business-local&amp;gt;&lt;/span&gt;pl.marchwicki.ejb.view.configuration.DisplaySettingsMBean&lt;span class=&quot;tag&quot;&gt;&amp;lt;/business-local&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;tag&quot;&gt;&amp;lt;ejb-class&amp;gt;&lt;/span&gt;pl.marchwicki.ejb.view.configuration.DisplaySettings&lt;span class=&quot;tag&quot;&gt;&amp;lt;/ejb-class&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;tag&quot;&gt;&amp;lt;session-type&amp;gt;&lt;/span&gt;Stateless&lt;span class=&quot;tag&quot;&gt;&amp;lt;/session-type&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;tag&quot;&gt;&amp;lt;env-entry&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;description&amp;gt;&lt;/span&gt;Display template&lt;span class=&quot;tag&quot;&gt;&amp;lt;/description&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;env-entry-name&amp;gt;&lt;/span&gt;setDisplayTemplate&lt;span class=&quot;tag&quot;&gt;&amp;lt;/env-entry-name&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;env-entry-type&amp;gt;&lt;/span&gt;java.lang.String&lt;span class=&quot;tag&quot;&gt;&amp;lt;/env-entry-type&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;env-entry-value&amp;gt;&lt;/span&gt;------- {} -------&lt;span class=&quot;tag&quot;&gt;&amp;lt;/env-entry-value&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;injection-target&amp;gt;&lt;/span&gt;
-                  &lt;span class=&quot;tag&quot;&gt;&amp;lt;injection-target-class&amp;gt;&lt;/span&gt;pl.marchwicki.ejb.view.configuration.DisplaySettings&lt;span class=&quot;tag&quot;&gt;&amp;lt;/injection-target-class&amp;gt;&lt;/span&gt;
-          &lt;span class=&quot;tag&quot;&gt;&amp;lt;injection-target-name&amp;gt;&lt;/span&gt;setDisplayTemplate&lt;span class=&quot;tag&quot;&gt;&amp;lt;/injection-target-name&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/injection-target&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;tag&quot;&gt;&amp;lt;/env-entry&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/session&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/enterprise-beans&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/ejb-jar&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;After that, the application builds successfully, tests run smoothly and an expected message shows up in the console (formatted as defined).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre&gt;------- Result of ADD operation is: 10 -------&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The caching service can be handled in a very similar way. Starting with a test, which obviously fails:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;CalculationFacadeTest&lt;/span&gt; {
-
-  CalculationFacadeLocal facade;
-
-  &lt;span class=&quot;annotation&quot;&gt;@BeforeClass&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; setup() &lt;span class=&quot;directive&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;exception&quot;&gt;NamingException&lt;/span&gt; {
-    &lt;span class=&quot;predefined-type&quot;&gt;InitialContext&lt;/span&gt; ctx = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;InitialContext&lt;/span&gt;();
-    facade = (CalculationFacadeLocal) ctx.lookup(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;CalculationFacadeLocal&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
-  }
-
-  &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; simpleAdding() {
-    &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; args = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;1;2;3;4&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;;
-    &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; calculate = facade.add(args);
-    Assert.assertEquals(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;200 OK&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, calculate);
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre&gt;FAILED CONFIGURATION: @BeforeClass setup
-    javax.naming.NameNotFoundException: Name &quot;CalculationFacadeLocal&quot; not found.&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;OpenEJB does not handle out service annotation so a similar approach with ejb-jar.xml is required. Definition is fairly simple, so after adding both services to context… the test fails again – but more gracefully.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre&gt;Caused by: java.lang.NullPointerException
-    at pl.marchwicki.ejb.frontend.StringToArrayMappingService.map(StringToArrayMappingService.java:18)&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The cached mapper needs manual initializing – not surprise. We can add this extra step into @BeforeClass method of the test (lookup the bean in the context and manually run the start() method) and voila! Build successful. Surprising is that OpenEJB does not call create() method on startup – even though it says so in the logs.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;beyond-initialization&quot;&gt;Beyond initialization&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Simple initialization is not the only useful thing about ejb-jar.xml. Let’s say we aim to mock some services – take DisplayingService. As the ‘sophisticated templates’ are not required for tests, so let’s replace them with a simplest possible implementation – displaying results to console without any formatting. As you could have noticed, OpenEJB does not give you much flexibility in what to use. Classpath is scanned, beans are created. What is more, OpenEJB does not care much if more than one implementation of the business interface is present in context. The first one is picked and wired (which I can accept to some extent). It gets worse when the application consists of multiple ears which all get wrapped into single ear on tests. After that it’s impossible to tell which implementation is used.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;So let’s create additional implementation of DisplayingServiceLocal. Unfortunately, even though additional bean is discovered, it’s successfully deployed – still the default implementation is used. There is no way to tell, which implementation is going to be picked up by the container (and there is not way to tell the container to pick a desired implementation).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;One solution is to directly reference an instance with beanName attribute within the @EJB annotation. Works like a charm, however I don’t think it’s a good practice to change the application logic to have tests running smoothly.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Another, in my opinion an intuitive approach would be to use ‘after-everything-is-setup’ configuration file, override dependencies and manually wire appropriate beans. Unfortunately, that’s not possible (at least I haven’t found a way to do it). Even if alternate deployment descriptors are defined (as described in &lt;a href=&quot;http://openejb.apache.org/3.0/alternate-descriptors.html&quot;&gt;alternate descriptors manual page of OpenEJB&lt;/a&gt;), only the first one is loaded (other are ignored). Manual wiring (of MethodController – for example) in ejb-jar.xml results with NullPointerException (cause classpath discovery is performed latter). On the other hand, a full initialization of bean in ejb-jar.xml results with a nasty javax.naming.NameAlreadyBoundException (when the classpath is scanned).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I gave up. Posted question to a mailing list – see what happens. Made myself some more room to try something else – Arquillian.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;some-conclusions&quot;&gt;Some conclusions&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Probably after reading all these you think OpenEJB is an overkill, a fairly complicated and not easy to use tool. I can bet you are close to give up testing (at least integration) because ‘there is now way to do it efficiently and I’ll just click the app through’. Well, you are not the first one. I’ve been there as well, nearly giving up. After a while (and a decent drilling down) I’d withdraw my initial pessimism. I agree OpenEJB is not the best tool for testing – but that’s better than nothing (fanboys note: I’ll be covering Arquillian later on – I’ve just written few seconds earlier). It works fine with end-to-end integration testing. On the other hand, the focused integration tests are fairly challenging (as you could’ve seen in this post). It all works fine a long as you are not trying to beat the game.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Final thoughts; the steps and tools I’ve described in this and previous posts saved me hours of booting and restarting application server. After a while I started to implement whole change requests without touching the application server. Nevertheless, I think it’s time to move on – in the next episode I plan to fork the existing code reimplement all the tests with Arquillian. Stay tuned!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
-        <pubDate>Wed, 29 Jun 2011 00:00:00 +0000</pubDate>
-        <link>http://jakub.marchwicki.pl/posts/2011/06/29/testing-ejb-application-openejb-with-vendor-extensions-and-ejb-jar-xml/</link>
-        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2011/06/29/testing-ejb-application-openejb-with-vendor-extensions-and-ejb-jar-xml/</guid>
         
         
         <category>posts</category>
