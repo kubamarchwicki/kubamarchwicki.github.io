@@ -371,6 +371,79 @@ defaultTasks <span class="string"><span class="delimiter">'</span><span class="c
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="why-the-whole-build-thing">Why the whole build thing?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Yes, that&#8217;s a valid question. Why taking 'a cannon for a fly' and not just didn&#8217;t stick to the simple bash script. Well, the nature of such builds is they usually never stop after the first step. Having an HTML documentation generated, new ideas just started popping up my head&#8230;&#8203; why can&#8217;t we generate actual object model out of these XSD - for a better reference. Not a problem; with <a href="https://github.com/jacobono/gradle-jaxb-plugin">gradle-jaxb-plugin</a> it goes nearly out of the box.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">jaxb {
+  mkdir generatedClassedDir
+  dependencies {
+    jaxb <span class="string"><span class="delimiter">&quot;</span><span class="content">com.sun.xml.bind:jaxb-xjc:2.1.6</span><span class="delimiter">&quot;</span></span>
+  }
+
+  xsdDir = <span class="string"><span class="delimiter">'</span><span class="content">schema</span><span class="delimiter">'</span></span>
+  episodesDir = <span class="string"><span class="delimiter">&quot;</span><span class="content">build/</span><span class="delimiter">&quot;</span></span>
+  xjc {
+    taskClassname = <span class="string"><span class="delimiter">&quot;</span><span class="content">com.sun.tools.xjc.XJCTask</span><span class="delimiter">&quot;</span></span>
+    destinationDir = generatedClassedDir
+    generatePackage = <span class="string"><span class="delimiter">&quot;</span><span class="content">eu.ydp.flipbook.model</span><span class="delimiter">&quot;</span></span>
+    args = [<span class="string"><span class="delimiter">&quot;</span><span class="content">-npa</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">-no-header</span><span class="delimiter">&quot;</span></span>]
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>What&#8217;s next? The ZIP file is too massive - we can strip it. Let&#8217;s just add some runtime dependencies and remove those from downloaded zip.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="goovy">dependencies {
+  compile 'log4j:log4j:1.2.14'
+  compile 'org.apache.httpcomponents:fluent-hc:4.3.5'
+  compile 'org.apache.httpcomponents:httpmime:4.3.5'
+  compile 'org.apache.httpcomponents:httpclient-cache:4.3.5'
+  compile 'commons-httpclient:commons-httpclient:3.1'
+  compile(&quot;org.apache.xmlgraphics:fop:1.1&quot;) {
+    exclude group: &quot;org.apache.avalon.framework&quot;
+  }
+  compile 'avalon-framework:avalon-framework-api:4.2.0'
+  compile 'avalon-framework:avalon-framework-impl:4.2.0'
+  compile 'xerces:xercesImpl:2.11.0'
+}
+
+//... some line stripped
+
+schemaFiles.each { pageName -&gt;
+  task &quot;${pageName}SchemaTask&quot;(type: JavaExec) {
+    mkdir generatedDir
+
+    classpath = sourceSets.main.runtimeClasspath
+    classpath += files([
+      &quot;$OXYGEN_HOME/&quot;,
+      &quot;$OXYGEN_HOME/lib/oxygen.jar&quot;,
+      &quot;$OXYGEN_HOME/lib/oxygen-emf.jar&quot;,
+      &quot;$OXYGEN_HOME/lib/org.eclipse.wst.xml.xpath2.processor_1.2.0.jar&quot;,
+      &quot;$OXYGEN_HOME/lib/icu4j.jar&quot;,
+      &quot;$OXYGEN_HOME/lib/saxon.jar&quot;,
+      &quot;$OXYGEN_HOME/lib/saxon9ee.jar&quot;,
+      &quot;$OXYGEN_HOME/lib/resolver.jar&quot;
+    ].toList())
+    main = 'ro.sync.xsd.documentation.XSDSchemaDocumentationGenerator'
+    jvmArgs = [&quot;-Djava.awt.headless=true&quot;]
+    args = [&quot;schema/${pageName}.xsd&quot;, &quot;-format:html&quot;, &quot;-split:location&quot;, &quot;-out:$generatedDir/${pageName}.html&quot;]
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These are tasks a bit harder to achieve with just a bash script - and here gradle build really show it&#8217;s power.</p>
+</div>
+</div>
+</div>
   </article>
 
   

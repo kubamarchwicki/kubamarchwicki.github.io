@@ -5,8 +5,8 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 25 Aug 2015 22:48:04 +0000</pubDate>
-    <lastBuildDate>Tue, 25 Aug 2015 22:48:04 +0000</lastBuildDate>
+    <pubDate>Fri, 28 Aug 2015 00:50:19 +0000</pubDate>
+    <lastBuildDate>Fri, 28 Aug 2015 00:50:19 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -280,6 +280,79 @@ defaultTasks &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;I&amp;#8217;m still not sure if Oxygen is the best tool for the job, but I couldn&amp;#8217;t find a better one (not that I was looking for it very hard). So if you have  suggestions how to proceed differently - I welcome them in comments.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;why-the-whole-build-thing&quot;&gt;Why the whole build thing?&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Yes, that&amp;#8217;s a valid question. Why taking &#39;a cannon for a fly&#39; and not just didn&amp;#8217;t stick to the simple bash script. Well, the nature of such builds is they usually never stop after the first step. Having an HTML documentation generated, new ideas just started popping up my head&amp;#8230;&amp;#8203; why can&amp;#8217;t we generate actual object model out of these XSD - for a better reference. Not a problem; with &lt;a href=&quot;https://github.com/jacobono/gradle-jaxb-plugin&quot;&gt;gradle-jaxb-plugin&lt;/a&gt; it goes nearly out of the box.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;jaxb {
+  mkdir generatedClassedDir
+  dependencies {
+    jaxb &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;com.sun.xml.bind:jaxb-xjc:2.1.6&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+  }
+
+  xsdDir = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
+  episodesDir = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;build/&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+  xjc {
+    taskClassname = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;com.sun.tools.xjc.XJCTask&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+    destinationDir = generatedClassedDir
+    generatePackage = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;eu.ydp.flipbook.model&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+    args = [&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;-npa&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;-no-header&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;]
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;What&amp;#8217;s next? The ZIP file is too massive - we can strip it. Let&amp;#8217;s just add some runtime dependencies and remove those from downloaded zip.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;goovy&quot;&gt;dependencies {
+  compile &#39;log4j:log4j:1.2.14&#39;
+  compile &#39;org.apache.httpcomponents:fluent-hc:4.3.5&#39;
+  compile &#39;org.apache.httpcomponents:httpmime:4.3.5&#39;
+  compile &#39;org.apache.httpcomponents:httpclient-cache:4.3.5&#39;
+  compile &#39;commons-httpclient:commons-httpclient:3.1&#39;
+  compile(&amp;quot;org.apache.xmlgraphics:fop:1.1&amp;quot;) {
+    exclude group: &amp;quot;org.apache.avalon.framework&amp;quot;
+  }
+  compile &#39;avalon-framework:avalon-framework-api:4.2.0&#39;
+  compile &#39;avalon-framework:avalon-framework-impl:4.2.0&#39;
+  compile &#39;xerces:xercesImpl:2.11.0&#39;
+}
+
+//... some line stripped
+
+schemaFiles.each { pageName -&amp;gt;
+  task &amp;quot;${pageName}SchemaTask&amp;quot;(type: JavaExec) {
+    mkdir generatedDir
+
+    classpath = sourceSets.main.runtimeClasspath
+    classpath += files([
+      &amp;quot;$OXYGEN_HOME/&amp;quot;,
+      &amp;quot;$OXYGEN_HOME/lib/oxygen.jar&amp;quot;,
+      &amp;quot;$OXYGEN_HOME/lib/oxygen-emf.jar&amp;quot;,
+      &amp;quot;$OXYGEN_HOME/lib/org.eclipse.wst.xml.xpath2.processor_1.2.0.jar&amp;quot;,
+      &amp;quot;$OXYGEN_HOME/lib/icu4j.jar&amp;quot;,
+      &amp;quot;$OXYGEN_HOME/lib/saxon.jar&amp;quot;,
+      &amp;quot;$OXYGEN_HOME/lib/saxon9ee.jar&amp;quot;,
+      &amp;quot;$OXYGEN_HOME/lib/resolver.jar&amp;quot;
+    ].toList())
+    main = &#39;ro.sync.xsd.documentation.XSDSchemaDocumentationGenerator&#39;
+    jvmArgs = [&amp;quot;-Djava.awt.headless=true&amp;quot;]
+    args = [&amp;quot;schema/${pageName}.xsd&amp;quot;, &amp;quot;-format:html&amp;quot;, &amp;quot;-split:location&amp;quot;, &amp;quot;-out:$generatedDir/${pageName}.html&amp;quot;]
+  }
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;These are tasks a bit harder to achieve with just a bash script - and here gradle build really show it&amp;#8217;s power.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
