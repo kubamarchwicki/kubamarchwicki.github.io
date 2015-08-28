@@ -236,3 +236,72 @@ defaultTasks 'schema'
 The above script sits together with XSD schema files in the repository. Whenever a new version of XSD is issued (or a new work is initiated in a 'feature branch') our Jenkins picks up the changes and rebuild the docs. That way the schema can be viewed in a human readable name while the comments can be attached to the actual XSDs in the repository. This kind of works for us. 
 
 I'm still not sure if Oxygen is the best tool for the job, but I couldn't find a better one (not that I was looking for it very hard). So if you have  suggestions how to proceed differently - I welcome them in comments. 
+
+== Why the whole build thing?
+
+Yes, that's a valid question. Why taking 'a cannon for a fly' and not just didn't stick to the simple bash script. Well, the nature of such builds is they usually never stop after the first step. Having an HTML documentation generated, new ideas just started popping up my head... why can't we generate actual object model out of these XSD - for a better reference. Not a problem; with https://github.com/jacobono/gradle-jaxb-plugin[gradle-jaxb-plugin] it goes nearly out of the box.
+
+[source, groovy]
+----
+jaxb {  
+  mkdir generatedClassedDir
+  dependencies {
+    jaxb "com.sun.xml.bind:jaxb-xjc:2.1.6"
+  }
+
+  xsdDir = 'schema'
+  episodesDir = "build/"
+  xjc {
+    taskClassname = "com.sun.tools.xjc.XJCTask"
+    destinationDir = generatedClassedDir
+    generatePackage = "eu.ydp.flipbook.model"   
+    args = ["-npa", "-no-header"]
+  }
+}
+
+----
+
+What's next? The ZIP file is too massive - we can strip it. Let's just add some runtime dependencies and remove those from downloaded zip. 
+
+[source, goovy]
+----
+
+dependencies {
+  compile 'log4j:log4j:1.2.14'
+  compile 'org.apache.httpcomponents:fluent-hc:4.3.5'
+  compile 'org.apache.httpcomponents:httpmime:4.3.5'
+  compile 'org.apache.httpcomponents:httpclient-cache:4.3.5'
+  compile 'commons-httpclient:commons-httpclient:3.1'
+  compile("org.apache.xmlgraphics:fop:1.1") {
+    exclude group: "org.apache.avalon.framework"
+  }
+  compile 'avalon-framework:avalon-framework-api:4.2.0'
+  compile 'avalon-framework:avalon-framework-impl:4.2.0'
+  compile 'xerces:xercesImpl:2.11.0'
+}
+
+//... some line stripped
+
+schemaFiles.each { pageName -> 
+  task "${pageName}SchemaTask"(type: JavaExec) {
+    mkdir generatedDir
+
+    classpath = sourceSets.main.runtimeClasspath
+    classpath += files([
+      "$OXYGEN_HOME/",
+      "$OXYGEN_HOME/lib/oxygen.jar", 
+      "$OXYGEN_HOME/lib/oxygen-emf.jar",
+      "$OXYGEN_HOME/lib/org.eclipse.wst.xml.xpath2.processor_1.2.0.jar", 
+      "$OXYGEN_HOME/lib/icu4j.jar", 
+      "$OXYGEN_HOME/lib/saxon.jar", 
+      "$OXYGEN_HOME/lib/saxon9ee.jar", 
+      "$OXYGEN_HOME/lib/resolver.jar"
+    ].toList())
+    main = 'ro.sync.xsd.documentation.XSDSchemaDocumentationGenerator'  
+    jvmArgs = ["-Djava.awt.headless=true"]
+    args = ["schema/${pageName}.xsd", "-format:html", "-split:location", "-out:$generatedDir/${pageName}.html"] 
+  } 
+}
+----
+
+These are tasks a bit harder to achieve with just a bash script - and here gradle build really show it's power.
