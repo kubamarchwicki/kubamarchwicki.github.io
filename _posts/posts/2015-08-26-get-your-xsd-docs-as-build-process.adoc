@@ -305,3 +305,9 @@ schemaFiles.each { pageName ->
 ----
 
 These are tasks a bit harder to achieve with just a bash script - and here gradle build really show it's power.
+
+== Perfect is the enemy of good
+
+The rest of Oxygen XML dependencies and not findable in the central Maven repository; either custom or too old or I have no idea how to find them. But under no means it doesn't mean we cannot deploy them ourselves, save on download time and have all the dependencies properly cached by Gradle.
+
+The deployment itself is pretty easy and neatly described https://maven.apache.org/guides/mini/guide-3rd-party-jars-remote.html[in this Maven mini guide]. The only tweak we might want to do is avoiding explicit dependencies (as the build file will get a bit cluttered) and hide the hideous dependencies behind the core Oxygen deps. 
