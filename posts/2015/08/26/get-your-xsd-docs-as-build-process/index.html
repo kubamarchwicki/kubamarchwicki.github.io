@@ -444,6 +444,17 @@ schemaFiles.each { pageName -&gt;
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="perfect-is-the-enemy-of-good">Perfect is the enemy of good</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The rest of Oxygen XML dependencies and not findable in the central Maven repository; either custom or too old or I have no idea how to find them. But under no means it doesn&#8217;t mean we cannot deploy them ourselves, save on download time and have all the dependencies properly cached by Gradle.</p>
+</div>
+<div class="paragraph">
+<p>The deployment itself is pretty easy and neatly described <a href="https://maven.apache.org/guides/mini/guide-3rd-party-jars-remote.html">in this Maven mini guide</a>. The only tweak we might want to do is avoiding explicit dependencies (as the build file will get a bit cluttered) and hide the hideous dependencies behind the core Oxygen deps.</p>
+</div>
+</div>
+</div>
   </article>
 
   
