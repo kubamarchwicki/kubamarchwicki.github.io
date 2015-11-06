@@ -1,0 +1,10 @@
+---
+layout: speaking
+categories: speaking
+title: JFall 2015
+speakingDate: 2015-11-05, Ede, Netherlands
+link: http://www.nljug.org/jfall/2015/
+page-include: _posts/speaking/topics/what-is-code.adoc
+---
+
+include::{{page.page-include}}[]

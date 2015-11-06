@@ -1,0 +1,36 @@
+:title: What is code?
+:subtitle: Git-flow all the things! How to build your application so that design documents, architecture descriptions, test data are in code, derived from code and maintained as code.
+
+== {title}
+
+> {subtitle}
+
+=== Abstract
+
+That sounds like an easy-to-answer question. A set of Java / Ruby / C# / Scala / Whatever tokens you mashup together everyday to get the business happy, right?
+
+If you are in the business long enough you know there are rules, there are means to keep you code clear, nice, readable. You know to comment the stuff accordingly. You know to commit and push at the end of the day. And what you push is what you call "The Code".
+
+But as you pursue through the developers professional career you start to notice that other things are becoming somehow important. It’s not just The Code you need to pay attention to. It can be configuration, database changes and test data. Than you look after requirements (like BDD being the tip of an iceberg - the behaviour part), documentation (models - the static parts). When you are all done, sometimes it’s required to throw all over the wall to operations; so you are busy with check-list, manuals. You start to notice these all need the same attention as The Code, but it just got spread through some bugtracks, wikis, shared drive, network shares - becoming an unmaintainable hydra.
+
+But you want it all in one place, because there all is became the code you have to mother.
+
+In this presentation I’ll go through some elements of code, not The Code itself. Share some ideas what can be done with requirements, documentation, check-lists, infrastructure - to keep it all in a single place, maintainable and accessible by all the stakeholders - in a way they like it.
+
+=== Sketchnotes
+
+During JFall presentation link:https://twitter.com/wi99ert/status/662271438439751680[@wi99ert] prepared sketch notes from my talk - kudos!
+
+image::https://pbs.twimg.com/media/CTDcWG9WsAAEesU.jpg[]
+
+
+// === Testimonials
+
+// === Videos
+// https://www.youtube.com/watch?v=orGJZuPYgZ8[Confitura2014 - in Polish]
+
+=== Additional resources
+
+* https://speakerdeck.com/kubamarchwicki/what-is-code[PDF Slides]
+* https://github.com/kubamarchwicki/what-is-code/tree/master/slides[Slides source in *asciidoctor*]
+* https://github.com/kubamarchwicki/what-is-code/[Code examples @ GitHub]

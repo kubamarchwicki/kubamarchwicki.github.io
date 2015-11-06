@@ -1,0 +1,10 @@
+---
+layout: speaking
+categories: speaking
+title: Geecon Prague 2015
+speakingDate: 2015-10-12, Prague, Czech Republic
+link: http://2015.geecon.cz/
+page-include: _posts/speaking/topics/what-is-code.adoc
+---
+
+include::{{page.page-include}}[]

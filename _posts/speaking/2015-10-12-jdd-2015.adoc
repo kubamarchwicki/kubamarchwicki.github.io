@@ -1,0 +1,10 @@
+---
+layout: speaking
+categories: speaking
+title: JDD 2015
+speakingDate: 2015-10-12, Kraków, Poland
+link: http://15.jdd.org.pl/
+page-include: _posts/speaking/topics/what-is-code.adoc
+---
+
+include::{{page.page-include}}[]
