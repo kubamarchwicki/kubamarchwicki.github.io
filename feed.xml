@@ -5,8 +5,8 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 03 Sep 2015 19:44:39 +0000</pubDate>
-    <lastBuildDate>Thu, 03 Sep 2015 19:44:39 +0000</lastBuildDate>
+    <pubDate>Fri, 06 Nov 2015 20:12:30 +0000</pubDate>
+    <lastBuildDate>Fri, 06 Nov 2015 20:12:30 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -538,7 +538,7 @@ As a regular conference attendee I struggle with that, always puzzled which talk
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;While the wrapper isn&amp;#8217;t a problem for Gradle, my Maven projects were still problematic. Until I found a &lt;strong&gt;maven-wrapper&lt;/strong&gt; - a copy of the Gradle wrapper ported for use with Apache Maven.
-&lt;span class=&quot;footnote&quot; id=&quot;_footnote_maven-wrapper&quot;&gt;[&lt;a id=&quot;_footnoteref_1&quot; class=&quot;footnote&quot; href=&quot;#_footnote_1&quot; title=&quot;View footnote.&quot;&gt;1&lt;/a&gt;]&lt;/span&gt;&lt;/p&gt;
+&lt;sup class=&quot;footnote&quot; id=&quot;_footnote_maven-wrapper&quot;&gt;[&lt;a id=&quot;_footnoteref_1&quot; class=&quot;footnote&quot; href=&quot;#_footnote_1&quot; title=&quot;View footnote.&quot;&gt;1&lt;/a&gt;]&lt;/sup&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;As described on the project&amp;#8217;s wiki:&lt;/p&gt;
@@ -550,7 +550,7 @@ the Maven Command Line Wrapper will auto-download and install Apache Maven from 
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;If you are ok with manual installation, all that&amp;#8217;s needed is copying &lt;code&gt;mvnw&lt;/code&gt; files and &lt;code&gt;maven&lt;/code&gt; folder to your project - from say an example project.
-&lt;span class=&quot;footnote&quot; id=&quot;_footnote_maven-wrapper-example&quot;&gt;[&lt;a id=&quot;_footnoteref_2&quot; class=&quot;footnote&quot; href=&quot;#_footnote_2&quot; title=&quot;View footnote.&quot;&gt;2&lt;/a&gt;]&lt;/span&gt;
+&lt;sup class=&quot;footnote&quot; id=&quot;_footnote_maven-wrapper-example&quot;&gt;[&lt;a id=&quot;_footnoteref_2&quot; class=&quot;footnote&quot; href=&quot;#_footnote_2&quot; title=&quot;View footnote.&quot;&gt;2&lt;/a&gt;]&lt;/sup&gt;
 This will make the file structure look pretty much like this.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
@@ -680,7 +680,7 @@ This will make the file structure look pretty much like this.&lt;/p&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Just one thing: with the wrapper plugin and Polyglot for Maven
-&lt;span class=&quot;footnote&quot; id=&quot;_footnote_polyglot-maven&quot;&gt;[&lt;a id=&quot;_footnoteref_3&quot; class=&quot;footnote&quot; href=&quot;#_footnote_3&quot; title=&quot;View footnote.&quot;&gt;3&lt;/a&gt;]&lt;/span&gt;
+&lt;sup class=&quot;footnote&quot; id=&quot;_footnote_polyglot-maven&quot;&gt;[&lt;a id=&quot;_footnoteref_3&quot; class=&quot;footnote&quot; href=&quot;#_footnote_3&quot; title=&quot;View footnote.&quot;&gt;3&lt;/a&gt;]&lt;/sup&gt;
 I&amp;#8217;ve gradually lost interest in any other build tools ;-)&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -688,13 +688,13 @@ I&amp;#8217;ve gradually lost interest in any other build tools ;-)&lt;/p&gt;
 &lt;div id=&quot;footnotes&quot;&gt;
 &lt;hr&gt;
 &lt;div class=&quot;footnote&quot; id=&quot;_footnote_1&quot;&gt;
-&lt;a href=&quot;#_footnoteref_1&quot;&gt;1&lt;/a&gt; &lt;a href=&quot;https://github.com/rimerosolutions/maven-wrapper&quot; class=&quot;bare&quot;&gt;https://github.com/rimerosolutions/maven-wrapper&lt;/a&gt;
+&lt;a href=&quot;#_footnoteref_1&quot;&gt;1&lt;/a&gt;. &lt;a href=&quot;https://github.com/rimerosolutions/maven-wrapper&quot; class=&quot;bare&quot;&gt;https://github.com/rimerosolutions/maven-wrapper&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class=&quot;footnote&quot; id=&quot;_footnote_2&quot;&gt;
-&lt;a href=&quot;#_footnoteref_2&quot;&gt;2&lt;/a&gt; &lt;a href=&quot;https://github.com/rimerosolutions/maven-wrapper-example&quot; class=&quot;bare&quot;&gt;https://github.com/rimerosolutions/maven-wrapper-example&lt;/a&gt;
+&lt;a href=&quot;#_footnoteref_2&quot;&gt;2&lt;/a&gt;. &lt;a href=&quot;https://github.com/rimerosolutions/maven-wrapper-example&quot; class=&quot;bare&quot;&gt;https://github.com/rimerosolutions/maven-wrapper-example&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class=&quot;footnote&quot; id=&quot;_footnote_3&quot;&gt;
-&lt;a href=&quot;#_footnoteref_3&quot;&gt;3&lt;/a&gt; &lt;a href=&quot;https://github.com/takari/polyglot-maven&quot; class=&quot;bare&quot;&gt;https://github.com/takari/polyglot-maven&lt;/a&gt;
+&lt;a href=&quot;#_footnoteref_3&quot;&gt;3&lt;/a&gt;. &lt;a href=&quot;https://github.com/takari/polyglot-maven&quot; class=&quot;bare&quot;&gt;https://github.com/takari/polyglot-maven&lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
         <pubDate>Thu, 04 Jun 2015 00:00:00 +0000</pubDate>
@@ -1940,7 +1940,7 @@ INFO - Jndi(name=mybindings/Logger) --&amp;gt; Ejb(deployment-id=ExternalLogger)
 &lt;div class=&quot;quoteblock&quot;&gt;
 &lt;blockquote&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;MapReduce is a programming model and an associated implementation for processing and generating large data sets. Users specify a map function that processes a key/value pair to generate a set of intermediate key/value pairs, and a reduce function that merges all intermediate values associated with the same intermediate key. &lt;span class=&quot;footnote&quot; id=&quot;_footnote_mapreduce&quot;&gt;[&lt;a id=&quot;_footnoteref_1&quot; class=&quot;footnote&quot; href=&quot;#_footnote_1&quot; title=&quot;View footnote.&quot;&gt;1&lt;/a&gt;]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;MapReduce is a programming model and an associated implementation for processing and generating large data sets. Users specify a map function that processes a key/value pair to generate a set of intermediate key/value pairs, and a reduce function that merges all intermediate values associated with the same intermediate key. &lt;sup class=&quot;footnote&quot; id=&quot;_footnote_mapreduce&quot;&gt;[&lt;a id=&quot;_footnoteref_1&quot; class=&quot;footnote&quot; href=&quot;#_footnote_1&quot; title=&quot;View footnote.&quot;&gt;1&lt;/a&gt;]&lt;/sup&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/blockquote&gt;
 &lt;div class=&quot;attribution&quot;&gt;
@@ -1948,7 +1948,7 @@ INFO - Jndi(name=mybindings/Logger) --&amp;gt; Ejb(deployment-id=ExternalLogger)
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is Google’s definition, where MapReduce was invented. If that definition isn’t clear enough, Joel Spolsky wrote a great article &quot;Can your programming language do this?&quot; &lt;span class=&quot;footnote&quot;&gt;[&lt;a id=&quot;_footnoteref_2&quot; class=&quot;footnote&quot; href=&quot;#_footnote_2&quot; title=&quot;View footnote.&quot;&gt;2&lt;/a&gt;]&lt;/span&gt; where here explains how this all works. I can’t disagree with what Joel wrote – “Without understanding functional programming, you can’t invent MapReduce &lt;span class=&quot;footnoteref&quot;&gt;[&lt;a class=&quot;footnote&quot; href=&quot;#_footnote_1&quot; title=&quot;View footnote.&quot;&gt;1&lt;/a&gt;]&lt;/span&gt;, the algorithm that makes Google so massively scalable. The terms Map and Reduce come from Lisp and functional programming.” Nonetheless, this is not only about language capabilities and it’s definitely not about frameworks. MapReduce can be also considered from an architecture and infrastructure perspective. A massive scalability can be achieved by distributing work among nodes. Without functional programming it won’t be massively flexible, but at the moment scalability was aimed.&lt;/p&gt;
+&lt;p&gt;This is Google’s definition, where MapReduce was invented. If that definition isn’t clear enough, Joel Spolsky wrote a great article &quot;Can your programming language do this?&quot; &lt;sup class=&quot;footnote&quot;&gt;[&lt;a id=&quot;_footnoteref_2&quot; class=&quot;footnote&quot; href=&quot;#_footnote_2&quot; title=&quot;View footnote.&quot;&gt;2&lt;/a&gt;]&lt;/sup&gt; where here explains how this all works. I can’t disagree with what Joel wrote – “Without understanding functional programming, you can’t invent MapReduce &lt;sup class=&quot;footnoteref&quot;&gt;[&lt;a class=&quot;footnote&quot; href=&quot;#_footnote_1&quot; title=&quot;View footnote.&quot;&gt;1&lt;/a&gt;]&lt;/sup&gt;, the algorithm that makes Google so massively scalable. The terms Map and Reduce come from Lisp and functional programming.” Nonetheless, this is not only about language capabilities and it’s definitely not about frameworks. MapReduce can be also considered from an architecture and infrastructure perspective. A massive scalability can be achieved by distributing work among nodes. Without functional programming it won’t be massively flexible, but at the moment scalability was aimed.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2000,10 +2000,10 @@ So that is the mapper. What’s still needed is a reducer. All the services use 
 &lt;div id=&quot;footnotes&quot;&gt;
 &lt;hr&gt;
 &lt;div class=&quot;footnote&quot; id=&quot;_footnote_1&quot;&gt;
-&lt;a href=&quot;#_footnoteref_1&quot;&gt;1&lt;/a&gt; &lt;a href=&quot;http://labs.google.com/papers/mapreduce.html&quot; class=&quot;bare&quot;&gt;http://labs.google.com/papers/mapreduce.html&lt;/a&gt;
+&lt;a href=&quot;#_footnoteref_1&quot;&gt;1&lt;/a&gt;. &lt;a href=&quot;http://labs.google.com/papers/mapreduce.html&quot; class=&quot;bare&quot;&gt;http://labs.google.com/papers/mapreduce.html&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class=&quot;footnote&quot; id=&quot;_footnote_2&quot;&gt;
-&lt;a href=&quot;#_footnoteref_2&quot;&gt;2&lt;/a&gt; &lt;a href=&quot;http://www.joelonsoftware.com/items/2006/08/01.html&quot; class=&quot;bare&quot;&gt;http://www.joelonsoftware.com/items/2006/08/01.html&lt;/a&gt;
+&lt;a href=&quot;#_footnoteref_2&quot;&gt;2&lt;/a&gt;. &lt;a href=&quot;http://www.joelonsoftware.com/items/2006/08/01.html&quot; class=&quot;bare&quot;&gt;http://www.joelonsoftware.com/items/2006/08/01.html&lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
         <pubDate>Tue, 20 Sep 2011 00:00:00 +0000</pubDate>
