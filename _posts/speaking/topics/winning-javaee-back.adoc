@@ -1,0 +1,22 @@
+:title: Winning JavaEE Back
+:subtitle: Mind the gaps in the JavaEE environment and try to fix it with some decent libraries, different approaches - bringing it closer towards modern web development.
+
+== {title}
+
+> {subtitle}
+
+=== Abstract
+
+People are stuck to JavaEE not because they love it, but because it was in their work place, it is still there and will be there long after they leave. While many engineers think about going reactive, functional (or any other fashionable buzzword), some are still struggling how to migrate weblogic9 to weblogic12 and move from Java not supported for past 8 years (like Java 1.4) to the one not supported only just for a year (Java7).
+
+While their live can be miserable - there are means for them to win JavaEE back, have fun again. It still won't be a super duper modern framework, it won't have all the latest pre-summer goodies, won't be a sweet language (full of syntactic sugar candies), but a solid set of tools that can make development pleasure again (kind of).
+
+In the modern JavaEE you are no logger limited to the 'standard' but you can take advantage of limitless set tools and libraries. For some people it will still be the bad and ugly JavaEE, "feels like Spring but n-years ago", "Spring wannabe in the poor's man land" - that's true. But if you can't win Them (and let's be honest - in most enterprise'ish environments you can't win Them), join them! And have you JavaEE the way You like it.
+
+This presentation will walk through multiple libraries that can help you change your project from "This is The Standard Even If It Doesn't Fit" way to a something far more approachable, where your tools doesn't feel like the Maslow's Hammer. I'll be sharing some experience from multiple trainings, projects and refactorings of old-but-still-in-production JavaEE applications and tools we used to get away The Standard. 
+
+=== Additional resources
+
+* https://speakerdeck.com/kubamarchwicki/winning-javaee-back[PDF Slides]
+* https://github.com/kubamarchwicki/winning-javaee-back/blob/master/slides/src/slides.adoc[Slides source in *asciidoctor*]
+* https://github.com/kubamarchwicki/winning-javaee-back/[Code examples @ GitHub]

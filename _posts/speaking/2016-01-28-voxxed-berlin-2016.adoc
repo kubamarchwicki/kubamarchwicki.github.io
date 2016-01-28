@@ -1,0 +1,10 @@
+---
+layout: speaking
+categories: speaking
+title: Voxxed Berlin 2016
+speakingDate: 2016-01-28, Berlin, Germany
+link: https://voxxeddays.com/berlin16/
+page-include: _posts/speaking/topics/winning-javaee-back.adoc
+---
+
+include::{{page.page-include}}[]
