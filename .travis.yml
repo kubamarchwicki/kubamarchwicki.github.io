@@ -6,7 +6,7 @@ branches:
 
 env:
   global:
-    - secure: "mJX+WGp4JORTS4L4gCd+W4SZfs18dgorju04tR2dZ6aJY4n8LEraPBf7vZKNZ/rt/b6apYRADZVWbU7WKHSt8uNECMjde11DndQpugpTdSsLsBQjXUL9qX9WjjXoW4vw594J8jYXxO+U6ougxBFICZrR0V/FzsFlz9TD4RX+jeM="
+    secure: AKndo/VJUBbuC3ZvH4zul9APq9uL7a0IxJBYWc+kQ5o4/ceX8Q9a7I2TnsTVwhK2/z6cZuvwMtoDrBJVwedcetDBKpAtSwyKXGZmz4CUYtL2HX+Jq7x0vic5gaUqBZtTfQNBo8jHyWeDV2XkRnGz5sQzSbGDB1ss8yxbN7evLyg=
 
 rvm:
   - 2.2.0
