@@ -1,0 +1,177 @@
+---
+layout: post
+categories: posts
+title: ! 'TypeScript: Getting started'
+excerpt: My first steps embracing TypeScript. Where to start without the JavaScript cargo cult. 
+tags: typescript
+---
+
+So TypeScript... Matters got serious and I decided to further explore the idea of polyglot programming - embracing the frontend development. There is a lot of happening in the backend in the JVM world, but there is as much happening in the browser. I know most of 'backend people' just laugh at the speed new JavaScript frameworks appear (and disappear) but I wanted to tackle the matter seriously.
+
+== Betting on TypeScript
+
+I decided to bet on TypeScript. I did an initial research and with mostly static type / compiled languages background I was a bit reluctant to pure JavaScript. Additionally to TypeScript, ScalaJS was also in the loop. 
+
+My primary source of knowledge were presentations, two of them I greatly recommend: link:https://twitter.com/Sander_Mak[Sander Mak's] link:https://www.youtube.com/watch?v=h7NLi2w8ytg[TypeScript - coding JavaScript without the pain] and link:https://twitter.com/li_haoyi[Li Haoyi's] link:https://www.youtube.com/watch?v=9SalPdAEI28[Hands-on Scala.js] (both embedded below).
+
+So, I went with TypeScript, I think for the following reasons (nicely outlined in Sander's presentation):
+
+* Scalable HTML5 client-side development 
+* Modular development 
+* Easily learnable for Java developers 
+* Non-invasive (existing libs, browser support) 
+* Long-term vision 
+* Clean JS output (exit strategy)
+
+I don't want to argue that these are not ScalaJS attributes as well, but with my very limited experience with Scala - I went with the first choice. Hello Microsoft ;-)
+
+Both TypeScript and ScalaJS have impressive online guides and official documentations. TypeScript link:http://www.typescriptlang.org/Tutorial[tutorial] and link:http://www.typescriptlang.org/Playground[playground] are awesome. And so is Li Haoyi's link:http://lihaoyi.github.io/hands-on-scala-js/[Hands on ScalaJS] and link:http://www.scala-js-fiddle.com/[Scala-Js-Fiddle].
+
+Nonetheless, the turning point for me was looking up transpiled JavaScript output for both TypeScript and ScalaJS. Here it is, a small program to count the variable `x` from 0, incrementing by 3 (so 3, 9, and 12) before finally printing it out. 
+
+=== ScalaJS
+
+[source, scala]
+.Scala
+-------------------------------------------------------------------------------
+object ScalaJSExample extends js.JSApp {
+  
+  def main() = {    
+    var x = 0
+    while(x < 10) {
+      println(x)
+      x += 3
+    }
+    println(s"Final: $x")
+
+  }
+}
+-------------------------------------------------------------------------------
+
+
+[source, javascript]
+.JavaScript
+-------------------------------------------------------------------------------
+ScalaJS.c.LMain$.prototype.main__V = (function() {
+  var x = 0;
+  while ((x < 10)) {
+      ScalaJS.m.s_Predef$()
+           .println__O__V(x)
+    x = ((x + 3) | 0)
+  };
+  ScalaJS.m.s_Predef$()
+           .println__O__V("Final: " + x)  
+});
+-------------------------------------------------------------------------------
+
+
+=== TypeScript
+
+
+[source, typescript]
+.TypeScript
+-------------------------------------------------------------------------------
+class Main {
+    hello() {
+        var x = 0;
+        while (x < 10) {
+            console.log(x)
+            x += 3	
+        }
+
+        console.log(`Final: ${x}`)	
+    }
+}
+
+var main = new Main()
+main.hello()
+-------------------------------------------------------------------------------
+
+
+[source, javascript]
+.JavaScript
+-------------------------------------------------------------------------------
+var Main = (function () {
+    function Main() {
+    }
+    Main.prototype.hello = function () {
+        var x = 0;
+        while (x < 10) {
+            console.log(x);
+            x += 3;
+        }
+        console.log("Final: " + x);
+    };
+    return Main;
+})();
+
+var main = new Main();
+main.hello();
+-------------------------------------------------------------------------------
+
+As TypeScript is a typed superset for JavaScript that compiles into plain JavaScript - the transpiled output has more in common with classic JavaScript. That itself was quite appealing to me (after all - that limits the number of level of abstractions I have no idea about).
+
+== Where to start
+
+I've started with few example projects, which were easy to build and run out-of-the-box. After tuning them (breaking them) here and there - it was high time to start something from scratch. This is where the learning curve gets steeper. 
+
+In the first place, I wanted to avoid all the JavaScript cargo cult: _node_, _npm_, _bower_, _grunt_, _gulp_ - whichever. I'm not that proficient with the JavaScript stack, with the build tools and I found them a bit intrusive: standing between me and my first 'Hello World of TypeScript!' in the browser. 
+
+Happily, TypeScript itself comes to the rescue; as the TypeScript compiler is in TypeScript and TypeScript transpiles to JavaScript, why can't I run it in browser without external dependencies (and compile everything in the browser)? Weird idea and I know this comes with a price of performance degradation - but that isn't my problem at the moment. 
+
+I've started with including TypeScript directly in the webpage
+
+[source, html]
+-------------------------------------------------------------------------------
+<script src="https://rawgit.com/Microsoft/TypeScript/master/lib/typescriptServices.js"></script>
+<script src="https://rawgit.com/basarat/typescript-script/master/transpiler.js"></script> <!--1-->
+-------------------------------------------------------------------------------
+<1> Github link:https://github.com/basarat/typescript-script[typescript-script project by Basarat Ali Syed], based on another Github link:https://github.com/niutech/typescript-compile/[transcript-compile project]
+
+That way I could start to play with my own scripts (not only) locally.
+
+[source, html]
+-------------------------------------------------------------------------------
+<!doctype html>
+<html lang="en">
+    <body>
+        <script type="text/typescript">
+            module Sayings {
+                export class Greeter {
+                    greeting: string;
+                    constructor (message: string) {
+                        this.greeting = message;
+                    }
+                    greet() {
+                        return "Hello, " + this.greeting;
+                    }
+                }
+            }
+        </script>
+        <!-- You can add multiple TypeScript blocks: -->
+        <script type="text/typescript">
+            var greeter = new Sayings.Greeter('world');
+            var button = document.createElement('button')
+            button.innerHTML = "Say hello"
+            button.onclick = function() {
+                    alert(greeter.greet())
+            }
+            document.body.appendChild(button)
+        </script>
+        <script src="https://rawgit.com/Microsoft/TypeScript/master/lib/typescriptServices.js"></script>
+        <script src="https://rawgit.com/basarat/typescript-script/master/transpiler.js"></script>
+    </body>
+</html>
+-------------------------------------------------------------------------------
+
+This is a complete example which can be easily opened through `index.html` page directly in the browser (through `file://` protocol) or though simplest possible http server `php -S localhost:8080 -t {folder}`. No additional build scripts involved - simple and clean. Non-inline scripts `<script type="text/typescript" src="file.ts">` obviously works as well.
+
+This is just a prototype, I'll get to the build tools and some point - that's definitely not a production set-up. Nonetheless, it's enough to start fiddling further. 
+
+What should be coming next?
+
+* Livereload of any type - to avoid constant refresh on the browser
+* Proper build setup - to compile (transpile) TypeScript to JS and serve it to the browser
+* IDE support (for both IntelliJ and Sublime)
+
+If you like it - stay with me for next steps of my TypeScript exploration. 
