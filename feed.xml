@@ -5,8 +5,8 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 31 Jan 2016 21:00:05 +0000</pubDate>
-    <lastBuildDate>Sun, 31 Jan 2016 21:00:05 +0000</lastBuildDate>
+    <pubDate>Sun, 31 Jan 2016 21:01:32 +0000</pubDate>
+    <lastBuildDate>Sun, 31 Jan 2016 21:01:32 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -221,6 +221,9 @@ main.hello();&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Proper build setup - to compile (transpile) TypeScript to JS and serve it to the browser&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IDE support (for both IntelliJ and Sublime)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
