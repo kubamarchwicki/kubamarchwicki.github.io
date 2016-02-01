@@ -5,8 +5,8 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 31 Jan 2016 21:01:32 +0000</pubDate>
-    <lastBuildDate>Sun, 31 Jan 2016 21:01:32 +0000</lastBuildDate>
+    <pubDate>Mon, 01 Feb 2016 21:08:17 +0000</pubDate>
+    <lastBuildDate>Mon, 01 Feb 2016 21:08:17 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -21,7 +21,7 @@
 &lt;p&gt;I decided to bet on TypeScript. I did an initial research and with mostly static type / compiled languages background I was a bit reluctant to pure JavaScript. Additionally to TypeScript, ScalaJS was also in the loop.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;My primary source of knowledge were presentations, two of them I greatly recommend: &lt;a href=&quot;https://twitter.com/Sander_Mak&quot;&gt;Sander Mak&amp;#8217;s&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=h7NLi2w8ytg&quot;&gt;TypeScript - coding JavaScript without the pain&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/li_haoyi&quot;&gt;Li Haoyi&amp;#8217;s&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=9SalPdAEI28&quot;&gt;Hands-on Scala.js&lt;/a&gt; (both embedded below).&lt;/p&gt;
+&lt;p&gt;My primary source of knowledge were presentations, two of them I greatly recommend: &lt;a href=&quot;https://twitter.com/Sander_Mak&quot;&gt;Sander Mak&amp;#8217;s&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=h7NLi2w8ytg&quot;&gt;TypeScript - coding JavaScript without the pain&lt;/a&gt; and &lt;a href=&quot;https://twitter.com/li_haoyi&quot;&gt;Li Haoyi&amp;#8217;s&lt;/a&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=9SalPdAEI28&quot;&gt;Hands-on Scala.js&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;So, I went with TypeScript, I think for the following reasons (nicely outlined in Sander&amp;#8217;s presentation):&lt;/p&gt;
@@ -209,7 +209,7 @@ main.hello();&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This is a complete example which can be easily opened through &lt;code&gt;index.html&lt;/code&gt; page directly in the browser (through &lt;code&gt;file://&lt;/code&gt; protocol) or though simplest possible http server &lt;code&gt;php -S localhost:8080 -t {folder}&lt;/code&gt;. No additional build scripts involved - simple and clean. Non-inline scripts &lt;code&gt;&amp;lt;script type=&quot;text/typescript&quot; src=&quot;file.ts&quot;&amp;gt;&lt;/code&gt; obviously works as well.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is just a prototype, I&amp;#8217;ll get to the build tools and some point - that&amp;#8217;s definitely not a production set-up. Nonetheless, it&amp;#8217;s enough to start fiddling further.&lt;/p&gt;
+&lt;p&gt;This is just a prototype, I&amp;#8217;ll get to the build tools at some point - that&amp;#8217;s definitely not a production set-up. Nonetheless, it&amp;#8217;s enough to start fiddling further.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;What should be coming next?&lt;/p&gt;
