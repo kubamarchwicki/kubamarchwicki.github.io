@@ -12,7 +12,7 @@ So TypeScript... Matters got serious and I decided to further explore the idea o
 
 I decided to bet on TypeScript. I did an initial research and with mostly static type / compiled languages background I was a bit reluctant to pure JavaScript. Additionally to TypeScript, ScalaJS was also in the loop. 
 
-My primary source of knowledge were presentations, two of them I greatly recommend: link:https://twitter.com/Sander_Mak[Sander Mak's] link:https://www.youtube.com/watch?v=h7NLi2w8ytg[TypeScript - coding JavaScript without the pain] and link:https://twitter.com/li_haoyi[Li Haoyi's] link:https://www.youtube.com/watch?v=9SalPdAEI28[Hands-on Scala.js] (both embedded below).
+My primary source of knowledge were presentations, two of them I greatly recommend: link:https://twitter.com/Sander_Mak[Sander Mak's] link:https://www.youtube.com/watch?v=h7NLi2w8ytg[TypeScript - coding JavaScript without the pain] and link:https://twitter.com/li_haoyi[Li Haoyi's] link:https://www.youtube.com/watch?v=9SalPdAEI28[Hands-on Scala.js].
 
 So, I went with TypeScript, I think for the following reasons (nicely outlined in Sander's presentation):
 
