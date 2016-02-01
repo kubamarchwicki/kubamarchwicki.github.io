@@ -166,7 +166,7 @@ That way I could start to play with my own scripts (not only) locally.
 
 This is a complete example which can be easily opened through `index.html` page directly in the browser (through `file://` protocol) or though simplest possible http server `php -S localhost:8080 -t {folder}`. No additional build scripts involved - simple and clean. Non-inline scripts `<script type="text/typescript" src="file.ts">` obviously works as well.
 
-This is just a prototype, I'll get to the build tools and some point - that's definitely not a production set-up. Nonetheless, it's enough to start fiddling further. 
+This is just a prototype, I'll get to the build tools at some point - that's definitely not a production set-up. Nonetheless, it's enough to start fiddling further. 
 
 What should be coming next?
 
