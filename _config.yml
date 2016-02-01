@@ -20,6 +20,19 @@ permalink: pretty
 asciidoc: asciidoctor
 asciidoc_ext: asciidoc,adoc,ad
 
+static_pages:
+#  - title: Consultancy
+#    url: offer/
+#    css-icon: star
+  - title: All posts
+    url: posts/
+    css-icon: page-multiple
+  - title: All speaking
+    url: speaking/
+    css-icon: microphone
+
+
+
 asciidoctor:
   attributes:
     - hardbreaks!

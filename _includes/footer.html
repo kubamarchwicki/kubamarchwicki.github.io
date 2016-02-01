@@ -4,11 +4,15 @@
 
     <div class="column">
       <ul>
-        <li><a href="/speaking">
-          <span class="icon linkedin"><i class="fi-microphone"></i></span>
-          <span class="username"> all speaking</span>
-          </a>
-        </li>
+        {% for page in site.static_pages %}
+          {% if page.title %}
+          <li><a href="{{ page.url | prepend: site.baseurl }}">
+            <span class="icon linkedin"><i class="fi-{{ page.css-icon }}"></i></span>
+            <span class="username"> {{ page.title }}</span>
+            </a>
+          </li>
+          {% endif %}
+        {% endfor %}      
         {% if site.github_username %}<li>
           <a href="https://github.com/{{ site.github_username }}">
             <span class="icon github">
