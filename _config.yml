@@ -22,13 +22,13 @@ asciidoc_ext: asciidoc,adoc,ad
 
 static_pages:
 #  - title: Consultancy
-#    url: offer/
+#    url: /offer/
 #    css-icon: star
   - title: All posts
-    url: posts/
+    url: /posts/
     css-icon: page-multiple
   - title: All speaking
-    url: speaking/
+    url: /speaking/
     css-icon: microphone
 
 
