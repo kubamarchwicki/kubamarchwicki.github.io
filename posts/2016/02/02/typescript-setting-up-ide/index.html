@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TypeScript: Setting up an IDE and working environment : Notepack</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A randomized pack of notes">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2016/02/02/typescript-setting-up-ide/">
+    <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/foundation.css"/>
+    <link rel="stylesheet" href="/css/coderay.css"/>
+    <link rel="stylesheet" href="/css/asciidoctor.css"/>
+    <script src="/js/vendor/modernizr.js"></script>    
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css">
+
+        
+    <!-- google analytics async -->
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-439480-4']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"><i class="fi-folder"></i>Notepack</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">      
+        
+          <a class="page-link" href="/posts/">All posts</a>
+        
+          <a class="page-link" href="/speaking/">All speaking</a>
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>TypeScript: Setting up an IDE and working environment</h1>
+    <p class="meta">Feb 2, 2016</p>
+  </header>
+
+  <article class="post-content">
+  <div class="paragraph">
+<p>This episode is pretty straight forward: configuring the workspace. My IDE choice is either Sublime Text or IntelliJ IDEA and I&#8217;m focusing on these two. Additionally, I&#8217;ve setup the working environment, auto reloading the browser (as the ultimate runtime environment of my JavaScript experimentations).</p>
+</div>
+<div class="sect1">
+<h2 id="prerequisite">Prerequisite</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>TypeScript can be installed through the NPM package manager <code>npm install -g typescript</code>.</p>
+</div>
+<div class="paragraph">
+<p>Wait. What? What is <code>npm</code>. So here we go; welcome to the world of JavaScript package managers. <code>npm</code> stands for package manager for node.js (one among many). I won&#8217;t be drilling <em>node</em> installation details - not worth it. I&#8217;ll just point out one thing which saved my live millions of times: always use version managers. It&#8217;s a great practice from PHP Pear times, where everything was global, thus changing a library version for a single project was close to impossible.</p>
+</div>
+<div class="paragraph">
+<p>Now we can bound not only libraries but whole runtimes (compilers) and avoid any interference between runtimes. Things like <a href="http://rvm.io">rvm.io</a>, <a href="https://github.com/brainsik/virtualenv-burrito">Virtualenv</a>, <a href="https://github.com/cweiske/phpfarm">phpfarm</a> saved tons of developers' hours. Same story applies to the node world and I suggest not going forward without installing one of many version managers. I went with <a href="https://github.com/creationix/nvm">nvm</a>. If you ask why - probably it had highest number of Github stars ;-)</p>
+</div>
+<div class="paragraph">
+<p>Which <em>node</em> and <em>npm</em> on board, typescript installation is a piece of cake. Having successfully done that I could&#8217;ve moved forward.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sublime-text">Sublime Text</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For Sublime, Microsoft helps with an <a href="https://github.com/Microsoft/TypeScript-Sublime-Plugin">official plugin</a>. If the <em>node</em> is already installed and enabled - installation is easy and out of the box.</p>
+</div>
+<div class="paragraph">
+<p>The editor comes with syntax highlighting and preconfigured compilation (upon request). In general - enough to move forward.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="intellij-idea">IntelliJ IDEA</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There is well documented TypeScript support for IntelliJ IDEA, which can be installed from the <a href="https://www.jetbrains.com/idea/help/typescript-support.html">JetBrains plugin repository</a>. Obviously it required <em>node</em> to be installed and enabled.</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;ve installed the plugin, but I&#8217;ve disabled the compiler (the checkbox 'Enable TypeScript Compiler'). As described in <a href="/posts/2016/01/31/typescript-getting-started/">in the previous part</a> I "embedded the transpiler" into the browser and evaluated the <code>&#42;.ts</code> files directly. How the plugin worked for me was syntax colouring and hints. Additionally I could have made my IDE generate JavaScript files together with the sourcemaps (for both IDEA as well as Sublime Text), but I felt it a bit unnatural, too tightly coupled to the IDE. That was something to avoid, to be solved by the build scripts directly on my CI server. Later on.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="live-reload">Live reload</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Final piece of the puzzle was to save hassle of hideous pressing <kbd>F5</kbd> or <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>R</kbd></span> for refresh. There&#8217;s where Livereload kicks in.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+LiveReload monitors changes in the file system. As soon as you save a file, it is preprocessed as needed, and the browser is refreshed.
+</blockquote>
+<div class="attribution">
+&#8212; http://livereload.com/
+</div>
+</div>
+<div class="paragraph">
+<p><em>Livereload</em> "ships" in two pieces: browser (page) extension, that triggers a page reload and a file system watcher - to notify changes in the HTML, CSS, image files (like whatever file extension is configured) - that something needs to be reloaded.</p>
+</div>
+<div class="paragraph">
+<p>The browser part can be handled by a <a href="http://livereload.com/extensions/">plugin or browser extension</a> or a snippet embedded to the page. The <code>&lt;script&gt;</code> is required for Safari users, due to Safari API limitations; extensions cannot for with <em>file://</em> URL. The snippet allows localhost communication, but livereload works also for mobile (on device) browsers (simulators) - with a specific IP address provided inline.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;script&gt;</span><span class="inline">document.write(<span class="string"><span class="delimiter">'</span><span class="content">&lt;script src=&quot;http://</span><span class="delimiter">'</span></span> + (location.host || <span class="string"><span class="delimiter">'</span><span class="content">localhost</span><span class="delimiter">'</span></span>).split(<span class="string"><span class="delimiter">'</span><span class="content">:</span><span class="delimiter">'</span></span>)[<span class="integer">0</span>] + <span class="string"><span class="delimiter">'</span><span class="content">:35729/livereload.js?snipver=1&quot;&gt;&lt;/</span><span class="delimiter">'</span></span> + <span class="string"><span class="delimiter">'</span><span class="content">script&gt;</span><span class="delimiter">'</span></span>)</span><span class="tag">&lt;/script&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Livereload is an open protocol so the "server" side comes in many different flavours, for the developers' convenience. For me, as a JVM-mostly developer, some Java based build tools were the first choice. But there is no need to limit oneself to only <a href="https://github.com/aalmiray/livereload-gradle-plugin">Gradle livereload plugin</a> or <a href="https://github.com/davidB/livereload-jvm">Maven</a>. Livereload works perfectly with node, python, ruby (rake) etc.</p>
+</div>
+<div class="listingblock">
+<div class="title">The simplest gradle configuration</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath <span class="string"><span class="delimiter">'</span><span class="content">org.kordamp.gradle:livereload-gradle-plugin:0.2.1</span><span class="delimiter">'</span></span>
+    }
+}
+
+apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">org.kordamp.gradle.livereload</span><span class="delimiter">'</span></span>
+
+liveReload {
+        docRoot <span class="string"><span class="delimiter">&quot;</span><span class="content">app/</span><span class="delimiter">&quot;</span></span> <b class="conum">(1)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>This is the folder where the reloadable content sits.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This however brings some limitations. As I use vanilla TypeScript and do an in-browser transpilation - that involves additional AJAX calls by the <code>transpiler.js</code> script. When the protocol is set to <em>file://</em> some browsers forbid it for security reasons (like Chrome) some don&#8217;t really care (hello Firefox).</p>
+</div>
+<div class="paragraph">
+<p>For browsers like Chrome we need to expose our content as a basic HTTP server. For me, the simplest HTTP static server <a href="/posts/2016/01/31/typescript-getting-started/">from the previous part</a> (<code>php -S localhost:8080 -t {docRoot}</code>) did the trick. I know I could have taken some basic HTTP server from node world (like express) and wrap everything in typical JavaScript stack. That will work as well, but my intention so far is to minimize elements not natural (unknown and unfamiliar) for a typical JVM developer. I&#8217;ll get to the <code>nodemon</code> later.</p>
+</div>
+<div class="paragraph">
+<p>This set-up has taken me few steps forward in both understanding how the JS oriented environment might work as well as with grasping the JavaScript goodies on their own. Hope this will work for you as well.</p>
+</div>
+</div>
+</div>
+  </article>
+
+  
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+	    var disqus_shortname = 'jakubblog';
+	    
+
+	    /* * * DON'T EDIT BELOW THIS LINE * * */
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <div class="column">
+      <ul>
+        
+          
+          <li><a href="/posts/">
+            <span class="icon foundation-icon"><i class="fi-page-multiple"></i></span>
+            <span class="username">All posts</span>
+            </a>
+          </li>
+          
+        
+          
+          <li><a href="/speaking/">
+            <span class="icon foundation-icon"><i class="fi-microphone"></i></span>
+            <span class="username">All speaking</span>
+            </a>
+          </li>
+          
+              
+        <li>
+          <a href="https://github.com/kubamarchwicki">
+            <span class="icon foundation-icon"><i class="fi-social-github"></i></span>
+            <span class="username">kubamarchwicki</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/kubem">
+            <span class="icon foundation-icon"><i class="fi-social-twitter"></i></span>
+            <span class="username">kubem</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/kubamarchwicki">
+            <span class="icon foundation-icon"><i class="fi-social-linkedin"></i></span>
+            <span class="username">kubamarchwicki</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation/foundation.js"></script>
+    <script>
+      $(document).foundation();
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);
+    </script>
+
+    </body>
+</html>

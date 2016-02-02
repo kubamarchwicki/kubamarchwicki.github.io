@@ -5,9 +5,130 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 02 Feb 2016 11:37:04 +0000</pubDate>
-    <lastBuildDate>Tue, 02 Feb 2016 11:37:04 +0000</lastBuildDate>
+    <pubDate>Tue, 02 Feb 2016 21:41:34 +0000</pubDate>
+    <lastBuildDate>Tue, 02 Feb 2016 21:41:34 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>TypeScript: Setting up an IDE and working environment</title>
+        <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This episode is pretty straight forward: configuring the workspace. My IDE choice is either Sublime Text or IntelliJ IDEA and I&amp;#8217;m focusing on these two. Additionally, I&amp;#8217;ve setup the working environment, auto reloading the browser (as the ultimate runtime environment of my JavaScript experimentations).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;prerequisite&quot;&gt;Prerequisite&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;TypeScript can be installed through the NPM package manager &lt;code&gt;npm install -g typescript&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Wait. What? What is &lt;code&gt;npm&lt;/code&gt;. So here we go; welcome to the world of JavaScript package managers. &lt;code&gt;npm&lt;/code&gt; stands for package manager for node.js (one among many). I won&amp;#8217;t be drilling &lt;em&gt;node&lt;/em&gt; installation details - not worth it. I&amp;#8217;ll just point out one thing which saved my live millions of times: always use version managers. It&amp;#8217;s a great practice from PHP Pear times, where everything was global, thus changing a library version for a single project was close to impossible.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now we can bound not only libraries but whole runtimes (compilers) and avoid any interference between runtimes. Things like &lt;a href=&quot;http://rvm.io&quot;&gt;rvm.io&lt;/a&gt;, &lt;a href=&quot;https://github.com/brainsik/virtualenv-burrito&quot;&gt;Virtualenv&lt;/a&gt;, &lt;a href=&quot;https://github.com/cweiske/phpfarm&quot;&gt;phpfarm&lt;/a&gt; saved tons of developers&#39; hours. Same story applies to the node world and I suggest not going forward without installing one of many version managers. I went with &lt;a href=&quot;https://github.com/creationix/nvm&quot;&gt;nvm&lt;/a&gt;. If you ask why - probably it had highest number of Github stars ;-)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Which &lt;em&gt;node&lt;/em&gt; and &lt;em&gt;npm&lt;/em&gt; on board, typescript installation is a piece of cake. Having successfully done that I could&amp;#8217;ve moved forward.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;sublime-text&quot;&gt;Sublime Text&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For Sublime, Microsoft helps with an &lt;a href=&quot;https://github.com/Microsoft/TypeScript-Sublime-Plugin&quot;&gt;official plugin&lt;/a&gt;. If the &lt;em&gt;node&lt;/em&gt; is already installed and enabled - installation is easy and out of the box.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The editor comes with syntax highlighting and preconfigured compilation (upon request). In general - enough to move forward.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;intellij-idea&quot;&gt;IntelliJ IDEA&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There is well documented TypeScript support for IntelliJ IDEA, which can be installed from the &lt;a href=&quot;https://www.jetbrains.com/idea/help/typescript-support.html&quot;&gt;JetBrains plugin repository&lt;/a&gt;. Obviously it required &lt;em&gt;node&lt;/em&gt; to be installed and enabled.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;ve installed the plugin, but I&amp;#8217;ve disabled the compiler (the checkbox &#39;Enable TypeScript Compiler&#39;). As described in &lt;a href=&quot;/posts/2016/01/31/typescript-getting-started/&quot;&gt;in the previous part&lt;/a&gt; I &quot;embedded the transpiler&quot; into the browser and evaluated the &lt;code&gt;&amp;#42;.ts&lt;/code&gt; files directly. How the plugin worked for me was syntax colouring and hints. Additionally I could have made my IDE generate JavaScript files together with the sourcemaps (for both IDEA as well as Sublime Text), but I felt it a bit unnatural, too tightly coupled to the IDE. That was something to avoid, to be solved by the build scripts directly on my CI server. Later on.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;live-reload&quot;&gt;Live reload&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Final piece of the puzzle was to save hassle of hideous pressing &lt;kbd&gt;F5&lt;/kbd&gt; or &lt;span class=&quot;keyseq&quot;&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;R&lt;/kbd&gt;&lt;/span&gt; for refresh. There&amp;#8217;s where Livereload kicks in.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+&lt;blockquote&gt;
+LiveReload monitors changes in the file system. As soon as you save a file, it is preprocessed as needed, and the browser is refreshed.
+&lt;/blockquote&gt;
+&lt;div class=&quot;attribution&quot;&gt;
+&amp;#8212; http://livereload.com/
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;em&gt;Livereload&lt;/em&gt; &quot;ships&quot; in two pieces: browser (page) extension, that triggers a page reload and a file system watcher - to notify changes in the HTML, CSS, image files (like whatever file extension is configured) - that something needs to be reloaded.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The browser part can be handled by a &lt;a href=&quot;http://livereload.com/extensions/&quot;&gt;plugin or browser extension&lt;/a&gt; or a snippet embedded to the page. The &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; is required for Safari users, due to Safari API limitations; extensions cannot for with &lt;em&gt;file://&lt;/em&gt; URL. The snippet allows localhost communication, but livereload works also for mobile (on device) browsers (simulators) - with a specific IP address provided inline.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span class=&quot;inline&quot;&gt;document.write(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;&amp;lt;script src=&amp;quot;http://&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt; + (location.host || &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;localhost&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;).split(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;)[&lt;span class=&quot;integer&quot;&gt;0&lt;/span&gt;] + &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;:35729/livereload.js?snipver=1&amp;quot;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt; + &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;script&amp;gt;&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;)&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Livereload is an open protocol so the &quot;server&quot; side comes in many different flavours, for the developers&#39; convenience. For me, as a JVM-mostly developer, some Java based build tools were the first choice. But there is no need to limit oneself to only &lt;a href=&quot;https://github.com/aalmiray/livereload-gradle-plugin&quot;&gt;Gradle livereload plugin&lt;/a&gt; or &lt;a href=&quot;https://github.com/davidB/livereload-jvm&quot;&gt;Maven&lt;/a&gt;. Livereload works perfectly with node, python, ruby (rake) etc.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;title&quot;&gt;The simplest gradle configuration&lt;/div&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.kordamp.gradle:livereload-gradle-plugin:0.2.1&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
+    }
+}
+
+apply &lt;span class=&quot;key&quot;&gt;plugin&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.kordamp.gradle.livereload&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
+
+liveReload {
+        docRoot &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;app/&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;colist arabic&quot;&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;This is the folder where the reloadable content sits.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This however brings some limitations. As I use vanilla TypeScript and do an in-browser transpilation - that involves additional AJAX calls by the &lt;code&gt;transpiler.js&lt;/code&gt; script. When the protocol is set to &lt;em&gt;file://&lt;/em&gt; some browsers forbid it for security reasons (like Chrome) some don&amp;#8217;t really care (hello Firefox).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For browsers like Chrome we need to expose our content as a basic HTTP server. For me, the simplest HTTP static server &lt;a href=&quot;/posts/2016/01/31/typescript-getting-started/&quot;&gt;from the previous part&lt;/a&gt; (&lt;code&gt;php -S localhost:8080 -t {docRoot}&lt;/code&gt;) did the trick. I know I could have taken some basic HTTP server from node world (like express) and wrap everything in typical JavaScript stack. That will work as well, but my intention so far is to minimize elements not natural (unknown and unfamiliar) for a typical JVM developer. I&amp;#8217;ll get to the &lt;code&gt;nodemon&lt;/code&gt; later.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This set-up has taken me few steps forward in both understanding how the JS oriented environment might work as well as with grasping the JavaScript goodies on their own. Hope this will work for you as well.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Tue, 02 Feb 2016 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2016/02/02/typescript-setting-up-ide/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2016/02/02/typescript-setting-up-ide/</guid>
+        
+        <category>typescript</category>
+        
+        
+        <category>posts</category>
+        
+      </item>
     
       <item>
         <title>TypeScript: Getting started</title>
@@ -1973,190 +2094,6 @@ Objective feedback. From non violent communication. Refer to objectives: things 
         <pubDate>Mon, 09 Jun 2014 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2014/06/09/33degree-braindump/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2014/06/09/33degree-braindump/</guid>
-        
-        
-        <category>posts</category>
-        
-      </item>
-    
-      <item>
-        <title>(…) testing EJB application – Part VI (OpenEJB test and custom JNDI lookups)</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This has been a while since my last post. Not that nothing happened – there has never been enough time to sit down and write those few paragraphs. I have few articles already started, but all quite far away from completion. I’ve pushing EJB testing even further (and this article will partly cover it) and focused even further on incepting such approach in the team. It looks like it’s working – the test coverage is constantly increasing from change request to change request, with new ideas being introduced. This particular one was introduced by my team mate – Greg, who was struggling with some legacy modules which were using hardcoded JNDI bindings.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;That obviously wasn’t the only thing happening recently. Additionally, there is another side project which I’ve recently started and which (I hope) will be available soon. If you are a Kindle user (or any other ebook reader – but we are targeting Kindles at first), this might be of some interest to you – preregister on &lt;a href=&quot;http://www.readpick.com&quot; class=&quot;bare&quot;&gt;http://www.readpick.com&lt;/a&gt; and stay tuned. From the technical perspective, it uses Python and Google App Engine and as the primary toolset, which made the work significantly different from a standard Java development I’ve been accustomed to. A list of helpful Python / GAE related resources in coming in a form of a blog post as well – but it needs time.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Finally, last but no least, there is this little project (in size), but great in importance thing which does not leave much time for anything else – meet Jan, my son :-) Fairly obvious why everything else become much least important – he’s the most sweet of world’s sweets.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;jndi-lookups&quot;&gt;JNDI lookups&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;But let’s get back to the problems I wanted to describe. In the solution we’ve been working with, there was a separate logging module, independent and decoupled from the core functionality. The idea was: logging was not the core functionality; in production environment the logger was putting auditing data in the database, while in test the logger might not have been deployed at all or can just log to files. Important thing was not to rely on logging, with the core solution working with correctly even if the logging is not deployed.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Nowadays, with JEE6 (EJB 3.1 in place) I’d address such requirement by injecting a typed instance of Instance&amp;lt;T&amp;gt; object. That way, I’d be able to check, later in code, if the dependency is satisfied or not. However, the environment I was using was EJB 3.0, did not have such a features and JNDI lookups was a way to go for us (also JMS was an option but messaging brought some additional resource consumption which we wanted to avoid).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;To simplify, let’s imagine such a suite of classes.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Stateless&lt;/span&gt;
-&lt;span class=&quot;annotation&quot;&gt;@LocalBinding&lt;/span&gt;(jndiBinding = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;mybindings/Logger&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)
-&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;ExternalLogger&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;implements&lt;/span&gt; ExternalLoggerLocal {
-
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; log(&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; str) {
-    &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.out.println(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Logging: &lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; + str);
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Stateless&lt;/span&gt;
-&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;LoggerFacade&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;implements&lt;/span&gt; LoggerFacadeLocal {
-
-  ExternalLoggerLocal log = &lt;span class=&quot;predefined-constant&quot;&gt;null&lt;/span&gt;;
-
-  &lt;span class=&quot;annotation&quot;&gt;@PostConstruct&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; postConstruct() {
-    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
-        &lt;span class=&quot;predefined-type&quot;&gt;InitialContext&lt;/span&gt; ctx = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;InitialContext&lt;/span&gt;();
-        log = (ExternalLoggerLocal) ctx.lookup(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;mybindings/Logger&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
-    } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (&lt;span class=&quot;exception&quot;&gt;NamingException&lt;/span&gt; e) {
-        e.printStackTrace();
-    }
-  }
-
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;boolean&lt;/span&gt; log(&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; str) {
-    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (log != &lt;span class=&quot;predefined-constant&quot;&gt;null&lt;/span&gt;) {
-      log.log(str);
-      &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;predefined-constant&quot;&gt;true&lt;/span&gt;;
-    }
-
-    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;predefined-constant&quot;&gt;false&lt;/span&gt;;
-  }
-
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@Stateless&lt;/span&gt;
-&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;BusinessService&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;implements&lt;/span&gt; BusinessServiceLocal {
-
-  &lt;span class=&quot;annotation&quot;&gt;@EJB&lt;/span&gt;
-  LoggerFacadeLocal logger;
-
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; doSomeImportantStuff() {
-    logger.log(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Running doSomeImportantStuff()&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
-    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Done&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;;
-  }
-
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The ExternalLogger might (and that’s our case) deployed as a separate module (in a different ear file). It uses vendor specific annotation (from Jboss), @LocalBinding – to hook the service under a specific name within the JNDI index. That way, the façade can lookup the logging service in a flexible way and fall back when no implementation is deployed. If @EJB annotation was used, unsatisfied dependency would have ended up in throwing an exception – which we wanted to avoid. Façade is directly used in the application.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Obviously, the implementation shown in the examples is quite naïve but I hope it describes the problem we were facing and how it was solved.
-Despite the simplicity, this is a fully working application (JBoss 4.2.x deployable).&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;the-tests-problems&quot;&gt;The tests problems&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Implementation of business logic is always only one side of the story. The other are tests and a way to cover the above logic with some reasonable tests cases. We were using OpenEJB with ApplicationComposer quite extensively and it helped us a lot in writing focused integration testing. Nonetheless, it occurred to be limited and unable to test this particular case.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Testing the negative case (the logger not deployed) was fairly simple, no bean implementing ExternalLogger interface was deployed.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@RunWith&lt;/span&gt;(ApplicationComposer.class)
-&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;NoActiveLoggerTest&lt;/span&gt; {
-
-  &lt;span class=&quot;annotation&quot;&gt;@EJB&lt;/span&gt;
-  LoggerFacadeLocal facade;
-
-  &lt;span class=&quot;annotation&quot;&gt;@Module&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; EjbJar beans() {
-    EjbJar ejbJar = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; EjbJar(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;loggging-app&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
-    ejbJar.addEnterpriseBean(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StatelessBean(LoggerFacade.class));
-    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ejbJar;
-  }
-
-  &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; facadeReturnsFalseOnNoActiveLogger() {
-    assertFalse(facade.log(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Echo&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;));
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Testing the successful wiring of the logger was much more troublesome. It appeared there is no way to define a specific JNDI location for a component. There were ways to do it using openejb-jar.xml file but we wanted to avoid it and handle everything within the test class, as it proved to be more maintainable.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;A way for us to go was to modify the ApplicationComposer itself. Without getting much into details how the runner works (you can learn more about it from &lt;a href=&quot;/posts/2011/07/01/testing-ejb-application-openejb-without-classpath-scanning/&quot;&gt;my previous posts&lt;/a&gt; or from the &lt;a href=&quot;http://ci.apache.org/projects/openejb/examples-generated/application-composer/&quot;&gt;OpenEJB documentation&lt;/a&gt;) we were not able to output the configuration that included a specific JNDI location of a bean. Methods annotated with @Module could return EjbJar type of class, but we needed to get a level up, define a whole module with a specific JNDI. As I mentioned earlier, Greg had this idea to modify the ApplicationComposer class (which appeared to be fairly easy). The positive test case worked fine:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;annotation&quot;&gt;@RunWith&lt;/span&gt;(ApplicationComposer.class)
-&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;ActiveLoggerTest&lt;/span&gt; {
-
-  &lt;span class=&quot;annotation&quot;&gt;@EJB&lt;/span&gt;
-  LoggerFacadeLocal facade;
-
-  &lt;span class=&quot;annotation&quot;&gt;@Module&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; EjbModule module() {
-    EjbJar ejbJar = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; EjbJar(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;loggging-app&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;);
-    ejbJar.addEnterpriseBean(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StatelessBean(LoggerFacade.class));
-    ejbJar.addEnterpriseBean(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StatelessBean(ExternalLogger.class));
-
-    EjbModule ejbModule = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; EjbModule(ejbJar, &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; OpenejbJar());
-    EjbDeployment deployment =
-      &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; EjbDeployment(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; StatefulBean(ExternalLogger.class));
-    deployment.getJndi().add(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Jndi(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;mybindings/Logger&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Local&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;));
-    ejbModule.getOpenejbJar().addEjbDeployment(deployment);
-
-    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; ejbModule;
-  }
-
-  &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; facadeReturnsTrueOnActiveLoggerPresent() {
-    assertTrue(facade.log(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Echo&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;));
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The output was exactly as expected:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre&gt;INFO - Jndi(name=LoggerFacadeLocal) --&amp;gt; Ejb(deployment-id=LoggerFacade)
-INFO - Jndi(name=mybindings/Logger) --&amp;gt; Ejb(deployment-id=ExternalLogger)&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;the-modifications&quot;&gt;The modifications&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I understand that made a very specific case, which was the reason not to include it in the original runner’s code. However, as it worked for us, it might work for you as well. The patch is submitted to OpenEJB – wonder if it gets accepted (see: &lt;a href=&quot;https://issues.apache.org/jira/browse/OPENEJB-1763&quot; class=&quot;bare&quot;&gt;https://issues.apache.org/jira/browse/OPENEJB-1763&lt;/a&gt;)&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
-        <pubDate>Sat, 04 Feb 2012 00:00:00 +0000</pubDate>
-        <link>http://jakub.marchwicki.pl/posts/2012/02/04/testing-ejb-application-openejb-test-and-custom-jndi-lookups/</link>
-        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2012/02/04/testing-ejb-application-openejb-test-and-custom-jndi-lookups/</guid>
         
         
         <category>posts</category>
