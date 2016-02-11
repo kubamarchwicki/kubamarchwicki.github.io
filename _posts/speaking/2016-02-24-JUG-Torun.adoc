@@ -1,0 +1,10 @@
+---
+layout: speaking
+categories: speaking
+title: JUG Toruń
+speakingDate: 2016-02-24, Toruń, Poland
+link: http://www.meetup.com/Torun-JUG/
+page-include: _posts/speaking/topics/asciidoctor-live.adoc
+---
+
+include::{{page.page-include}}[]

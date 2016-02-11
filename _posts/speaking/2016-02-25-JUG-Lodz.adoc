@@ -1,0 +1,10 @@
+---
+layout: speaking
+categories: speaking
+title: JUG Łódź
+speakingDate: 2016-02-25, Łódź, Poland
+link: http://www.meetup.com/Java-User-Group-Lodz/
+page-include: _posts/speaking/topics/asciidoctor-live.adoc
+---
+
+include::{{page.page-include}}[]

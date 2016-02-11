@@ -1,0 +1,21 @@
+:title: Chasing Gods of Technical Documentation
+:subtitle: The reality of writing (documentation as well) is hard, unhuman; constant chase for (pixel) perfection, through WYSWIG editors hurdle. But it doesn't need to be like this - I'll proove it in this session.
+
+== {title}
+
+> {subtitle}
+
+=== Abstract
+
+One of my professors at the university used to say: "Developers are paid for writing docs as they write code for pleasure".
+However the reality differs, documentation is the last thing we want to think about.
+It's boring, in MS Word, in a different workflow than code, with no transparency between 'commits' whatsoever.
+
+My intention for this session is to show opposite, that there is a 3^rd^ way - as easy as writing an email, a memo; like a few lines of code.
+At least that's an idea behind AsciiDoc (or Markdown or RestructuredText) - simple, intuitive and minimal syntax, text based documents, readable without additional tools.
+
+During the session I'll introduce AsciiDoc (and the tools ecosystem around it).
+Above all, I'll like to share a passion for better writing, with simple tools, easily sharing outcomes of our work.
+
+Step by step we will be tackling the syntax, tools - in possibly the most pleasant way - writing live.
+I'd like you never ever go back to Word! Because it's beyond WYSWIG editors when writing becomes simple and geeky-pleasure.
