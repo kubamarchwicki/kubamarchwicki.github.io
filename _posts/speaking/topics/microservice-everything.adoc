@@ -18,6 +18,10 @@ The feedback after some [http://www.meetup.com/Warszawa-Java-User-Group-Warszawa
 * "Ciekawa prezentacja, ciekawa narracja, bardzo dobrze przygotowany prowadzący."
 * "Prezentacja była bardzo ciekawa. Prowadzący przedstawił praktyczne doświadczenia z wprowadzania Microservice'ów w YDP, co się sprawdziło, jak przekonywał ludzi, co udało się wprowadzić (w ramach np. dostępnego budżetu oraz tolerancji biznesu), jak sobie to radzili (np. budowali fasady, a za fasadami microservice + kod legacy. Bardzo fajne, w dodatku przedstawione z dużą dawką humoru."
 
+=== Videos
+
+.Warszawa JUG (Polish)
+video::JxOu1GZmrV8[youtube, width=640, height=480]
 
 === Additional resources
 

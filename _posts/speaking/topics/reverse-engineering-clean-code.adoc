@@ -23,7 +23,8 @@ The feedback after GET.NET 2014 surveys conference in Gdańsk
 
 === Videos
 
-http://vimeo.com/100219607[Geecon 2014]
+.GeeCON 2014 - lightning talk
+video::100219607[vimeo, width=640, height=480]
 
 === Additional resources
 

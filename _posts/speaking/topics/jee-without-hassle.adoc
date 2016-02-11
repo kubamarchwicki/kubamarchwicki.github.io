@@ -23,8 +23,13 @@ The feedback after Confitura 2014 surveys conference
 
 === Videos
 
+.Confitura2014 (Polish)
+video::orGJZuPYgZ8[youtube, width=640, height=480]
+
 https://www.youtube.com/watch?v=orGJZuPYgZ8[Confitura2014 - in Polish]
-https://vimeo.com/111462696[GeeCon Prague 2014 - in English]
+
+.GeeCON Prague 2014 (English)
+video::111462696[vimeo, width=640, height=480]
 
 === Additional resources
 

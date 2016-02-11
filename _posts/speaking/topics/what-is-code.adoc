@@ -26,8 +26,10 @@ image::https://pbs.twimg.com/media/CTDcWG9WsAAEesU.jpg[]
 
 // === Testimonials
 
-// === Videos
-// https://www.youtube.com/watch?v=orGJZuPYgZ8[Confitura2014 - in Polish]
+=== Videos
+
+.JFall 2015
+video::7IWc7s4O9As[youtube, width=640, height=480]
 
 === Additional resources
 
