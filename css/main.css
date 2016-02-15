@@ -510,6 +510,7 @@ ul.speakinglist {list-style-type: none;}
 
   .offer .mugshot {
       float: none;
+      margin: 0 auto;
   }
 
 }
