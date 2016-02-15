@@ -1,0 +1,47 @@
+---
+layout: default
+title: Consultancy
+---
+
+:imagesdir: /assets
+
+[.home.offer]
+== Consultancy
+
+image::mug_shot.jpg[role="mugshot left"]
+
+I've has been around software development over past 10 years, wearing multiple hats, getting hands dirty in multiple environments, securing both technical as well as the business side of The Thing. “An engineer with a human friendly interface?”. Huh? Some languages, some frameworks, blah blah blah - doesn’t matter; link:https://pl.linkedin.com/in/kubamarchwicki[linkedin has it all].
+
+I've always considered programming as a tool to solve real-life problems - in a pragmatic way. I always stayed closed to business side of the solution, still keeping focus on the technology - as those two must fit together like a glove. I combine daily job of managing a horde of software engineers at Young Digital Planet with lectures and technical trainings, and comittment to Gdańsk Java User Group.
+
+=== Lectures
+
+I've been frequent speaker on various conferences (in Poland and abroad). Please see the link:/speaking[speaking section] for abstracts, videos and testimonials. Let's talk if any of those talks are of some interest to you.
+
+=== Trainings
+
+For past ten years I've been actively working as a technical trainer, delivering multiple days trainings for JVM related technologies. I only focused on areas of my expertise and avoided a 'general trainer' approach. All the trainings materials (slides, scripts, exercises) are based on personal practice and experience. The trainings themselves are run in a workshop manner with at least 60% time spent on practical exercises.
+
+.Modern Architecture
+A facilitated discussion on the role of architecture / architect within the project or organisations. From a high level discussion to practical exercises of implementing architecture principles on different level using microservices, domain driven design (DDD), Clean or Hexagonal Architecture (Ports and Adapters).
+
+.Spring Framework
+Building application using Spring Framework. The training can cover both evolving legacy applications (from Spring 2.x) as well as latest revisions of the framework. The program focuses on the framework itself and it's integrations (data access, JPA, events, aspect), followed up by the context of either standalone or web application.
+
+.Java Enterprise Edition
+Delivering business application using Java Enterprise Edition (Java EE 6, Java EE 7). This can include working effectively with legacy J2EE application and migration techniques to the modern stack.
+
+Trainings have already been delivered using a variety of application servers (JBoss, Wildfly, TomEE, Weblogic).
+
+.Enterprise Integration Patterns
+Both theoretical (shorter) or practical (longer) workshop introducing integration patterns (run on the top of MuleESB - as an example implementation).
+
+.Effective coding
+Most effective techniques of delivering software, including clean code, testing techniques, TDD, refactoring, design patterns.
+
+.Introduction to Java for PHP / JS / C++ programmers
+First steps in Java / JVM world for senior programmers not proficient with the platform.
+
+=== Get in touch
+
+I'm happy to talk. I can be reached via link:http://twitter.com/kubem[twitter], link:https://www.linkedin.com/in/kubamarchwicki[linkedin] or traditionally through link:mailto:kuba(d0t)marchwicki(at)gmail(d0t).com[kuba.marchwicki at gmail.com]

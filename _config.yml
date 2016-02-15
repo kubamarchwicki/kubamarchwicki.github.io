@@ -30,7 +30,9 @@ static_pages:
   - title: All speaking
     url: /speaking/
     css-icon: microphone
-
+  - title: Consultancy
+    url: /consultancy/
+    css-icon: comments
 
 
 asciidoctor:

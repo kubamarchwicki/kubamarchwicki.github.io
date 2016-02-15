@@ -226,6 +226,20 @@ a:visited { color: #205caa; }
   border: 0px !important;
 }
 
+/* Consultancy styles */
+/* ----------------------------------------------------------*/
+
+.offer .mugshot {
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    overflow:hidden;
+}
+
+.offer h3 {
+  font-size: 1.6em;  
+}
+
 /* Post styles */
 /* ----------------------------------------------------------*/
 
