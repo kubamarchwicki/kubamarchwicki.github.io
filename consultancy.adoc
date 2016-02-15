@@ -8,7 +8,7 @@ title: Consultancy
 [.home.offer]
 == Consultancy
 
-image::mug_shot.jpg[role="mugshot left"]
+image::mug_shot.jpg[role="mugshot"]
 
 I've has been around software development over past 10 years, wearing multiple hats, getting hands dirty in multiple environments, securing both technical as well as the business side of The Thing. “An engineer with a human friendly interface?”. Huh? Some languages, some frameworks, blah blah blah - doesn’t matter; link:https://pl.linkedin.com/in/kubamarchwicki[linkedin has it all].
 
