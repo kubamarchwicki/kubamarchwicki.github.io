@@ -53,10 +53,6 @@ Livereload is an open protocol so the "server" side comes in many different flav
 .The simplest gradle configuration
 -------------------------------------------------------------------------------
 buildscript {
-    repositories {
-        jcenter()
-    }
-
     dependencies {
         classpath 'org.kordamp.gradle:livereload-gradle-plugin:0.2.1'
     }
