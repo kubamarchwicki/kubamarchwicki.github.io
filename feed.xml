@@ -5,8 +5,8 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 15 Feb 2016 23:24:45 +0000</pubDate>
-    <lastBuildDate>Mon, 15 Feb 2016 23:24:45 +0000</lastBuildDate>
+    <pubDate>Sun, 21 Feb 2016 10:50:36 +0000</pubDate>
+    <lastBuildDate>Sun, 21 Feb 2016 10:50:36 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
@@ -85,10 +85,6 @@ LiveReload monitors changes in the file system. As soon as you save a file, it i
 &lt;div class=&quot;title&quot;&gt;The simplest gradle configuration&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
 &lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;buildscript {
-    repositories {
-        jcenter()
-    }
-
     dependencies {
         classpath &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.kordamp.gradle:livereload-gradle-plugin:0.2.1&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
     }
