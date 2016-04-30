@@ -251,7 +251,10 @@ span.footnoteref {
   font-size: 0.7em;
 }
 
-ul.speakinglist {list-style-type: none;}
+ul.speakinglist {
+  margin-left: 0px;
+  list-style-type: none;
+}
 
 .post-header { margin: 10px 0 30px; }
 

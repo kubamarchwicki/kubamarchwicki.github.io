@@ -1,4 +1,4 @@
-:title: Winning JavaEE Back
+:title: 6 tips for you JavaEE project be less depresing
 :subtitle: Mind the gaps in the JavaEE environment and try to fix it with some decent libraries, different approaches - bringing it closer towards modern web development.
 
 == {title}
@@ -13,10 +13,26 @@ While their live can be miserable - there are means for them to win JavaEE back,
 
 In the modern JavaEE you are no logger limited to the 'standard' but you can take advantage of limitless set tools and libraries. For some people it will still be the bad and ugly JavaEE, "feels like Spring but n-years ago", "Spring wannabe in the poor's man land" - that's true. But if you can't win Them (and let's be honest - in most enterprise'ish environments you can't win Them), join them! And have you JavaEE the way You like it.
 
-This presentation will walk through multiple libraries that can help you change your project from "This is The Standard Even If It Doesn't Fit" way to a something far more approachable, where your tools doesn't feel like the Maslow's Hammer. I'll be sharing some experience from multiple trainings, projects and refactorings of old-but-still-in-production JavaEE applications and tools we used to get away The Standard. 
+This presentation will walk through multiple libraries that can help you change your project from "This is The Standard Even If It Doesn't Fit" way to a something far more approachable, where your tools doesn't feel like the Maslow's Hammer. I'll be sharing some experience from multiple trainings, projects and refactorings of old-but-still-in-production JavaEE applications and tools we used to get away The Standard.
 
 === Additional resources
 
 * https://speakerdeck.com/kubamarchwicki/winning-javaee-back[PDF Slides]
 * https://github.com/kubamarchwicki/winning-javaee-back/blob/master/slides/src/slides.adoc[Slides source in *asciidoctor*]
 * https://github.com/kubamarchwicki/winning-javaee-back/[Code examples @ GitHub]
+
+////
+Wersja Polska
+
+JavaEE - nie musi byc tak smutna jak się Tobie wydaje
+
+Ludzie wybierają JavaEE nie dlatego że kochają tą technologie, ale dlatego że po prostu jest tam gdzie akuratnie pracują (i pewnie jeszcze będzie długo po tym jak odejdą). Nazwijmy to po imieniu: ludzie grzęzną w projektach JavaEE. W sytuacji gdy niektórzy programiści zastanawiają się na monadami, monoidami, programowaniem funkcyjnym (lub jakąkolwiek inną modą), niektórzy wciąż mają problem z migracją weblogic9 na weblogic12 i przejściem z Javy (nie wspieranej przez ostatnie 8 lat - jak Java 1.4) na Javę nie wspieraną tylko od roku (Java7).
+
+Ich życie wydaje się być smutne - ale uwierzcie mi są sposoby na odrobinę frajdy nawet w projektach JavaEE. To wciąż nie będzie super-duper nowoczesny framework, pełen niesamowitych nowości, napisanych w słodkim języku (słodkim od wszystkich syntaktycznych cukiereczków) - ale zestaw narzędzi które spowodują że praca może znowu stanie się przyjemnością.
+
+Od dłuższego czasu JavaEE to nie jest już 'tylko i wyłącznie błogosławiony standard' - możemy korzystać z innych narzędzi i bibliotek. Dla niektórych to wciąż będzie to ta zła i brzydka JavaEE, "wyglądająca jak Spring przed dekady", "Spring wannabe's" - to prawda. Ale gdy z rzeczywistością nie da się walczyć - trzeba ją polubić.
+
+W tej prezentacji pokażę że JavaEE da się lubić - że można zamienić projektu "mamy standard mimo że w ogóle nie pasuje" na coś lepiej dopasowanego, gdzie nasza praca to coś więcej niż pasmo codziennych udręk. Materiał tej sesji to doświadczenie kilku projektów JEE, szkoleń, projektów J2EE które udało się wyprowadzić "na ludzi".
+
+
+////
