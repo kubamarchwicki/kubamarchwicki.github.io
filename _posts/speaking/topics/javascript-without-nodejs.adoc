@@ -1,0 +1,38 @@
+:title: Learning modern JavaScript without node.js
+:subtitle: If JavaScript is supposed to be the future of platforms, systems, programming languages, maybe it's high time to start learning it. This session might help you with getting onto the JS bandwagon.
+
+== {title}
+
+> {subtitle}
+
+=== Abstract
+
+People have mixed feelings about JavaScript (me included). On one hand, JavaScript is easy to bash - you know all the PHP joke, ain't you; on the other - whatever can be written in JavaScript, will be written (Atwood Law, 2007). So, no matter what you do know - getting familiar with JavaScript is not a question why but when. And if you haven't tried it yet - this is a session for you.
+
+Whenever you try to start - with which ever framework / library - it usually starts with an infamous `npm install {library-to-try}` and quickly new things come into play: gulp, grunt etc. It's like in Java, everything starts with Maven / Gradle dependency. However, when you start fresh - these all just make the learning curve steeper.
+
+In this session I'll make a digestible walk through a set of JavaScript tools, technologies, conventions, which can make it easy for you (a backend engineer) get on the JavaScript bandwagon. Obviously, there will be a flavour of node, npm, build tools in it - but not in the first place. They will come kind of naturally.
+
+////
+
+=== Sketchnotes
+
+During JFall presentation link:https://twitter.com/wi99ert/status/662271438439751680[@wi99ert] prepared sketch notes from my talk - kudos!
+
+image::https://pbs.twimg.com/media/CTDcWG9WsAAEesU.jpg[]
+
+
+=== Testimonials
+
+=== Videos
+
+.JFall 2015
+video::7IWc7s4O9As[youtube, width=640, height=480]
+
+=== Additional resources
+
+* https://speakerdeck.com/kubamarchwicki/what-is-code[PDF Slides]
+* https://github.com/kubamarchwicki/what-is-code/tree/master/slides[Slides source in *asciidoctor*]
+* https://github.com/kubamarchwicki/what-is-code/[Code examples @ GitHub]
+
+////
