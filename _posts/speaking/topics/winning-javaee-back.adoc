@@ -36,3 +36,11 @@ W tej prezentacji pokażę że JavaEE da się lubić - że można zamienić proj
 
 
 ////
+
+////
+
+Testimonials:
+* http://www.mberkan.pl/2016/04/15/konferencja-4developers-2016/
+* http://namiekko.pl/2016/04/14/o-roznicy-pomiedzy-konferencja-naukowa-a-programistyczna-czyli-wyprawilam-sie-zdzieckiem-i-mezem-na-4developers/
+
+////

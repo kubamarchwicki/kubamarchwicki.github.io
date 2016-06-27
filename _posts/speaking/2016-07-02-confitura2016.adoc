@@ -1,0 +1,9 @@
+---
+layout: speaking
+categories: speaking
+title: Confitura 2016
+speakingDate: 2016-07-02, Warsaw, Poland
+page-include: _posts/speaking/topics/javascript-without-nodejs.adoc
+---
+
+include::{{page.page-include}}[]

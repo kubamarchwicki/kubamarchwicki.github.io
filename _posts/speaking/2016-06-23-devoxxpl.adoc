@@ -1,0 +1,11 @@
+---
+layout: speaking
+categories: speaking
+title: DevoxxPL 2016
+speakingDate: 2016-06-23, Kraków, Poland
+// page-include: _posts/speaking/topics/javascript-without-nodejs.adoc
+---
+
+== Babysitting developers vs managing kids
+
+// include::{{page.page-include}}[]
