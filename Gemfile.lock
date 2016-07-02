@@ -3,7 +3,7 @@ GEM
   specs:
     addressable (2.4.0)
     asciidoctor (1.5.4)
-    asciidoctor-diagram (1.4.0)
+    asciidoctor-diagram (1.5.0)
       asciidoctor (~> 1.5.0)
     blankslate (2.1.2.4)
     classifier-reborn (2.0.4)

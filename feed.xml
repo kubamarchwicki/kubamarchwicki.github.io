@@ -5,9 +5,52 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 27 Jun 2016 22:03:13 +0000</pubDate>
-    <lastBuildDate>Mon, 27 Jun 2016 22:03:13 +0000</lastBuildDate>
+    <pubDate>Sat, 02 Jul 2016 17:59:15 +0000</pubDate>
+    <lastBuildDate>Sat, 02 Jul 2016 17:59:15 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>TypeScript: Setting up an IDE and working environment - part II</title>
+        <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;ve been trying the &lt;a href=&quot;http://atom.io&quot;&gt;Atom Editor&lt;/a&gt; multiple times, trying to switch from Sublime (my default text editing environment). I always found it not mature enough. I&amp;#8217;ve recently given it another try - this time successfully. So it&amp;#8217;s time for the plugin setup of my TypeScript IDE.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;it-s-all-about-plugins&quot;&gt;It&amp;#8217;s all about plugins&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Some things haven&amp;#8217;t changes: still there is not need for &lt;code&gt;npm install -g typescript&lt;/code&gt; - we can keep everything inside the editor. The full TypeScript support comes with multiple plugins.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;dlist&quot;&gt;
+&lt;dl&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;&lt;a href=&quot;https://atom.io/packages/atom-typescript&quot;&gt;atom-typescript&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;It&amp;#8217;s advertised as &lt;code&gt;The only TypeScript plugin you will ever need&lt;/code&gt; and it&amp;#8217;s quite so. It handles auto completion, compilation on save - good starting point for us to be productive.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;&lt;a href=&quot;https://atom.io/packages/linter-tslint&quot;&gt;linter-tslint&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;It&amp;#8217;s optional, but provides a good hint for consistency in your TypeScript files. Things like semicolons, are optional - but it&amp;#8217;s good to either have them or not. Lint will take care of those.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;&lt;a href=&quot;https://atom.io/packages/script&quot;&gt;script&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;Just to &lt;em&gt;&quot;Run code in Atom&quot;&lt;/em&gt;; when it comes to some code snippets it&amp;#8217;s worth to be able to evaluate if straight away in console (especially when you just hack around in the learning process). &lt;em&gt;Script&lt;/em&gt; package gives you a helping hand here.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;That&amp;#8217;s about it. I know this it not a production environment, shipping IDE created &lt;code&gt;js&lt;/code&gt; files is like shipping a &lt;code&gt;jar&lt;/code&gt; file created through &lt;code&gt;File &amp;gt; Export&lt;/code&gt; in Eclipse. Nonetheless, it&amp;#8217;s enough to start getting better with language. Other tools will come with time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Sat, 02 Jul 2016 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2016/07/02/typescript-setting-up-ide-part-2/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2016/07/02/typescript-setting-up-ide-part-2/</guid>
+        
+        <category>typescript</category>
+        
+        
+        <category>posts</category>
+        
+      </item>
     
       <item>
         <title>TypeScript: Setting up an IDE and working environment</title>
@@ -1710,386 +1753,6 @@ Infinitest is a Continuous Testing plugin for Eclipse and IntelliJ. Each time a 
         <pubDate>Sun, 23 Nov 2014 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2014/11/23/get.net-braindump/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2014/11/23/get.net-braindump/</guid>
-        
-        
-        <category>posts</category>
-        
-      </item>
-    
-      <item>
-        <title>33degree 2014 Braindump</title>
-        <description>&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;think-for-yourself-marry-poppendieck&quot;&gt;Think for yourself; Marry Poppendieck&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;What great software engineers do: Sharpen the saw (develop expertise), share responsibility (deliver a real value), see the shadow of the future (make the world a better place)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Positive psychology. Started by Mihaly Csikszentmihalyi - when he started to write what&amp;#8217;s good with you people as opposed to most psychologist who wrote what&amp;#8217;s bad with you.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Elements needed to become an expert: Coach, challenge, feedback, steady progress towards getting things done&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Brilliant Systems. Mental model match: those developing the system and those actually using the system.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;App idea: the education datapalooza - as the Health Data Initiative Forum. The Health Datapalooza.
-Gather, collect and open the data for everybody&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;healthcare.gov - everybody did their job, according to the spec. But all together - it didn&amp;#8217;t work.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;moving delivery organization to engineering organization:&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;delivery organization are becoming obsolete. Analyze how the time is spent in the organization (a practical approach to large scale agile development. Gary Gruver, Mike Yound and Pat Fulghum)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;accept you are wasting money on planning&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;lack of control is not a problem. Instant feedback is a better way to control the process&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;/assets/33degree-braindump/mpoppendieck5.jpg&quot; alt=&quot;mpoppendieck5&quot; width=&quot;600px&quot;&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;/assets/33degree-braindump/mpoppendieck6.jpg&quot; alt=&quot;mpoppendieck6&quot; width=&quot;600px&quot;&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;/assets/33degree-braindump/mpoppendieck1.jpg&quot; alt=&quot;mpoppendieck1&quot; width=&quot;600px&quot;&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;/assets/33degree-braindump/mpoppendieck2.jpg&quot; alt=&quot;mpoppendieck2&quot; width=&quot;600px&quot;&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;/assets/33degree-braindump/mpoppendieck3.jpg&quot; alt=&quot;mpoppendieck3&quot; width=&quot;600px&quot;&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;/assets/33degree-braindump/mpoppendieck4.jpg&quot; alt=&quot;mpoppendieck4&quot; width=&quot;600px&quot;&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;managers-are-from-mars-ted-newards&quot;&gt;Managers are from Mars; Ted Newards&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Read more about Frederick Winslow Taylor. Taylor coined: you can&amp;#8217;t manage if you cannot measure.&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;It&amp;#8217;s said that this statement is flawed and was made up&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Alan Cooper. &quot;The Inmates are Running the Asylum&quot;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;nie-koduj-pisz-prozę-sławek-sobotka&quot;&gt;Nie koduj, pisz prozę; Sławek Sobotka&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The best quotes from Slawek Sobotka:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;wszyscy wypróżniaja sie do tego samego Gita&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;encja na twarz i pchasz&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Metody szacowania&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Metoda szacowania L.W.P.z.D. &quot;Liczby Wyciągnięte Prosto z Dupy&quot;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Metoda Parkinsona&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;techniki lingwistyczne przy opisie historyjki: okazuje sie ze Wasze panie od polskiego prawie programowaly&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;w obiektowych programowaniu lubimy od tylu: reguły &amp;#8594; znaczenie (kontekst) &amp;#8594; słowa&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;sesja modelowania ze smutnymi ludźmi! nie używaj bleh albo blah to używaj greckich liter. Faktura razy dwa&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;na samym końcu dobieraj słowa - jak zrozumiesz kontekst i znaczenie na podstawie reguł&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;co sie dzieje na sesji CRC zostaje na sesji CRC&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;to była młodość. Chormony budują. Pierwszy wąs i Dune2&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;dobry obiekt jest&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;apatyczny. Nie chce mu sie robić&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;introwertyczny. Obiekty nie wchodzą z butami w inne obiekty&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;samolubny. Robi tylko swoje&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;switche pisze senior, junior pisze ify&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;hiper wymiarowa macierz statusów&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;podstawowa zasada w aplikacjach biznesowych to zmapowac (map), zredukować (reduce) i zwinąć w lewo (foldleft)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Integracja: jeden demon sie wypróżnia a drugi sprawdza czy juz&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Twoj model biznesu jest suma błędów poprzednich pokoleń.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Klucz obcy to biznes znalazł u zony w torebce. Trafiłes w czuły punkt, nie dziw się że nie chcą z Tobą gadać.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;/assets/33degree-braindump/ssobotka.jpg&quot; alt=&quot;ssobotka&quot; width=&quot;600px&quot;&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;the-missing-link-of-agile-paweł-badenski&quot;&gt;The missing link of agile; Paweł Badenski&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;minimize threat (you a run away from) and maximize reward (walk towards)&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;every social interaction on the project relates to the above&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;also feedback&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Feedback. Is an observation not judgement&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;improve people&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Antipatterns&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;feedback avoidance&lt;br&gt;
-Little threat in small batches (30minutes a day) is less worse than one big threat.  Avoid the lizard brain, approach feedback mindfully&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;giving advice&lt;br&gt;
-Objective feedback. From non violent communication. Refer to objectives: things you see and feel. Noone can argue with that, it&amp;#8217;s very yours&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;lizard response: fight, flight or freeze&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;TED talks on neuroscience &lt;a href=&quot;http://blog.ketyov.com/2011/01/top-10-neuroscience-ted-talks.html&quot; class=&quot;bare&quot;&gt;http://blog.ketyov.com/2011/01/top-10-neuroscience-ted-talks.html&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Emotional intelligence is the basic tool for software developer&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;corrective feedback&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;watch out bully language. Judgement&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;feedback is always subjective&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;label the feelings - it&amp;#8217;s easier to handle the emotions when you know what it is&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;go-reactive-roland-kuhn&quot;&gt;Go Reactive; Roland Kuhn&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;starting point: the user&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;user is not necessarily a human.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;responsiveness: always available, interactive, (near) real time&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;not http timeout! much faster, appropriate for service&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;resilience. Responsive in the face of failure&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;one failure should not take down all other containers (comportment construction as if Titanic)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;same happens for application servers: each application server is a compartment, which cascades the other nodes.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;asynchronous calls cause synchronous calls implies coupling&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;make somebody&amp;#8217;s else exception somebody else problem. Failer response goes to the owner, all other response returns to the user&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;CAP theorem. Consistence. Availability. Partion tolerance. Theorem is proven impossible to have all three.&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;does it really needed? Who needs it?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;take ATMs. You cannot got all three at the same time, otherwise you won&amp;#8217;t be able to take money in certain situations (offline)&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;saiku-taking-olap-databases-into-21st-century-tomek-nurkiewicz&quot;&gt;Saiku – taking OLAP databases into 21st century; Tomek Nurkiewicz&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;great talk from Tomek, heard him for the first time - my bad&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;project for BigData. OpenSource OLAP cubes.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;exploring-nashorm-vankat-subramaniam&quot;&gt;Exploring Nashorm; Vankat Subramaniam&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&quot;JavaScript treats you like a guest in its house. It never complains and quietly laughs at you behind your back&quot;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;this idea: coffescript DSL run in the Server side as script with Nashorn&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;how-to-define-success-at-your-level-kai-gilb&quot;&gt;How to define Success at your level; Kai Gilb&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;focus on values. Connect stakeholder with values and derive requirements from that&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;keep iterations small. Week at most&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.gilb.com//dl820&quot;&gt;Slides&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
-        <pubDate>Mon, 09 Jun 2014 00:00:00 +0000</pubDate>
-        <link>http://jakub.marchwicki.pl/posts/2014/06/09/33degree-braindump/</link>
-        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2014/06/09/33degree-braindump/</guid>
         
         
         <category>posts</category>

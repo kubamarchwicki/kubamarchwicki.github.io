@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TypeScript: Setting up an IDE and working environment - part II : Notepack</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A randomized pack of notes">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2016/07/02/typescript-setting-up-ide-part-2/">
+    <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/foundation.css"/>
+    <link rel="stylesheet" href="/css/coderay.css"/>
+    <link rel="stylesheet" href="/css/asciidoctor.css"/>
+    <script src="/js/vendor/modernizr.js"></script>    
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css">
+
+        
+    <!-- google analytics async -->
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-439480-4']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"><i class="fi-folder"></i>Notepack</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">      
+        
+          <a class="page-link" href="/posts/">All posts</a>
+        
+          <a class="page-link" href="/speaking/">All speaking</a>
+        
+          <a class="page-link" href="/consultancy/">Consultancy</a>
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>TypeScript: Setting up an IDE and working environment - part II</h1>
+    <p class="meta">Jul 2, 2016</p>
+  </header>
+
+  <article class="post-content">
+  <div class="paragraph">
+<p>I&#8217;ve been trying the <a href="http://atom.io">Atom Editor</a> multiple times, trying to switch from Sublime (my default text editing environment). I always found it not mature enough. I&#8217;ve recently given it another try - this time successfully. So it&#8217;s time for the plugin setup of my TypeScript IDE.</p>
+</div>
+<div class="sect1">
+<h2 id="it-s-all-about-plugins">It&#8217;s all about plugins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some things haven&#8217;t changes: still there is not need for <code>npm install -g typescript</code> - we can keep everything inside the editor. The full TypeScript support comes with multiple plugins.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://atom.io/packages/atom-typescript">atom-typescript</a></dt>
+<dd>
+<p>It&#8217;s advertised as <code>The only TypeScript plugin you will ever need</code> and it&#8217;s quite so. It handles auto completion, compilation on save - good starting point for us to be productive.</p>
+</dd>
+<dt class="hdlist1"><a href="https://atom.io/packages/linter-tslint">linter-tslint</a></dt>
+<dd>
+<p>It&#8217;s optional, but provides a good hint for consistency in your TypeScript files. Things like semicolons, are optional - but it&#8217;s good to either have them or not. Lint will take care of those.</p>
+</dd>
+<dt class="hdlist1"><a href="https://atom.io/packages/script">script</a></dt>
+<dd>
+<p>Just to <em>"Run code in Atom"</em>; when it comes to some code snippets it&#8217;s worth to be able to evaluate if straight away in console (especially when you just hack around in the learning process). <em>Script</em> package gives you a helping hand here.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>That&#8217;s about it. I know this it not a production environment, shipping IDE created <code>js</code> files is like shipping a <code>jar</code> file created through <code>File &gt; Export</code> in Eclipse. Nonetheless, it&#8217;s enough to start getting better with language. Other tools will come with time.</p>
+</div>
+</div>
+</div>
+  </article>
+
+  
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+	    var disqus_shortname = 'jakubblog';
+	    
+
+	    /* * * DON'T EDIT BELOW THIS LINE * * */
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  
+</div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <div class="column">
+      <ul>
+        
+          
+          <li><a href="/posts/">
+            <span class="icon foundation-icon"><i class="fi-page-multiple"></i></span>
+            <span class="username">All posts</span>
+            </a>
+          </li>
+          
+        
+          
+          <li><a href="/speaking/">
+            <span class="icon foundation-icon"><i class="fi-microphone"></i></span>
+            <span class="username">All speaking</span>
+            </a>
+          </li>
+          
+        
+          
+          <li><a href="/consultancy/">
+            <span class="icon foundation-icon"><i class="fi-comments"></i></span>
+            <span class="username">Consultancy</span>
+            </a>
+          </li>
+          
+        
+        <li>
+          <a href="https://github.com/kubamarchwicki">
+            <span class="icon foundation-icon"><i class="fi-social-github"></i></span>
+            <span class="username">kubamarchwicki</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/kubem">
+            <span class="icon foundation-icon"><i class="fi-social-twitter"></i></span>
+            <span class="username">kubem</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/kubamarchwicki">
+            <span class="icon foundation-icon"><i class="fi-social-linkedin"></i></span>
+            <span class="username">kubamarchwicki</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation/foundation.js"></script>
+    <script>
+      $(document).foundation();
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);
+    </script>
+
+    </body>
+</html>
