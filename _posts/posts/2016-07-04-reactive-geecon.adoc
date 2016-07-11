@@ -1,5 +1,5 @@
 ---
-title: GeeCON Reactive 2016 - in Sopot thie September
+title: GeeCON Reactive 2016 - in Sopot this September
 layout: post
 categories: posts
 excerpt: What's the story behind the GeeCON Reactive? And why it's worth checking out.
