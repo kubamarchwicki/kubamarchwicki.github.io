@@ -5,9 +5,95 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 02 Jul 2016 17:59:15 +0000</pubDate>
-    <lastBuildDate>Sat, 02 Jul 2016 17:59:15 +0000</lastBuildDate>
+    <pubDate>Mon, 11 Jul 2016 18:41:54 +0000</pubDate>
+    <lastBuildDate>Mon, 11 Jul 2016 18:41:54 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>GeeCON Reactive 2016 - in Sopot thie September</title>
+        <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It has been official since the big GeeCON in May in Kraków: we are doing another GeeCON event in Sopot. AGAIN!&lt;/p&gt;
+&lt;/div&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; align=&quot;center&quot;&gt;&lt;p&gt;So it&#39;s official, there is no way back. &lt;a href=&quot;https://twitter.com/hashtag/geecon?src=hash&quot;&gt;#geecon&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/reactive?src=hash&quot;&gt;#reactive&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/sopot?src=hash&quot;&gt;#sopot&lt;/a&gt; will take place on 9th of September 2016&lt;/p&gt;— jakub marchwicki (@kubem) &lt;a href=&quot;https://twitter.com/kubem/status/731127144265453568&quot;&gt;May 13, 2014&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Last year, the GeeCON Microservices went good, we enjoyed it, we&amp;#8217;ve got a positive feedback. So this year we decided to challenge ourselves again.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Obviously, not about microservices - it&amp;#8217;s not hip enough anymore. We decided to pivot GeeCON Sopot towards a &lt;code&gt;Buzzword Driven Conference&lt;/code&gt;: take yet another industry buzzword and distill it into its tiniest detail. Possibly - a different buzzword every year.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;So what&amp;#8217;s this year about? You guessed right - this year&amp;#8217;s theme is &lt;strong&gt;reactive&lt;/strong&gt; and we are bringing the &lt;a href=&quot;http://2016.reactive.geecon.org&quot;&gt;GeeCON Reactive&lt;/a&gt; to the GeeCON family.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;a-single-track&quot;&gt;A single track&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;http://2016.reactive.geecon.org/&quot;&gt;GeeCON Reactive&lt;/a&gt; is a single day, single track conference. &lt;a href=&quot;/posts/2015/08/05/microservice-geecon/#a-single-track&quot;&gt;As it was last year&lt;/a&gt;, for exactly the same reasons: our ambition wasn&amp;#8217;t to bring you largest number of speakers, enormous amount of tracks. The rationale was different: focus on a single topic and cover it from multiple perspectives.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;no-call-for-papers&quot;&gt;No call for papers&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We know this is a controversial topic. It was also a hard decision for us - not to give a shout out to the community. We did the job of curating the agenda and bringing most valuable speakers we could think of.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Like last year we want to look at reactive from different angels, to show the impact of the whole reactive concept on our industry, on how we are (or will be) building our applications / systems / solutions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;location&quot;&gt;Location&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We have &quot;if it works don&amp;#8217;t fix it&quot; mantra deep in our hearts, hence  &lt;a href=&quot;http://2016.reactive.geecon.org/&quot;&gt;GeeCON Reactive&lt;/a&gt; will remain the only conference (at least in Poland) with only 200 meters (measured) between you and the sandy beach.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Last year people had lunch at the beach, a refreshing brief of sea air between the sessions. Expect exactly the same this year - weather is pre-booked as well ;-)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Venue stays the same: &lt;a href=&quot;http://2016.reactive.geecon.org/practical/&quot;&gt;The Multikino Sopot&lt;/a&gt; is a small and enjoyable cinema. We value quality over quantity - a cozy venue, great talks, quality food. That&amp;#8217;s our definition of work / relax balance.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;sessions&quot;&gt;Sessions&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Last, but not least: sessions. We will not reveal everything - just give you a feeling what to expect with the first three sessions.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We are starting with &lt;a href=&quot;twitter.com/graham_jp&quot;&gt;Jonathan Graham&lt;/a&gt; and his very gentle introduction to reactive systems. If you&amp;#8217;ve never given yourself time to understand what reactive is about - this is a session for you. If you do understand it but struggle with describing it to your grandma - this session is also for you. In other word: reactive 101.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is to be followed by &lt;a href=&quot;https://twitter.com/ktosopl&quot;&gt;Konrad Malawski&lt;/a&gt; session, drilling down the Reactive Streams. There is no better person to do it than the author of Reactive Streams TCK and Akka core team member. Expect a deep technical insight.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To close of the first batch, we invited &lt;a href=&quot;https://twitter.com/robertharrop&quot;&gt;Rob Harrop&lt;/a&gt;, CTO of Skipjaq and a co-founder of SpringSource (in his past-life). In his Going Reactive talk he will show what it means for applications to become reactive, not only on the code level but beyond; identify patterns, decouple components and more.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;more-to-come&quot;&gt;More to come&amp;#8230;&amp;#8203;&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;From now on, every other week we will be revealing more &lt;a href=&quot;http://2016.reactive.geecon.org/&quot;&gt;GeeCON Reactive&lt;/a&gt; sessions - some goodies are still to come.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As you can see from this first teaser - we are taking the concept pretty seriously. This is only the first batch and some more speakers are already &quot;revealed&quot; on the &lt;a href=&quot;http://2016.reactive.geecon.org/&quot;&gt;website&lt;/a&gt;. Talks and titles are still to come so stay tuned.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2016/07/04/reactive-geecon/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2016/07/04/reactive-geecon/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
     
       <item>
         <title>TypeScript: Setting up an IDE and working environment - part II</title>
@@ -1657,102 +1743,6 @@ Infinitest is a Continuous Testing plugin for Eclipse and IntelliJ. Each time a 
         <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2014/12/01/my-essential-eclipse-plugins/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2014/12/01/my-essential-eclipse-plugins/</guid>
-        
-        
-        <category>posts</category>
-        
-      </item>
-    
-      <item>
-        <title>GET.NET Braindump</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I had this enormous honour to speak (as the only Java guy) at a .NET conference. I was mainly covering clean code and good coding practices - still I found it a twist. However, it&amp;#8217;s not &lt;a href=&quot;/speaking/2014/11/22/get.net-gdansk/&quot;&gt;my &quot;Revers engineering the clean code&quot; talk&lt;/a&gt; I&amp;#8217;d like to focus on; here are some notes from Udi Dahan&amp;#8217;s keynote &quot;So you think you know pub/sub?&quot;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;so-you-think-you-know-pub-sub&quot;&gt;So you think you know pub/sub?&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Is about logical not physical data distribution&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;each event should be processed one&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;scale physical environment independently of logical architecture&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Isn&amp;#8217;t it what micro services are talking about?&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;If you&amp;#8217;ve been coding for an hour and you haven&amp;#8217;t touched a single domain problem - stop. You probably writing infrastructure&amp;#8230;&amp;#8203;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Stop every hour and review what you&amp;#8217;ve done - check if that&amp;#8217;s not infrastructure&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Make the coupling visible. It&amp;#8217;s not about hiding the coupling you already have. Seek out autonomy but preserve the single source of truth.&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;single source of truth doesn&amp;#8217;t imply shared database&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;have a single source per context&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;design logical decoupling and later on decide on physical model - putting it onto a single database.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Events are facts. Not commands - things we would like to happen&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Two type of failures. Technical and business failures&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;technical failure: developers causing business failures&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;don&amp;#8217;t deal with business failures as technical problems&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Sensors, stock market - client based filtering. Notify me of some data.&lt;/p&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;distributed cache&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;user machines poll the cache of the content.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;When user come along, it filters the local cache.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Pub/Sub content based filtering - will be inefficient.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
-        <pubDate>Sun, 23 Nov 2014 00:00:00 +0000</pubDate>
-        <link>http://jakub.marchwicki.pl/posts/2014/11/23/get.net-braindump/</link>
-        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2014/11/23/get.net-braindump/</guid>
         
         
         <category>posts</category>
