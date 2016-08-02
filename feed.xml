@@ -5,13 +5,131 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 11 Jul 2016 18:43:14 +0000</pubDate>
-    <lastBuildDate>Mon, 11 Jul 2016 18:43:14 +0000</lastBuildDate>
+    <pubDate>Tue, 02 Aug 2016 19:22:00 +0000</pubDate>
+    <lastBuildDate>Tue, 02 Aug 2016 19:22:00 +0000</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
+    
+      <item>
+        <title>GeeCON Reactive 2016 - part II - agenda</title>
+        <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In the previous post I&amp;#8217;ve described the &lt;em&gt;&quot;GeeCON Buzzwords&quot;&lt;/em&gt; approach - have a look if you&amp;#8217;ve missed it: &lt;a href=&quot;/posts/2016/07/04/reactive-geecon/&quot;&gt;GeeCON Reactive 2016 - in Sopot this September&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now, it&amp;#8217;s high time to do a deeper dive into the agenda.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;reactive-streams&quot;&gt;Reactive Streams&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We are starting with the Reactive Streams (the manifesto, TCK etc). I&amp;#8217;ve described it in the previous writeup; the Reactive Streams intention is to provide a standard for asynchronous stream processing with non-blocking back pressure. We decided to drill down multiple aspects of that:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;describe what&amp;#8217;s all about in plain English&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;cover the TCK, the technology compatibility kit, which offers a set of tests to validate implementation against Reactive Streams rules. This is effectively a place where all the edge cases and shaded corners are covered.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;show a bigger picture how &lt;em&gt;going reactive&lt;/em&gt; can impact the application architecture&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;is-it-only-for-new-stuff&quot;&gt;Is it only for new stuff?&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You might have though &lt;em&gt;this reactive thing is only for new, green field, development&lt;/em&gt;. That&amp;#8217;s not true and we (obviously) have an answer to that.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;One thing to cover would be reactive extensions (Rx), which is not Reactive Streams per se (not until the version 2.0), but it&amp;#8217;s an important library in the reactive family.
+We have an honor to host &lt;a href=&quot;https://twitter.com/tnurkiewicz&quot;&gt;Tomek Nurkiewicz&lt;/a&gt;, who will cover RxJava in the way he does it in most of his presentations: a single title slide and live coding.
+Tomek is currently writing a book about RxJava for O&amp;#8217;Reilly - which is a great recommendation itself.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Besides RxJava, reactive is coming to one of the most popular frameworks in the JVM world - Spring Framework.
+Spring 5.0 (which first milestone has just been release - as of writing these words) will be inherently reactive, based on Pivotal&amp;#8217;s implementation of Reactive Streams: Project Reactor.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To bring some more light how things might work inside a reactive engine and what are the implications for the application developers - we&amp;#8217;ve asked &lt;a href=&quot;https://twitter.com/smaldini&quot;&gt;Stephane Maldini&lt;/a&gt; - project lead of the Project Reactor - to share some expertise with you.
+Probably there is no better person to give you first hand information what can be expected in Spring ecosystem. Probably must watch if you are working currently with Spring Framework.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;beyond-the-server-side&quot;&gt;Beyond the server side&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Reactive disrupts the server side - but it&amp;#8217;s not only server side programming that needs changing.
+It&amp;#8217;s obviously important for the backend to be able to handle enormous throughput of data, but also other parts of the system (storage, frontend) needs adequate adapting.
+We are covering this as well.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;First and foremost, we will looking into web frontends. &quot;Functional reactive web&quot; - which is a promise given by Elm.
+A language designed around a concept of pure transformations of data that operate on messages coming in and modifications to the HTML going out.
+This will be brought to you by &lt;a href=&quot;https://twitter.com/samirtalwar&quot;&gt;Samir Talwar&lt;/a&gt;.
+We didn&amp;#8217;t want to go JavaScript (again) nor take general purpose language which has a JS runtime (Scala, Kotlin etc).
+We wanted something that was built with a web in mind.
+Elm seemed to fulfill this definition.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Frontend, however, doesn&amp;#8217;t mean only web.
+It can be a mobile application as well.
+That&amp;#8217;s why we are bringing practitioners from &lt;a href=&quot;https://twitter.com/codewisecom&quot;&gt;codewise&lt;/a&gt; with examples and use cases of implementing 100k transaction per second, with extensive usage of RxJava (on the server side) and reactive mobile applications (for consumers&#39; frontends).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;the-closing-keynote-haven-t-we-seen-all-that&quot;&gt;The closing keynote: haven&amp;#8217;t we seen all that?&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Last year we&amp;#8217;ve given you a closing with a twist. &lt;a href=&quot;https://twitter.com/erikdoe&quot;&gt;Erik Dörnenburg&lt;/a&gt; gave a great keynote, letting us ponder a bit what&amp;#8217;s the role of an architect, especially in the microservice world.
+World of small teams, collaboration, empowerment and completely different decision making processes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This year, we asked &lt;a href=&quot;https://twitter.com/javaperftuning&quot;&gt;Kirk Pepperdine&lt;/a&gt; to give us some final thoughts.
+When I first met him few conferences ago I was impressed by his experience.
+When I attended his Smalltalk quickie (GeeCON 2016) I though - Wooow! This guy saw nearly everything ;)
+When we&amp;#8217;ve spoken later about the idea behind GeeCON Reactive, about the current state of industry, buzzword, containers, all that stuff - it occured to me Kirk has done it all in mid-nineties.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Obviously, back in nineties, reactive wasn&amp;#8217;t standardized, it was proprietary.
+Still - very powerful and incredibly efficient.
+We don&amp;#8217;t want to reinvent the wheel, we believe best is achieved when we stand on the shoulders of giants.
+That&amp;#8217;s why we asked Kirk to share his past experience, tell some good stories, show things to learn from - to avoid repeating same mistakes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can expect it in his closing keynote: &quot;MicroServices - Old Fish, New Fish&quot;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Well, don&amp;#8217;t think twice, just go and &lt;a href=&quot;http://2016.reactive.geecon.org/register/&quot;&gt;register&lt;/a&gt; - with the early birds price (until 11th of August).
+And finally grok the concept of reactive programming!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Mon, 01 Aug 2016 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2016/08/01/reactive-geecon-part-ii/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2016/08/01/reactive-geecon-part-ii/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
     
       <item>
         <title>GeeCON Reactive 2016 - in Sopot this September</title>
         <description>&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Update 2016-08-01&lt;/strong&gt;. This is the first part of a two part series. Read the agenda follow up part: &lt;a href=&quot;/posts/2016/08/01/reactive-geecon-part-ii/&quot;&gt;GeeCON Reactive 2016 - part II - Agenda&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;It has been official since the big GeeCON in May in Kraków: we are doing another GeeCON event in Sopot. AGAIN!&lt;/p&gt;
 &lt;/div&gt;
 &lt;blockquote class=&quot;twitter-tweet&quot; align=&quot;center&quot;&gt;&lt;p&gt;So it&#39;s official, there is no way back. &lt;a href=&quot;https://twitter.com/hashtag/geecon?src=hash&quot;&gt;#geecon&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/reactive?src=hash&quot;&gt;#reactive&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/sopot?src=hash&quot;&gt;#sopot&lt;/a&gt; will take place on 9th of September 2016&lt;/p&gt;— jakub marchwicki (@kubem) &lt;a href=&quot;https://twitter.com/kubem/status/731127144265453568&quot;&gt;May 13, 2014&lt;/a&gt;&lt;/blockquote&gt;
@@ -1667,82 +1785,6 @@ UserTransaction tx
         <pubDate>Sun, 18 Jan 2015 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2015/01/18/javaee-persistance-without-jpa/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2015/01/18/javaee-persistance-without-jpa/</guid>
-        
-        
-        <category>posts</category>
-        
-      </item>
-    
-      <item>
-        <title>My essential Eclipse plugins</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Upgrading IDE (Eclipse in this case) is not something you do on daily basis. What is more, I use Eclipse more and more seldomly - mostly for trainings. That&amp;#8217;s why I tend to forget which plugins I actually use (until I&amp;#8217;m missing them and need to remind myself how were they called). As this happened to my just recently (again) I decided to write this post with a list of plugins I find useful (so that I&amp;#8217;ll be able to come back during next upgrade&amp;#8230;&amp;#8203; someday)&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;baseline&quot;&gt;Baseline&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I recently started with Spring Tool Suite as my baseline. Not that I&amp;#8217;m a Spring fan-boy. I rather consider myself from both churches: Spring and JavaEE; using both stacks as a set of tools to use in an appropriate context.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I started with STS cause I find it nearly feature complete. It comes with Git, Maven plugins so that I don&amp;#8217;t have to wonder about basics.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;fiddling-with-the-font-size&quot;&gt;Fiddling with the font size&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;One of my most important usecases for Eclipse is during delivering a training (Eclipse is my primary IDE then). Hence, an ability to increase the font size is a must. I&amp;#8217;m quite found of using &lt;a href=&quot;https://code.google.com/p/tarlog-plugins/&quot;&gt;tarlog-plugins&lt;/a&gt; - a set of small, but useful, features to Eclipse that are develop for personal Tarlog&amp;#8217;s needs.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;While there are some other font size plugins like &lt;a href=&quot;https://code.google.com/p/eclipse-fonts/&quot;&gt;eclipse-fonts&lt;/a&gt;, tarlog-plugins just works with every file type (not just text-files)&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;migrating-workspace-settings&quot;&gt;Migrating workspace settings&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Again, due to trainings, I quite often setup a new workspace. And migrating settings from one workspace to other is a real pain in the neck. &lt;a href=&quot;https://code.google.com/a/eclipselabs.org/p/workspacemechanic/&quot;&gt;Workspace Mechanic&lt;/a&gt; is something that makes this process really easy.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;quoteblock&quot;&gt;
-&lt;blockquote&gt;
-The Workspace Mechanic automates maintenance of your Eclipse environment by tweaking preferences, adding extension locations, and so on.
-&lt;/blockquote&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;And this really saves my day!&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;constant-test-status-preview&quot;&gt;Constant test status preview&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Trainings again. Whenever I run a refactoring or TDD session this is a life saver. Being able to constantly view the status of tests - brilliant.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;quoteblock&quot;&gt;
-&lt;blockquote&gt;
-Infinitest is a Continuous Testing plugin for Eclipse and IntelliJ. Each time a change is made on the source code, Infinitest runs all the tests that might fail because of these changes.
-&lt;/blockquote&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;http://infinitest.github.io/&quot;&gt;Grab Infinitest&lt;/a&gt; while it&amp;#8217;s hot.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;jboss-tools&quot;&gt;JBoss Tools&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is quite simple, I&amp;#8217;m not using it beyond managing JBoss application servers. Just to be able to showcase some code on different servers that &lt;a href=&quot;http://tomee.apache.org/&quot;&gt;TomEE&lt;/a&gt; (which I usually use - try to stay &quot;vendor agnostic&quot;).&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
-        <pubDate>Mon, 01 Dec 2014 00:00:00 +0000</pubDate>
-        <link>http://jakub.marchwicki.pl/posts/2014/12/01/my-essential-eclipse-plugins/</link>
-        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2014/12/01/my-essential-eclipse-plugins/</guid>
         
         
         <category>posts</category>

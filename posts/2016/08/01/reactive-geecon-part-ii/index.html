@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>GeeCON Reactive 2016 - in Sopot this September : Notepack</title>
+    <title>GeeCON Reactive 2016 - part II - agenda : Notepack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A randomized pack of notes">
-    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2016/07/04/reactive-geecon/">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2016/08/01/reactive-geecon-part-ii/">
     <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
 
     <!-- Custom CSS -->
@@ -76,86 +76,112 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>GeeCON Reactive 2016 - in Sopot this September</h1>
-    <p class="meta">Jul 4, 2016</p>
+    <h1>GeeCON Reactive 2016 - part II - agenda</h1>
+    <p class="meta">Aug 1, 2016</p>
   </header>
 
   <article class="post-content">
   <div class="paragraph">
-<p><strong>Update 2016-08-01</strong>. This is the first part of a two part series. Read the agenda follow up part: <a href="/posts/2016/08/01/reactive-geecon-part-ii/">GeeCON Reactive 2016 - part II - Agenda</a></p>
+<p>In the previous post I&#8217;ve described the <em>"GeeCON Buzzwords"</em> approach - have a look if you&#8217;ve missed it: <a href="/posts/2016/07/04/reactive-geecon/">GeeCON Reactive 2016 - in Sopot this September</a></p>
 </div>
 <div class="paragraph">
-<p>It has been official since the big GeeCON in May in Kraków: we are doing another GeeCON event in Sopot. AGAIN!</p>
-</div>
-<blockquote class="twitter-tweet" align="center"><p>So it's official, there is no way back. <a href="https://twitter.com/hashtag/geecon?src=hash">#geecon</a> <a href="https://twitter.com/hashtag/reactive?src=hash">#reactive</a> <a href="https://twitter.com/hashtag/sopot?src=hash">#sopot</a> will take place on 9th of September 2016</p>— jakub marchwicki (@kubem) <a href="https://twitter.com/kubem/status/731127144265453568">May 13, 2014</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-<div class="paragraph">
-<p>Last year, the GeeCON Microservices went good, we enjoyed it, we&#8217;ve got a positive feedback. So this year we decided to challenge ourselves again.</p>
-</div>
-<div class="paragraph">
-<p>Obviously, not about microservices - it&#8217;s not hip enough anymore. We decided to pivot GeeCON Sopot towards a <code>Buzzword Driven Conference</code>: take yet another industry buzzword and distill it into its tiniest detail. Possibly - a different buzzword every year.</p>
-</div>
-<div class="paragraph">
-<p>So what&#8217;s this year about? You guessed right - this year&#8217;s theme is <strong>reactive</strong> and we are bringing the <a href="http://2016.reactive.geecon.org">GeeCON Reactive</a> to the GeeCON family.</p>
+<p>Now, it&#8217;s high time to do a deeper dive into the agenda.</p>
 </div>
 <div class="sect1">
-<h2 id="a-single-track">A single track</h2>
+<h2 id="reactive-streams">Reactive Streams</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="http://2016.reactive.geecon.org/">GeeCON Reactive</a> is a single day, single track conference. <a href="/posts/2015/08/05/microservice-geecon/#a-single-track">As it was last year</a>, for exactly the same reasons: our ambition wasn&#8217;t to bring you largest number of speakers, enormous amount of tracks. The rationale was different: focus on a single topic and cover it from multiple perspectives.</p>
+<p>We are starting with the Reactive Streams (the manifesto, TCK etc). I&#8217;ve described it in the previous writeup; the Reactive Streams intention is to provide a standard for asynchronous stream processing with non-blocking back pressure. We decided to drill down multiple aspects of that:</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="no-call-for-papers">No call for papers</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>We know this is a controversial topic. It was also a hard decision for us - not to give a shout out to the community. We did the job of curating the agenda and bringing most valuable speakers we could think of.</p>
-</div>
-<div class="paragraph">
-<p>Like last year we want to look at reactive from different angels, to show the impact of the whole reactive concept on our industry, on how we are (or will be) building our applications / systems / solutions.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>describe what&#8217;s all about in plain English</p>
+</li>
+<li>
+<p>cover the TCK, the technology compatibility kit, which offers a set of tests to validate implementation against Reactive Streams rules. This is effectively a place where all the edge cases and shaded corners are covered.</p>
+</li>
+<li>
+<p>show a bigger picture how <em>going reactive</em> can impact the application architecture</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="location">Location</h2>
+<h2 id="is-it-only-for-new-stuff">Is it only for new stuff?</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>We have "if it works don&#8217;t fix it" mantra deep in our hearts, hence  <a href="http://2016.reactive.geecon.org/">GeeCON Reactive</a> will remain the only conference (at least in Poland) with only 200 meters (measured) between you and the sandy beach.</p>
+<p>You might have though <em>this reactive thing is only for new, green field, development</em>. That&#8217;s not true and we (obviously) have an answer to that.</p>
 </div>
 <div class="paragraph">
-<p>Last year people had lunch at the beach, a refreshing brief of sea air between the sessions. Expect exactly the same this year - weather is pre-booked as well ;-)</p>
+<p>One thing to cover would be reactive extensions (Rx), which is not Reactive Streams per se (not until the version 2.0), but it&#8217;s an important library in the reactive family.
+We have an honor to host <a href="https://twitter.com/tnurkiewicz">Tomek Nurkiewicz</a>, who will cover RxJava in the way he does it in most of his presentations: a single title slide and live coding.
+Tomek is currently writing a book about RxJava for O&#8217;Reilly - which is a great recommendation itself.</p>
 </div>
 <div class="paragraph">
-<p>Venue stays the same: <a href="http://2016.reactive.geecon.org/practical/">The Multikino Sopot</a> is a small and enjoyable cinema. We value quality over quantity - a cozy venue, great talks, quality food. That&#8217;s our definition of work / relax balance.</p>
+<p>Besides RxJava, reactive is coming to one of the most popular frameworks in the JVM world - Spring Framework.
+Spring 5.0 (which first milestone has just been release - as of writing these words) will be inherently reactive, based on Pivotal&#8217;s implementation of Reactive Streams: Project Reactor.</p>
+</div>
+<div class="paragraph">
+<p>To bring some more light how things might work inside a reactive engine and what are the implications for the application developers - we&#8217;ve asked <a href="https://twitter.com/smaldini">Stephane Maldini</a> - project lead of the Project Reactor - to share some expertise with you.
+Probably there is no better person to give you first hand information what can be expected in Spring ecosystem. Probably must watch if you are working currently with Spring Framework.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="sessions">Sessions</h2>
+<h2 id="beyond-the-server-side">Beyond the server side</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Last, but not least: sessions. We will not reveal everything - just give you a feeling what to expect with the first three sessions.</p>
+<p>Reactive disrupts the server side - but it&#8217;s not only server side programming that needs changing.
+It&#8217;s obviously important for the backend to be able to handle enormous throughput of data, but also other parts of the system (storage, frontend) needs adequate adapting.
+We are covering this as well.</p>
 </div>
 <div class="paragraph">
-<p>We are starting with <a href="twitter.com/graham_jp">Jonathan Graham</a> and his very gentle introduction to reactive systems. If you&#8217;ve never given yourself time to understand what reactive is about - this is a session for you. If you do understand it but struggle with describing it to your grandma - this session is also for you. In other word: reactive 101.</p>
+<p>First and foremost, we will looking into web frontends. "Functional reactive web" - which is a promise given by Elm.
+A language designed around a concept of pure transformations of data that operate on messages coming in and modifications to the HTML going out.
+This will be brought to you by <a href="https://twitter.com/samirtalwar">Samir Talwar</a>.
+We didn&#8217;t want to go JavaScript (again) nor take general purpose language which has a JS runtime (Scala, Kotlin etc).
+We wanted something that was built with a web in mind.
+Elm seemed to fulfill this definition.</p>
 </div>
 <div class="paragraph">
-<p>This is to be followed by <a href="https://twitter.com/ktosopl">Konrad Malawski</a> session, drilling down the Reactive Streams. There is no better person to do it than the author of Reactive Streams TCK and Akka core team member. Expect a deep technical insight.</p>
-</div>
-<div class="paragraph">
-<p>To close of the first batch, we invited <a href="https://twitter.com/robertharrop">Rob Harrop</a>, CTO of Skipjaq and a co-founder of SpringSource (in his past-life). In his Going Reactive talk he will show what it means for applications to become reactive, not only on the code level but beyond; identify patterns, decouple components and more.</p>
+<p>Frontend, however, doesn&#8217;t mean only web.
+It can be a mobile application as well.
+That&#8217;s why we are bringing practitioners from <a href="https://twitter.com/codewisecom">codewise</a> with examples and use cases of implementing 100k transaction per second, with extensive usage of RxJava (on the server side) and reactive mobile applications (for consumers' frontends).</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="more-to-come">More to come&#8230;&#8203;</h2>
+<h2 id="the-closing-keynote-haven-t-we-seen-all-that">The closing keynote: haven&#8217;t we seen all that?</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>From now on, every other week we will be revealing more <a href="http://2016.reactive.geecon.org/">GeeCON Reactive</a> sessions - some goodies are still to come.</p>
+<p>Last year we&#8217;ve given you a closing with a twist. <a href="https://twitter.com/erikdoe">Erik Dörnenburg</a> gave a great keynote, letting us ponder a bit what&#8217;s the role of an architect, especially in the microservice world.
+World of small teams, collaboration, empowerment and completely different decision making processes.</p>
 </div>
 <div class="paragraph">
-<p>As you can see from this first teaser - we are taking the concept pretty seriously. This is only the first batch and some more speakers are already "revealed" on the <a href="http://2016.reactive.geecon.org/">website</a>. Talks and titles are still to come so stay tuned.</p>
+<p>This year, we asked <a href="https://twitter.com/javaperftuning">Kirk Pepperdine</a> to give us some final thoughts.
+When I first met him few conferences ago I was impressed by his experience.
+When I attended his Smalltalk quickie (GeeCON 2016) I though - Wooow! This guy saw nearly everything ;)
+When we&#8217;ve spoken later about the idea behind GeeCON Reactive, about the current state of industry, buzzword, containers, all that stuff - it occured to me Kirk has done it all in mid-nineties.</p>
+</div>
+<div class="paragraph">
+<p>Obviously, back in nineties, reactive wasn&#8217;t standardized, it was proprietary.
+Still - very powerful and incredibly efficient.
+We don&#8217;t want to reinvent the wheel, we believe best is achieved when we stand on the shoulders of giants.
+That&#8217;s why we asked Kirk to share his past experience, tell some good stories, show things to learn from - to avoid repeating same mistakes.</p>
+</div>
+<div class="paragraph">
+<p>You can expect it in his closing keynote: "MicroServices - Old Fish, New Fish".</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="conclusions">Conclusions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Well, don&#8217;t think twice, just go and <a href="http://2016.reactive.geecon.org/register/">register</a> - with the early birds price (until 11th of August).
+And finally grok the concept of reactive programming!</p>
 </div>
 </div>
 </div>
