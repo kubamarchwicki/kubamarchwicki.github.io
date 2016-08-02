@@ -5,6 +5,8 @@ categories: posts
 excerpt: What's the story behind the GeeCON Reactive? And why it's worth checking out.
 ---
 
+*Update 2016-08-01*. This is the first part of a two part series. Read the agenda follow up part: link:{% post_url posts/2016-08-01-reactive-geecon-part-ii %}[GeeCON Reactive 2016 - part II - Agenda]
+
 It has been official since the big GeeCON in May in Kraków: we are doing another GeeCON event in Sopot. AGAIN!
 
 ++++
