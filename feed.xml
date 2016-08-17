@@ -5,14 +5,14 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 02 Aug 2016 19:22:00 +0000</pubDate>
-    <lastBuildDate>Tue, 02 Aug 2016 19:22:00 +0000</lastBuildDate>
-    <generator>Jekyll v2.4.0</generator>
+    <pubDate>Wed, 17 Aug 2016 00:16:14 +0000</pubDate>
+    <lastBuildDate>Wed, 17 Aug 2016 00:16:14 +0000</lastBuildDate>
+    <generator>Jekyll v3.2.1</generator>
     
       <item>
         <title>GeeCON Reactive 2016 - part II - agenda</title>
         <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In the previous post I&amp;#8217;ve described the &lt;em&gt;&quot;GeeCON Buzzwords&quot;&lt;/em&gt; approach - have a look if you&amp;#8217;ve missed it: &lt;a href=&quot;/posts/2016/07/04/reactive-geecon/&quot;&gt;GeeCON Reactive 2016 - in Sopot this September&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In the previous post I&amp;#8217;ve described the &lt;em&gt;&quot;GeeCON Buzzwords&quot;&lt;/em&gt; approach - have a look if you&amp;#8217;ve missed it: link:{% post_url posts/2016-07-04-reactive-geecon %}[GeeCON Reactive 2016 - in Sopot this September]&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Now, it&amp;#8217;s high time to do a deeper dive into the agenda.&lt;/p&gt;
@@ -78,7 +78,7 @@ Elm seemed to fulfill this definition.&lt;/p&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Frontend, however, doesn&amp;#8217;t mean only web.
 It can be a mobile application as well.
-That&amp;#8217;s why we are bringing practitioners from &lt;a href=&quot;https://twitter.com/codewisecom&quot;&gt;codewise&lt;/a&gt; with examples and use cases of implementing 100k transaction per second, with extensive usage of RxJava (on the server side) and reactive mobile applications (for consumers&#39; frontends).&lt;/p&gt;
+That&amp;#8217;s why we are bringing practitioners from &lt;a href=&quot;https://twitter.com/codewisecom&quot;&gt;codewise&lt;/a&gt; with examples and use cases of implementing 100k transaction per second, with extensive usage of RxJava (on the server side) and reactive mobile applications (for consumers' frontends).&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -127,12 +127,12 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
       <item>
         <title>GeeCON Reactive 2016 - in Sopot this September</title>
         <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;strong&gt;Update 2016-08-01&lt;/strong&gt;. This is the first part of a two part series. Read the agenda follow up part: &lt;a href=&quot;/posts/2016/08/01/reactive-geecon-part-ii/&quot;&gt;GeeCON Reactive 2016 - part II - Agenda&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Update 2016-08-01&lt;/strong&gt;. This is the first part of a two part series. Read the agenda follow up part: link:{% post_url posts/2016-08-01-reactive-geecon-part-ii %}[GeeCON Reactive 2016 - part II - Agenda]&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;It has been official since the big GeeCON in May in Kraków: we are doing another GeeCON event in Sopot. AGAIN!&lt;/p&gt;
 &lt;/div&gt;
-&lt;blockquote class=&quot;twitter-tweet&quot; align=&quot;center&quot;&gt;&lt;p&gt;So it&#39;s official, there is no way back. &lt;a href=&quot;https://twitter.com/hashtag/geecon?src=hash&quot;&gt;#geecon&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/reactive?src=hash&quot;&gt;#reactive&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/sopot?src=hash&quot;&gt;#sopot&lt;/a&gt; will take place on 9th of September 2016&lt;/p&gt;— jakub marchwicki (@kubem) &lt;a href=&quot;https://twitter.com/kubem/status/731127144265453568&quot;&gt;May 13, 2014&lt;/a&gt;&lt;/blockquote&gt;
+&lt;blockquote class=&quot;twitter-tweet&quot; align=&quot;center&quot;&gt;&lt;p&gt;So it's official, there is no way back. &lt;a href=&quot;https://twitter.com/hashtag/geecon?src=hash&quot;&gt;#geecon&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/reactive?src=hash&quot;&gt;#reactive&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/sopot?src=hash&quot;&gt;#sopot&lt;/a&gt; will take place on 9th of September 2016&lt;/p&gt;— jakub marchwicki (@kubem) &lt;a href=&quot;https://twitter.com/kubem/status/731127144265453568&quot;&gt;May 13, 2014&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Last year, the GeeCON Microservices went good, we enjoyed it, we&amp;#8217;ve got a positive feedback. So this year we decided to challenge ourselves again.&lt;/p&gt;
@@ -147,7 +147,7 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
 &lt;h2 id=&quot;a-single-track&quot;&gt;A single track&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;http://2016.reactive.geecon.org/&quot;&gt;GeeCON Reactive&lt;/a&gt; is a single day, single track conference. &lt;a href=&quot;/posts/2015/08/05/microservice-geecon/#a-single-track&quot;&gt;As it was last year&lt;/a&gt;, for exactly the same reasons: our ambition wasn&amp;#8217;t to bring you largest number of speakers, enormous amount of tracks. The rationale was different: focus on a single topic and cover it from multiple perspectives.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://2016.reactive.geecon.org/&quot;&gt;GeeCON Reactive&lt;/a&gt; is a single day, single track conference. link:{% post_url posts/2015-08-05-microservice-geecon %}#a-single-track[As it was last year], for exactly the same reasons: our ambition wasn&amp;#8217;t to bring you largest number of speakers, enormous amount of tracks. The rationale was different: focus on a single topic and cover it from multiple perspectives.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -271,7 +271,7 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
 &lt;p&gt;Wait. What? What is &lt;code&gt;npm&lt;/code&gt;. So here we go; welcome to the world of JavaScript package managers. &lt;code&gt;npm&lt;/code&gt; stands for package manager for node.js (one among many). I won&amp;#8217;t be drilling &lt;em&gt;node&lt;/em&gt; installation details - not worth it. I&amp;#8217;ll just point out one thing which saved my live millions of times: always use version managers. It&amp;#8217;s a great practice from PHP Pear times, where everything was global, thus changing a library version for a single project was close to impossible.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Now we can bound not only libraries but whole runtimes (compilers) and avoid any interference between runtimes. Things like &lt;a href=&quot;http://rvm.io&quot;&gt;rvm.io&lt;/a&gt;, &lt;a href=&quot;https://github.com/brainsik/virtualenv-burrito&quot;&gt;Virtualenv&lt;/a&gt;, &lt;a href=&quot;https://github.com/cweiske/phpfarm&quot;&gt;phpfarm&lt;/a&gt; saved tons of developers&#39; hours. Same story applies to the node world and I suggest not going forward without installing one of many version managers. I went with &lt;a href=&quot;https://github.com/creationix/nvm&quot;&gt;nvm&lt;/a&gt;. If you ask why - probably it had highest number of Github stars ;-)&lt;/p&gt;
+&lt;p&gt;Now we can bound not only libraries but whole runtimes (compilers) and avoid any interference between runtimes. Things like &lt;a href=&quot;http://rvm.io&quot;&gt;rvm.io&lt;/a&gt;, &lt;a href=&quot;https://github.com/brainsik/virtualenv-burrito&quot;&gt;Virtualenv&lt;/a&gt;, &lt;a href=&quot;https://github.com/cweiske/phpfarm&quot;&gt;phpfarm&lt;/a&gt; saved tons of developers' hours. Same story applies to the node world and I suggest not going forward without installing one of many version managers. I went with &lt;a href=&quot;https://github.com/creationix/nvm&quot;&gt;nvm&lt;/a&gt;. If you ask why - probably it had highest number of Github stars ;-)&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Which &lt;em&gt;node&lt;/em&gt; and &lt;em&gt;npm&lt;/em&gt; on board, typescript installation is a piece of cake. Having successfully done that I could&amp;#8217;ve moved forward.&lt;/p&gt;
@@ -296,7 +296,7 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
 &lt;p&gt;There is well documented TypeScript support for IntelliJ IDEA, which can be installed from the &lt;a href=&quot;https://www.jetbrains.com/idea/help/typescript-support.html&quot;&gt;JetBrains plugin repository&lt;/a&gt;. Obviously it required &lt;em&gt;node&lt;/em&gt; to be installed and enabled.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;ve installed the plugin, but I&amp;#8217;ve disabled the compiler (the checkbox &#39;Enable TypeScript Compiler&#39;). As described in &lt;a href=&quot;/posts/2016/01/31/typescript-getting-started/&quot;&gt;in the previous part&lt;/a&gt; I &quot;embedded the transpiler&quot; into the browser and evaluated the &lt;code&gt;&amp;#42;.ts&lt;/code&gt; files directly. How the plugin worked for me was syntax colouring and hints. Additionally I could have made my IDE generate JavaScript files together with the sourcemaps (for both IDEA as well as Sublime Text), but I felt it a bit unnatural, too tightly coupled to the IDE. That was something to avoid, to be solved by the build scripts directly on my CI server. Later on.&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;ve installed the plugin, but I&amp;#8217;ve disabled the compiler (the checkbox 'Enable TypeScript Compiler'). As described in link:{% post_url posts/2016-01-31-typescript-getting-started %}[in the previous part] I &quot;embedded the transpiler&quot; into the browser and evaluated the &lt;code&gt;&amp;#42;.ts&lt;/code&gt; files directly. How the plugin worked for me was syntax colouring and hints. Additionally I could have made my IDE generate JavaScript files together with the sourcemaps (for both IDEA as well as Sublime Text), but I felt it a bit unnatural, too tightly coupled to the IDE. That was something to avoid, to be solved by the build scripts directly on my CI server. Later on.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -322,22 +322,22 @@ LiveReload monitors changes in the file system. As soon as you save a file, it i
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span class=&quot;inline&quot;&gt;document.write(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;&amp;lt;script src=&amp;quot;http://&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt; + (location.host || &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;localhost&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;).split(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;)[&lt;span class=&quot;integer&quot;&gt;0&lt;/span&gt;] + &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;:35729/livereload.js?snipver=1&amp;quot;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt; + &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;script&amp;gt;&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;)&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;&lt;span class=&quot;inline&quot;&gt;document.write(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;&amp;lt;script src=&amp;quot;http://&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt; + (location.host || &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;localhost&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;).split(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)[&lt;span class=&quot;integer&quot;&gt;0&lt;/span&gt;] + &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;:35729/livereload.js?snipver=1&amp;quot;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt; + &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;script&amp;gt;&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Livereload is an open protocol so the &quot;server&quot; side comes in many different flavours, for the developers&#39; convenience. For me, as a JVM-mostly developer, some Java based build tools were the first choice. But there is no need to limit oneself to only &lt;a href=&quot;https://github.com/aalmiray/livereload-gradle-plugin&quot;&gt;Gradle livereload plugin&lt;/a&gt; or &lt;a href=&quot;https://github.com/davidB/livereload-jvm&quot;&gt;Maven&lt;/a&gt;. Livereload works perfectly with node, python, ruby (rake) etc.&lt;/p&gt;
+&lt;p&gt;Livereload is an open protocol so the &quot;server&quot; side comes in many different flavours, for the developers' convenience. For me, as a JVM-mostly developer, some Java based build tools were the first choice. But there is no need to limit oneself to only &lt;a href=&quot;https://github.com/aalmiray/livereload-gradle-plugin&quot;&gt;Gradle livereload plugin&lt;/a&gt; or &lt;a href=&quot;https://github.com/davidB/livereload-jvm&quot;&gt;Maven&lt;/a&gt;. Livereload works perfectly with node, python, ruby (rake) etc.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;The simplest gradle configuration&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
 &lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;buildscript {
     dependencies {
-        classpath &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.kordamp.gradle:livereload-gradle-plugin:0.2.1&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
+        classpath &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.kordamp.gradle:livereload-gradle-plugin:0.2.1&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
     }
 }
 
-apply &lt;span class=&quot;key&quot;&gt;plugin&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.kordamp.gradle.livereload&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
+apply &lt;span class=&quot;key&quot;&gt;plugin&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.kordamp.gradle.livereload&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
 
 liveReload {
         docRoot &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;app/&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;
@@ -355,7 +355,7 @@ liveReload {
 &lt;p&gt;This however brings some limitations. As I use vanilla TypeScript and do an in-browser transpilation - that involves additional AJAX calls by the &lt;code&gt;transpiler.js&lt;/code&gt; script. When the protocol is set to &lt;em&gt;file://&lt;/em&gt; some browsers forbid it for security reasons (like Chrome) some don&amp;#8217;t really care (hello Firefox).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;For browsers like Chrome we need to expose our content as a basic HTTP server. For me, the simplest HTTP static server &lt;a href=&quot;/posts/2016/01/31/typescript-getting-started/&quot;&gt;from the previous part&lt;/a&gt; (&lt;code&gt;php -S localhost:8080 -t {docRoot}&lt;/code&gt;) did the trick. I know I could have taken some basic HTTP server from node world (like express) and wrap everything in typical JavaScript stack. That will work as well, but my intention so far is to minimize elements not natural (unknown and unfamiliar) for a typical JVM developer. I&amp;#8217;ll get to the &lt;code&gt;nodemon&lt;/code&gt; later.&lt;/p&gt;
+&lt;p&gt;For browsers like Chrome we need to expose our content as a basic HTTP server. For me, the simplest HTTP static server link:{% post_url posts/2016-01-31-typescript-getting-started %}[from the previous part] (&lt;code&gt;php -S localhost:8080 -t {docRoot}&lt;/code&gt;) did the trick. I know I could have taken some basic HTTP server from node world (like express) and wrap everything in typical JavaScript stack. That will work as well, but my intention so far is to minimize elements not natural (unknown and unfamiliar) for a typical JVM developer. I&amp;#8217;ll get to the &lt;code&gt;nodemon&lt;/code&gt; later.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;This set-up has taken me few steps forward in both understanding how the JS oriented environment might work as well as with grasping the JavaScript goodies on their own. Hope this will work for you as well.&lt;/p&gt;
@@ -376,7 +376,7 @@ liveReload {
       <item>
         <title>TypeScript: Getting started</title>
         <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;So TypeScript&amp;#8230;&amp;#8203; Matters got serious and I decided to further explore the idea of polyglot programming - embracing the frontend development. There is a lot of happening in the backend in the JVM world, but there is as much happening in the browser. I know most of &#39;backend people&#39; just laugh at the speed new JavaScript frameworks appear (and disappear) but I wanted to tackle the matter seriously.&lt;/p&gt;
+&lt;p&gt;So TypeScript&amp;#8230;&amp;#8203; Matters got serious and I decided to further explore the idea of polyglot programming - embracing the frontend development. There is a lot of happening in the backend in the JVM world, but there is as much happening in the browser. I know most of 'backend people' just laugh at the speed new JavaScript frameworks appear (and disappear) but I wanted to tackle the matter seriously.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;betting-on-typescript&quot;&gt;Betting on TypeScript&lt;/h2&gt;
@@ -511,7 +511,7 @@ main.hello();&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;I&amp;#8217;ve started with few example projects, which were easy to build and run out-of-the-box. After tuning them (breaking them) here and there - it was high time to start something from scratch. This is where the learning curve gets steeper.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In the first place, I wanted to avoid all the JavaScript cargo cult: &lt;em&gt;node&lt;/em&gt;, &lt;em&gt;npm&lt;/em&gt;, &lt;em&gt;bower&lt;/em&gt;, &lt;em&gt;grunt&lt;/em&gt;, &lt;em&gt;gulp&lt;/em&gt; - whichever. I&amp;#8217;m not that proficient with the JavaScript stack, with the build tools and I found them a bit intrusive: standing between me and my first &#39;Hello World of TypeScript!&#39; in the browser.&lt;/p&gt;
+&lt;p&gt;In the first place, I wanted to avoid all the JavaScript cargo cult: &lt;em&gt;node&lt;/em&gt;, &lt;em&gt;npm&lt;/em&gt;, &lt;em&gt;bower&lt;/em&gt;, &lt;em&gt;grunt&lt;/em&gt;, &lt;em&gt;gulp&lt;/em&gt; - whichever. I&amp;#8217;m not that proficient with the JavaScript stack, with the build tools and I found them a bit intrusive: standing between me and my first 'Hello World of TypeScript!' in the browser.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Happily, TypeScript itself comes to the rescue; as the TypeScript compiler is in TypeScript and TypeScript transpiles to JavaScript, why can&amp;#8217;t I run it in browser without external dependencies (and compile everything in the browser)? Weird idea and I know this comes with a price of performance degradation - but that isn&amp;#8217;t my problem at the moment.&lt;/p&gt;
@@ -555,8 +555,8 @@ main.hello();&lt;/code&gt;&lt;/pre&gt;
         &lt;span class=&quot;tag&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
         &lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- You can add multiple TypeScript blocks: --&amp;gt;&lt;/span&gt;
         &lt;span class=&quot;tag&quot;&gt;&amp;lt;script&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;text/typescript&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;inline&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; greeter = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Sayings.Greeter(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;world&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;);
-            &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; button = document.createElement(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;)
+&lt;span class=&quot;inline&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; greeter = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Sayings.Greeter(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;world&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;);
+            &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; button = document.createElement(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;button&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)
             button.innerHTML = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Say hello&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
             button.&lt;span class=&quot;function&quot;&gt;onclick&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;() {
                     alert(greeter.greet())
@@ -667,7 +667,7 @@ main.hello();&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;apply &lt;span class=&quot;key&quot;&gt;plugin&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;groovy&quot;&gt;apply &lt;span class=&quot;key&quot;&gt;plugin&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
 
 version = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;1.0-SNAPSHOT&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
 
@@ -712,7 +712,7 @@ schemaFiles.each { pageName -&amp;gt;
       &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;inline&quot;&gt;&lt;span class=&quot;inline-delimiter&quot;&gt;$&lt;/span&gt;OXYGEN_HOME&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;/lib/commons-codec-1.6.jar&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
     ].toList())
 
-    main = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;ro.sync.xsd.documentation.XSDSchemaDocumentationGenerator&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
+    main = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;ro.sync.xsd.documentation.XSDSchemaDocumentationGenerator&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
     jvmArgs = [&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;-Djava.awt.headless=true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;]
     args = [&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;schema/&lt;/span&gt;&lt;span class=&quot;inline&quot;&gt;&lt;span class=&quot;inline-delimiter&quot;&gt;${&lt;/span&gt;pageName&lt;span class=&quot;inline-delimiter&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;.xsd&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
             &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;-format:html&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
@@ -725,7 +725,7 @@ task schema(&lt;span class=&quot;key&quot;&gt;dependsOn&lt;/span&gt;: tasks.matc
         task.name.endsWith(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;SchemaTask&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)}) {
 }
 
-defaultTasks &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+defaultTasks &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;colist arabic&quot;&gt;
@@ -766,7 +766,7 @@ cp $OXYGEN_HOME/licensekey.txt oxygen-lite&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Next step would be to combine the build with the stripped down (&#39;lite&#39;) version of Oxygen. I used &lt;a href=&quot;https://github.com/ysb33r/groovy-vfs&quot;&gt;Groovy VFS&lt;/a&gt; DSL library to be able to process external downloads and unzip my &lt;em&gt;Oxygen-lite&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Next step would be to combine the build with the stripped down ('lite') version of Oxygen. I used &lt;a href=&quot;https://github.com/ysb33r/groovy-vfs&quot;&gt;Groovy VFS&lt;/a&gt; DSL library to be able to process external downloads and unzip my &lt;em&gt;Oxygen-lite&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
@@ -775,13 +775,13 @@ cp $OXYGEN_HOME/licensekey.txt oxygen-lite&lt;/code&gt;&lt;/pre&gt;
     jcenter()
   }
   dependencies {
-    classpath &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.ysb33r.gradle:vfs-gradle-plugin:1.0-beta1&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
-    classpath &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;commons-httpclient:commons-httpclient:3.1&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
+    classpath &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.ysb33r.gradle:vfs-gradle-plugin:1.0-beta1&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
+    classpath &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;commons-httpclient:commons-httpclient:3.1&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
   }
 }
 
-apply &lt;span class=&quot;key&quot;&gt;plugin&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.ysb33r.vfs&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
-apply &lt;span class=&quot;key&quot;&gt;plugin&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
+apply &lt;span class=&quot;key&quot;&gt;plugin&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;org.ysb33r.vfs&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
+apply &lt;span class=&quot;key&quot;&gt;plugin&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
 
 version = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;1.0-SNAPSHOT&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
 
@@ -806,7 +806,7 @@ download {
 &lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; OXYGEN_HOME = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;inline&quot;&gt;&lt;span class=&quot;inline-delimiter&quot;&gt;$&lt;/span&gt;downloadDir&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;/oxygen-lite&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; schemaFiles = [&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;]
 
-apply &lt;span class=&quot;key&quot;&gt;plugin&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
+apply &lt;span class=&quot;key&quot;&gt;plugin&lt;/span&gt;: &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
 
 version = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;1.0-SNAPSHOT&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
 
@@ -851,7 +851,7 @@ schemaFiles.each { pageName -&amp;gt;
       &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;inline&quot;&gt;&lt;span class=&quot;inline-delimiter&quot;&gt;$&lt;/span&gt;OXYGEN_HOME&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;/lib/commons-codec-1.6.jar&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
     ].toList())
 
-    main = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;ro.sync.xsd.documentation.XSDSchemaDocumentationGenerator&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
+    main = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;ro.sync.xsd.documentation.XSDSchemaDocumentationGenerator&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
     jvmArgs = [&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;-Djava.awt.headless=true&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;]
     args = [&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;schema/&lt;/span&gt;&lt;span class=&quot;inline&quot;&gt;&lt;span class=&quot;inline-delimiter&quot;&gt;${&lt;/span&gt;pageName&lt;span class=&quot;inline-delimiter&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;.xsd&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
             &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;-format:html&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;,
@@ -860,12 +860,12 @@ schemaFiles.each { pageName -&amp;gt;
   }
 }
 
-task schema(&lt;span class=&quot;key&quot;&gt;dependsOn&lt;/span&gt;: [&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;download&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;,
+task schema(&lt;span class=&quot;key&quot;&gt;dependsOn&lt;/span&gt;: [&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;download&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
         tasks.matching { Task task -&amp;gt; task.name.endsWith(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;SchemaTask&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)}]) {
 
 }
 
-defaultTasks &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+defaultTasks &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -874,7 +874,7 @@ defaultTasks &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter
 &lt;h2 id=&quot;setting-up-the-ci&quot;&gt;Setting up the CI&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The above script sits together with XSD schema files in the repository. Whenever a new version of XSD is issued (or a new work is initiated in a &#39;feature branch&#39;) our Jenkins picks up the changes and rebuild the docs. That way the schema can be viewed in a human readable name while the comments can be attached to the actual XSDs in the repository. This kind of works for us.&lt;/p&gt;
+&lt;p&gt;The above script sits together with XSD schema files in the repository. Whenever a new version of XSD is issued (or a new work is initiated in a 'feature branch') our Jenkins picks up the changes and rebuild the docs. That way the schema can be viewed in a human readable name while the comments can be attached to the actual XSDs in the repository. This kind of works for us.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;I&amp;#8217;m still not sure if Oxygen is the best tool for the job, but I couldn&amp;#8217;t find a better one (not that I was looking for it very hard). So if you have  suggestions how to proceed differently - I welcome them in comments.&lt;/p&gt;
@@ -885,7 +885,7 @@ defaultTasks &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter
 &lt;h2 id=&quot;why-the-whole-build-thing&quot;&gt;Why the whole build thing?&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Yes, that&amp;#8217;s a valid question. Why taking &#39;a cannon for a fly&#39; and not just didn&amp;#8217;t stick to the simple bash script. Well, the nature of such builds is they usually never stop after the first step. Having an HTML documentation generated, new ideas just started popping up my head&amp;#8230;&amp;#8203; why can&amp;#8217;t we generate actual object model out of these XSD - for a better reference. Not a problem; with &lt;a href=&quot;https://github.com/jacobono/gradle-jaxb-plugin&quot;&gt;gradle-jaxb-plugin&lt;/a&gt; it goes nearly out of the box.&lt;/p&gt;
+&lt;p&gt;Yes, that&amp;#8217;s a valid question. Why taking 'a cannon for a fly' and not just didn&amp;#8217;t stick to the simple bash script. Well, the nature of such builds is they usually never stop after the first step. Having an HTML documentation generated, new ideas just started popping up my head&amp;#8230;&amp;#8203; why can&amp;#8217;t we generate actual object model out of these XSD - for a better reference. Not a problem; with &lt;a href=&quot;https://github.com/jacobono/gradle-jaxb-plugin&quot;&gt;gradle-jaxb-plugin&lt;/a&gt; it goes nearly out of the box.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
@@ -895,7 +895,7 @@ defaultTasks &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter
     jaxb &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;com.sun.xml.bind:jaxb-xjc:2.1.6&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
   }
 
-  xsdDir = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&#39;&lt;/span&gt;&lt;/span&gt;
+  xsdDir = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
   episodesDir = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;build/&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
   xjc {
     taskClassname = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;com.sun.tools.xjc.XJCTask&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
@@ -912,17 +912,17 @@ defaultTasks &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
 &lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;goovy&quot;&gt;dependencies {
-  compile &#39;log4j:log4j:1.2.14&#39;
-  compile &#39;org.apache.httpcomponents:fluent-hc:4.3.5&#39;
-  compile &#39;org.apache.httpcomponents:httpmime:4.3.5&#39;
-  compile &#39;org.apache.httpcomponents:httpclient-cache:4.3.5&#39;
-  compile &#39;commons-httpclient:commons-httpclient:3.1&#39;
+  compile 'log4j:log4j:1.2.14'
+  compile 'org.apache.httpcomponents:fluent-hc:4.3.5'
+  compile 'org.apache.httpcomponents:httpmime:4.3.5'
+  compile 'org.apache.httpcomponents:httpclient-cache:4.3.5'
+  compile 'commons-httpclient:commons-httpclient:3.1'
   compile(&amp;quot;org.apache.xmlgraphics:fop:1.1&amp;quot;) {
     exclude group: &amp;quot;org.apache.avalon.framework&amp;quot;
   }
-  compile &#39;avalon-framework:avalon-framework-api:4.2.0&#39;
-  compile &#39;avalon-framework:avalon-framework-impl:4.2.0&#39;
-  compile &#39;xerces:xercesImpl:2.11.0&#39;
+  compile 'avalon-framework:avalon-framework-api:4.2.0'
+  compile 'avalon-framework:avalon-framework-impl:4.2.0'
+  compile 'xerces:xercesImpl:2.11.0'
 }
 
 //... some line stripped
@@ -942,7 +942,7 @@ schemaFiles.each { pageName -&amp;gt;
       &amp;quot;$OXYGEN_HOME/lib/saxon9ee.jar&amp;quot;,
       &amp;quot;$OXYGEN_HOME/lib/resolver.jar&amp;quot;
     ].toList())
-    main = &#39;ro.sync.xsd.documentation.XSDSchemaDocumentationGenerator&#39;
+    main = 'ro.sync.xsd.documentation.XSDSchemaDocumentationGenerator'
     jvmArgs = [&amp;quot;-Djava.awt.headless=true&amp;quot;]
     args = [&amp;quot;schema/${pageName}.xsd&amp;quot;, &amp;quot;-format:html&amp;quot;, &amp;quot;-split:location&amp;quot;, &amp;quot;-out:$generatedDir/${pageName}.html&amp;quot;]
   }
@@ -1024,7 +1024,7 @@ As a regular conference attendee I struggle with that, always puzzled which talk
 &lt;p&gt;At &lt;a href=&quot;http://2015.microservices.geecon.org/&quot;&gt;GeeCON Microservices&lt;/a&gt; you can see we have &lt;strong&gt;three&lt;/strong&gt; (sic!) keynotes. The agenda is structured around short, 30 minutes, in-depth sessions, focusing on particular aspects of microservices world (those which we see as important). Additionally - we open and close with a bigger stories going beyond &lt;em&gt;just the microservices&lt;/em&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Building up an agenda is not an assignment for a single evening. There were many people involved, with many hours spent on emails, calls and Slack discussions. Not everybody we wanted, could have made it to the conference (location, timing, travel required). However some of the &#39;nos&#39; were sweet music to our ears: &lt;em&gt;&#39;It was a tough decision (I would have enjoyed the rest of the lineup a lot)&#39;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Building up an agenda is not an assignment for a single evening. There were many people involved, with many hours spent on emails, calls and Slack discussions. Not everybody we wanted, could have made it to the conference (location, timing, travel required). However some of the 'nos' were sweet music to our ears: &lt;em&gt;'It was a tough decision (I would have enjoyed the rest of the lineup a lot)'&lt;/em&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;There should be nothing to stop you from enjoying the lineup.&lt;/p&gt;
@@ -1046,7 +1046,7 @@ As a regular conference attendee I struggle with that, always puzzled which talk
 &lt;h2 id=&quot;the-success-keynote&quot;&gt;The success keynote&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;For obvious reasons &lt;a href=&quot;http://2015.microservices.geecon.org/&quot;&gt;GeeCON Microservices&lt;/a&gt; is also about success stories; there are multiple of them. Adrian Trenaman (VP of Engineering from Gilt) will share his in &#39;Scaling microservices at Gilt&#39;. Gilt is not a software house, Gilt sells fashion. And they do it with distributed, fault-tolerant, scalable platform. Adrian will give some insights what they build, with all the whys and hows - to survive their daily noon peaks of traffic which exceeds the normal load by multiple orders of magnitude.&lt;/p&gt;
+&lt;p&gt;For obvious reasons &lt;a href=&quot;http://2015.microservices.geecon.org/&quot;&gt;GeeCON Microservices&lt;/a&gt; is also about success stories; there are multiple of them. Adrian Trenaman (VP of Engineering from Gilt) will share his in 'Scaling microservices at Gilt'. Gilt is not a software house, Gilt sells fashion. And they do it with distributed, fault-tolerant, scalable platform. Adrian will give some insights what they build, with all the whys and hows - to survive their daily noon peaks of traffic which exceeds the normal load by multiple orders of magnitude.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1124,10 +1124,10 @@ As a regular conference attendee I struggle with that, always puzzled which talk
 &lt;h2 id=&quot;but-why&quot;&gt;But why?&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Yeah - good question. Why on Earth would I need to have a dependency management tool as a &#39;compile time&#39; dependency. In my particular case it was Jenkins fault, I wanted my continuous integration environment to be just an infrastructure: an operating system, latest Java installation, Git - and the project brings what&amp;#8217;s ever required by itself. That is keeping the CI infrastructure robust with minimal project specific dependencies.&lt;/p&gt;
+&lt;p&gt;Yeah - good question. Why on Earth would I need to have a dependency management tool as a 'compile time' dependency. In my particular case it was Jenkins fault, I wanted my continuous integration environment to be just an infrastructure: an operating system, latest Java installation, Git - and the project brings what&amp;#8217;s ever required by itself. That is keeping the CI infrastructure robust with minimal project specific dependencies.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I remember &#39;good old times&#39; when certain project had to be built on particular swarms due to concrete Maven version being present or some system libraries being pre-installed. This approach doesn&amp;#8217;t scale and I was eager to fix it.&lt;/p&gt;
+&lt;p&gt;I remember 'good old times' when certain project had to be built on particular swarms due to concrete Maven version being present or some system libraries being pre-installed. This approach doesn&amp;#8217;t scale and I was eager to fix it.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1177,7 +1177,7 @@ This will make the file structure look pretty much like this.&lt;/p&gt;
 &lt;h2 id=&quot;automate-all-the-things&quot;&gt;Automate all the things&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Coping files is so nineties, so the next step would be to automatically get the wrapper through the Maven build process. This sounded reasonable, cause as the developer I obviously had Maven installed locally and the wrapper was targeting the continuous integration builds, not developers&#39; machines.&lt;/p&gt;
+&lt;p&gt;Coping files is so nineties, so the next step would be to automatically get the wrapper through the Maven build process. This sounded reasonable, cause as the developer I obviously had Maven installed locally and the wrapper was targeting the continuous integration builds, not developers' machines.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Nothing easier, the Maven wrapper comes with a handy build plugin.&lt;/p&gt;
@@ -1203,7 +1203,7 @@ This will make the file structure look pretty much like this.&lt;/p&gt;
 &lt;h2 id=&quot;problems&quot;&gt;Problems?&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;That worked like a charm for a simple (very simple) project, a single project. But hey! we are doing enterprise here - our projects&#39; structure is hardly ever flat!&lt;/p&gt;
+&lt;p&gt;That worked like a charm for a simple (very simple) project, a single project. But hey! we are doing enterprise here - our projects' structure is hardly ever flat!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;So if my project gets slightly more complicated (with submodules), the Maven wrapper tasks, defined on the parent project - is repeated for each and every module. The output gets cumbersome and far from ideal.&lt;/p&gt;
@@ -1234,7 +1234,7 @@ This will make the file structure look pretty much like this.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I see a &lt;code&gt;MavenWrappersOverflowException&lt;/code&gt;. However, as this is purely related to the Maven life cycle and parent-child relationship (&#39;mother issues&#39; everywhere) - this is fixable with the configuration itself.&lt;/p&gt;
+&lt;p&gt;I see a &lt;code&gt;MavenWrappersOverflowException&lt;/code&gt;. However, as this is purely related to the Maven life cycle and parent-child relationship ('mother issues' everywhere) - this is fixable with the configuration itself.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
@@ -1307,7 +1307,7 @@ I&amp;#8217;ve gradually lost interest in any other build tools ;-)&lt;/p&gt;
       <item>
         <title>Characterize your legacy with junit</title>
         <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is a blog post with is a longer read to my &lt;a href=&quot;http://2015.tdd.geecon.org/&quot;&gt;GeeCON TDD 2015&lt;/a&gt; lightning talk presentation: &lt;a href=&quot;/speaking/2015/01/30/geecon-tdd/&quot;&gt;Characterize your legacy with jUnit Rules&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This is a blog post with is a longer read to my &lt;a href=&quot;http://2015.tdd.geecon.org/&quot;&gt;GeeCON TDD 2015&lt;/a&gt; lightning talk presentation: link:{% post_url speaking/2015-01-30-geecon-tdd %}[Characterize your legacy with jUnit Rules]&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;what-are-characterization-tests-and-why-cared&quot;&gt;What are characterization tests and why cared?&lt;/h2&gt;
@@ -1328,7 +1328,7 @@ As we&amp;#8217;ve been refactoring one of our internal systems (upgrade from Ra
 &lt;/div&gt;
 &lt;div class=&quot;imageblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;data:image/png;base64,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&quot; alt=&quot;A context diagram&quot; width=&quot;690&quot; height=&quot;294&quot;&gt;
+&lt;img src=&quot;data:image/png:base64,&quot; alt=&quot;A context diagram&quot; width=&quot;690&quot; height=&quot;294&quot;&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1394,10 +1394,10 @@ As we&amp;#8217;ve been refactoring one of our internal systems (upgrade from Ra
 &lt;div class=&quot;content&quot;&gt;
 &lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;jsp&quot;&gt;&amp;lt;%-- MAIN FRAME --%&amp;gt;
 
-&amp;lt;div style=&#39;width:100%; height:344px; display: block&#39; id=&amp;quot;mainmenu_ifr&amp;quot;&amp;gt;
-&amp;lt;table border=&#39;0&#39; cellspacing=&#39;0&#39; cellpadding=&#39;0&#39; width=&#39;100%&#39; style=&amp;quot;margin-top:15px;&amp;quot;&amp;gt;
+&amp;lt;div style='width:100%; height:344px; display: block' id=&amp;quot;mainmenu_ifr&amp;quot;&amp;gt;
+&amp;lt;table border='0' cellspacing='0' cellpadding='0' width='100%' style=&amp;quot;margin-top:15px;&amp;quot;&amp;gt;
 &amp;lt;tr&amp;gt;
-&amp;lt;td valign=&#39;top&#39; width=&amp;quot;200&amp;quot; align=&amp;quot;center&amp;quot;&amp;gt;
+&amp;lt;td valign='top' width=&amp;quot;200&amp;quot; align=&amp;quot;center&amp;quot;&amp;gt;
 
 &amp;lt;%
 String prac_pnr =(String)session.getAttribute(&amp;quot;prac_pnr&amp;quot;);
