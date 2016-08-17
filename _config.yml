@@ -38,6 +38,7 @@ static_pages:
 
 
 asciidoctor:
+  safe: unsafe
   attributes:
     - hardbreaks!
     - source-highlighter=coderay
