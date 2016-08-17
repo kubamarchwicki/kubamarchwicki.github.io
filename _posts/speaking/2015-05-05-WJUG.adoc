@@ -1,9 +1,8 @@
----
-layout: speaking
-categories: speaking
-title: Warsaw JUG
-speakingDate: 2015-05-05, Warsaw, Poland
-page-include: _posts/speaking/topics/microservice-everything.adoc
----
+= {title}
+:title: Warsaw JUG
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2015-05-05, Warsaw, Poland
+:page-file-location:  _posts/speaking/topics/microservice-everything.adoc
 
-include::{{page.page-include}}[]
+include::{page-file-location}[]

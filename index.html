@@ -7,13 +7,12 @@ redirect_from: /blog/index.html
 
   <ul class="list">
     {% for post in site.posts %}
-    
-    {% if post.categories.first == "speaking" %}
+    {% if post.categories[0] == 'speaking' %}
       <li class="speaking">
         Speaking at <a href="{{ post.url }}">{{ post.title }}</a>
-        <span class="post-date">({{post.speakingDate}})</span>
+        <span class="post-date">({{post.speaking-date}})</span>
       </li>
-    {% else %}  
+    {% else %}
       <li class="posts">
         <a href="{{ post.url }}">{{ post.title }}</a>
         <span class="post-date">({{post.date | date: "%Y-%m-%d"}})</span>
@@ -24,4 +23,3 @@ redirect_from: /blog/index.html
   </ul>
 
 </div>
-

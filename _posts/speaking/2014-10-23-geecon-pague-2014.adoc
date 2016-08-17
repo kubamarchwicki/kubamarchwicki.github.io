@@ -1,10 +1,9 @@
----
-layout: speaking
-categories: speaking
-title: GeeCon Prague 2014
-speakingDate: 2014-10-23, Prague, Czech Republic
-link: http://2014.geecon.cz/
-page-include: _posts/speaking/topics/jee-without-hassle.adoc
----
+= {title}
+:title: GeeCon Prague 2014
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2014-10-23, Prague, Czech Republic
+:page-link: http://2014.geecon.cz/
+:page-file-location:  _posts/speaking/topics/jee-without-hassle.adoc
 
-include::{{page.page-include}}[]
+include::{page-file-location}[]

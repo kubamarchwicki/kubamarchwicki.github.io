@@ -8,7 +8,9 @@ twitter_username: kubem
 github_username: kubamarchwicki
 linkedin_username: kubamarchwicki
 
-gems: [jekyll-redirect-from]
+gems:
+  - jekyll-redirect-from
+  - jekyll-asciidoc
 
 analytics:
   account: UA-439480-4

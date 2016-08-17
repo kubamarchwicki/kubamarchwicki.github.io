@@ -1,9 +1,8 @@
----
-layout: speaking
-categories: speaking
-title: GeeCON 2016
-speakingDate: 2016-05-11, Kraków, Poland
-page-include: _posts/speaking/topics/javascript-without-nodejs.adoc
----
+= {title}
+:title: GeeCON 2016
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2016-05-11, Kraków, Poland
+:page-file-location:  _posts/speaking/topics/javascript-without-nodejs.adoc
 
-include::{{page.page-include}}[]
+include::{page-file-location}[]

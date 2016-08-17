@@ -1,9 +1,8 @@
----
-layout: speaking
-categories: speaking
-title: GET.NET 2014
-speakingDate: 2014-11-22, Gdańsk, Poland
-page-include: _posts/speaking/topics/reverse-engineering-clean-code.adoc
----
+= {title}
+:title: GET.NET 2014
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2014-11-22, Gdańsk, Poland
+:page-file-location:  _posts/speaking/topics/reverse-engineering-clean-code.adoc
 
-include::{{page.page-include}}[]
+include::{page-file-location}[]

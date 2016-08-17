@@ -1,9 +1,8 @@
----
-layout: speaking
-categories: speaking
-title: 4Developers
-speakingDate: 2015-04-20, Warszaw, Poland
-page-include: _posts/speaking/topics/engineer-through-the-looking-glass.adoc
----
+= {title}
+:title: 4Developers
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2015-04-20, Warszaw, Poland
+:page-file-location:  _posts/speaking/topics/engineer-through-the-looking-glass.adoc
 
-include::{{page.page-include}}[]
+include::{page-file-location}[]

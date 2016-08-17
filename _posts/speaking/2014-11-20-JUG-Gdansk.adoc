@@ -1,10 +1,9 @@
----
-layout: speaking
-categories: speaking
-title: JUG Gdansk
-speakingDate: 2014-11-20, Gdańsk, Poland
-link: http://www.meetup.com/Trojmiasto-Java-User-Group/events/216407552/
-page-include: _posts/speaking/topics/jee-without-hassle.adoc
----
+= {title}
+:title: JUG Gdansk
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2014-11-20, Gdańsk, Poland
+:page-link: http://www.meetup.com/Trojmiasto-Java-User-Group/events/216407552/
+:page-file-location:  _posts/speaking/topics/jee-without-hassle.adoc
 
-include::{{page.page-include}}[]
+include::{page-file-location}[]

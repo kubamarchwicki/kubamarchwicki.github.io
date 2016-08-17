@@ -1,0 +1,35 @@
+---
+layout: default
+title: All speaking
+---
+
+<div class="home">
+  <h2>Past and forthcoming speakings</h2>
+
+{% for post in site.categories.speaking %}
+{% capture currentTime %}{{ 'now' | date: "%s" }}{% endcapture %}
+{% capture speakingTime %}{{ post.speakingDate | date: "%s" }}{% endcapture %}
+{% capture directive %}include::{{post.file-location}}[lines=1..2]{% endcapture %}
+{% if speakingTime > currentTime %}[role=forthcoming]{% endif %}
+{{ directive | asciidocify }}
+
+  <div class="sectionbody">
+    <div class="ulist speakinglist">
+      <ul>
+        <li>
+          <a href="{{ post.url }}">{{ post.title }}</a>: {{ title }}
+          <span class="post-date">({{ post.speaking-date }})</span>
+
+          <blockquote>
+            <div class="paragraph">
+            <p>{{ subtitle }}</p>
+            </div>
+          </blockquote>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endfor %}
+
+</div>
