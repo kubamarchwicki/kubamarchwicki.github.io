@@ -28,7 +28,7 @@ The editor comes with syntax highlighting and preconfigured compilation (upon re
 
 There is well documented TypeScript support for IntelliJ IDEA, which can be installed from the link:https://www.jetbrains.com/idea/help/typescript-support.html[JetBrains plugin repository]. Obviously it required _node_ to be installed and enabled.
 
-I've installed the plugin, but I've disabled the compiler (the checkbox 'Enable TypeScript Compiler'). As described in link:{% post_url posts/2016-01-31-typescript-getting-started %}[in the previous part] I "embedded the transpiler" into the browser and evaluated the `&#42;.ts` files directly. How the plugin worked for me was syntax colouring and hints. Additionally I could have made my IDE generate JavaScript files together with the sourcemaps (for both IDEA as well as Sublime Text), but I felt it a bit unnatural, too tightly coupled to the IDE. That was something to avoid, to be solved by the build scripts directly on my CI server. Later on.
+I've installed the plugin, but I've disabled the compiler (the checkbox 'Enable TypeScript Compiler'). As described in link:{% post_url 2016-01-31-typescript-getting-started %}[in the previous part] I "embedded the transpiler" into the browser and evaluated the `&#42;.ts` files directly. How the plugin worked for me was syntax colouring and hints. Additionally I could have made my IDE generate JavaScript files together with the sourcemaps (for both IDEA as well as Sublime Text), but I felt it a bit unnatural, too tightly coupled to the IDE. That was something to avoid, to be solved by the build scripts directly on my CI server. Later on.
 
 == Live reload
 
@@ -67,6 +67,6 @@ liveReload {
 
 This however brings some limitations. As I use vanilla TypeScript and do an in-browser transpilation - that involves additional AJAX calls by the `transpiler.js` script. When the protocol is set to _file://_ some browsers forbid it for security reasons (like Chrome) some don't really care (hello Firefox).
 
-For browsers like Chrome we need to expose our content as a basic HTTP server. For me, the simplest HTTP static server link:{% post_url posts/2016-01-31-typescript-getting-started %}[from the previous part] (`php -S localhost:8080 -t {docRoot}`) did the trick. I know I could have taken some basic HTTP server from node world (like express) and wrap everything in typical JavaScript stack. That will work as well, but my intention so far is to minimize elements not natural (unknown and unfamiliar) for a typical JVM developer. I'll get to the `nodemon` later.
+For browsers like Chrome we need to expose our content as a basic HTTP server. For me, the simplest HTTP static server link:{% post_url 2016-01-31-typescript-getting-started %}[from the previous part] (`php -S localhost:8080 -t {docRoot}`) did the trick. I know I could have taken some basic HTTP server from node world (like express) and wrap everything in typical JavaScript stack. That will work as well, but my intention so far is to minimize elements not natural (unknown and unfamiliar) for a typical JVM developer. I'll get to the `nodemon` later.
 
 This set-up has taken me few steps forward in both understanding how the JS oriented environment might work as well as with grasping the JavaScript goodies on their own. Hope this will work for you as well.

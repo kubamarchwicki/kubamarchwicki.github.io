@@ -6,7 +6,7 @@
 :page-disqus_url: http://www.marchwicki.pl/blog/2011/06/testing-ejb-applicatin-openejb-with-vendor-extensions-and-ejb-jar-xml/
 :page-redirect_from: /blog/2011/06/testing-ejb-applicatin-openejb-with-vendor-extensions-and-ejb-jar-xml/
 
-link:{% post_url posts/2011-06-09-the-art-of-testing-an-ejb-application-openejb %}[The previous post of EJB testing featured OpenEJB bootstrapping and handling different configurations] (or better say overwriting the defaults). This time I want to focus on vendor extensions, which are not supported by OpenEJB and ways to include them in the testing context. This way I’ll tackle ejb-jar.xml files, which can provide alternate dependencies for beans in context. I’ll iterate over a sample application which is available on https://github.com/kubamarchwicki/ejb-testing[github].
+link:{% post_url 2011-06-09-the-art-of-testing-an-ejb-application-openejb %}[The previous post of EJB testing featured OpenEJB bootstrapping and handling different configurations] (or better say overwriting the defaults). This time I want to focus on vendor extensions, which are not supported by OpenEJB and ways to include them in the testing context. This way I’ll tackle ejb-jar.xml files, which can provide alternate dependencies for beans in context. I’ll iterate over a sample application which is available on https://github.com/kubamarchwicki/ejb-testing[github].
 
 == The wider context
 

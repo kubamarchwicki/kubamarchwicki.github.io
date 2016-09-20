@@ -4,7 +4,7 @@
 :page-categories: [posts]
 :page-excerpt: Random notes from Udi Dahan keynote during get.net conference in Gdańsk (22/11/2014)
 
-I had this enormous honor to speak (as the only Java guy) at a .NET conference. I was mainly covering clean code and good coding practices - still I found it a twist. However, it's not link:{% post_url speaking/2014-11-22-get.net-gdansk %}[my "Revers engineering the clean code" talk] I'd like to focus on; here are some notes from Udi Dahan's keynote "So you think you know pub/sub?"
+I had this enormous honor to speak (as the only Java guy) at a .NET conference. I was mainly covering clean code and good coding practices - still I found it a twist. However, it's not link:{% post_url 2014-11-22-get.net-gdansk %}[my "Revers engineering the clean code" talk] I'd like to focus on; here are some notes from Udi Dahan's keynote "So you think you know pub/sub?"
 
 
 == So you think you know pub/sub?

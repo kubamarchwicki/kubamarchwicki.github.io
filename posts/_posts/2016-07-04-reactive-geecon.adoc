@@ -6,7 +6,7 @@
 
 It has been official since the big GeeCON in May in Kraków: we are doing another GeeCON event in Sopot. AGAIN!
 
-*Update 2016-08-01*. This is the first part of a two part series. Read the agenda follow up part: link:{% post_url posts/2016-08-01-reactive-geecon-part-ii %}[GeeCON Reactive 2016 - part II - Agenda]
+*Update 2016-08-01*. This is the first part of a two part series. Read the agenda follow up part: link:{% post_url 2016-08-01-reactive-geecon-part-ii %}[GeeCON Reactive 2016 - part II - Agenda]
 
 ++++
 <blockquote class="twitter-tweet" align="center"><p>So it's official, there is no way back. <a href="https://twitter.com/hashtag/geecon?src=hash">#geecon</a> <a href="https://twitter.com/hashtag/reactive?src=hash">#reactive</a> <a href="https://twitter.com/hashtag/sopot?src=hash">#sopot</a> will take place on 9th of September 2016</p>— jakub marchwicki (@kubem) <a href="https://twitter.com/kubem/status/731127144265453568">May 13, 2014</a></blockquote>
@@ -21,7 +21,7 @@ So what's this year about? You guessed right - this year's theme is *reactive* a
 
 == A single track
 
-http://2016.reactive.geecon.org/[GeeCON Reactive] is a single day, single track conference. link:{% post_url posts/2015-08-05-microservice-geecon %}#a-single-track[As it was last year], for exactly the same reasons: our ambition wasn't to bring you largest number of speakers, enormous amount of tracks. The rationale was different: focus on a single topic and cover it from multiple perspectives.
+http://2016.reactive.geecon.org/[GeeCON Reactive] is a single day, single track conference. link:{% post_url 2015-08-05-microservice-geecon %}#a-single-track[As it was last year], for exactly the same reasons: our ambition wasn't to bring you largest number of speakers, enormous amount of tracks. The rationale was different: focus on a single topic and cover it from multiple perspectives.
 
 == No call for papers
 

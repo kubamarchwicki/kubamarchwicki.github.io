@@ -6,7 +6,7 @@
 :data-uri:
 :imagesdir: assets/_generated
 
-This is a blog post with is a longer read to my http://2015.tdd.geecon.org/[GeeCON TDD 2015] lightning talk presentation: link:{% post_url speaking/2015-01-30-geecon-tdd %}[Characterize your legacy with jUnit Rules]
+This is a blog post with is a longer read to my http://2015.tdd.geecon.org/[GeeCON TDD 2015] lightning talk presentation: link:{% post_url 2015-01-30-geecon-tdd %}[Characterize your legacy with jUnit Rules]
 
 == What are characterization tests and why cared?
 

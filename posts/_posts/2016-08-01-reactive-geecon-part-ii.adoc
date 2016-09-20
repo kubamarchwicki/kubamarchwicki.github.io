@@ -4,7 +4,7 @@
 :page-categories: [posts]
 :page-excerpt: A deep dive into GeeCON Reactive agenda.
 
-In the previous post I've described the _"GeeCON Buzzwords"_ approach - have a look if you've missed it: link:{% post_url posts/2016-07-04-reactive-geecon %}[GeeCON Reactive 2016 - in Sopot this September]
+In the previous post I've described the _"GeeCON Buzzwords"_ approach - have a look if you've missed it: link:{% post_url 2016-07-04-reactive-geecon %}[GeeCON Reactive 2016 - in Sopot this September]
 
 Now, it's high time to do a deeper dive into the agenda.
 
