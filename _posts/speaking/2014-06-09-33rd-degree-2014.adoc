@@ -1,8 +1,0 @@
-= {title}
-:title: 33rd Degree Conference
-:page-layout: speaking
-:page-categories: [speaking]
-:page-speaking-date: 2015-06-09, Kraków, Poland
-:page-file-location:  _posts/speaking/topics/microservice-everything.adoc
-
-include::{page-file-location}[]

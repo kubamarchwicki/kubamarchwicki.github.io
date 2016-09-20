@@ -1,0 +1,298 @@
+= {title}
+:title: Characterize your legacy with junit
+:page-layout: post
+:page-categories: [posts]
+:page-excerpt: Use junit rules to leverage describing and testing legacy code; define a pinching points, dump the logs and reason about the results.
+:data-uri:
+:imagesdir: assets/_generated
+
+This is a blog post with is a longer read to my http://2015.tdd.geecon.org/[GeeCON TDD 2015] lightning talk presentation: link:{% post_url speaking/2015-01-30-geecon-tdd %}[Characterize your legacy with jUnit Rules]
+
+== What are characterization tests and why cared?
+
+.Context
+
+I've recently was involved in a project of upgrading our internal, vendor provided, not supported anymore HR application.
+As we've been refactoring one of our internal systems (upgrade from Rails 1.8 to 3.0) - it impacted a few systems nearby. Mostly due to the way Rails handled SOAP web services, which were the basis of the integration; the WSDL needed changing significantly and thus needed the HR system client classes.
+
+The whole idea was to replace existing axis stubs with new classes, keeping the interfaces backwards compatible. Rather simple task but not in this context: the app appeared to be a Java JSP web application with literally 10 class files and hundreds of JSP files with tons of logic in it (500+ lines per each JSP was a standard). A Java application in a bad PHP style.
+
+What is more, this was type of integration where the order of parameters in the SOAP call were important; imagine how brittle and fragile that was.
+
+While that looked fairly simple on paper (or diagram) the reality was much harder.
+
+[ditaa, "context-diag", alt="A context diagram"]
+....
+
++------------------+                        +-------------------+
+|                  |                        |                   |
+| HR System        |                        |  Project Mgmt     |
+|                  |                        |  System           |
+| "Java"           |                        |                   |
+|                  |                        |  Rails            |
+|                  |                        |                   |
+|                  |                        |                   |
+|                  |                        |                   |
+|                  |       /+-------+       |                   |
+|      /-----------+       |  WSDL  |       |                   |
+|      |           |       +--------+       |                   |
+|      |   Client  |+-=----+ magic! |=----> |                   |
+|      | Component |       |        |       |                   |
+|      |           |       +--------/       |                   |
++------+-----------+                        +-------------------+
+
+....
+
+
+.How to proceed
+
+From the application logs (around 150MB per week, as nobody though of turning of global DEBUG in log4j.properties) I could be able to figure out what classes were responsible for the web service communication - that was the starting point.
+
+The plan was to adhere to keep it working principle:
+
+* extract the classes into a single jar
+* replace the classes with a lib
+* replace the lib with a new stub and client
+
+Few simple tasks to do. But what bothered me was how to make sure that the data structures before and after the changes are still the same.
+
+.Actual tests
+
+This is when I was started with characterization tests (the golden master). I needed to describe the existing application and after each step, test the changes against the model (my benchmark). Hence, the flow looked pretty much like this:
+
+* analyze the class / method in subject, gain the conceptual understanding
+* invoke the method within tests
+* log complete output / compare the output with existing log output
+
+When the tests went green - I felt much safer. I know this is far from ideal testing method, but at least it has given a little of confidence in the baby steps I was making.
+
+== Where to start
+
+Ok, that was theory. Question is how to actually implement such test; recordings and assertions. The whole thing is actually pretty damn easy, especially with the last releases of JUnit. We will be leveraging Rule (ClassRule annotation to be precise) and the whole concept of TestRules.
+
+== Not the real example
+
+I'll not drive through the actual code, as it was damn bad and will just make the point harder to understand. To give you a clue, here is a sample of the real production code (that was how the webservice was actually code - straight from the JSP file!)
+
+[source, jsp]
+----
+<%-- MAIN FRAME --%>
+
+<div style='width:100%; height:344px; display: block' id="mainmenu_ifr">
+<table border='0' cellspacing='0' cellpadding='0' width='100%' style="margin-top:15px;">
+<tr>
+<td valign='top' width="200" align="center">
+
+<%
+String prac_pnr =(String)session.getAttribute("prac_pnr");
+if (prac_pnr ==null) prac_pnr ="";
+
+
+YdpPssClient client = new YdpPssClient();
+String key="";
+String logaid=prac_pnr;
+String mode="small";
+LAOSL1.setPP_LANG(langs[lang]);
+LAOSL1.setPP_NSP(user_nsp);
+LAOSL1.setPP_NRZK(user_nrzk);
+LAOSL1.setPP_PNR(loga_pnr);
+Manager.refresh(LAOSL1,(String)session.getAttribute("AdeliaKeyPoolName"));
+%>
+
+<%@ page import="org.apache.axis.encoding.Base64" %>
+<%
+String encoded = Base64.encode(client.getUserFotoFromWServices(key,logaid,mode));
+%>
+
+<% if(encoded!= null) { %>
+  <IMG src="data:image/png;base64,<%=encoded%>" border="0" id="test">
+<% }else{ %>
+  <IMG height="177" src="pics/noImage.jpg" border="0" id="test">
+<% } %>
+</td>
+</tr>
+</table>
+----
+
+To skip such convoluted code I'll use a more simple (simplistic) example- our legacy method is doing just string split and return the frist token.
+
+[source, java]
+----
+public class BusinessClass {
+
+  public String businessMethod(String param) {
+    return param.split(" ")[0];
+  }
+
+}
+----
+
+And the test we will be using (actually in this case it's more like a runner than the fully blown test).
+
+[source, java]
+----
+public class BusinessClassTest {
+
+  @ClassRule
+  public static CharacterizationRule rule =
+      aRuleFor(BusinessClassTest.class)
+      .build();
+
+  private BusinessClass service = new BusinessClass();
+
+  @Test
+  public void just_run_the_method() {
+    final String param = "first parameter"
+    System.out.println("param = " + param);
+    String output = service.businessMethod(param);
+    System.out.println("after split = " + output);
+  }
+}
+----
+
+As you probably noticed, there are no assertions in the test. That's is deliberate - we are not asserting, because we probably don't have a clue what should be the desired outcome. What we do, is logging some output without drilling into the details.
+
+The whole idea is to log as much as possible and use the log as the feedback is the behaviour of the class (output) is not changing. This is what Michael Feathers described as characterization test.
+
+[quote, Michael Feathers, Working Effectively with Legacy Code]
+____
+A characterization test is a mean to describe (characterize) the actual behavior of an existing piece of software.
+____
+
+== The working example
+
+So, we see we need two modes for our tests: logging and verification. We should have exacly the same test code which can be run in two modes; collect all possible output and verify if the output is still the same. My approach would be to use an environment variable (flag) and pass it over during test invocation.
+
+[source, java]
+----
+final public static String ENV_NAME_FOR_RECORDING = "pinchpoint";
+
+private boolean isRecording() {
+  String env = System.getProperty(ENV_NAME_FOR_RECORDING);
+  return (env != null);
+}
+----
+
+[source, shell]
+----
+mvn test -Dpinchpoint=true -Dtest=BusinessCodeTest
+----
+
+.The logging part
+
+I've written at the beginning we will be using junit rules to get the stuff done. Since version 4.7 jUnit provides rules, which are smarter runners - that can perform additional actions during test (think of aspects or interceptor). `External Resource` is one of such classes
+
+[quote]
+____
+A base class for Rules that set up an external resource before a test and tear it down afterward.
+____
+
+The actual logging, that save the complete output to a default temp folder, to a file named after the class undergoing the test, logging might look like so.
+
+
+[source, java]
+----
+public class FileOutputCapture extends ExternalResource {
+
+  protected void before() throws Throwable {
+    original = System.out;
+    PrintStream pos = new PrintStream(capturedStream);
+    System.setOut(pos); //<1>
+  }
+
+  protected void after() {
+    System.setOut(original);    //<2>
+    try {
+      Files.write(outputFile.toPath(),
+      capturedStream.toByteArray(),
+      StandardOpenOption.APPEND);   //<3>
+    } catch (IOException e) {
+      throw new RuntimeException("File write failed! ", e);
+    }
+  }
+}
+----
+<1> Sustitute the standard `System.out` with a stream to capturing all output
+<2> Restore the original `PrintStream`
+<3> Write everything to file
+
+
+
+.The verification part
+
+Now that we are good with the log, we can start refactoring the `BusinessClass` and do the verification if the output has changed in any way. Obviously, we would need another capture, without saving to a file.
+
+
+[source, java]
+----
+public class StreamOutputCapture extends ExternalResource {
+  PrintStream original;
+
+  protected void before() throws Throwable {
+    original = System.out;
+    PrintStream pos = new PrintStream(capturedStream);
+    System.setOut(pos);
+  }
+
+  protected void after() {
+    System.setOut(original);
+  }
+}
+----
+
+Next thing is verification. Again, we will use jUnit goodies, this time a `Verifier` class
+
+[quote]
+____
+Verifier is a base class for Rules like ErrorCollector, which turns passing test methods into failing tests if a verification check is failed
+____
+
+[source, java]
+----
+public class CaptureVerifier extends Verifier {
+
+  protected void verify() throws Throwable {
+    List<String> actual = ReadLines.fromStream(capturedStream);
+    List<String> original = ReadLines.fromFile(pinchFile);
+
+    Patch<String> patch = DiffUtils.diff(original, actual);
+
+    assertThat(patch, is(empty()));
+  }
+}
+
+----
+
+And if something went wrong, we get a nice feedback.
+
+[source, txt]
+----
+java.lang.AssertionError:
+File:
+  </tmp/com.example.BusinessClassTest.txt>
+read with charset <UTF-8> does not have the expected content:
+line: <3>, expected:<something> but was:<something else>
+      at com.example.BusinessClassTest.should_create_master_output_file
+----
+
+== Instead of summary
+
+The code snippets above is not the actual implementation. These are samples, to give a clue what's happening in the code. If you find this useful or interesting in any way, take a look on the actual https://github.com/kubamarchwicki/junit-characterization[implementation on Github] or use it directly in your project.
+
+[source, xml]
+----
+<dependency>
+  <groupId>pl.marchwicki</groupId>
+  <artifactId>junit-characterization</artifactId>
+  <packaging>jar</packaging>
+  <version>0.3</version>
+</dependency>
+----
+
+I'm keen on feedback (say on https://twitter.com/kubem[@kubem at twitter]) if you find it useful. For me, in my context, it worked and allow me to fairly safety replace the webservice connector (client) in the application I really didn't want to touch. Maybe it will work for you as well.
+
+Some other references to this technique (also known as the Golden Master):
+
+* http://blog.thecodewhisperer.com/2014/09/28/surviving-legacy-code-with-golden-master-and-sampling/
+
+* http://blog.adrianbolboaca.ro/2014/05/golden-master/

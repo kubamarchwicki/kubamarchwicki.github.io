@@ -1,0 +1,9 @@
+= {title}
+:title: Confitura 2014
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2014-07-05, Warsaw, Poland
+:page-link: http://2014.confitura.pl/
+:page-file-location:  speaking/_posts/topics/jee-without-hassle.adoc
+
+include::{page-file-location}[]

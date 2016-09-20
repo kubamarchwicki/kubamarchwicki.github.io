@@ -1,8 +1,0 @@
-= {title}
-:title: GeeCON 2014
-:page-layout: speaking
-:page-categories: [speaking]
-:page-speaking-date: 2014-05-14, Kraków, Poland
-:page-file-location: _posts/speaking/topics/reverse-engineering-clean-code.adoc
-
-include::{page-file-location}[]

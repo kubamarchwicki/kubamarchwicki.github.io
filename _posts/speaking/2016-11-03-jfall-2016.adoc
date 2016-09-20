@@ -1,9 +1,0 @@
-= {title}
-:title: JFall 2016
-:page-layout: speaking
-:page-categories: [speaking]
-:page-speaking-date: 2016-11-03, Ede, Netherlands
-:page-link: http://www.nljug.org/jfall/2016/
-:page-file-location:  _posts/speaking/topics/12-things-better-with-java8.adoc
-
-include::{page-file-location}[]

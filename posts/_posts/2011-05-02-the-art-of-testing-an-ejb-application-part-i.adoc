@@ -1,0 +1,70 @@
+= {title}
+:title: The art of testing an EJB application – Part I (Introducing)
+:page-layout: post
+:page-categories: [posts]
+:page-excerpt: Test EJBs is not that hard. After all these are just POJOs which can be tested as any other class... at least in the begining
+:page-redirect_from: /blog/2011/05/the-art-of-testing-an-ejb-application-part-i/
+:page-disqus_url: http://www.marchwicki.pl/blog/2011/05/the-art-of-testing-an-ejb-application-part-i/
+
+This post is called "Part I" for a reason – there is a plan for multiple posts (so far I have a concept for three articles). The idea for the series came from http://jamesshore.com/Blog/Alternatives-to-Acceptance-Testing.html[James Shore article on acceptance testing] where he introduces three kinds of tests: unit, focused integration and end-to-end integration.
+
+One of many factors to distinguish and categorise the tests is a number of tests to run (a rate per second). I pretty much like that idea and I’ve organised this series around that notion. First part – unit tests. It should not be anything new for people familiar with the TDD. With EJB 3.x testing is getting even easier because there are no special interfaces to implement and it’s easy to instantiate a session bean with a simple new operator. These are unit tests with expected rate of hundreds per second. In part two I’ll focus on integration testing of EJB services without a container. I’ll tackle mocking data and / or other services. These tests are expected to run with pace of tens per second. Finally, I’ll deal with an EJB container (with OpenEJB) and end-to-end integration tests. These are expected to take minutes per test (the container itself can take few minutes to bootstrap).
+
+That said, I’m not going to write much about the unit testing itself. Sorry if I haven’t met your expectations, but I don’t like to sound repetitive. Unit testing of an EJB service is not any different from testing any other bean. However, not to leave you with nothing, if you are not familiar with unit testing at all, here is a bunch of things to remember (formulated by Michael Feathers from www.objectmentor.com):
+
+* unit test does not talk to the database
+* unit test does not communicate across the network
+* unit test does not touch the file system
+* unit test does not require doing any special things to your environment (such as editing configuration files) to run it.
+
+Next, check out http://jamesshore.com/Blog/Lets-Play/Lets-Play-Test-Driven-Development.html[James Shore screencast series "Let’s play TDD"] to see what it’s all about.
+
+Not to leave you without a line of code, here is a dummy example you can find across every second page. Let me show you a service which pre-process a set of data sent from an external service; it crawls an object (using reflection) and trims all non-final, not empty strings properties.
+
+[source, java]
+----
+public interface TrimServiceLocal {
+  public void trimObject(Object o);
+}
+----
+
+[source, java]
+----
+@Stateless
+public class TrimService implements TrimServiceLocal {
+  public void trimObject(Object o);
+    //implementation goes here
+  }
+}
+----
+
+So, the test looks simple as that:
+
+[source, java]
+----
+public class TrimServiceTest {
+
+  TrimService trimService;
+
+  @BeforeClass
+  public void setup() {
+    trimService = new TrimService();
+  }
+
+  @Test
+  public removeWhitespaces() {
+    Name name = new Name();
+    name.setPrefix("    Mr.");
+    name.setFirstname("      John     ");
+    name.setLastname("Smith     ");
+
+    trimService.trimObject(name);
+
+    Assert.assertEquals(name.getPrefix(), "Mr.");
+    Assert.assertEquals(name.getFirstname(), "John");
+    Assert.assertEquals(name.getLastname(), "Smith");
+  }
+}
+----
+
+I’ll stop here and come back in the next few days with some thoughts on more advanced, integration testing.

@@ -1,8 +1,0 @@
-= {title}
-:title: Test Driven GeeCON
-:page-layout: speaking
-:page-categories: [speaking]
-:page-speaking-date: 2015-01-30, Poznań, Poland
-:page-file-location:  _posts/speaking/topics/characterize-your-legacy-with-junit.adoc
-
-include::{page-file-location}[]

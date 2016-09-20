@@ -1,8 +1,0 @@
-= {title}
-:title: DevoxxPL 2016
-:page-layout: speaking
-:page-categories: [speaking]
-:page-speaking-date: 2016-06-23, Kraków, Poland
-:page-file-location:  _posts/speaking/topics/babysitting-devs.adoc
-
-include::{page-file-location}[]

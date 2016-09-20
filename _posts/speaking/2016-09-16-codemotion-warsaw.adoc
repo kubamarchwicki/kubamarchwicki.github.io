@@ -1,8 +1,0 @@
-= {title}
-:title: Codemotion Warsaw 2016
-:page-layout: speaking
-:page-categories: [speaking]
-:page-speaking-date: 2016-09-16, Warsaw, Poland
-:page-file-location:  _posts/speaking/topics/reverse-engineering-clean-code.adoc
-
-include::{page-file-location}[]

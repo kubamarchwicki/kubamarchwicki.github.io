@@ -1,9 +1,0 @@
-= {title}
-:title: 4 developers 2016
-:page-layout: speaking
-:page-categories: [speaking]
-:page-speaking-date: 2016-04-11, Warsaw, Poland
-:page-link: https://4developers.org.pl
-:page-file-location:  _posts/speaking/topics/winning-javaee-back.adoc
-
-include::{page-file-location}[]

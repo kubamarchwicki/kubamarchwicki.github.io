@@ -1,0 +1,9 @@
+= {title}
+:title: JFall 2015
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2015-11-05, Ede, Netherlands
+:page-link: http://www.nljug.org/jfall/2015/
+:page-file-location:  speaking/_posts/topics/what-is-code.adoc
+
+include::{page-file-location}[]

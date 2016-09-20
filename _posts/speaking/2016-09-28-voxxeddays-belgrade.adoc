@@ -1,8 +1,0 @@
-= {title}
-:title: Voxxed Days Belgrade 2016
-:page-layout: speaking
-:page-categories: [speaking]
-:page-speaking-date: 2016-09-28, Belgrade, Serbia
-:page-file-location:  _posts/speaking/topics/reverse-engineering-clean-code.adoc
-
-include::{page-file-location}[]

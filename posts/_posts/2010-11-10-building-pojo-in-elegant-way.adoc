@@ -1,0 +1,134 @@
+= {title}
+:title: Building POJO in an elegant way
+:page-layout: post
+:page-categories: [posts]
+:page-excerpt: Any fool can write code computer can understand. Question is how to build human readable code. Start with a builder pattern!
+:page-disqus_url: http://www.marchwicki.pl/blog/2010/11/building-a-pojo-in-an-elegant-way/
+:page-redirect_from: /blog/2010/11/building-a-pojo-in-an-elegant-way/
+
+[quote, Martin Fowler - Refactoring: Improving the Design of Existing Code]
+Any fool can write code that a computer can understand. Good programmers write code that humans can understand
+
+In one of my recent projects I’ve come across a wonderful way of building data beans (POJOs), called builders. See how it works; imagine a fairly simple POJO.
+
+[source, java]
+----
+public class Person {
+  private String name;
+  private String surname;
+
+  /* getters and setters skipped for brevity */
+}
+----
+
+I can imagine two ways to instantiate this class and populate values:
+
+[source, java]
+----
+	Person person = new Person();
+	person.setName("John");
+	person.setSurname("Smith");
+
+	new Person("John", "Smith");
+----
+
+While with this fairly simple class it doesn’t look bad, with more complicated beans, the code starts to get messy.
+
+So here comes the smart way – with builders. For each POJO create an inner class:
+
+[source, java]
+----
+public class Person {
+   private String name;
+   private String surname;
+
+   /* explicite constructors, getters and setters skipped */
+
+   private Person(Builder builder) {
+       this.name = builder.name;
+       this.surname = builder.surname;
+   }
+
+   public static class Builder {
+       private String name;
+       private String surname;
+
+       public Builder() {
+
+       }
+
+       public Builder withName(String name) {
+           this.name = name;
+           return this;
+       }
+
+       public Builder withSurname(String surname) {
+           this.surname = surname;
+           return this;
+       }
+
+       public Person build() {
+           return new Person(this);
+       }
+   }
+}
+
+----
+So from now on creating instance of a Person looks like this
+[source, java]
+----
+Person person = new Person.Builder()
+  .withName("John")
+  .withSurname("Smith")
+  .build();
+----
+
+Nice one, isn’t it? It gets even better when the object gets more complex. The only disadvantage I found so far was a necessity to hand craft all the builders – hundreds of pretty-much-same-lines-of-code. But what are templates for?
+
+Initially, I’ve considered internal Eclipse templates. Nice, but too simple and static (I couldn’t find a way to prepare dynamic templates, based on a class I was currently developing). Nonetheless, I found quite a few guides how to leverage templates worth sharing:
+
+* http://www.tarantsov.com/eclipse/templates/
+* http://eclipse.dzone.com/news/effective-eclipse-custom-templ
+
+A second try was a Fast Code Eclipse plugin (which you can find here: http://fast-code.sourceforge.net/). Honestly speaking, it’s a little bit overcomplicated and I’d be rather consider something simpler (Eclipse Code Templates with dynamic fields – maybe I’d write something like that at some point). Nonetheless, Fast Code works like this:
+
+* install plugin
+* go to Window > Preferences > Fast Code Preferences > Template Preferences
+* pick up one (I’ve chosen the first one: Template Instance of Class)
+* set “Number Required Classes” to 1, “Allowed File Extension” to java, “Required Getter Setter” to None and paste this in the template body:
+
+[source, velocity]
+----
+private ${class_name}(Builder builder) {
+#foreach ($field in ${fields})
+   this.${field.name} = builder.${field.name};
+#end
+}
+
+public static class Builder {
+#foreach ($field in ${fields})
+   private ${field.type} ${field.name};
+#end
+
+#foreach ($field in ${fields})
+   public Builder with${field.getter.substring(3)}(${field.type} ${field.name}) {
+       this.${field.name} = ${field.name};
+       return this;
+   }
+#end
+
+public ${class_name} build() {
+           return new ${class_name}(this);
+       }
+}
+----
+
+Builders in action work like this: create a new class (like the aforementioned Person, with all intended fields) and run your template:
+
+* Fast Code > Create New Snippet (or press Shift + Ctrl + Alt + T)
+* Pick up “Instance of Class”
+* Choose the class
+* Pick up fields to be used by the builder.
+* Format your code (Shift + Ctrl + F).
+
+Works like a charm! I know that it does not as the most straightforward activity, but trust me – it really improved my productivity and improved the code quality (no more typos). I’m also aware that I’m using a tiny fraction of Fast Code functionality – but that’s a fraction I was really keen on.

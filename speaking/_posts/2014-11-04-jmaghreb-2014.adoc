@@ -1,0 +1,9 @@
+= {title}
+:title: JMaghreb 2014
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2014-11-04, Casablanca, Marroco
+:page-link: http://jmaghreb.io/
+:page-file-location:  speaking/_posts/topics/reverse-engineering-clean-code.adoc
+
+include::{page-file-location}[]

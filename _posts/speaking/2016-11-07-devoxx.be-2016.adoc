@@ -1,9 +1,0 @@
-= {title}
-:title: Devoxx 2016
-:page-layout: speaking
-:page-categories: [speaking]
-:page-speaking-date: 2016-11-07, Antwerp, Belgium
-:page-link: https://devoxx.be/
-:page-file-location:  _posts/speaking/topics/maven.adoc
-
-include::{page-file-location}[]

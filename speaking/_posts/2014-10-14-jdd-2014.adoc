@@ -1,0 +1,9 @@
+= {title}
+:title: JDD 2014
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2014-10-14, Kraków, Poland
+:page-link: http://14.jdd.org.pl/
+:page-file-location:  speaking/_posts/topics/jee-without-hassle.adoc
+
+include::{page-file-location}[]

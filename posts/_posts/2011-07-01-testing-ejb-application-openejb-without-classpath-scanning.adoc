@@ -1,0 +1,51 @@
+= {title}
+:title: (…) testing EJB application – Part V (OpenEJB without classpath scanning)
+:page-layout: post
+:page-categories: [posts]
+:page-excerpt: Get OpenEJB integration tests run fast, without complete classpath scanning.
+:page-disqus_url: http://www.marchwicki.pl/blog/2011/07/testing-ejb-applicatin-openejb-without-classpath-scanning/
+:page-redirect_from: /blog/2011/07/testing-ejb-applicatin-openejb-without-classpath-scanning/
+
+I’ve recently come across http://blog.thecodewhisperer.com/2010/10/16/integrated-tests-are-a-scam/[a very good article on integrated testing] (with a provocative title: Integrated Test Are a Scam). The writing basically question most of my efforts and the sense of this series (as a whole) – integrated tests are bad and you should rather avoid doing it. Unit tests rocks. I cannot agree more. However, as J.B. points out there are moments when an integrated test brings some value (whew, the series saved). An this is where tools like OpenEJB proves its value. On the other hand, the way OpenEJB works pushes the user to end-to-end integration testing – SCAM!
+
+== The biggest OpenEJB disadvantage
+
+Yeah, the necessity of the end-to-end testing is the biggest drawback of OpenEJB. It’s not easy to bootstrap a part of the containter (which I think I’ve shown link:{% post_url posts/2011-06-29-testing-ejb-application-openejb-with-vendor-extensions-and-ejb-jar-xml %}[in the previous write-up]). I found it close to impossible to be selective about which service gets deployed, which effectively means you cannot test half-baked code. If the whole application does not wire together (because the development is still in progress – for example), container does not boot, test fails (even though what’s tested is a completely independent area). This effectively makes the tools useless, when your development is test driven.
+
+See the example of the persistence.xml, from link:{% post_url posts/2011-06-09-the-art-of-testing-an-ejb-application-openejb %}[the first OpenEJB part] – even though the database was not used in the test, a decent effort was required just to make it working. That’s what I’m tacking about and that’s the essence of the J.B.’s “Integrated Tests Are A Scam” article – hell a lot of effort is wasted in getting the stuff working, maintaining, before the actual tests are even written. This is not – in any case – critique of OpenEJB. As I wrote earlier, it’s a great tool but it looks like the way I was trying to use it was not exactly the fit for purpose. Now I know, an embeddable container for tests was the primary objective of creators, probably not. That’s why I started to think about something more tests oriented. One idea was http://www.jboss.org/arquillian[Arquillian]; the other was to push OpenEJB harder, post questions to OpenEJB Users group, contact developers (as I’ve mentioned at the end of the last post – http://openejb.979440.n4.nabble.com/override-annotation-based-configuration-with-ejb-jar-xml-td3628804.html[see the discussion @ nabble.com]). The later option appeared to be more agile’ish and with help from David Blevins, I found ways to test EJB without deploying the whole container. After all, it was easier to re-use that knowledge than get hands dirty with yet another technology and framework.
+
+== Focused integration testing
+
+I think this is a bit I’ve been missing so far. A few helper classes have been introduced in OpenEJB 3.1.4 so first of all pom upgrade is required. Additionally, this is a fairly new functionality and core library only supports JUnit. As you could’ve seen in the examples – I’ve opted for the TestNG framework which works slightly different. An integration for TestNG is already in place, but unfortunately not yet committed (see https://issues.apache.org/jira/browse/OPENEJB-1526[the JIRA ticket for that]). Anyway, after adding AbstractOpenEJBTestNG class to the application, the test class looks like that
+
+[source, java]
+----
+public class MethodControllerTest extends AbstractOpenEJBTestNG {
+
+  @EJB
+  MethodControllerLocal controller;
+
+  @Module
+  public EjbJar beans() {
+    EjbJar ejbJar = new EjbJar("calculation-beans");
+    ejbJar.addEnterpriseBean(new StatelessBean(TestingDisplayingService.class));
+    ejbJar.addEnterpriseBean(new StatelessBean(CalculatingService.class));
+    ejbJar.addEnterpriseBean(new StatelessBean(MethodController.class));
+    return ejbJar;
+  }
+
+  //... some test methods
+}
+----
+
+Lovely, isn’t it? AbstractOpenEJBTestNG is not fully compliant with 3.1.4 version so some fine-tuning is necessary. If you need it badly for your tests (and I assume so – if you are reading this) – take the one from my probject on github: https://github.com/kubamarchwicki/ejb-testing/blob/app-composer/ejb/src/test/java/org/apache/openejb/testng/AbstractOpenEJBTestNG.java[AbstractOpenEJBTestNG]. Everything works like a charm- happy days.
+
+== Finally
+
+To be honest, this is something I’ve been looking for. This is where OpenEJB and Arquillian worlds meet each other. As David Blevins pointed out: “(This is) how we write our internal tests and is a big influence on Arquillian — OpenEJB was a pretty critical part of Arquillian when they were first getting it going”.
+
+Additionally, besides all the advantages outlined above (robustness, easiness etc), all my integration tests run much faster. Maybe it’s not clearly visible in the example application, where tests are small, but in real life app (like the one I’m working with currently) it’s a significant improvement. ‘The big project’ I’m working on, where I also implemented the described approach, builds now significantly faster. There is no need to scan classpath, handle persistence context for each and every test. I think we are now talking about truly focused integration testing.
+
+PS. If you are looking for core JUnit examples, Application Composer example from OpenEJB is pretty nifty: http://people.apache.org/~dblevins/application-composer/
+
+PS2. The complete source code is available on my github account: https://github.com/kubamarchwicki/ejb-testing/tree/app-composer. All the EJB examples have been refactored to utilise the ‘application composer’ approach. I hope you find it helpful

@@ -1,0 +1,9 @@
+= {title}
+:title: JUG Łódź
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2016-02-25, Łódź, Poland
+:page-link: http://www.meetup.com/Java-User-Group-Lodz/
+:page-file-location:  speaking/_posts/topics/asciidoctor-live.adoc
+
+include::{page-file-location}[]

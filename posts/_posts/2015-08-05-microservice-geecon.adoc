@@ -1,0 +1,74 @@
+= {title}
+:title: GeeCON Microservices - in Sopot this September
+:page-layout: post
+:page-categories: [posts]
+:page-excerpt: What's the story behind the microservices GeeCON agenda.
+
+This post is kind of brought by https://twitter.com/LAFK_pl/[Tomek Borek] and an inspiration coming from his https://lafkblogs.wordpress.com/2015/08/05/reasons-why-i-believe-geecon-microservices-will-be-good/[reasons why I believe GeeCON Microservices will be good] post.
+
+I've been involved in the http://2015.microservices.geecon.org/[GeeCON Microservices] since the day one and I hardly ever spoken why are we running this show, what's the story behind the agenda - cause it's not just a _fashion driven conference_. Well, in same cases it is, as in <<The success keynote>>
+
+A friend of mine (after reviewing this post) said I should've made the title more marketable, like: "I'll reveal some insider's knowledge about building the conference agenda and some of the talks". Well, you can treat it as such.
+
+== A single track
+
+http://2015.microservices.geecon.org/[GeeCON Microservices] is a single day, single track conference. Our ambition wasn't to bring you largest number of speakers, enormous amount of tracks. The rationale was different: focus on a single topic and cover it from multiple perspectives. Cover it in such a way, that after these 12 sessions all attendees will have a comprehensive understanding _what's the fuzz about those microservices_.
+
+We also did want to save you hassle of choosing the best possible talk. There is no choice and all talks are best possible - we guarantee.
+As a regular conference attendee I struggle with that, always puzzled which talk is better I regularly end up talking and networking with fellow geeks. Now the choice is obvious, all talks are first class.
+
+== A curated agenda
+
+http://2015.microservices.geecon.org/[GeeCON Microservices] didn't have a call for papers. That was a conscious but a difficult choice. We made an effort to bring a variety of speakers from different domains, with huge experience. We didn't want to just praise the microservices world; we want to go a step further.
+
+*We want to show you the upsides and downsides.*
+
+*We want to share the context: where it worked and where it didn't.*
+
+*We want to drill down the steps needed for success*
+
+Each speaker is experienced: knowledge-wise and speaking-wise. So we did our best to bring you sessions which won't be boring and which will be held in a professional way.
+
+== Agenda
+
+At http://2015.microservices.geecon.org/[GeeCON Microservices] you can see we have *three* (sic!) keynotes. The agenda is structured around short, 30 minutes, in-depth sessions, focusing on particular aspects of microservices world (those which we see as important). Additionally - we open and close with a bigger stories going beyond _just the microservices_.
+
+Building up an agenda is not an assignment for a single evening. There were many people involved, with many hours spent on emails, calls and Slack discussions. Not everybody we wanted, could have made it to the conference (location, timing, travel required). However some of the 'nos' were sweet music to our ears: _'It was a tough decision (I would have enjoyed the rest of the lineup a lot)'_.
+
+There should be nothing to stop you from enjoying the lineup.
+
+== The opening keynote
+
+When you scan through the http://2015.microservices.geecon.org/#schedule[GeeCON Microservices]schedule - a set of patterns (I hope) emerge. We are starting with Fred George's keynote "It's Not Just MicroServices: Areas of focus for MicroService Success" - I hope just by the title you see we don't want to follow the fashion, praise the micro architecture and treat it as a silver bullet.
+
+We also know that microservice is not only about technology: it's about processes, roles, changing (or challenging) the organisations. That needs to be made explicit - like in Fred's keynote.
+
+== The success keynote
+
+For obvious reasons http://2015.microservices.geecon.org/[GeeCON Microservices] is also about success stories; there are multiple of them. Adrian Trenaman (VP of Engineering from Gilt) will share his in 'Scaling microservices at Gilt'. Gilt is not a software house, Gilt sells fashion. And they do it with distributed, fault-tolerant, scalable platform. Adrian will give some insights what they build, with all the whys and hows - to survive their daily noon peaks of traffic which exceeds the normal load by multiple orders of magnitude.
+
+== Sessions
+
+http://2015.microservices.geecon.org/[GeeCON Microservices] is obviously mostly about sessions. That's the time between breaks and keynotes, before the party. We've seen some important patterns to cluster talks around and that's how the 30 minutes sessions are structured:
+
+* Get practical. All the things you could have not thought of before starting the microservices journey: provisioning, deploying, orchestrating, managing, etc
+* Design the right thing. How big should my microservices be, what is too much and when is it too little.
+* Ponder a bit. Why are we shifting, where are we rolling this big ball of mud, what are we actually doing and it this what we really need. Monoliths are still valid architecture pattern - in certain contexts. It makes certain things harder, but other can be no-brainers. We want to shed some light on these as well.
+
+== The closing keynote
+
+After all these sessions, we hope you have an image that microservices are not about technology, just technology and only technology. It goes far beyond. We believe the closing keynote will emphasize this. Erik Dörnenburg (Head of Technology at ThoughtWorks) will bring an important topic what is the role of an architect in all these. Is it a wizard, an alpha engineer, a master builder or can architecture grow without architects.
+
+== Breaks
+
+At http://2015.microservices.geecon.org/[GeeCON Microservices], with so wonderful speakers, with hundreds of years of collective experience, we wanted to give you multiple opportunities to talk, discuss, share views and opinions. Not just short coffee breaks - we did our best to balance session time with conversations time. And besides that - you still have a chance to get a geek breakfast in the morning.
+
+== The location
+
+Last but not least; http://2015.microservices.geecon.org/[GeeCON Microservices] is the only conference (at least in Poland) where only 200 meters (measured) is between you and the sandy beach. Only conference where the after party may be like on a Miami beach party (if only Polish weather permits - that's the only thing we cannot pre-book).
+
+== A humble opinion
+
+I decided to write this post because that was quite an effort for the team (as well as for me personally) to come up with such agenda, build it, book it and get it rolling. To be more precise, agreeing on the agenda was the hardest part. Building a story around it. And now - I wanted to share this story with you.
+
+If you liked it - go in and register for http://2015.microservices.geecon.org/[GeeCON Microservices]

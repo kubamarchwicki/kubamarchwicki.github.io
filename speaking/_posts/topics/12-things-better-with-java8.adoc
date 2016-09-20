@@ -1,0 +1,26 @@
+:title: 12 things you can do better with Java8
+:subtitle: TMW some different "baroque" code examples can work much better (more readable, concise, easier to maintain etc) with modern Java.
+
+== {title}
+
+> {subtitle}
+
+=== Abstract
+
+Java8 has been around for a few years now. We've happily used it in many projects, enjoying the Streams API, new asynchronous programming model and the declarative style of coding.
+So why now? Because it's just now that many enterprises migrate from old Java versions (like 6 or 7) towards JDK8, have a massive amount of legacy code which cannot be pruned but needs evolving.
+
+This talk covers different "baroque" code examples which can work much better (more readable, concise, easier to maintain etc) with modern Java.
+Various Java8 elements will be covers: from new language elements (streams, default methods), through new API methods (on maps, collections), better I/O handling, to using lambdas to make the test code more readable.
+Focusing on small, dedicated steps - where Java8 can really help is crucial for developers happiness and productivity.
+This talk requires no practical, prerequisite knowledge of Java8 (but some basic awareness of new features would be helpful).
+
+////
+
+=== Additional resources
+
+* https://speakerdeck.com/kubamarchwicki/winning-javaee-back[PDF Slides]
+* https://github.com/kubamarchwicki/winning-javaee-back/blob/master/slides/src/slides.adoc[Slides source in *asciidoctor*]
+* https://github.com/kubamarchwicki/winning-javaee-back/[Code examples @ GitHub]
+
+////
