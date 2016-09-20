@@ -81,7 +81,9 @@
   </header>
 
   <article class="post-content">
-  <div class="paragraph">
+  <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
 <p>This has been a while since my last post. Not that nothing happened – there has never been enough time to sit down and write those few paragraphs. I have few articles already started, but all quite far away from completion. I’ve pushing EJB testing even further (and this article will partly cover it) and focused even further on incepting such approach in the team. It looks like it’s working – the test coverage is constantly increasing from change request to change request, with new ideas being introduced. This particular one was introduced by my team mate – Greg, who was struggling with some legacy modules which were using hardcoded JNDI bindings.</p>
 </div>
 <div class="paragraph">
@@ -89,6 +91,8 @@
 </div>
 <div class="paragraph">
 <p>Finally, last but no least, there is this little project (in size), but great in importance thing which does not leave much time for anything else – meet Jan, my son :-) Fairly obvious why everything else become much least important – he’s the most sweet of world’s sweets.</p>
+</div>
+</div>
 </div>
 <div class="sect1">
 <h2 id="jndi-lookups">JNDI lookups</h2>
@@ -203,7 +207,7 @@ Despite the simplicity, this is a fully working application (JBoss 4.2.x deploya
 <p>Testing the successful wiring of the logger was much more troublesome. It appeared there is no way to define a specific JNDI location for a component. There were ways to do it using openejb-jar.xml file but we wanted to avoid it and handle everything within the test class, as it proved to be more maintainable.</p>
 </div>
 <div class="paragraph">
-<p>A way for us to go was to modify the ApplicationComposer itself. Without getting much into details how the runner works (you can learn more about it from link:{% post_url posts/2011-07-01-testing-ejb-application-openejb-without-classpath-scanning %}[my previous posts] or from the <a href="http://ci.apache.org/projects/openejb/examples-generated/application-composer/">OpenEJB documentation</a>) we were not able to output the configuration that included a specific JNDI location of a bean. Methods annotated with @Module could return EjbJar type of class, but we needed to get a level up, define a whole module with a specific JNDI. As I mentioned earlier, Greg had this idea to modify the ApplicationComposer class (which appeared to be fairly easy). The positive test case worked fine:</p>
+<p>A way for us to go was to modify the ApplicationComposer itself. Without getting much into details how the runner works (you can learn more about it from <a href="/posts/2011/07/01/testing-ejb-application-openejb-without-classpath-scanning/">my previous posts</a> or from the <a href="http://ci.apache.org/projects/openejb/examples-generated/application-composer/">OpenEJB documentation</a>) we were not able to output the configuration that included a specific JNDI location of a bean. Methods annotated with @Module could return EjbJar type of class, but we needed to get a level up, define a whole module with a specific JNDI. As I mentioned earlier, Greg had this idea to modify the ApplicationComposer class (which appeared to be fairly easy). The positive test case worked fine:</p>
 </div>
 <div class="listingblock">
 <div class="content">

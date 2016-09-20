@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My essential Eclipse plugins : Notepack</title>
+    <title>Codemotion Warsaw 2016 : Notepack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A randomized pack of notes">
-    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2014/12/01/my-essential-eclipse-plugins/">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/speaking/2016/09/16/codemotion-warsaw/">
     <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
 
     <!-- Custom CSS -->
@@ -76,100 +76,89 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>My essential Eclipse plugins</h1>
-    <p class="meta">Dec 1, 2014</p>
+    <h1>Codemotion Warsaw 2016</h1>
+    <p class="meta">
+      <span id="speakingdate">2016-09-16, Warsaw, Poland</span>
+      
+    </p>
   </header>
 
   <article class="post-content">
-  <div id="preamble">
+  <div class="sect1">
+<h2 id="reverse-engineering-the-clean-code">Reverse engineering the clean code</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Upgrading IDE (Eclipse in this case) is not something you do on daily basis. What is more, I use Eclipse more and more seldomly - mostly for trainings. That&#8217;s why I tend to forget which plugins I actually use (until I&#8217;m missing them and need to remind myself how were they called). As this happened to my just recently (again) I decided to write this post with a list of plugins I find useful (so that I&#8217;ll be able to come back during next upgrade&#8230;&#8203; someday)</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="baseline">Baseline</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>I recently started with Spring Tool Suite as my baseline. Not that I&#8217;m a Spring fan-boy. I rather consider myself from both churches: Spring and JavaEE; using both stacks as a set of tools to use in an appropriate context.</p>
-</div>
-<div class="paragraph">
-<p>I started with STS cause I find it nearly feature complete. It comes with Git, Maven plugins so that I don&#8217;t have to wonder about basics.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="fiddling-with-the-font-size">Fiddling with the font size</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>One of my most important usecases for Eclipse is during delivering a training (Eclipse is my primary IDE then). Hence, an ability to increase the font size is a must. I&#8217;m quite found of using <a href="https://code.google.com/p/tarlog-plugins/">tarlog-plugins</a> - a set of small, but useful, features to Eclipse that are develop for personal Tarlog&#8217;s needs.</p>
-</div>
-<div class="paragraph">
-<p>While there are some other font size plugins like <a href="https://code.google.com/p/eclipse-fonts/">eclipse-fonts</a>, tarlog-plugins just works with every file type (not just text-files)</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="migrating-workspace-settings">Migrating workspace settings</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Again, due to trainings, I quite often setup a new workspace. And migrating settings from one workspace to other is a real pain in the neck. <a href="https://code.google.com/a/eclipselabs.org/p/workspacemechanic/">Workspace Mechanic</a> is something that makes this process really easy.</p>
-</div>
 <div class="quoteblock">
 <blockquote>
-The Workspace Mechanic automates maintenance of your Eclipse environment by tweaking preferences, adding extension locations, and so on.
+<div class="paragraph">
+<p>This might be the psychology basic for developers… starting with the design 101; take some design principles and show how they are reflected in code.</p>
+</div>
 </blockquote>
 </div>
+<div class="sect2">
+<h3 id="abstract">Abstract</h3>
 <div class="paragraph">
-<p>And this really saves my day!</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="constant-test-status-preview">Constant test status preview</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Trainings again. Whenever I run a refactoring or TDD session this is a life saver. Being able to constantly view the status of tests - brilliant.</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-Infinitest is a Continuous Testing plugin for Eclipse and IntelliJ. Each time a change is made on the source code, Infinitest runs all the tests that might fail because of these changes.
-</blockquote>
+<p>There are certain usability principles: easy to learn by heart, hard to use on the daily basis – especially hard when you are an engineer. You are the brainiac, you find it naturally easy to build abstractions and then quickly start reflecting this through code. The primary objective: model the reality with classes, functions. Easy stuff – that’s the way we work. Hard stuff - empathy; we assume others build same abstractions and we are quickly on the same page. They don’t.</p>
 </div>
 <div class="paragraph">
-<p><a href="http://infinitest.github.io/">Grab Infinitest</a> while it&#8217;s hot.</p>
+<p>In this session I aim to fall back to design 101; take some design principles and show how they are reflected in code. Take Krug’s “Don’t make me think” and ponder a bit about it while digging though long lines of Your Enterprise’ish Spaghetti Code Application™. The code is our user interface and same patterns apply - I’ll tackle a few of those.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="jboss-tools">JBoss Tools</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="testimonials">Testimonials</h3>
 <div class="paragraph">
-<p>This is quite simple, I&#8217;m not using it beyond managing JBoss application servers. Just to be able to showcase some code on different servers that <a href="http://tomee.apache.org/">TomEE</a> (which I usually use - try to stay "vendor agnostic").</p>
+<p>The feedback after GET.NET 2014 surveys conference in Gdańsk</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>"Theoretically, the subject is nothing new. Theoretically everybody read Martin&#8217;s book. Still presentation was interesting, comparison to designing UI was good. I liked it"</p>
+</li>
+<li>
+<p>"A very good, easy going presentation, very approachable. It was clear speaker is an experienced person, knows what&#8217;s he&#8217;s talking about. Quite a few valuable "soft" insights (for examples which books to read to get better in programming)".</p>
+</li>
+<li>
+<p>"Interesting subject with a charismatic presenter"</p>
+</li>
+<li>
+<p>"We were expecting more code!! But still it was very nice to listen ;)"</p>
+</li>
+<li>
+<p>"Jakub is a great speaker, feeling easy talking to a bigger audience - funny, good contact with the group"</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="videos">Videos</h3>
+<div class="videoblock">
+<div class="title">GeeCON 2014 - lightning talk</div>
+<div class="content">
+<iframe width="640" height="480" src="https://player.vimeo.com/video/100219607" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="additional-resources">Additional resources</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://speakerdeck.com/kubamarchwicki/reverse-engineering-the-clean-code">PDF Slides</a></p>
+</li>
+<li>
+<p><a href="http://htmlpreview.github.io/?https://github.com/kubamarchwicki/presentations/master/reverse-eng-clean-code/slides.html">HTML slides</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubamarchwicki/presentations/tree/master/reverse-eng-clean-code">Slides source in <strong>asciidoctor</strong></a></p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
   </article>
 
-  
-	<div id="disqus_thread"></div>
-	<script type="text/javascript">
-	    /* * * CONFIGURATION VARIABLES * * */
-	    var disqus_shortname = 'jakubblog';
-	    
-
-	    /* * * DON'T EDIT BELOW THIS LINE * * */
-	    (function() {
-	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	    })();
-	</script>
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
-  
 </div>
+
       </div>
     </div>
 

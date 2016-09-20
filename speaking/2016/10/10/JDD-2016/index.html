@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My essential Eclipse plugins : Notepack</title>
+    <title>JDD 2016 : Notepack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A randomized pack of notes">
-    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2014/12/01/my-essential-eclipse-plugins/">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/speaking/2016/10/10/JDD-2016/">
     <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
 
     <!-- Custom CSS -->
@@ -76,100 +76,63 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>My essential Eclipse plugins</h1>
-    <p class="meta">Dec 1, 2014</p>
+    <h1>JDD 2016</h1>
+    <p class="meta">
+      <span id="speakingdate">2016-10-10, Kraków, Poland</span>
+      
+      - <span id="link"><a href="https://16.jdd.org.pl">https://16.jdd.org.pl</a></span>
+      
+    </p>
   </header>
 
   <article class="post-content">
-  <div id="preamble">
+  <div class="sect1">
+<h2 id="6-tips-for-you-javaee-project-be-less-depresing">6 tips for you JavaEE project be less depresing</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Upgrading IDE (Eclipse in this case) is not something you do on daily basis. What is more, I use Eclipse more and more seldomly - mostly for trainings. That&#8217;s why I tend to forget which plugins I actually use (until I&#8217;m missing them and need to remind myself how were they called). As this happened to my just recently (again) I decided to write this post with a list of plugins I find useful (so that I&#8217;ll be able to come back during next upgrade&#8230;&#8203; someday)</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="baseline">Baseline</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>I recently started with Spring Tool Suite as my baseline. Not that I&#8217;m a Spring fan-boy. I rather consider myself from both churches: Spring and JavaEE; using both stacks as a set of tools to use in an appropriate context.</p>
-</div>
-<div class="paragraph">
-<p>I started with STS cause I find it nearly feature complete. It comes with Git, Maven plugins so that I don&#8217;t have to wonder about basics.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="fiddling-with-the-font-size">Fiddling with the font size</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>One of my most important usecases for Eclipse is during delivering a training (Eclipse is my primary IDE then). Hence, an ability to increase the font size is a must. I&#8217;m quite found of using <a href="https://code.google.com/p/tarlog-plugins/">tarlog-plugins</a> - a set of small, but useful, features to Eclipse that are develop for personal Tarlog&#8217;s needs.</p>
-</div>
-<div class="paragraph">
-<p>While there are some other font size plugins like <a href="https://code.google.com/p/eclipse-fonts/">eclipse-fonts</a>, tarlog-plugins just works with every file type (not just text-files)</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="migrating-workspace-settings">Migrating workspace settings</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Again, due to trainings, I quite often setup a new workspace. And migrating settings from one workspace to other is a real pain in the neck. <a href="https://code.google.com/a/eclipselabs.org/p/workspacemechanic/">Workspace Mechanic</a> is something that makes this process really easy.</p>
-</div>
 <div class="quoteblock">
 <blockquote>
-The Workspace Mechanic automates maintenance of your Eclipse environment by tweaking preferences, adding extension locations, and so on.
+<div class="paragraph">
+<p>Mind the gaps in the JavaEE environment and try to fix it with some decent libraries, different approaches - bringing it closer towards modern web development.</p>
+</div>
 </blockquote>
 </div>
+<div class="sect2">
+<h3 id="abstract">Abstract</h3>
 <div class="paragraph">
-<p>And this really saves my day!</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="constant-test-status-preview">Constant test status preview</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Trainings again. Whenever I run a refactoring or TDD session this is a life saver. Being able to constantly view the status of tests - brilliant.</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-Infinitest is a Continuous Testing plugin for Eclipse and IntelliJ. Each time a change is made on the source code, Infinitest runs all the tests that might fail because of these changes.
-</blockquote>
+<p>People are stuck to JavaEE not because they love it, but because it was in their work place, it is still there and will be there long after they leave. While many engineers think about going reactive, functional (or any other fashionable buzzword), some are still struggling how to migrate weblogic9 to weblogic12 and move from Java not supported for past 8 years (like Java 1.4) to the one not supported only just for a year (Java7).</p>
 </div>
 <div class="paragraph">
-<p><a href="http://infinitest.github.io/">Grab Infinitest</a> while it&#8217;s hot.</p>
+<p>While their live can be miserable - there are means for them to win JavaEE back, have fun again. It still won&#8217;t be a super duper modern framework, it won&#8217;t have all the latest pre-summer goodies, won&#8217;t be a sweet language (full of syntactic sugar candies), but a solid set of tools that can make development pleasure again (kind of).</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="jboss-tools">JBoss Tools</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>This is quite simple, I&#8217;m not using it beyond managing JBoss application servers. Just to be able to showcase some code on different servers that <a href="http://tomee.apache.org/">TomEE</a> (which I usually use - try to stay "vendor agnostic").</p>
+<p>In the modern JavaEE you are no logger limited to the 'standard' but you can take advantage of limitless set tools and libraries. For some people it will still be the bad and ugly JavaEE, "feels like Spring but n-years ago", "Spring wannabe in the poor&#8217;s man land" - that&#8217;s true. But if you can&#8217;t win Them (and let&#8217;s be honest - in most enterprise&#8217;ish environments you can&#8217;t win Them), join them! And have you JavaEE the way You like it.</p>
+</div>
+<div class="paragraph">
+<p>This presentation will walk through multiple libraries that can help you change your project from "This is The Standard Even If It Doesn&#8217;t Fit" way to a something far more approachable, where your tools doesn&#8217;t feel like the Maslow&#8217;s Hammer. I&#8217;ll be sharing some experience from multiple trainings, projects and refactorings of old-but-still-in-production JavaEE applications and tools we used to get away The Standard.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="additional-resources">Additional resources</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://speakerdeck.com/kubamarchwicki/winning-javaee-back">PDF Slides</a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubamarchwicki/winning-javaee-back/blob/master/slides/src/slides.adoc">Slides source in <strong>asciidoctor</strong></a></p>
+</li>
+<li>
+<p><a href="https://github.com/kubamarchwicki/winning-javaee-back/">Code examples @ GitHub</a></p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
   </article>
 
-  
-	<div id="disqus_thread"></div>
-	<script type="text/javascript">
-	    /* * * CONFIGURATION VARIABLES * * */
-	    var disqus_shortname = 'jakubblog';
-	    
-
-	    /* * * DON'T EDIT BELOW THIS LINE * * */
-	    (function() {
-	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	    })();
-	</script>
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
-  
 </div>
+
       </div>
     </div>
 

@@ -81,7 +81,9 @@
   </header>
 
   <article class="post-content">
-  <div class="paragraph">
+  <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
 <p>In the last two posts I’ve introduced my approach to testing (both unit and integration) and shown few ways to test bits and pieces of an enterprise application (some naive as well as more mature). This part is dedicated to tests with a fully featured EJB container, bootstrapped by the test suit. I’ll be using OpenEJB, because I’ve been using it for last few weeks in my latest project. I’ll show some basics and cover some of the more troublesome bits and pieces (which were not covered in the documentation or were not that intuitive). I must admit starting with OpenEJB wasn’t easy; in fact it was fairly frustrating experience at some point (which could have been noticed <a href="http://twitter.com/kubem">in my tweets</a>). It’s a great a tool, but the learning curve is steep. I’m focusing on OpenEJB cause I’ve been using is the extensively. Nonetheless, it’s not the only way to test EJB application end-to-end. Alternatives are Sping (which handles @EJB annotations pretty neatly) or Arquillian (which is another approach to bootstrap the container). I’ll try to cover the latter in some future posts, but as for now – let’s start with OpenEJB.</p>
 </div>
 <div class="paragraph">
@@ -89,6 +91,8 @@
 </div>
 <div class="paragraph">
 <p>For something completely different – I thought I’d rather avoid embedding small code snippets, so I decided to host a complete working project at my GitHub space: <a href="https://github.com/kubamarchwicki/ejb-testing" class="bare">https://github.com/kubamarchwicki/ejb-testing</a> – feel free to fork.</p>
+</div>
+</div>
 </div>
 <div class="sect1">
 <h2 id="hello-world-application">Hello world! application</h2>

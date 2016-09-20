@@ -81,8 +81,12 @@
   </header>
 
   <article class="post-content">
-  <div class="paragraph">
+  <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
 <p>This episode is pretty straight forward: configuring the workspace. My IDE choice is either Sublime Text or IntelliJ IDEA and I&#8217;m focusing on these two. Additionally, I&#8217;ve setup the working environment, auto reloading the browser (as the ultimate runtime environment of my JavaScript experimentations).</p>
+</div>
+</div>
 </div>
 <div class="sect1">
 <h2 id="prerequisite">Prerequisite</h2>
@@ -119,7 +123,7 @@
 <p>There is well documented TypeScript support for IntelliJ IDEA, which can be installed from the <a href="https://www.jetbrains.com/idea/help/typescript-support.html">JetBrains plugin repository</a>. Obviously it required <em>node</em> to be installed and enabled.</p>
 </div>
 <div class="paragraph">
-<p>I&#8217;ve installed the plugin, but I&#8217;ve disabled the compiler (the checkbox 'Enable TypeScript Compiler'). As described in link:{% post_url posts/2016-01-31-typescript-getting-started %}[in the previous part] I "embedded the transpiler" into the browser and evaluated the <code>&#42;.ts</code> files directly. How the plugin worked for me was syntax colouring and hints. Additionally I could have made my IDE generate JavaScript files together with the sourcemaps (for both IDEA as well as Sublime Text), but I felt it a bit unnatural, too tightly coupled to the IDE. That was something to avoid, to be solved by the build scripts directly on my CI server. Later on.</p>
+<p>I&#8217;ve installed the plugin, but I&#8217;ve disabled the compiler (the checkbox 'Enable TypeScript Compiler'). As described in <a href="/posts/2016/01/31/typescript-getting-started/">in the previous part</a> I "embedded the transpiler" into the browser and evaluated the <code>&#42;.ts</code> files directly. How the plugin worked for me was syntax colouring and hints. Additionally I could have made my IDE generate JavaScript files together with the sourcemaps (for both IDEA as well as Sublime Text), but I felt it a bit unnatural, too tightly coupled to the IDE. That was something to avoid, to be solved by the build scripts directly on my CI server. Later on.</p>
 </div>
 </div>
 </div>
@@ -178,7 +182,7 @@ liveReload {
 <p>This however brings some limitations. As I use vanilla TypeScript and do an in-browser transpilation - that involves additional AJAX calls by the <code>transpiler.js</code> script. When the protocol is set to <em>file://</em> some browsers forbid it for security reasons (like Chrome) some don&#8217;t really care (hello Firefox).</p>
 </div>
 <div class="paragraph">
-<p>For browsers like Chrome we need to expose our content as a basic HTTP server. For me, the simplest HTTP static server link:{% post_url posts/2016-01-31-typescript-getting-started %}[from the previous part] (<code>php -S localhost:8080 -t {docRoot}</code>) did the trick. I know I could have taken some basic HTTP server from node world (like express) and wrap everything in typical JavaScript stack. That will work as well, but my intention so far is to minimize elements not natural (unknown and unfamiliar) for a typical JVM developer. I&#8217;ll get to the <code>nodemon</code> later.</p>
+<p>For browsers like Chrome we need to expose our content as a basic HTTP server. For me, the simplest HTTP static server <a href="/posts/2016/01/31/typescript-getting-started/">from the previous part</a> (<code>php -S localhost:8080 -t {docRoot}</code>) did the trick. I know I could have taken some basic HTTP server from node world (like express) and wrap everything in typical JavaScript stack. That will work as well, but my intention so far is to minimize elements not natural (unknown and unfamiliar) for a typical JVM developer. I&#8217;ll get to the <code>nodemon</code> later.</p>
 </div>
 <div class="paragraph">
 <p>This set-up has taken me few steps forward in both understanding how the JS oriented environment might work as well as with grasping the JavaScript goodies on their own. Hope this will work for you as well.</p>

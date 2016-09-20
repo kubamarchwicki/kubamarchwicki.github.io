@@ -5,17 +5,21 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 17 Aug 2016 00:16:14 +0000</pubDate>
-    <lastBuildDate>Wed, 17 Aug 2016 00:16:14 +0000</lastBuildDate>
+    <pubDate>Tue, 20 Sep 2016 20:30:32 +0000</pubDate>
+    <lastBuildDate>Tue, 20 Sep 2016 20:30:32 +0000</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
         <title>GeeCON Reactive 2016 - part II - agenda</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In the previous post I&amp;#8217;ve described the &lt;em&gt;&quot;GeeCON Buzzwords&quot;&lt;/em&gt; approach - have a look if you&amp;#8217;ve missed it: link:{% post_url posts/2016-07-04-reactive-geecon %}[GeeCON Reactive 2016 - in Sopot this September]&lt;/p&gt;
+        <description>&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In the previous post I&amp;#8217;ve described the &lt;em&gt;&quot;GeeCON Buzzwords&quot;&lt;/em&gt; approach - have a look if you&amp;#8217;ve missed it: &lt;a href=&quot;/posts/2016/07/04/reactive-geecon/&quot;&gt;GeeCON Reactive 2016 - in Sopot this September&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Now, it&amp;#8217;s high time to do a deeper dive into the agenda.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;reactive-streams&quot;&gt;Reactive Streams&lt;/h2&gt;
@@ -126,11 +130,13 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
     
       <item>
         <title>GeeCON Reactive 2016 - in Sopot this September</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;strong&gt;Update 2016-08-01&lt;/strong&gt;. This is the first part of a two part series. Read the agenda follow up part: link:{% post_url posts/2016-08-01-reactive-geecon-part-ii %}[GeeCON Reactive 2016 - part II - Agenda]&lt;/p&gt;
-&lt;/div&gt;
+        <description>&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;It has been official since the big GeeCON in May in Kraków: we are doing another GeeCON event in Sopot. AGAIN!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;Update 2016-08-01&lt;/strong&gt;. This is the first part of a two part series. Read the agenda follow up part: &lt;a href=&quot;/posts/2016/08/01/reactive-geecon-part-ii/&quot;&gt;GeeCON Reactive 2016 - part II - Agenda&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;blockquote class=&quot;twitter-tweet&quot; align=&quot;center&quot;&gt;&lt;p&gt;So it's official, there is no way back. &lt;a href=&quot;https://twitter.com/hashtag/geecon?src=hash&quot;&gt;#geecon&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/reactive?src=hash&quot;&gt;#reactive&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/sopot?src=hash&quot;&gt;#sopot&lt;/a&gt; will take place on 9th of September 2016&lt;/p&gt;— jakub marchwicki (@kubem) &lt;a href=&quot;https://twitter.com/kubem/status/731127144265453568&quot;&gt;May 13, 2014&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
@@ -143,11 +149,13 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;So what&amp;#8217;s this year about? You guessed right - this year&amp;#8217;s theme is &lt;strong&gt;reactive&lt;/strong&gt; and we are bringing the &lt;a href=&quot;http://2016.reactive.geecon.org&quot;&gt;GeeCON Reactive&lt;/a&gt; to the GeeCON family.&lt;/p&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;a-single-track&quot;&gt;A single track&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;http://2016.reactive.geecon.org/&quot;&gt;GeeCON Reactive&lt;/a&gt; is a single day, single track conference. link:{% post_url posts/2015-08-05-microservice-geecon %}#a-single-track[As it was last year], for exactly the same reasons: our ambition wasn&amp;#8217;t to bring you largest number of speakers, enormous amount of tracks. The rationale was different: focus on a single topic and cover it from multiple perspectives.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://2016.reactive.geecon.org/&quot;&gt;GeeCON Reactive&lt;/a&gt; is a single day, single track conference. &lt;a href=&quot;/posts/2015/08/05/microservice-geecon/#a-single-track&quot;&gt;As it was last year&lt;/a&gt;, for exactly the same reasons: our ambition wasn&amp;#8217;t to bring you largest number of speakers, enormous amount of tracks. The rationale was different: focus on a single topic and cover it from multiple perspectives.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -215,8 +223,12 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
     
       <item>
         <title>TypeScript: Setting up an IDE and working environment - part II</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
+        <description>&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;I&amp;#8217;ve been trying the &lt;a href=&quot;http://atom.io&quot;&gt;Atom Editor&lt;/a&gt; multiple times, trying to switch from Sublime (my default text editing environment). I always found it not mature enough. I&amp;#8217;ve recently given it another try - this time successfully. So it&amp;#8217;s time for the plugin setup of my TypeScript IDE.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;it-s-all-about-plugins&quot;&gt;It&amp;#8217;s all about plugins&lt;/h2&gt;
@@ -258,8 +270,12 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
     
       <item>
         <title>TypeScript: Setting up an IDE and working environment</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
+        <description>&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;This episode is pretty straight forward: configuring the workspace. My IDE choice is either Sublime Text or IntelliJ IDEA and I&amp;#8217;m focusing on these two. Additionally, I&amp;#8217;ve setup the working environment, auto reloading the browser (as the ultimate runtime environment of my JavaScript experimentations).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;prerequisite&quot;&gt;Prerequisite&lt;/h2&gt;
@@ -296,7 +312,7 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
 &lt;p&gt;There is well documented TypeScript support for IntelliJ IDEA, which can be installed from the &lt;a href=&quot;https://www.jetbrains.com/idea/help/typescript-support.html&quot;&gt;JetBrains plugin repository&lt;/a&gt;. Obviously it required &lt;em&gt;node&lt;/em&gt; to be installed and enabled.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;ve installed the plugin, but I&amp;#8217;ve disabled the compiler (the checkbox 'Enable TypeScript Compiler'). As described in link:{% post_url posts/2016-01-31-typescript-getting-started %}[in the previous part] I &quot;embedded the transpiler&quot; into the browser and evaluated the &lt;code&gt;&amp;#42;.ts&lt;/code&gt; files directly. How the plugin worked for me was syntax colouring and hints. Additionally I could have made my IDE generate JavaScript files together with the sourcemaps (for both IDEA as well as Sublime Text), but I felt it a bit unnatural, too tightly coupled to the IDE. That was something to avoid, to be solved by the build scripts directly on my CI server. Later on.&lt;/p&gt;
+&lt;p&gt;I&amp;#8217;ve installed the plugin, but I&amp;#8217;ve disabled the compiler (the checkbox 'Enable TypeScript Compiler'). As described in &lt;a href=&quot;/posts/2016/01/31/typescript-getting-started/&quot;&gt;in the previous part&lt;/a&gt; I &quot;embedded the transpiler&quot; into the browser and evaluated the &lt;code&gt;&amp;#42;.ts&lt;/code&gt; files directly. How the plugin worked for me was syntax colouring and hints. Additionally I could have made my IDE generate JavaScript files together with the sourcemaps (for both IDEA as well as Sublime Text), but I felt it a bit unnatural, too tightly coupled to the IDE. That was something to avoid, to be solved by the build scripts directly on my CI server. Later on.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -355,7 +371,7 @@ liveReload {
 &lt;p&gt;This however brings some limitations. As I use vanilla TypeScript and do an in-browser transpilation - that involves additional AJAX calls by the &lt;code&gt;transpiler.js&lt;/code&gt; script. When the protocol is set to &lt;em&gt;file://&lt;/em&gt; some browsers forbid it for security reasons (like Chrome) some don&amp;#8217;t really care (hello Firefox).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;For browsers like Chrome we need to expose our content as a basic HTTP server. For me, the simplest HTTP static server link:{% post_url posts/2016-01-31-typescript-getting-started %}[from the previous part] (&lt;code&gt;php -S localhost:8080 -t {docRoot}&lt;/code&gt;) did the trick. I know I could have taken some basic HTTP server from node world (like express) and wrap everything in typical JavaScript stack. That will work as well, but my intention so far is to minimize elements not natural (unknown and unfamiliar) for a typical JVM developer. I&amp;#8217;ll get to the &lt;code&gt;nodemon&lt;/code&gt; later.&lt;/p&gt;
+&lt;p&gt;For browsers like Chrome we need to expose our content as a basic HTTP server. For me, the simplest HTTP static server &lt;a href=&quot;/posts/2016/01/31/typescript-getting-started/&quot;&gt;from the previous part&lt;/a&gt; (&lt;code&gt;php -S localhost:8080 -t {docRoot}&lt;/code&gt;) did the trick. I know I could have taken some basic HTTP server from node world (like express) and wrap everything in typical JavaScript stack. That will work as well, but my intention so far is to minimize elements not natural (unknown and unfamiliar) for a typical JVM developer. I&amp;#8217;ll get to the &lt;code&gt;nodemon&lt;/code&gt; later.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;This set-up has taken me few steps forward in both understanding how the JS oriented environment might work as well as with grasping the JavaScript goodies on their own. Hope this will work for you as well.&lt;/p&gt;
@@ -375,8 +391,12 @@ liveReload {
     
       <item>
         <title>TypeScript: Getting started</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
+        <description>&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;So TypeScript&amp;#8230;&amp;#8203; Matters got serious and I decided to further explore the idea of polyglot programming - embracing the frontend development. There is a lot of happening in the backend in the JVM world, but there is as much happening in the browser. I know most of 'backend people' just laugh at the speed new JavaScript frameworks appear (and disappear) but I wanted to tackle the matter seriously.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;betting-on-typescript&quot;&gt;Betting on TypeScript&lt;/h2&gt;
@@ -609,7 +629,9 @@ main.hello();&lt;/code&gt;&lt;/pre&gt;
     
       <item>
         <title>Get your XSD documentation as a part of build process</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
+        <description>&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;I&amp;#8217;ve started this as a &lt;a href=&quot;http://stackoverflow.com/questions/32106133/xsd-documentation-as-a-part-of-build-process&quot;&gt;stackoverflow question&lt;/a&gt;:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;quoteblock&quot;&gt;
@@ -633,6 +655,8 @@ main.hello();&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;This can be pretty easy achievable with OxygenXML Editor&amp;#8217;s &lt;em&gt;schemaDocumentation.sh&lt;/em&gt; script, however it requires OxygenXML installed on your build environment, which is something I&amp;#8217;d tend to avoid (I generally avoid having build dependent on the environment beyond just JVM; if build needs something I want it to download it for itself).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;tools&quot;&gt;Tools&lt;/h2&gt;
@@ -976,7 +1000,9 @@ schemaFiles.each { pageName -&amp;gt;
     
       <item>
         <title>GeeCON Microservices - in Sopot this September</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
+        <description>&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;This post is kind of brought by &lt;a href=&quot;https://twitter.com/LAFK_pl/&quot;&gt;Tomek Borek&lt;/a&gt; and an inspiration coming from his &lt;a href=&quot;https://lafkblogs.wordpress.com/2015/08/05/reasons-why-i-believe-geecon-microservices-will-be-good/&quot;&gt;reasons why I believe GeeCON Microservices will be good&lt;/a&gt; post.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -984,6 +1010,8 @@ schemaFiles.each { pageName -&amp;gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;A friend of mine (after reviewing this post) said I should&amp;#8217;ve made the title more marketable, like: &quot;I&amp;#8217;ll reveal some insider&amp;#8217;s knowledge about building the conference agenda and some of the talks&quot;. Well, you can treat it as such.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;a-single-track&quot;&gt;A single track&lt;/h2&gt;
@@ -1117,8 +1145,12 @@ As a regular conference attendee I struggle with that, always puzzled which talk
     
       <item>
         <title>Wrapping Maven distribution together with a project</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
+        <description>&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;There are few things that I&amp;#8217;ve been missing in Maven, that are available in Gradle out of the box (and no, I don&amp;#8217;t want to start a holy Gradle vs. Maven war). One of those was a Gradle wrapper; I wanted to create projects which are pretty environment agnostic and download whatever needed straight form the internet. While the build and dependency management tools do their job I was always struggling with the dependency management itself. Until now.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;but-why&quot;&gt;But why?&lt;/h2&gt;
@@ -1306,8 +1338,12 @@ I&amp;#8217;ve gradually lost interest in any other build tools ;-)&lt;/p&gt;
     
       <item>
         <title>Characterize your legacy with junit</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is a blog post with is a longer read to my &lt;a href=&quot;http://2015.tdd.geecon.org/&quot;&gt;GeeCON TDD 2015&lt;/a&gt; lightning talk presentation: link:{% post_url speaking/2015-01-30-geecon-tdd %}[Characterize your legacy with jUnit Rules]&lt;/p&gt;
+        <description>&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is a blog post with is a longer read to my &lt;a href=&quot;http://2015.tdd.geecon.org/&quot;&gt;GeeCON TDD 2015&lt;/a&gt; lightning talk presentation: &lt;a href=&quot;/speaking/2015/01/30/geecon-tdd/&quot;&gt;Characterize your legacy with jUnit Rules&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;what-are-characterization-tests-and-why-cared&quot;&gt;What are characterization tests and why cared?&lt;/h2&gt;
@@ -1664,8 +1700,15 @@ line: &amp;lt;3&amp;gt;, expected:&amp;lt;something&amp;gt; but was:&amp;lt;some
     
       <item>
         <title>Java EE persistence without JPA</title>
-        <description>&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Regulary during JavaEE trainings I conduct a question is raised: is there persistence beyond JPA. Java Persistence API is a standard on every application server; it isn&amp;#8217;t bad - it&amp;#8217;s valid for certain use cases. Nonetheless, I regulary see a need to go beyond that. That&amp;#8217;s the reason I decided to build up &lt;a href=&quot;https://github.com/kubamarchwicki/jOOQ-javaee-example/&quot;&gt;this example&lt;/a&gt;. It shows basic configuration for jOOQ on a JavaEE 7 compliant application server (was tested with Wildfly 8.x). I will not focus on why jOOQ was chosen - it could have been any other persistence provider of you favour. This post will tackle few (three) elements of JavaEE spec which (in my opinion) were important;  handy when implementing a non JPA based &quot;database handling&quot; libraries&lt;/p&gt;
+        <description>&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Regularly during JavaEE trainings I conduct a question is raised: is there persistence beyond JPA. Java Persistence API is a standard on every application server; it isn&amp;#8217;t bad - it&amp;#8217;s valid for certain use cases.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Nonetheless, I regularly see a need to go beyond that. That&amp;#8217;s the reason I decided to build up &lt;a href=&quot;https://github.com/kubamarchwicki/jOOQ-javaee-example/&quot;&gt;this example&lt;/a&gt;. It shows basic configuration for jOOQ on a JavaEE 7 compliant application server (was tested with Wildfly 8.x). I will not focus on why jOOQ was chosen - it could have been any other persistence provider of you favour. This post will tackle few (three) elements of JavaEE spec which (in my opinion) were important;  handy when implementing a non JPA based &quot;database handling&quot; libraries&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
 &lt;h2 id=&quot;resource-producers&quot;&gt;Resource producers&lt;/h2&gt;
