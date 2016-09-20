@@ -16,9 +16,9 @@ In this session I aim to fall back to design 101; take some design principles an
 The feedback after GET.NET 2014 surveys conference in Gdańsk
 
 * "Theoretically, the subject is nothing new. Theoretically everybody read Martin's book. Still presentation was interesting, comparison to designing UI was good. I liked it"
-* "A very good, easygoing presentation, very approachable. It was clear speaker is an experienced person, knows what's he's talking about. Quite a few valuable "soft" insights (for examples which books to read to get better in programming)".
+* "A very good, easy going presentation, very approachable. It was clear speaker is an experienced person, knows what's he's talking about. Quite a few valuable "soft" insights (for examples which books to read to get better in programming)".
 * "Interesting subject with a charismatic presenter"
-* "We wereexpecting more code!! But still it was very nice to listen ;)"
+* "We were expecting more code!! But still it was very nice to listen ;)"
 * "Jakub is a great speaker, feeling easy talking to a bigger audience - funny, good contact with the group"
 
 === Videos

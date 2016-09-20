@@ -1,0 +1,8 @@
+= {title}
+:title: GeeCON Prague 2016
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2016-10-20, Prague, Czech Republic
+:page-file-location:  _posts/speaking/topics/javascript-without-nodejs.adoc
+
+include::{page-file-location}[]

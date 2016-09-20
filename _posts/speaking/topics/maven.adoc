@@ -1,0 +1,17 @@
+:title: Maven - your ultimate CD tool
+:subtitle: We love new tools, but there are these, oldie but goldie. They do their job - so why not explore it further; Maven as a Continuous Delivery tool.
+
+== {title}
+
+> {subtitle}
+
+=== Abstract
+
+Maven. Everybody uses it. Everybody hates it (classic love hate relationship).
+Embracing it ain't easy - but once done, it becomes a golden hammer.
+
+This title is a bit flame'ish - for a reason.
+In this showcase session I'll complete a continuous delivery pipeline of a multi module project with pure Maven (+ plugins).
+Once that is done - adding a Jenkins (I mean a scheduler) is as easy as 1-2-3.
+
+So if you've been using Maven a bit but never gave it enough time - this is a talk for you!

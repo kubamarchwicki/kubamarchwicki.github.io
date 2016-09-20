@@ -1,0 +1,9 @@
+= {title}
+:title: JDD 2016
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2016-10-10, Kraków, Poland
+:page-link: https://16.jdd.org.pl
+:page-file-location:  _posts/speaking/topics/winning-javaee-back.adoc
+
+include::{page-file-location}[]

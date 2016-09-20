@@ -1,0 +1,9 @@
+= {title}
+:title: Code Europe 2016
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2016-12-05, Kraków, Poland
+:page-link: http://codeeurope.pl/
+:page-file-location:  _posts/speaking/topics/12-things-better-with-java8.adoc
+
+include::{page-file-location}[]
