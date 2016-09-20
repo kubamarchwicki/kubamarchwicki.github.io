@@ -7,6 +7,7 @@ url: "http://jakub.marchwicki.pl"
 twitter_username: kubem
 github_username: kubamarchwicki
 linkedin_username: kubamarchwicki
+future: true
 
 gems:
   - jekyll-redirect-from
@@ -18,9 +19,6 @@ analytics:
 # Build settings
 markdown: kramdown
 permalink: pretty
-
-asciidoc: asciidoctor
-asciidoc_ext: asciidoc,adoc,ad
 
 static_pages:
 #  - title: Consultancy
