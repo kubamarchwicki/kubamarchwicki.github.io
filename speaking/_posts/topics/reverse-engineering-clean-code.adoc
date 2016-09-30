@@ -26,6 +26,9 @@ The feedback after GET.NET 2014 surveys conference in Gdańsk
 .GeeCON 2014 - lightning talk
 video::100219607[vimeo, width=640, height=480]
 
+.Voxxed Belgrade 2016 - 60 minutes version of the talk
+video::OvMvpSvlDbo[youtube, width=640, height=480, start=2h37m30s]
+
 === Additional resources
 
 * https://speakerdeck.com/kubamarchwicki/reverse-engineering-the-clean-code[PDF Slides]
