@@ -11,7 +11,7 @@ title: All speaking
 {% capture speakingTime %}{{ post.speakingDate | date: "%s" }}{% endcapture %}
 {% capture directive %}include::{{post.file-location}}[lines=1..2]{% endcapture %}
 {% if speakingTime > currentTime %}[role=forthcoming]{% endif %}
-{{ directive | asciidocify }}
+{{ directive | asciidocify: 'inline' }}
 
   <div class="sectionbody">
     <div class="ulist speakinglist">

@@ -27,7 +27,7 @@ The feedback after GET.NET 2014 surveys conference in Gdańsk
 video::100219607[vimeo, width=640, height=480]
 
 .Voxxed Belgrade 2016 - 60 minutes version of the talk
-video::OvMvpSvlDbo[youtube, width=640, height=480, start=2h37m30s]
+video::_7G47EeyaXQ[youtube, width=640, height=480]
 
 === Additional resources
 

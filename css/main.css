@@ -229,6 +229,10 @@ a:visited { color: #205caa; }
 /* Consultancy styles */
 /* ----------------------------------------------------------*/
 
+.ident {
+  padding-left: 1em;
+}
+
 .offer .mugshot {
     width:150px;
     height:150px;

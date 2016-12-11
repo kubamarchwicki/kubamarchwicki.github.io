@@ -44,3 +44,84 @@ Testimonials:
 * http://namiekko.pl/2016/04/14/o-roznicy-pomiedzy-konferencja-naukowa-a-programistyczna-czyli-wyprawilam-sie-zdzieckiem-i-mezem-na-4developers/
 
 ////
+
+////
+## Outline
+
+As outined in the description, this presentation will walk through multiple libraries that can help you change your project from "This is The Standard Even If It Doesn't Fit" way to a something far more approachable.
+
+In details:
+* Know your stack; recap of things that are supported by most vendors, but still not present in many projects: async processing (without JMS), events and observables, standardized dependency injection
+* Limit the boiler plate - introduction of Apache DeltaSpike (CDI extensions)
+* Go beyond The Standard (not only JPA) - persistence with jOOQ or jDBI (or other popular libs) smoothly integrated in JEE environment
+* Web beyond JSF. MVC part of spec. Integrating other web frameworks. Web without server side frameworks
+* Smooth integration with other modern goodies (nodejs development), cause we always need to lookup old stuff
+* Don't be limited to server-side MVC or JSF, or Servlets; managing UI through single page applications or MVC 1.0
+
+## Outline.
+
+These are topic I'd like to tackle.
+
+* Fixed asynchronous without JMS (@Asynchronous annotation, Executors) - coming out from old-days threads hacks
+* Data access layer: while JPA is good, it's not good for everything. JOOQ, jDBI and others smoothly integrated in JEE environment
+* Web beyond JSF. MVC part of spec. Integrating other web frameworks. Web without server side frameworks
+* Smooth integration with other modern goodies, cause we always need to lookup old stuff
+
+## Various
+
+Templates Mustache
+
+* https://github.com/spullara/mustache.java
+* Mustache: https://github.com/spullara/mustache.java - just for templating
+* https://jknack.github.io/handlebars.java/loader.html
+*     http://stackoverflow.com/questions/30110342/how-to-create-a-restful-application-using-jersey-and-mustache-template-engine
+
+Templates Thymeleaf
+
+* http://spring-java-ee.blogspot.com/2014/12/trying-thymeleaf-for-one-day-why-is-it.html
+* https://dzone.com/articles/thymeleaf-with-javaee-8
+
+MVC 1.0
+
+* http://forum.thymeleaf.org/MVC-1-0-Java-EE-8-Thymeleaf-td4029067.html
+* http://vytas.io/blog/java/Java-EE-8-MVC-with-Ozark-and-Apache-Tomcat/
+* http://squeakytech.blogspot.de/2015/03/getting-started-with-jee-8-mvc.html
+
+Stateless MVC for JavaEE
+
+* https://struts.apache.org/docs/cdi-plugin.html
+
+## So you think standards will save you - on differences between JEE containers
+
+* injections in servlets (@EJB vs @Inject)
+* injection of validator (@Inject vs @Resource)
+* JSON (jettison vs jackson)
+  - output message. arrays vs objects
+  - @JsonIgnore
+
+* JAX-RS -> configuration in Glasshfish, JBoss7
+  * simlar to persistence.xml - we treat web.xml as a similar configuration
+   XML is Java DSL afterall
+
+* wiring multiple EJB with the same interface (open ejb vs jboss) - CDI standardization
+* JNDI tree (JEE6 standarisation java:global/[artifact]/[beanname]
+
+* Timer. 5 seconds is not 5 seconds
+* Stateful vs Stateless and pool implementation https://github.com/javaee-samples/javaee7-samples/issues/205#issuecomment-38309429
+* EntityManager injection
+
+```
+
+    @PersistenceContext(unitName = "JPA_DB4B_LOCAL")
+    EntityManager em;  //weblogic
+
+    @PersistenceContext
+    EntityManager em;  //anywhere else
+```
+
+
+Cat pictures 
+
+http://i.giphy.com/Ov5NiLVXT8JEc.gif
+
+////

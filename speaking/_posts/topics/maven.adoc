@@ -15,3 +15,17 @@ In this showcase session I'll complete a continuous delivery pipeline of a multi
 Once that is done - adding a Jenkins (I mean a scheduler) is as easy as 1-2-3.
 
 So if you've been using Maven a bit but never gave it enough time - this is a talk for you!
+
+
+////
+This talk is based on multiple training sessions, where I was introducing Maven to both developers teams as well as ops teams.
+
+The session is a live coding (ekhmmm - live XMLing) session where I Mavenizing different elements of a project.
+
+1. Simple WAR assembly
+2. Using resources and Servlet 3.0 spec to combine frontend (JS / node) with an application
+3. local / remote deployments
+4. integration testing
+5. release / distribution management
+6. docker'zing the application (as a part of Maven lifecycle)
+////
