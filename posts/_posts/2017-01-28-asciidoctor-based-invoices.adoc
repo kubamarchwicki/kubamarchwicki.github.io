@@ -1,0 +1,148 @@
+= {title}
+:title: Asciidoctor based invoices
+:page-layout: post
+:page-categories: [posts]
+:page-excerpt: Invoicing seem easy, so why shouldn't I do my own template with Asciidoctor and take it from there. Because, there are so many other things to do when you start your own company.
+
+This is something I've been thinking for a while, but link:https://jezenthomas.com/how-i-write-invoices-in-vim/[this idea by Jezen] go me going. As Jezen nicely put it:
+
+[quote]
+____
+Since starting my own company back in April, I’ve had to piece together some fairly mundane business boilerplate, e.g., invoices, at the end of each month.
+
+I think people typically use something from Microsoft Office for this, or maybe some online invoicing web application, but I’m quite happy to stay in the land of Vim for these tasks.
+____
+
+== Planning
+
+.Requirements
+Before I event started planning I needed to figure out what information are essential for an invoice. This differs from county to country so the list is Poland specific (a I assume fairly overcomplicated compared to British or American invoices):
+
+- [x] invoice date
+- [x] consecutive number, based on one or more series which genuinely identifies an invoice
+- [x] names of both seller and customer, with addresses and tax identification numbers (ie. VAT numbers)
+- [x] date when goods or services were delivered (or date of receiving money when the service was prepaid)
+- [x] name of goods or services
+- [x] quantity (together with a measure - like a single piece)
+- [x] unit price
+- [x] discounts (if applicable or not included in the unit price)
+- [x] the overall value of goods or services (without taxes); unit price _times_ quantity
+- [x] VAT tax rate
+- [x] the overall net value (all positions), divided by the tax rates
+- [x] the overall tax amount (all positions), divided by the tax rates
+- [x] the overall-overall (so everything)
+
+Whew - pretty complex. However, for the sake of my own invoices, where I always have a single position with a single tax rate - there is a change I can simplify it a bit.
+
+.Ingredients
+When done with requirements I can finally start doing the fun stuff - playing with Asciidoctor. I've split my work into few steps:
+
+* *Asciidoctor template*: an `.adoc` file with the structure of the document footnote:[http://asciidoctor.org/docs/user-manual/]
+* *Styling*: I've focused only on PDF styling with Asciidoctor PDF footnote:[https://github.com/asciidoctor/asciidoctor-pdf/]
+* *Source files*: easy consumable, human readable files with invoice details
+* *Runner*: a groovy script to glue it all together and run the thing
+
+== Implementation
+
+.Source files
+I've started with a draft of source file, which was YAML in my case. With a structure more or less like this:
+
+[source, yaml]
+----
+invoice-number: FV/0001/2017
+status: paid
+date: 2017-01-31
+due-date: 2017-02-06
+client: |
+  My Precious customer
+  TAX nb: 123456789
+positions:
+  - element: Writing lot of code
+    quantity: 1
+    unit-price: 100
+    tax: 23%
+notes: ""
+----
+
+This is obviously not enough for an invoice to be complete (especially under polish law regulations). So I needed some additional logic to calculate sums, amounts, parse dates etc.
+
+.Groovy runner
+I went for a simple Groovy script. Under no means I'm a Groovy expert, but friction less dependency management (with http://docs.groovy-lang.org/latest/html/documentation/grape.html[grapes]), integration with Asciidoctor (through asciidoctorj) and ability to run everything in the command line through a single file.
+
+While Asciidoctor is Ruby based and Rake might have seemed natural, I'm even worse at  Ruby.
+
+The script has grown up to 150 lines of code; more that I've expected - but that's mostly because I'm not very proficient with Groovy syntactic sugar. That's also the reason why I'm not sharing the script - I need to work on that.
+
+Calling Asciidoctor is actually dead simple
+
+[source, groovy]
+----
+Invoice invoiceData = Invoice.fromFile(inputFile) //<1>
+
+def attributes = attributes()
+        .attribute('pdf-stylesdir', 'template/themes')
+        .attribute('pdf-style', 'basic.yml')  //<2>
+        .attribute('nofooter')
+        .attributes(invoiceData.asMap)
+        .asMap()
+
+Asciidoctor asciidoctor = create()
+asciidoctor.convertFile(
+        new File('template/template.adoc'), //<3>
+        options()
+          .attributes(attributes)
+          .toFile(Paths.get('build', outputFile).toFile())
+          .backend('pdf')
+          .get())
+----
+<1> This is where I load YAML into a map-like structure
+<2> Slight enhancements to the basic asciidoctor-pdf theme
+<3> Invoking actual conversion based on my template file.
+
+Rest of the script was validing input and some (most) of additional logic related to calculating different values required on the invoice.
+
+.Asciidoctor template
+The template sounded fairly simple, though there is a number of Asciidoctor and asciidotor-pdf design decisions (or limitations) which needed workarounds. These included more complex attributes types (lists for example) or elements positioning in PDF (align to right).
+
+Therefore, some parts of the template looked a bit ugly, like the following one.
+
+[source, txt]
+.Mitigating lack of loop-control
+----
+\ifdef::position-0-element[]
+| {position-0-element}
+| {position-0-quantity} szt
+| {position-0-unit-price}
+| {position-0-position-total}
+| {position-0-position-tax}
+| {position-0-position-total-gross}
+| {position-0-tax}
+\endif::[]
+
+\ifdef::position-1-element[]
+| {position-1-element}
+| {position-1-quantity} szt
+| {position-1-unit-price}
+| {position-1-position-total}
+| {position-1-position-tax}
+| {position-1-position-total-gross}
+| {position-1-tax}
+\endif::[]
+----
+
+Thanks fully, most of my invoiced have a single position, with a single tax rate, which made my life a bit easier and I didn't need to make the template too generic.
+
+There were also few issues with including subsections, defining attributes within a template etc. Asciidoctor-pdf is still in _alpha_ phase and I can imagine I've stretched it a bit to its limits.
+
+.Theming
+That's actually one of the most awesome parts of asciidoctor-pdf. A YAML based file which defines a number of attributes which impacts the way the PDF looks and feels. Changing fonts, sizes, colors as as easy as 1-2-3 and neatly detailed in the theming guide footnote:[https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc].
+
+== So why I've done it?
+
+I could've used one of millions invoicing software (offered even for free, in the cloud). True.
+
+But I didn't. I had funny and geeky evening exploring the ecosystem of Asciidoctor. It was definitely worth it!
+
+I must say I like the overall effect
+
+image::/assets/2017-01-28-asciidoctor-based-invoices-8a844.png[]
