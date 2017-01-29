@@ -4,7 +4,7 @@
 :page-categories: [posts]
 :page-excerpt: Invoicing seem easy, so why shouldn't I do my own template with Asciidoctor and take it from there. Because, there are so many other things to do when you start your own company.
 
-This is something I've been thinking for a while, but link:https://jezenthomas.com/how-i-write-invoices-in-vim/[this idea by Jezen] go me going. As Jezen nicely put it:
+This is something I've been thinking for a while, but link:https://jezenthomas.com/how-i-write-invoices-in-vim/[this idea by Jezen] got me going. As Jezen nicely put it:
 
 [quote]
 ____
@@ -16,7 +16,7 @@ ____
 == Planning
 
 .Requirements
-Before I event started planning I needed to figure out what information are essential for an invoice. This differs from county to country so the list is Poland specific (a I assume fairly overcomplicated compared to British or American invoices):
+Before I even started planning, I needed to figure out some essential information required on an invoice. This differs from county to country so the list is Poland specific (a I assume fairly overcomplicated compared to British or American invoices - well):
 
 - [x] invoice date
 - [x] consecutive number, based on one or more series which genuinely identifies an invoice
@@ -32,13 +32,13 @@ Before I event started planning I needed to figure out what information are esse
 - [x] the overall tax amount (all positions), divided by the tax rates
 - [x] the overall-overall (so everything)
 
-Whew - pretty complex. However, for the sake of my own invoices, where I always have a single position with a single tax rate - there is a change I can simplify it a bit.
+Whew - pretty complex. However, for the sake of my own invoices, where I always have a single position with a single tax rate - there is a chance I can simplify it a bit.
 
 .Ingredients
-When done with requirements I can finally start doing the fun stuff - playing with Asciidoctor. I've split my work into few steps:
+When done with the _requirements_ I can finally start doing the fun stuff - playing with Asciidoctor. I've split my work into few steps:
 
 * *Asciidoctor template*: an `.adoc` file with the structure of the document footnote:[http://asciidoctor.org/docs/user-manual/]
-* *Styling*: I've focused only on PDF styling with Asciidoctor PDF footnote:[https://github.com/asciidoctor/asciidoctor-pdf/]
+* *Styling*: I only needed a PDF, so Asciidoctor PDF theming guide footnote:[https://github.com/asciidoctor/asciidoctor-pdf/]
 * *Source files*: easy consumable, human readable files with invoice details
 * *Runner*: a groovy script to glue it all together and run the thing
 
@@ -67,13 +67,17 @@ notes: ""
 This is obviously not enough for an invoice to be complete (especially under polish law regulations). So I needed some additional logic to calculate sums, amounts, parse dates etc.
 
 .Groovy runner
-I went for a simple Groovy script. Under no means I'm a Groovy expert, but friction less dependency management (with http://docs.groovy-lang.org/latest/html/documentation/grape.html[grapes]), integration with Asciidoctor (through asciidoctorj) and ability to run everything in the command line through a single file.
+I went with Groovy. Under no means I'm a Groovy expert, but there were a few quick wins with Groovy:
 
-While Asciidoctor is Ruby based and Rake might have seemed natural, I'm even worse at  Ruby.
+* frictionless dependency management (with http://docs.groovy-lang.org/latest/html/documentation/grape.html[grapes]),
+* integration with Asciidoctor (through asciidoctorj),
+* ability to run everything in the command line through a single file.
+
+While Asciidoctor is Ruby based and Rake might have seemed natural - I'm even worse at  Ruby.
 
 The script has grown up to 150 lines of code; more that I've expected - but that's mostly because I'm not very proficient with Groovy syntactic sugar. That's also the reason why I'm not sharing the script - I need to work on that.
 
-Calling Asciidoctor is actually dead simple
+Calling Asciidoctor from Groovy is actually dead simple.
 
 [source, groovy]
 ----
@@ -99,12 +103,12 @@ asciidoctor.convertFile(
 <2> Slight enhancements to the basic asciidoctor-pdf theme
 <3> Invoking actual conversion based on my template file.
 
-Rest of the script was validing input and some (most) of additional logic related to calculating different values required on the invoice.
+Rest of the script was validating the input and some (most) of additional logic related to calculating different values required on the invoice.
 
 .Asciidoctor template
-The template sounded fairly simple, though there is a number of Asciidoctor and asciidotor-pdf design decisions (or limitations) which needed workarounds. These included more complex attributes types (lists for example) or elements positioning in PDF (align to right).
+Initially the template sounded fairly simple, though there is a number of Asciidoctor and asciidotor-pdf design decisions (or limitations) which needed workarounds. These included more complex attributes types (like lists / maps) or elements positioning in PDF (align to right).
 
-Therefore, some parts of the template looked a bit ugly, like the following one.
+Therefore, some parts of the template looked a weird, like this one.
 
 [source, txt]
 .Mitigating lack of loop-control
@@ -130,19 +134,19 @@ Therefore, some parts of the template looked a bit ugly, like the following one.
 \endif::[]
 ----
 
-Thanks fully, most of my invoiced have a single position, with a single tax rate, which made my life a bit easier and I didn't need to make the template too generic.
+I wrote it already: most of my invoiced have a single position and a single tax rate, which makes my life a bit easier and I didn't need to make the template too generic.
 
-There were also few issues with including subsections, defining attributes within a template etc. Asciidoctor-pdf is still in _alpha_ phase and I can imagine I've stretched it a bit to its limits.
+There were also few issues with including subsections, defining attributes within a template etc. Asciidoctor-pdf is still in _alpha_ phase and I can imagine I've stretched it a bit to its limits. I've promised myself to document it with example and see how it should really work.
 
 .Theming
-That's actually one of the most awesome parts of asciidoctor-pdf. A YAML based file which defines a number of attributes which impacts the way the PDF looks and feels. Changing fonts, sizes, colors as as easy as 1-2-3 and neatly detailed in the theming guide footnote:[https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc].
+That's actually one of the most awesome parts of asciidoctor-pdf: a YAML file which defines a number of attributes impacting the look and feel of the PDF. Changing fonts, sizes, colors as easy as 1-2-3 and neatly detailed in the theming guide footnote:[https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc].
+
+That was a huge win!
 
 == So why I've done it?
 
 I could've used one of millions invoicing software (offered even for free, in the cloud). True.
 
-But I didn't. I had funny and geeky evening exploring the ecosystem of Asciidoctor. It was definitely worth it!
-
-I must say I like the overall effect
+But I didn't. I had a funny and geeky evening exploring the ecosystem of Asciidoctor. It was definitely worth it! And must admit, I like the final results.
 
 image::/assets/2017-01-28-asciidoctor-based-invoices-8a844.png[]
