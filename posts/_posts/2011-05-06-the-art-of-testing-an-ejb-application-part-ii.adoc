@@ -6,7 +6,7 @@
 :page-redirect_from: /blog/2011/05/the-art-of-testing-an-ejb-application-part-ii/
 :page-disqus_url: http://www.marchwicki.pl/blog/2011/05/the-art-of-testing-an-ejb-application-part-ii/
 
-link:{% post_url 2011-05-02-the-art-of-testing-an-ejb-application-part-i %}[The previous post on testing was more like an introduction] – now it’s time for some real testing. While I’ve only touched the surface with unit-unit tests, I think functional testing needs a deeper drilling. Here we go!
+link:{% post_url posts/2011-05-02-the-art-of-testing-an-ejb-application-part-i %}[The previous post on testing was more like an introduction] – now it’s time for some real testing. While I’ve only touched the surface with unit-unit tests, I think functional testing needs a deeper drilling. Here we go!
 
 == Service encapsulation
 
