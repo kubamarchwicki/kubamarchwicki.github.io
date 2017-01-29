@@ -14,4 +14,7 @@ rvm:
 
 sudo: false
 
+before_script:
+  - git config --global user.name 'Jekyll'
+  - git config --global user.email ''
 script: JEKYLL_ENV=production bundle exec rake deploy
