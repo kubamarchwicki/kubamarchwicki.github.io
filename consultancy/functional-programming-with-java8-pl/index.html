@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My essential Eclipse plugins : Notepack</title>
+    <title>Programowanie deklaratywne oraz nowe API w Java 8 : Notepack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A randomized pack of notes">
-    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2014/12/01/my-essential-eclipse-plugins/">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/consultancy/functional-programming-with-java8-pl/">
     <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
 
     <!-- Custom CSS -->
@@ -76,97 +76,163 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>My essential Eclipse plugins</h1>
-    <p class="meta">Dec 1, 2014</p>
+    <h1>Programowanie deklaratywne oraz nowe API w Java 8</h1>
+    <p class="meta">Sep 22, 2016</p>
   </header>
 
   <article class="post-content">
-  <div id="preamble">
+  <div class="sect1">
+<h2 id="opis-szkolenia">Opis szkolenia</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Upgrading IDE (Eclipse in this case) is not something you do on daily basis. What is more, I use Eclipse more and more seldomly - mostly for trainings. That&#8217;s why I tend to forget which plugins I actually use (until I&#8217;m missing them and need to remind myself how were they called). As this happened to my just recently (again) I decided to write this post with a list of plugins I find useful (so that I&#8217;ll be able to come back during next upgrade&#8230;&#8203; someday)</p>
+<div class="title">Co zyskasz?</div>
+<p>Szkolenie obejmuje zarówno zmiany w API, podstawy programowania funkcyjnego oraz sposoby wykorzystania nowego sposobu myślenia zarówno w pracy z istniejącym kodem, jak i w nowych aplikacjach. W trakcie warsztatu zapoznasz się ze zmianami w języku, poznasz praktyczne wykorzystanie wyrażeń lambda i strumieni, aż po sposoby refaktoryzacji istniejącego kodu do Javy8 i efektywnego testowania funkcyjnych idiomów.</p>
+</div>
+<div class="paragraph">
+<div class="title">Profil uczestnika</div>
+<p>Szkolenie dedykowane jest dla programistów Java pragnących poznać nowe elementy języka Java wprowadzone wraz z JDK8. Warsztat skupia się na wszystkich zmianach w języku Java oraz jego ewolucji w kierunku funkcyjnym i deklaratywnym. Od uczestników szkolenia wymagane jest minimum kilkuletnie doświadczenie w programowaniu w języku Java.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="baseline">Baseline</h2>
+<h2 id="program-szkolenia">Program szkolenia</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>I recently started with Spring Tool Suite as my baseline. Not that I&#8217;m a Spring fan-boy. I rather consider myself from both churches: Spring and JavaEE; using both stacks as a set of tools to use in an appropriate context.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Wstęp do programowania deklaratywnego</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Konsekwencje współdzielenia stanu</p>
+</li>
+<li>
+<p>Iteracja vs. rekurencja</p>
+</li>
+<li>
+<p>Funkcja jako <em>first-class citizen</em></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Funkcje wyższego rzędu</p>
+</li>
+<li>
+<p><em>Currying</em></p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>I started with STS cause I find it nearly feature complete. It comes with Git, Maven plugins so that I don&#8217;t have to wonder about basics.</p>
+</li>
+<li>
+<p>Lazy data structures</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Wyrażenie lambda</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Zapoznanie ze składnią</p>
+</li>
+<li>
+<p>Interface&#8217;y funkcyjne</p>
+</li>
+<li>
+<p>Referencje do metod</p>
+</li>
+<li>
+<p>Referencje do konstruktorów</p>
+</li>
+<li>
+<p>Programowanie w stylu funkcyjnym w Javie</p>
+</li>
+<li>
+<p>Testowanie funkcji</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Strumienie</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Wprowadzenie do strumieni; kolekcja vs. strumień</p>
+</li>
+<li>
+<p>Operacje pośrednie na strumieniach (filtrowanie, mapowanie)</p>
+</li>
+<li>
+<p>Operacja finalne (redukcja, kolekcja, partycjonowanie)</p>
+</li>
+<li>
+<p>Strumienie współbieżne</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Nowe Date API</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Wprowadzenie do pakietu <code>java.time</code></p>
+</li>
+<li>
+<p>Przetwarzanie czasu</p>
+</li>
+<li>
+<p>Zagadnienia stref czasowych</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Completable Future</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Braki i ograniczenia interfejsu <code>Future&lt;T&gt;</code></p>
+</li>
+<li>
+<p>Reaktywne (nieblokujące) aplikacje wielowątkowe</p>
+</li>
+<li>
+<p>Praca z asynchronicznym kodem: przetwarzanie, transformowanie i składnie rezultatów</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Usprawnienia JDK</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Domyślne implementacje i statyczne metody w interface&#8217;ach</p>
+</li>
+<li>
+<p>Wywoływanie kodu JavaScript z poziomu JVM (silnik Nashorn)</p>
+</li>
+<li>
+<p>Usprawnienia i optymalizacje API (HashMap, Optional, StringJoiner)</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="fiddling-with-the-font-size">Fiddling with the font size</h2>
+<h2 id="zapytaj-o-szkolenie">Zapytaj o szkolenie</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>One of my most important usecases for Eclipse is during delivering a training (Eclipse is my primary IDE then). Hence, an ability to increase the font size is a must. I&#8217;m quite found of using <a href="https://code.google.com/p/tarlog-plugins/">tarlog-plugins</a> - a set of small, but useful, features to Eclipse that are develop for personal Tarlog&#8217;s needs.</p>
-</div>
-<div class="paragraph">
-<p>While there are some other font size plugins like <a href="https://code.google.com/p/eclipse-fonts/">eclipse-fonts</a>, tarlog-plugins just works with every file type (not just text-files)</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="migrating-workspace-settings">Migrating workspace settings</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Again, due to trainings, I quite often setup a new workspace. And migrating settings from one workspace to other is a real pain in the neck. <a href="https://code.google.com/a/eclipselabs.org/p/workspacemechanic/">Workspace Mechanic</a> is something that makes this process really easy.</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-The Workspace Mechanic automates maintenance of your Eclipse environment by tweaking preferences, adding extension locations, and so on.
-</blockquote>
-</div>
-<div class="paragraph">
-<p>And this really saves my day!</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="constant-test-status-preview">Constant test status preview</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Trainings again. Whenever I run a refactoring or TDD session this is a life saver. Being able to constantly view the status of tests - brilliant.</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-Infinitest is a Continuous Testing plugin for Eclipse and IntelliJ. Each time a change is made on the source code, Infinitest runs all the tests that might fail because of these changes.
-</blockquote>
-</div>
-<div class="paragraph">
-<p><a href="http://infinitest.github.io/">Grab Infinitest</a> while it&#8217;s hot.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="jboss-tools">JBoss Tools</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This is quite simple, I&#8217;m not using it beyond managing JBoss application servers. Just to be able to showcase some code on different servers that <a href="http://tomee.apache.org/">TomEE</a> (which I usually use - try to stay "vendor agnostic").</p>
+<p>Jestem dla Ciebie dostępny poprzez: <a href="http://twitter.com/kubem">twitter</a>, <a href="https://www.linkedin.com/in/kubamarchwicki">linkedin</a> lub tradycyjnie przez email <a href="mailto:kuba(d0t)marchwicki(at)gmail(d0t).com">kuba.marchwicki at gmail.com</a></p>
 </div>
 </div>
 </div>
   </article>
-
-  
-	<div id="disqus_thread"></div>
-	<script type="text/javascript">
-	    /* * * CONFIGURATION VARIABLES * * */
-	    var disqus_shortname = 'jakubblog';
-	    
-
-	    /* * * DON'T EDIT BELOW THIS LINE * * */
-	    (function() {
-	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	    })();
-	</script>
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
   
 </div>

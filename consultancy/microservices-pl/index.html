@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My essential Eclipse plugins : Notepack</title>
+    <title>Wzorce architektury mikrousługowej : Notepack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A randomized pack of notes">
-    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2014/12/01/my-essential-eclipse-plugins/">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/consultancy/microservices-pl/">
     <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
 
     <!-- Custom CSS -->
@@ -76,97 +76,225 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>My essential Eclipse plugins</h1>
-    <p class="meta">Dec 1, 2014</p>
+    <h1>Wzorce architektury mikrousługowej</h1>
+    <p class="meta">Sep 22, 2016</p>
   </header>
 
   <article class="post-content">
   <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Upgrading IDE (Eclipse in this case) is not something you do on daily basis. What is more, I use Eclipse more and more seldomly - mostly for trainings. That&#8217;s why I tend to forget which plugins I actually use (until I&#8217;m missing them and need to remind myself how were they called). As this happened to my just recently (again) I decided to write this post with a list of plugins I find useful (so that I&#8217;ll be able to come back during next upgrade&#8230;&#8203; someday)</p>
+<p>Słowo mikroserwisy padło w tym roku na konferencjach i portalach branżowych w liczbie, która powinna znaleźć się w Księdze Guinessa. Czy ten nowy, eksplodujący na naszych oczach trend zmienia na zawsze naszą branżę, czy też przeminie jak wiele innych rozwiązań z kategorii „silver bullet”. Postaramy się podczas tego szkolenia odpowiedzieć na wiele pytań, wprowadzić podstawowe wzorce i przedstawić techniki projektowania mikrousług. Podzielimy się z Wami naszym doświadczeniami i obserwacjami z implementacji mikrousług i przestrzec przed czającymi się niebezpieczeństwami, a przede wszystkim wywołać dyskusję, która pozwoli odnaleźć Wam Waszą własną drogę w tej nowej architekturze.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="baseline">Baseline</h2>
+<h2 id="opis-szkolenia">Opis szkolenia</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>I recently started with Spring Tool Suite as my baseline. Not that I&#8217;m a Spring fan-boy. I rather consider myself from both churches: Spring and JavaEE; using both stacks as a set of tools to use in an appropriate context.</p>
+<div class="title">Co zyskasz?</div>
+<p>Podczas szkolenia poznasz najpopularniejsze wzorce architektury mikroserwisowej, ich warianty oraz przykłady zastosowania. Przećwiczysz możliwe implementacje wzorców w oparciu o najpopularniejsze na rynku narzędzia.</p>
 </div>
 <div class="paragraph">
-<p>I started with STS cause I find it nearly feature complete. It comes with Git, Maven plugins so that I don&#8217;t have to wonder about basics.</p>
+<div class="title">Profil uczestnika</div>
+<p>Szkolenie skierowane jest do programistów, projektantów oraz architektów pracujących w środowiskach rozproszonych (mikrousługowych), pragnących poznać narzędzia i techniki nadające strukturę wybranym elementom architektury.</p>
+</div>
+<div class="paragraph">
+<div class="title">Program szkolenia</div>
+<p>Całość szkolenia przeprowadzana jest w formule wzorców projektowych: nazwania wzorca, opisu problemu, który stara się zaadresować (rozwiązać), przykładowych implementacji (wraz z demo, ćwiczeniem) oraz omówienia konsekwencji zastosowania wzorca.</p>
+</div>
+<div class="paragraph">
+<p>Wychodząc od klasycznych praw i teorii (twierdzenie CAP, 8 błędów przetwarzania rozproszonego), analizowane są pojawiające się problemy, sposoby ich mitygowania oraz minimalizacja zasięgu błędów.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="fiddling-with-the-font-size">Fiddling with the font size</h2>
+<h2 id="omawiane-wzorce">Omawiane wzorce:</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>One of my most important usecases for Eclipse is during delivering a training (Eclipse is my primary IDE then). Hence, an ability to increase the font size is a must. I&#8217;m quite found of using <a href="https://code.google.com/p/tarlog-plugins/">tarlog-plugins</a> - a set of small, but useful, features to Eclipse that are develop for personal Tarlog&#8217;s needs.</p>
-</div>
-<div class="paragraph">
-<p>While there are some other font size plugins like <a href="https://code.google.com/p/eclipse-fonts/">eclipse-fonts</a>, tarlog-plugins just works with every file type (not just text-files)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>API Gateway</p>
+</li>
+<li>
+<p>Circuit breakers</p>
+</li>
+<li>
+<p>Load balancing</p>
+</li>
+<li>
+<p>Service discovery and externalized configuration</p>
+</li>
+<li>
+<p>Service orchestration and choreography</p>
+</li>
+<li>
+<p>Consumer-driven contracts</p>
+</li>
+<li>
+<p>Centralized loggings and monitoring</p>
+</li>
+<li>
+<p>Authorisation and security</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="migrating-workspace-settings">Migrating workspace settings</h2>
+<h2 id="program-szkolenia">Program szkolenia</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Again, due to trainings, I quite often setup a new workspace. And migrating settings from one workspace to other is a real pain in the neck. <a href="https://code.google.com/a/eclipselabs.org/p/workspacemechanic/">Workspace Mechanic</a> is something that makes this process really easy.</p>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Podstawy teoretyczne architektury mikrousługowej</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Różne podejścia do strukturyzowania architektury</p>
+</li>
+<li>
+<p>Monolityczne aplikacje i Micro Services</p>
+</li>
+<li>
+<p>Prawo Conway&#8217;a</p>
+</li>
+<li>
+<p>Architektura wokół funkcjonalności biznesowych</p>
+</li>
+<li>
+<p>Dekompozycja domeny wykorzystując Domain-Driven Design</p>
+</li>
+</ul>
 </div>
-<div class="quoteblock">
-<blockquote>
-The Workspace Mechanic automates maintenance of your Eclipse environment by tweaking preferences, adding extension locations, and so on.
-</blockquote>
+</dd>
+<dt class="hdlist1">Projektowanie mikrousług</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Smart endpoints and dumb pipes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Usługi REST; koncepcja HATEOAS</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>And this really saves my day!</p>
+</li>
+<li>
+<p>Decentralizacja danych</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Podział danych pod kątem mikrousług</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Elementy interfejsu użytkownika</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Implementacja mikrousług</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Zasoby REST i ich reprezentacja</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Punkt wejścia i inne adresy</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Dostęp do danych z wykorzystaniem Spring Data</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Definiowanie interfejsów Repository</p>
+</li>
+<li>
+<p>Tworzenie metod zapytań</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Rejestr usługi i zarządzanie konfiguracją</p>
+</li>
+<li>
+<p>Wersjonowanie i testowanie usług</p>
+</li>
+<li>
+<p>Strategie refaktoryzacji systemów monolitycznych</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Komunikacja pomiędzy usługami</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Komunikacja synchroniczna vs. asynchroniczna</p>
+</li>
+<li>
+<p>Definiowanie zależności pomiędzy usługami oraz ich dokumentacja</p>
+</li>
+<li>
+<p>Kompatybilność usług, zmiany i kompatybilność wsteczna</p>
+</li>
+<li>
+<p>Wprowadzenie do wzorca “circuit breaker” i konfiguracja bezpiecznika połączenia</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Monitoring i zarządzanie mikrousługami</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Standardowe metryki usługi (Actuator)</p>
+</li>
+<li>
+<p>Monitoring usług - centralizacja logowania</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Śledzenie transakcji w obrębie systemu rozproszonego</p>
+</li>
+<li>
+<p>Metryki biznesowe oraz techniczne</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Śledzenie przepływu komunikacji</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="constant-test-status-preview">Constant test status preview</h2>
+<h2 id="zapytaj-o-szkolenie">Zapytaj o szkolenie</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Trainings again. Whenever I run a refactoring or TDD session this is a life saver. Being able to constantly view the status of tests - brilliant.</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-Infinitest is a Continuous Testing plugin for Eclipse and IntelliJ. Each time a change is made on the source code, Infinitest runs all the tests that might fail because of these changes.
-</blockquote>
-</div>
-<div class="paragraph">
-<p><a href="http://infinitest.github.io/">Grab Infinitest</a> while it&#8217;s hot.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="jboss-tools">JBoss Tools</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This is quite simple, I&#8217;m not using it beyond managing JBoss application servers. Just to be able to showcase some code on different servers that <a href="http://tomee.apache.org/">TomEE</a> (which I usually use - try to stay "vendor agnostic").</p>
+<p>Jestem dla Ciebie dostępny poprzez: <a href="http://twitter.com/kubem">twitter</a>, <a href="https://www.linkedin.com/in/kubamarchwicki">linkedin</a> lub tradycyjnie przez email <a href="mailto:kuba(d0t)marchwicki(at)gmail(d0t).com">kuba.marchwicki at gmail.com</a></p>
 </div>
 </div>
 </div>
   </article>
-
-  
-	<div id="disqus_thread"></div>
-	<script type="text/javascript">
-	    /* * * CONFIGURATION VARIABLES * * */
-	    var disqus_shortname = 'jakubblog';
-	    
-
-	    /* * * DON'T EDIT BELOW THIS LINE * * */
-	    (function() {
-	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-	    })();
-	</script>
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
   
 </div>
