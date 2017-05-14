@@ -1,0 +1,58 @@
+= {title}
+:title: Functional Programming with Java8 workshop
+:page-layout: post
+:page-categories: [consultancy]
+:page-comments: false
+:page-permalink: /consultancy/functional-programming-with-java8/
+
+== Workshop description
+
+.Benefits
+The workshop covers both changes in the API, as well as the basics of functional (declarative) programming. It introduces new ways of thinking when working with both legacy code as well as green field projects.
+
+During the workshop we cover changes in the language (new idoms), practical examples for lambda expressions and streams, as well as ways of refactoring existing code into Java8.
+
+.Participants' profile
+The workshop is for Java developers willing to learn new Java language elements, introduced within JDK8. Workshop is focused on changes and evolution towards declarative programming, therefore a minimum few years of Java experience is required.
+
+== Programme
+
+Introduction to declarative programming::
+* Consequences of shared state
+* Iteration vs recursion
+* Function as a _first-class citizen_
+** Higher order functions
+** Currying
+* Lazy data structures
+
+Lambda expressions::
+* New language syntax
+* Functional interfaces
+* Method references (constructor references)
+* Functional style of programming in Java
+* Testing functions
+
+Streams::
+* Collections vs stream
+* Intermediate streams operations (filtering, mapping)
+* Terminal streams operations (reducing, collecting, partitioning)
+* Parallel streams
+
+New Date API::
+* Introducing to `java.time` package
+* Working with dates and time objects
+** Introduction to time zones
+
+Completable Future::
+* Limitations of `Future<T>` interface
+* Reactive (non-blocking) multithreaded applications
+* Working with asynchronous code: processing, transforming and combining results
+
+Enhancements in JDK::
+* Default and static methods in interfaces
+* Running JavaScript directly from JVM (Nashorn engine)
+* Existing API enhancements (HashMap, Optional, etc)
+
+== Get in touch
+
+I'm happy to talk. I can be reached via link:http://twitter.com/kubem[twitter], link:https://www.linkedin.com/in/kubamarchwicki[linkedin] or traditionally through link:mailto:kuba(d0t)marchwicki(at)gmail(d0t).com[kuba.marchwicki at gmail.com]

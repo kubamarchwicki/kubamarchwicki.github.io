@@ -1,0 +1,57 @@
+= {title}
+:title: Programowanie deklaratywne oraz nowe API w Java 8
+:page-layout: post
+:page-categories: [consultancy]
+:page-comments: false
+:page-permalink: /consultancy/functional-programming-with-java8-pl/
+
+== Opis szkolenia
+
+.Co zyskasz?
+Szkolenie obejmuje zarówno zmiany w API, podstawy programowania funkcyjnego oraz sposoby wykorzystania nowego sposobu myślenia zarówno w pracy z istniejącym kodem, jak i w nowych aplikacjach. W trakcie warsztatu zapoznasz się ze zmianami w języku, poznasz praktyczne wykorzystanie wyrażeń lambda i strumieni, aż po sposoby refaktoryzacji istniejącego kodu do Javy8 i efektywnego testowania funkcyjnych idiomów.
+
+.Profil uczestnika
+Szkolenie dedykowane jest dla programistów Java pragnących poznać nowe elementy języka Java wprowadzone wraz z JDK8. Warsztat skupia się na wszystkich zmianach w języku Java oraz jego ewolucji w kierunku funkcyjnym i deklaratywnym. Od uczestników szkolenia wymagane jest minimum kilkuletnie doświadczenie w programowaniu w języku Java.
+
+== Program szkolenia
+
+Wstęp do programowania deklaratywnego::
+* Konsekwencje współdzielenia stanu
+* Iteracja vs. rekurencja
+* Funkcja jako _first-class citizen_
+** Funkcje wyższego rzędu
+** _Currying_
+* Lazy data structures
+
+Wyrażenie lambda::
+* Zapoznanie ze składnią
+* Interface'y funkcyjne
+* Referencje do metod
+* Referencje do konstruktorów
+* Programowanie w stylu funkcyjnym w Javie
+* Testowanie funkcji
+
+Strumienie::
+* Wprowadzenie do strumieni; kolekcja vs. strumień
+* Operacje pośrednie na strumieniach (filtrowanie, mapowanie)
+* Operacja finalne (redukcja, kolekcja, partycjonowanie)
+* Strumienie współbieżne
+
+Nowe Date API::
+* Wprowadzenie do pakietu `java.time`
+* Przetwarzanie czasu
+* Zagadnienia stref czasowych
+
+Completable Future::
+* Braki i ograniczenia interfejsu `Future<T>`
+* Reaktywne (nieblokujące) aplikacje wielowątkowe
+* Praca z asynchronicznym kodem: przetwarzanie, transformowanie i składnie rezultatów
+
+Usprawnienia JDK::
+* Domyślne implementacje i statyczne metody w interface'ach
+* Wywoływanie kodu JavaScript z poziomu JVM (silnik Nashorn)
+* Usprawnienia i optymalizacje API (HashMap, Optional, StringJoiner)
+
+== Zapytaj o szkolenie
+
+Jestem dla Ciebie dostępny poprzez: link:http://twitter.com/kubem[twitter], link:https://www.linkedin.com/in/kubamarchwicki[linkedin] lub tradycyjnie przez email link:mailto:kuba(d0t)marchwicki(at)gmail(d0t).com[kuba.marchwicki at gmail.com]

@@ -1,0 +1,15 @@
+= {title}
+:title: Spring Framework workshop
+:page-layout: post
+:page-categories: [consultancy]
+:page-comments: false
+:page-permalink: /consultancy/spring-framework/
+
+== Workshop description
+
+.Benefits
+This workshop is a practical (up 60-80% of exercises and live-coding) journey into Spring Framework. From setting up a project, working with dependency injection container, through advanced aspect oriented programming, to adapting with external environment (like databases and web).
+
+== Get in touch
+
+I'm happy to talk. I can be reached via link:http://twitter.com/kubem[twitter], link:https://www.linkedin.com/in/kubamarchwicki[linkedin] or traditionally through link:mailto:kuba(d0t)marchwicki(at)gmail(d0t).com[kuba.marchwicki at gmail.com]

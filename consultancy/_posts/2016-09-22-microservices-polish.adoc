@@ -1,0 +1,78 @@
+= {title}
+:title: Wzorce architektury mikrousługowej
+:page-layout: post
+:page-categories: [consultancy]
+:page-comments: false
+:page-permalink: /consultancy/microservices-pl/
+
+Słowo mikroserwisy padło w tym roku na konferencjach i portalach branżowych w liczbie, która powinna znaleźć się w Księdze Guinessa. Czy ten nowy, eksplodujący na naszych oczach trend zmienia na zawsze naszą branżę, czy też przeminie jak wiele innych rozwiązań z kategorii „silver bullet”. Postaramy się podczas tego szkolenia odpowiedzieć na wiele pytań, wprowadzić podstawowe wzorce i przedstawić techniki projektowania mikrousług. Podzielimy się z Wami naszym doświadczeniami i obserwacjami z implementacji mikrousług i przestrzec przed czającymi się niebezpieczeństwami, a przede wszystkim wywołać dyskusję, która pozwoli odnaleźć Wam Waszą własną drogę w tej nowej architekturze.
+
+== Opis szkolenia
+
+.Co zyskasz?
+
+Podczas szkolenia poznasz najpopularniejsze wzorce architektury mikroserwisowej, ich warianty oraz przykłady zastosowania. Przećwiczysz możliwe implementacje wzorców w oparciu o najpopularniejsze na rynku narzędzia.
+
+.Profil uczestnika
+
+Szkolenie skierowane jest do programistów, projektantów oraz architektów pracujących w środowiskach rozproszonych (mikrousługowych), pragnących poznać narzędzia i techniki nadające strukturę wybranym elementom architektury.
+
+.Program szkolenia
+
+Całość szkolenia przeprowadzana jest w formule wzorców projektowych: nazwania wzorca, opisu problemu, który stara się zaadresować (rozwiązać), przykładowych implementacji (wraz z demo, ćwiczeniem) oraz omówienia konsekwencji zastosowania wzorca.
+
+Wychodząc od klasycznych praw i teorii (twierdzenie CAP, 8 błędów przetwarzania rozproszonego), analizowane są pojawiające się problemy, sposoby ich mitygowania oraz minimalizacja zasięgu błędów.
+
+== Omawiane wzorce:
+
+* API Gateway
+* Circuit breakers
+* Load balancing
+* Service discovery and externalized configuration
+* Service orchestration and choreography
+* Consumer-driven contracts
+* Centralized loggings and monitoring
+* Authorisation and security
+
+== Program szkolenia
+
+Podstawy teoretyczne architektury mikrousługowej::
+* Różne podejścia do strukturyzowania architektury
+* Monolityczne aplikacje i Micro Services
+* Prawo Conway'a
+* Architektura wokół funkcjonalności biznesowych
+* Dekompozycja domeny wykorzystując Domain-Driven Design
+
+Projektowanie mikrousług::
+* Smart endpoints and dumb pipes
+** Usługi REST; koncepcja HATEOAS
+* Decentralizacja danych
+** Podział danych pod kątem mikrousług
+* Elementy interfejsu użytkownika
+
+Implementacja mikrousług::
+* Zasoby REST i ich reprezentacja
+** Punkt wejścia i inne adresy
+* Dostęp do danych z wykorzystaniem Spring Data
+** Definiowanie interfejsów Repository
+** Tworzenie metod zapytań
+* Rejestr usługi i zarządzanie konfiguracją
+* Wersjonowanie i testowanie usług
+* Strategie refaktoryzacji systemów monolitycznych
+
+Komunikacja pomiędzy usługami::
+* Komunikacja synchroniczna vs. asynchroniczna
+* Definiowanie zależności pomiędzy usługami oraz ich dokumentacja
+* Kompatybilność usług, zmiany i kompatybilność wsteczna
+* Wprowadzenie do wzorca “circuit breaker” i konfiguracja bezpiecznika połączenia
+
+Monitoring i zarządzanie mikrousługami::
+* Standardowe metryki usługi (Actuator)
+* Monitoring usług - centralizacja logowania
+** Śledzenie transakcji w obrębie systemu rozproszonego
+** Metryki biznesowe oraz techniczne
+* Śledzenie przepływu komunikacji
+
+== Zapytaj o szkolenie
+
+Jestem dla Ciebie dostępny poprzez: link:http://twitter.com/kubem[twitter], link:https://www.linkedin.com/in/kubamarchwicki[linkedin] lub tradycyjnie przez email link:mailto:kuba(d0t)marchwicki(at)gmail(d0t).com[kuba.marchwicki at gmail.com]
