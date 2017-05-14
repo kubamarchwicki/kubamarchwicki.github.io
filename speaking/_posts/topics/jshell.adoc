@@ -1,0 +1,17 @@
+:title: Java9 and REPL
+:subtitle: Forget debugging, welcome joy and productivity
+
+== {title}
+
+> {subtitle}
+
+=== Abstract
+
+Oh Java, my old, lousy and boiler plaited friend. For ages, trying anything new (which luckily wasn't that frequent afterall) required starting a new project, followed by a `Sandbox` class and a `public static void main` method. Alternatively, a simple JUnit test was a nice entrypoint as well - if we were lucky enough to have some dependency management sorted out.
+
+Thankfully, things have changed. With the Java9 a REPL has been introduced, everybody can just run an up-to-date Java shell and try out new syntax, new APIs, new libraries. Now we can feel like Scala, CLojure, Ruby, JavaScript, PHP, call whatever language developers - finally there.In this talk I'll walk through essential REPL examples, see how we can use JShell to try out new language features (like Java9 Streams enhancements), but foremost, we will use it to build a real-life web application. Expect meat-only talk without theory, diagrams, useless "javax.swing.*" application examples.
+
+=== Additional resources
+
+* https://github.com/kubamarchwicki/slides-java9-jshell/tree/master/slides[Slides source in *asciidoctor*]
+* https://github.com/kubamarchwicki/slides-java9-jshell/[Code examples @ GitHub]

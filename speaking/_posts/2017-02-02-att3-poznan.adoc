@@ -1,0 +1,8 @@
+= {title}
+:title: Allegro Tech Talk #3
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2017-02-02, Poznań, Poland
+:page-file-location:  speaking/_posts/topics/reverse-engineering-clean-code.adoc
+
+include::{page-file-location}[]
