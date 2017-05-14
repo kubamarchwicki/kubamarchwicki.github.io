@@ -1,6 +1,6 @@
 = {title}
 :title: Functional Programming with Java8 workshop
-:page-layout: post
+:page-layout: training
 :page-categories: [consultancy]
 :page-comments: false
 :page-permalink: /consultancy/functional-programming-with-java8/

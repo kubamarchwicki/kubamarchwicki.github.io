@@ -1,6 +1,6 @@
 = {title}
 :title: Spring Framework workshop
-:page-layout: post
+:page-layout: training
 :page-categories: [consultancy]
 :page-comments: false
 :page-permalink: /consultancy/spring-framework/

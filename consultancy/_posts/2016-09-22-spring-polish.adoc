@@ -1,6 +1,6 @@
 = {title}
 :title: Aplikacje webowe z wykorzystaniem Spring Framework
-:page-layout: post
+:page-layout: training
 :page-categories: [consultancy]
 :page-comments: false
 :page-permalink: /consultancy/spring-framework-pl/

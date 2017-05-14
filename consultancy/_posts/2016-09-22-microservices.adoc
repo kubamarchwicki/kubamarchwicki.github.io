@@ -1,6 +1,6 @@
 = {title}
 :title: Microservices workshop
-:page-layout: post
+:page-layout: training
 :page-categories: [consultancy]
 :page-comments: false
 :page-permalink: /consultancy/microservices/

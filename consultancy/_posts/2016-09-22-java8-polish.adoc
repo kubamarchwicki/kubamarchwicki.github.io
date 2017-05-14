@@ -1,6 +1,6 @@
 = {title}
 :title: Programowanie deklaratywne oraz nowe API w Java 8
-:page-layout: post
+:page-layout: training
 :page-categories: [consultancy]
 :page-comments: false
 :page-permalink: /consultancy/functional-programming-with-java8-pl/
