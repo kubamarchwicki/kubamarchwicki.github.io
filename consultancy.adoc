@@ -27,6 +27,12 @@ Microservices; from theory to practice. During the workshop we start from defini
 
 link:{% post_url consultancy/2016-09-22-microservices %}[-> Read more about *Microservices* workshop, role="ident"] (link:{% post_url consultancy/2016-09-22-microservices-polish %}[Polish version])
 
+.Integration Patterns
+
+Practical workshop introducing concept of integration patterns (run on the top of MuleESB or Spring Integration). A set of multiple real-life integration scenarios, decomposed into discrete patterns.
+
+link:{% post_url consultancy/2016-09-22-spring-integration %}[-> Read more about *Integration Patterns* workshop, role="ident"] (link:{% post_url consultancy/2016-09-22-spring-integration-polish %}[Polish version])
+
 .Spring Framework
 Building application using Spring Framework. The training can cover both evolving legacy applications (from Spring 2.x) as well as latest revisions of the framework. The program focuses on the framework itself and it's integrations (data access, JPA, events, aspect), followed up by the context of either standalone or web application.
 
@@ -47,10 +53,7 @@ Delivering business application using Java Enterprise Edition (Java EE 6, Java E
 
 Trainings have already been delivered using a variety of application servers (JBoss, Wildfly, TomEE, Weblogic).
 
-.Enterprise Integration Patterns
-Both theoretical (shorter) or practical (longer) workshop introducing integration patterns (run on the top of MuleESB - as an example implementation).
-
-.Effective coding
+.Effective coding techniques
 Most effective techniques of delivering software, including clean code, testing techniques, TDD, refactoring, design patterns.
 
 .Introduction to Java for PHP / JS / C++ programmers

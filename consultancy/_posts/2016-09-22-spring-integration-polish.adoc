@@ -1,0 +1,16 @@
+= {title}
+:title: Integration Patterns
+:page-layout: training
+:page-categories: [consultancy]
+:page-comments: false
+:page-permalink: /consultancy/spring-framework-pl/
+
+== Workshop description
+
+.Benefits
+This workshop is a practical (up 60-80% of exercises and live-coding) journey into Spring Integration, which gives a lot of powerful components that can greatly enhance the interconnectivity of systems and processes within an enterprise architecture.
+Based on multiple real-life integration scenarios, decomposed into discrete patterns - introduces concepts and practices of application integrations.
+
+== Get in touch
+
+I'm happy to talk. I can be reached via link:http://twitter.com/kubem[twitter], link:https://www.linkedin.com/in/kubamarchwicki[linkedin] or traditionally through link:mailto:kuba(d0t)marchwicki(at)gmail(d0t).com[kuba.marchwicki at gmail.com]

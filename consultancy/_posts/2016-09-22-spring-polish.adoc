@@ -1,5 +1,5 @@
 = {title}
-:title: Aplikacje webowe z wykorzystaniem Spring Framework
+:title: Integration Patterns
 :page-layout: training
 :page-categories: [consultancy]
 :page-comments: false
@@ -8,67 +8,43 @@
 == Opis szkolenia
 
 .Co zyskasz?
-Zdobędziesz praktyczne umiejętności programowania z wykorzystaniem frameworka Spring. Dowiesz się, jak poprawnie przygotować projekt, jak wykorzystać wstrzykiwania zależności (Kontener IoC) oraz poznasz zaawansowane techniki AOP. Nauczysz się, jak testować aplikacje oraz w jaki sposób integrować je z bazą danych.
+Zdobędziesz praktyczne umiejętności programowania z wykorzystaniem Spring Integration. Podczas szkolenia zaprezentowane zostaną metody realizacji wybranych scenariuszy, w oparciu o wzorce Integration Patterns.
 
 .Profil uczestnika
-Warsztat dedykowany jest dla programistów znających język Java. Przekrojowy charakter warsztatu może z powodzeniem służyć programistom pragnącym wykorzystywać framework Spring w codziennej pracy, jak i developerom już z niego korzystającym, ale pragnącym usystematyzować swoją wiedzę.
+Warsztat dedykowany jest dla programistów znających język Java oraz Spring Framework. Przekrojowy charakter warsztatu może z powodzeniem służyć programistom pragnącym wykorzystywać wzorce w codziennej pracy, jak i developerom już korzystającym z frameworka w pewnym zakresie, ale pragnącym usystematyzować swoją wiedzę.
 
 == Program szkolenia
 
-Zaawansowane aspekty Spring Framework::
-* Alternatywna konfiguracja aplikacji, testów z użyciem adnotacji
-** Profile, sub-configuracje, łączenie kontenerów, zakres i widoczność komponetów
-* Programistyczne korzystanie z fabryki
-** Singletony i prototypy
-** Automatyczna konfiguracja (autowiring)
-* Cykl życia obiektów
-* Zdarzenia kontenera (`ApplicationEvent`)
+Przypadki użycia realizowane w ramach szkolenia „Wzorce Enterprise Integration Patterns z wykorzystaniem Spring Integration”
 
-Trwałość danych::
-* Konfiguracja bazy danych
-* Wzorzec DAO i jego zastosowanie w architekturze warstwowej
-* Użyteczne sposoby korzystania ze źródeł danych w Springu
-* Baza danych bez JPA
-** Usługa `jdbcTemplate`
-** Proste mapowania obiektowo relacyjne (`MappingSqlQuery`)
-* Konfiguracja JPA
+.Load Balancer
 
-Aspekty::
-* Sposób działania oraz typy aspektów
-* Dołączenie aspektów do aplikacji
-* Przygotowanie i konfiguracja porad
-* Definiowanie punktów przecięcia
+W tym przypadku przedstawimy wykorzystanie wzorców EIP i Spring Integration w scenariuszu, gdzie zapytania do systemu będą rozdzielane pomiędzy wieloma instancjami, w celu osiągnięcia optymalnego wykorzystania zasobów systemu. Proponowany scenariusz będzie uwzględniał różne dostępne algorytmy podziału pracy, m.in. „round robin”, „least busy” i „sticky session”. Dla pełnego wykorzystania możliwości Spring Integration, prezentowany scenariusz zrealizujemy w oparciu o protokół synchroniczny i kolejki wiadomości przechowywane w pamięci operacyjnej. Przedstawione tu zostaną między innymi zastosowania wzorców „Message Filter”, „Dynamic Router” oraz „Point to Point Channel”.
 
-Transakcje::
-* Transakcja po stronie bazy danych a transakcją aplikacji
-** Automatyczne zarządzanie transakcjami
-** Zarządzanie i definiowanie transakcji dla różnych typów dostępu do danych (JDBC, JPA, Hibernate)
-* Transakcje deklaratywne
-* Programistyczne zarządzanie transakcjami wykorzystując TransactionTemplate
+.Scatter and Gather
 
-Spring MVC::
-* Konfigurowanie kontenera Spring w aplikacji webowej
-** Różnice pomiędzy Spring Web i Spring WebMVC
-* Generowanie odpowiedzi innej niż HTML
-** Content negotiation pomiędzy klientem a serwerem
-* Walidacja danych – JSR 303 i mechanizmy Spring
-* Testowanie aplikacji opartej o Spring MVC
+W tym scenariuszu pojedyncze zapytanie zostanie rozdzielone na mniejsze zadania. Realizację tych zadań wydelegujemy do innych komponentów/punktów integracji, rezultaty czego zostaną skonsolidowane przy pomocy Spring Integration. W tym scenariuszu przedstawimy praktyczne wykorzystanie wzorców „Multicast Router”, ”Splitter” i „Aggregator”.
 
-Usługi REST::
-* Architektura REST i jej użycie w kontekście usług sieciowych
-* Definiowanie usług REST
-** Projektowanie adresów URL
-** Wykorzystanie parametrów i metod HTTP
-* Mapowanie usług z wykorzystanie natywnych mechanizmów Spring Framework
-* Implementacja usług JAX-RS
+.Result Cache
 
+W tym przypadku „load balancer” zostanie rozbudowany o mechanizm przechowywania rezultatów w celu optymalizacji obciążenia systemu. Rezultaty zapytań będą przechowywane w pamięci dzięki zastosowaniu wzorca „Wire Tap”.
 
-Bezpieczeństwo aplikacji WWW::
-* Konfiguracja uwierzytelniania, autoryzacji dostępu w Spring Security
-* Stanowe sposoby weryfikacji dostępu do aplikacji
-** Integracja z Spring OAuth
-* Uwierzytelnienie w oparciu o tokeny
-** Wykorzystanie JWT w Spring Framework
+.Pipe and Filter
+
+Scenariusz „Pipe and Filter” prezentuje metody tworzenia zaawansowanych integracji, poprzez kompozycję poszczególnych etapów przetwarzania w łańcuchy wywołań punktów integracji. Przedstawiony scenariusz będzie oparty o wykorzystanie wzorca „Routing Slip” oraz szerokiego wachlarza wzorców z kategorii „Message Transformer”.
+
+.Shared Space
+
+Spring Integration wykorzystamy do realizacji tzw. „blackboard model”, gdzie wszyscy uczestnicy integracji mają dostęp do współdzielonej przestrzeni, w której przechowywane są zarówno zadania, jak i cząstkowe rezultaty. Dzięki wykorzystaniu wzorca „Publish Subscribe Channel” oraz JMS API, wykonywanie zadań oraz dostęp do cząstkowych rezultatów zostaną udostępnione wszystkim uczestnikom integracji.
+
+.Execution Orchestrator
+
+W scenariuszu Execution Orchestrator zostaną przedstawione techniki orkiestracji usług poprzez stworzenie usługi sieciowej (REST). Ta będzie dostarczać nowej funkcjonalności biznesowej z wykorzystaniem usług już istniejących w innych systemach. Utworzona integracja będzie implementowała logikę biznesową poprzez wywołanie dostępnych punktów integracji oraz transformacje formatu wiadomości.
+
+.Protocol Adapter
+
+W tym przypadku wykorzystamy Spring Integration do zbudowania adaptacji wielu protokołów. Scenariusz przewiduje sytuację, w której ta sama funkcjonalność biznesowa jest realizowana przez wiele systemów, poprzez różne protokoły i formaty wiadomości. Celem scenariusza jest stworzenie wspólnego punktu dostępu korzystającego ze wspólnego protokołu i formatu wiadomości. Przy okazji przedstawimy wykorzystanie wzorców „Content based router” i „Content Enricher”.
+
 
 == Zapytaj o szkolenie
 
