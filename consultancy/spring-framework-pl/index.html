@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Aplikacje webowe z wykorzystaniem Spring Framework : Notepack</title>
+    <title>Integration Patterns : Notepack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A randomized pack of notes">
     <link rel="canonical" href="http://jakub.marchwicki.pl/consultancy/spring-framework-pl/">
@@ -76,7 +76,7 @@
       <div class="post">
 
   <header class="post-header">
-    <h1>Aplikacje webowe z wykorzystaniem Spring Framework</h1>
+    <h1>Integration Patterns</h1>
   </header>
 
   <article class="post-content">
@@ -85,225 +85,47 @@
 <div class="sectionbody">
 <div class="paragraph">
 <div class="title">Co zyskasz?</div>
-<p>Zdobędziesz praktyczne umiejętności programowania z wykorzystaniem frameworka Spring. Dowiesz się, jak poprawnie przygotować projekt, jak wykorzystać wstrzykiwania zależności (Kontener IoC) oraz poznasz zaawansowane techniki AOP. Nauczysz się, jak testować aplikacje oraz w jaki sposób integrować je z bazą danych.</p>
+<p>Zdobędziesz praktyczne umiejętności programowania z wykorzystaniem Spring Integration. Podczas szkolenia zaprezentowane zostaną metody realizacji wybranych scenariuszy, w oparciu o wzorce Integration Patterns.</p>
 </div>
 <div class="paragraph">
 <div class="title">Profil uczestnika</div>
-<p>Warsztat dedykowany jest dla programistów znających język Java. Przekrojowy charakter warsztatu może z powodzeniem służyć programistom pragnącym wykorzystywać framework Spring w codziennej pracy, jak i developerom już z niego korzystającym, ale pragnącym usystematyzować swoją wiedzę.</p>
+<p>Warsztat dedykowany jest dla programistów znających język Java oraz Spring Framework. Przekrojowy charakter warsztatu może z powodzeniem służyć programistom pragnącym wykorzystywać wzorce w codziennej pracy, jak i developerom już korzystającym z frameworka w pewnym zakresie, ale pragnącym usystematyzować swoją wiedzę.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="program-szkolenia">Program szkolenia</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Zaawansowane aspekty Spring Framework</dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p>Alternatywna konfiguracja aplikacji, testów z użyciem adnotacji</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Profile, sub-configuracje, łączenie kontenerów, zakres i widoczność komponetów</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Przypadki użycia realizowane w ramach szkolenia „Wzorce Enterprise Integration Patterns z wykorzystaniem Spring Integration”</p>
 </div>
-</li>
-<li>
-<p>Programistyczne korzystanie z fabryki</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Singletony i prototypy</p>
-</li>
-<li>
-<p>Automatyczna konfiguracja (autowiring)</p>
-</li>
-</ul>
+<div class="paragraph">
+<div class="title">Load Balancer</div>
+<p>W tym przypadku przedstawimy wykorzystanie wzorców EIP i Spring Integration w scenariuszu, gdzie zapytania do systemu będą rozdzielane pomiędzy wieloma instancjami, w celu osiągnięcia optymalnego wykorzystania zasobów systemu. Proponowany scenariusz będzie uwzględniał różne dostępne algorytmy podziału pracy, m.in. „round robin”, „least busy” i „sticky session”. Dla pełnego wykorzystania możliwości Spring Integration, prezentowany scenariusz zrealizujemy w oparciu o protokół synchroniczny i kolejki wiadomości przechowywane w pamięci operacyjnej. Przedstawione tu zostaną między innymi zastosowania wzorców „Message Filter”, „Dynamic Router” oraz „Point to Point Channel”.</p>
 </div>
-</li>
-<li>
-<p>Cykl życia obiektów</p>
-</li>
-<li>
-<p>Zdarzenia kontenera (<code>ApplicationEvent</code>)</p>
-</li>
-</ul>
+<div class="paragraph">
+<div class="title">Scatter and Gather</div>
+<p>W tym scenariuszu pojedyncze zapytanie zostanie rozdzielone na mniejsze zadania. Realizację tych zadań wydelegujemy do innych komponentów/punktów integracji, rezultaty czego zostaną skonsolidowane przy pomocy Spring Integration. W tym scenariuszu przedstawimy praktyczne wykorzystanie wzorców „Multicast Router”, ”Splitter” i „Aggregator”.</p>
 </div>
-</dd>
-<dt class="hdlist1">Trwałość danych</dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p>Konfiguracja bazy danych</p>
-</li>
-<li>
-<p>Wzorzec DAO i jego zastosowanie w architekturze warstwowej</p>
-</li>
-<li>
-<p>Użyteczne sposoby korzystania ze źródeł danych w Springu</p>
-</li>
-<li>
-<p>Baza danych bez JPA</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Usługa <code>jdbcTemplate</code></p>
-</li>
-<li>
-<p>Proste mapowania obiektowo relacyjne (<code>MappingSqlQuery</code>)</p>
-</li>
-</ul>
+<div class="paragraph">
+<div class="title">Result Cache</div>
+<p>W tym przypadku „load balancer” zostanie rozbudowany o mechanizm przechowywania rezultatów w celu optymalizacji obciążenia systemu. Rezultaty zapytań będą przechowywane w pamięci dzięki zastosowaniu wzorca „Wire Tap”.</p>
 </div>
-</li>
-<li>
-<p>Konfiguracja JPA</p>
-</li>
-</ul>
+<div class="paragraph">
+<div class="title">Pipe and Filter</div>
+<p>Scenariusz „Pipe and Filter” prezentuje metody tworzenia zaawansowanych integracji, poprzez kompozycję poszczególnych etapów przetwarzania w łańcuchy wywołań punktów integracji. Przedstawiony scenariusz będzie oparty o wykorzystanie wzorca „Routing Slip” oraz szerokiego wachlarza wzorców z kategorii „Message Transformer”.</p>
 </div>
-</dd>
-<dt class="hdlist1">Aspekty</dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p>Sposób działania oraz typy aspektów</p>
-</li>
-<li>
-<p>Dołączenie aspektów do aplikacji</p>
-</li>
-<li>
-<p>Przygotowanie i konfiguracja porad</p>
-</li>
-<li>
-<p>Definiowanie punktów przecięcia</p>
-</li>
-</ul>
+<div class="paragraph">
+<div class="title">Shared Space</div>
+<p>Spring Integration wykorzystamy do realizacji tzw. „blackboard model”, gdzie wszyscy uczestnicy integracji mają dostęp do współdzielonej przestrzeni, w której przechowywane są zarówno zadania, jak i cząstkowe rezultaty. Dzięki wykorzystaniu wzorca „Publish Subscribe Channel” oraz JMS API, wykonywanie zadań oraz dostęp do cząstkowych rezultatów zostaną udostępnione wszystkim uczestnikom integracji.</p>
 </div>
-</dd>
-<dt class="hdlist1">Transakcje</dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p>Transakcja po stronie bazy danych a transakcją aplikacji</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Automatyczne zarządzanie transakcjami</p>
-</li>
-<li>
-<p>Zarządzanie i definiowanie transakcji dla różnych typów dostępu do danych (JDBC, JPA, Hibernate)</p>
-</li>
-</ul>
+<div class="paragraph">
+<div class="title">Execution Orchestrator</div>
+<p>W scenariuszu Execution Orchestrator zostaną przedstawione techniki orkiestracji usług poprzez stworzenie usługi sieciowej (REST). Ta będzie dostarczać nowej funkcjonalności biznesowej z wykorzystaniem usług już istniejących w innych systemach. Utworzona integracja będzie implementowała logikę biznesową poprzez wywołanie dostępnych punktów integracji oraz transformacje formatu wiadomości.</p>
 </div>
-</li>
-<li>
-<p>Transakcje deklaratywne</p>
-</li>
-<li>
-<p>Programistyczne zarządzanie transakcjami wykorzystując TransactionTemplate</p>
-</li>
-</ul>
-</div>
-</dd>
-<dt class="hdlist1">Spring MVC</dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p>Konfigurowanie kontenera Spring w aplikacji webowej</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Różnice pomiędzy Spring Web i Spring WebMVC</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Generowanie odpowiedzi innej niż HTML</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Content negotiation pomiędzy klientem a serwerem</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Walidacja danych – JSR 303 i mechanizmy Spring</p>
-</li>
-<li>
-<p>Testowanie aplikacji opartej o Spring MVC</p>
-</li>
-</ul>
-</div>
-</dd>
-<dt class="hdlist1">Usługi REST</dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p>Architektura REST i jej użycie w kontekście usług sieciowych</p>
-</li>
-<li>
-<p>Definiowanie usług REST</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Projektowanie adresów URL</p>
-</li>
-<li>
-<p>Wykorzystanie parametrów i metod HTTP</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Mapowanie usług z wykorzystanie natywnych mechanizmów Spring Framework</p>
-</li>
-<li>
-<p>Implementacja usług JAX-RS</p>
-</li>
-</ul>
-</div>
-</dd>
-<dt class="hdlist1">Bezpieczeństwo aplikacji WWW</dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p>Konfiguracja uwierzytelniania, autoryzacji dostępu w Spring Security</p>
-</li>
-<li>
-<p>Stanowe sposoby weryfikacji dostępu do aplikacji</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integracja z Spring OAuth</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Uwierzytelnienie w oparciu o tokeny</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Wykorzystanie JWT w Spring Framework</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</dd>
-</dl>
+<div class="paragraph">
+<div class="title">Protocol Adapter</div>
+<p>W tym przypadku wykorzystamy Spring Integration do zbudowania adaptacji wielu protokołów. Scenariusz przewiduje sytuację, w której ta sama funkcjonalność biznesowa jest realizowana przez wiele systemów, poprzez różne protokoły i formaty wiadomości. Celem scenariusza jest stworzenie wspólnego punktu dostępu korzystającego ze wspólnego protokołu i formatu wiadomości. Przy okazji przedstawimy wykorzystanie wzorców „Content based router” i „Content Enricher”.</p>
 </div>
 </div>
 </div>
