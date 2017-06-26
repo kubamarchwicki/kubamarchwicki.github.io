@@ -5,8 +5,8 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 26 Jun 2017 19:26:34 +0000</pubDate>
-    <lastBuildDate>Mon, 26 Jun 2017 19:26:34 +0000</lastBuildDate>
+    <pubDate>Mon, 26 Jun 2017 20:22:45 +0000</pubDate>
+    <lastBuildDate>Mon, 26 Jun 2017 20:22:45 +0000</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
@@ -52,6 +52,9 @@ Recently a friend of mine asked me if I have some useful microservces links and 
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;If you find some other articles are worth mentioning - leave a link in the comments sections and let this list grow.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;My take on the microservices journey is here: &lt;a href=&quot;http://jakub.marchwicki.pl/consultancy/microservices/&quot; class=&quot;bare&quot;&gt;http://jakub.marchwicki.pl/consultancy/microservices/&lt;/a&gt; - which can be a one, two or three days workshop.&lt;/p&gt;
 &lt;/div&gt;</description>
         <pubDate>Mon, 26 Jun 2017 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2017/06/26/microservices-still-a-thing/</link>
