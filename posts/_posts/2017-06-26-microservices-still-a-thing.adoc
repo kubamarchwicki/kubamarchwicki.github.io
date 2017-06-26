@@ -1,0 +1,29 @@
+= {title}
+:title: Microservices. I'm new here, where to start?
+:page-layout: post
+:page-categories: [posts]
+:page-excerpt: Recently a friend of mine asked me if I have some useful microservces links and videos - to quickly get started. So here - I made one. A gentle introduction to what's the crack about this microservices thing.
+
+[quote]
+{page-excerpt}
+
+If you are about to start the journey to microsrvices and wonder where is a good point - here is an my opinionated list.
+
+Start with Sander Hoogendoorn; either a blog post http://sanderhoogendoorn.com/blog/index.php/microservices-the-good-the-bad-and-the-ugly/ or a video https://www.youtube.com/watch?v=Frz51yJbtKU. Sander references many books and/or arcticles, but also covers some basics. The presentation flow is nice - to it's a plesant experience to listen to Sander.
+
+If you are a reading person, than Sam Newman's book is the classic of microservices writing: http://samnewman.io/books/building_microservices/ (or a Polish translation - http://helion.pl/ksiazki/budowanie-mikrouslug-sam-newman,budmik.htm). It's a nice, gentle introduction. Sam has an elegant style and the book reads like a prose - not a technical gibrish book. However, if you expect concrete code examples with a set of recipes - that's not there. It's more of a consultancy talk, after which you feel really happy and inspired - not a war time stories with all the possible problems and fuckups.
+
+Being in the Thoughtworks "radar", you can't miss this article: https://martinfowler.com/articles/microservices.html - which pretty much triggered the whole discussion (by Martin Fowler and James Lewis).
+
+If you think - the whole microservices thing is for you, you can either start with microservices (https://martinfowler.com/articles/dont-start-monolith.html) or with monolith (https://martinfowler.com/bliki/MonolithFirst.html). As you can see - there is always more than one answer.
+
+And how to start is not the only problem. When you start getting your head around the basic concepts, when you think you are "groking the framework" - you should start to see some 'non-functional' aspects of microservices architecture. Like:
+
+* _(to read)_ Aspects of switching from what's familiar (monoliths) to what's new (microservices): https://www.oreilly.com/ideas/the-evolution-of-scalable-microservices
+* _(to read)_ Non technical traps and gotchas: https://medium.com/jan-filipowski-blog/microservices-as-if-you-mean-it-28a88ee58d88
+* _(soon to watch)_ How microservices impact maintainability? link:http://cfp.devoxx.pl/2017/talk/HLX-1267/Microservices_-_the_naked_truth_of_the_maintainability[]
+* (soon to watch)_ Are we ready for microservices (as an organization)? http://cfp.devoxx.pl/2017/talk/BTR-7404/Stages_of_maturity_on_the_way_to_microservices
+
+If you find some other articles are worth mentioning - leave a link in the comments sections and let this list grow.
+
+My take on the microservices journey is here: http://jakub.marchwicki.pl/consultancy/microservices/ - which can be a one, two or three days workshop.
