@@ -5,9 +5,62 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 29 May 2017 19:49:57 +0000</pubDate>
-    <lastBuildDate>Mon, 29 May 2017 19:49:57 +0000</lastBuildDate>
-    <generator>Jekyll v3.4.3</generator>
+    <pubDate>Mon, 26 Jun 2017 19:26:34 +0000</pubDate>
+    <lastBuildDate>Mon, 26 Jun 2017 19:26:34 +0000</lastBuildDate>
+    <generator>Jekyll v3.4.0</generator>
+    
+      <item>
+        <title>Microservices. I'm new here, where to start?</title>
+        <description>&lt;div class=&quot;quoteblock&quot;&gt;
+&lt;blockquote&gt;
+Recently a friend of mine asked me if I have some useful microservces links and videos - to quickly get started. So here - I made one. A gentle introduction to what&amp;#8217;s the crack about this microservices thing.
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you are about to start the journey to microsrvices and wonder where is a good point - here is an my opinionated list.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Start with Sander Hoogendoorn; either a blog post &lt;a href=&quot;http://sanderhoogendoorn.com/blog/index.php/microservices-the-good-the-bad-and-the-ugly/&quot; class=&quot;bare&quot;&gt;http://sanderhoogendoorn.com/blog/index.php/microservices-the-good-the-bad-and-the-ugly/&lt;/a&gt; or a video &lt;a href=&quot;https://www.youtube.com/watch?v=Frz51yJbtKU&quot; class=&quot;bare&quot;&gt;https://www.youtube.com/watch?v=Frz51yJbtKU&lt;/a&gt;. Sander references many books and/or arcticles, but also covers some basics. The presentation flow is nice - to it&amp;#8217;s a plesant experience to listen to Sander.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you are a reading person, than Sam Newman&amp;#8217;s book is the classic of microservices writing: &lt;a href=&quot;http://samnewman.io/books/building_microservices/&quot; class=&quot;bare&quot;&gt;http://samnewman.io/books/building_microservices/&lt;/a&gt; (or a Polish translation - &lt;a href=&quot;http://helion.pl/ksiazki/budowanie-mikrouslug-sam-newman,budmik.htm&quot; class=&quot;bare&quot;&gt;http://helion.pl/ksiazki/budowanie-mikrouslug-sam-newman,budmik.htm&lt;/a&gt;). It&amp;#8217;s a nice, gentle introduction. Sam has an elegant style and the book reads like a prose - not a technical gibrish book. However, if you expect concrete code examples with a set of recipes - that&amp;#8217;s not there. It&amp;#8217;s more of a consultancy talk, after which you feel really happy and inspired - not a war time stories with all the possible problems and fuckups.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Being in the Thoughtworks &quot;radar&quot;, you can&amp;#8217;t miss this article: &lt;a href=&quot;https://martinfowler.com/articles/microservices.html&quot; class=&quot;bare&quot;&gt;https://martinfowler.com/articles/microservices.html&lt;/a&gt; - which pretty much triggered the whole discussion (by Martin Fowler and James Lewis).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you think - the whole microservices thing is for you, you can either start with microservices (&lt;a href=&quot;https://martinfowler.com/articles/dont-start-monolith.html&quot; class=&quot;bare&quot;&gt;https://martinfowler.com/articles/dont-start-monolith.html&lt;/a&gt;) or with monolith (&lt;a href=&quot;https://martinfowler.com/bliki/MonolithFirst.html&quot; class=&quot;bare&quot;&gt;https://martinfowler.com/bliki/MonolithFirst.html&lt;/a&gt;). As you can see - there is always more than one answer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;And how to start is not the only problem. When you start getting your head around the basic concepts, when you think you are &quot;groking the framework&quot; - you should start to see some 'non-functional' aspects of microservices architecture. Like:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;(to read)&lt;/em&gt; Aspects of switching from what&amp;#8217;s familiar (monoliths) to what&amp;#8217;s new (microservices): &lt;a href=&quot;https://www.oreilly.com/ideas/the-evolution-of-scalable-microservices&quot; class=&quot;bare&quot;&gt;https://www.oreilly.com/ideas/the-evolution-of-scalable-microservices&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;(to read)&lt;/em&gt; Non technical traps and gotchas: &lt;a href=&quot;https://medium.com/jan-filipowski-blog/microservices-as-if-you-mean-it-28a88ee58d88&quot; class=&quot;bare&quot;&gt;https://medium.com/jan-filipowski-blog/microservices-as-if-you-mean-it-28a88ee58d88&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;(soon to watch)&lt;/em&gt; How microservices impact maintainability? &lt;a href=&quot;http://cfp.devoxx.pl/2017/talk/HLX-1267/Microservices_-_the_naked_truth_of_the_maintainability&quot; class=&quot;bare&quot;&gt;http://cfp.devoxx.pl/2017/talk/HLX-1267/Microservices_-_the_naked_truth_of_the_maintainability&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;(soon to watch)_ Are we ready for microservices (as an organization)? &lt;a href=&quot;http://cfp.devoxx.pl/2017/talk/BTR-7404/Stages_of_maturity_on_the_way_to_microservices&quot; class=&quot;bare&quot;&gt;http://cfp.devoxx.pl/2017/talk/BTR-7404/Stages_of_maturity_on_the_way_to_microservices&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you find some other articles are worth mentioning - leave a link in the comments sections and let this list grow.&lt;/p&gt;
+&lt;/div&gt;</description>
+        <pubDate>Mon, 26 Jun 2017 00:00:00 +0000</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2017/06/26/microservices-still-a-thing/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2017/06/26/microservices-still-a-thing/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
     
       <item>
         <title>Asciidoctor based invoices</title>
@@ -1597,368 +1650,6 @@ I&amp;#8217;ve gradually lost interest in any other build tools ;-)&lt;/p&gt;
         <pubDate>Thu, 04 Jun 2015 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2015/06/04/maven-wrapper/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2015/06/04/maven-wrapper/</guid>
-        
-        
-        <category>posts</category>
-        
-      </item>
-    
-      <item>
-        <title>Characterize your legacy with junit</title>
-        <description>&lt;div id=&quot;preamble&quot;&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is a blog post with is a longer read to my &lt;a href=&quot;http://2015.tdd.geecon.org/&quot;&gt;GeeCON TDD 2015&lt;/a&gt; lightning talk presentation: &lt;a href=&quot;/speaking/2015/01/30/geecon-tdd/&quot;&gt;Characterize your legacy with jUnit Rules&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;what-are-characterization-tests-and-why-cared&quot;&gt;What are characterization tests and why cared?&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;div class=&quot;title&quot;&gt;Context&lt;/div&gt;
-&lt;p&gt;I&amp;#8217;ve recently was involved in a project of upgrading our internal, vendor provided, not supported anymore HR application.
-As we&amp;#8217;ve been refactoring one of our internal systems (upgrade from Rails 1.8 to 3.0) - it impacted a few systems nearby. Mostly due to the way Rails handled SOAP web services, which were the basis of the integration; the WSDL needed changing significantly and thus needed the HR system client classes.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The whole idea was to replace existing axis stubs with new classes, keeping the interfaces backwards compatible. Rather simple task but not in this context: the app appeared to be a Java JSP web application with literally 10 class files and hundreds of JSP files with tons of logic in it (500+ lines per each JSP was a standard). A Java application in a bad PHP style.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;What is more, this was type of integration where the order of parameters in the SOAP call were important; imagine how brittle and fragile that was.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;While that looked fairly simple on paper (or diagram) the reality was much harder.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;imageblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;img src=&quot;data:image/png:base64,&quot; alt=&quot;A context diagram&quot; width=&quot;690&quot; height=&quot;294&quot;&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;div class=&quot;title&quot;&gt;How to proceed&lt;/div&gt;
-&lt;p&gt;From the application logs (around 150MB per week, as nobody though of turning of global DEBUG in log4j.properties) I could be able to figure out what classes were responsible for the web service communication - that was the starting point.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The plan was to adhere to keep it working principle:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;extract the classes into a single jar&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;replace the classes with a lib&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;replace the lib with a new stub and client&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Few simple tasks to do. But what bothered me was how to make sure that the data structures before and after the changes are still the same.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;div class=&quot;title&quot;&gt;Actual tests&lt;/div&gt;
-&lt;p&gt;This is when I was started with characterization tests (the golden master). I needed to describe the existing application and after each step, test the changes against the model (my benchmark). Hence, the flow looked pretty much like this:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;analyze the class / method in subject, gain the conceptual understanding&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;invoke the method within tests&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;log complete output / compare the output with existing log output&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;When the tests went green - I felt much safer. I know this is far from ideal testing method, but at least it has given a little of confidence in the baby steps I was making.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;where-to-start&quot;&gt;Where to start&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Ok, that was theory. Question is how to actually implement such test; recordings and assertions. The whole thing is actually pretty damn easy, especially with the last releases of JUnit. We will be leveraging Rule (ClassRule annotation to be precise) and the whole concept of TestRules.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;not-the-real-example&quot;&gt;Not the real example&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;ll not drive through the actual code, as it was damn bad and will just make the point harder to understand. To give you a clue, here is a sample of the real production code (that was how the webservice was actually code - straight from the JSP file!)&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;jsp&quot;&gt;&amp;lt;%-- MAIN FRAME --%&amp;gt;
-
-&amp;lt;div style='width:100%; height:344px; display: block' id=&amp;quot;mainmenu_ifr&amp;quot;&amp;gt;
-&amp;lt;table border='0' cellspacing='0' cellpadding='0' width='100%' style=&amp;quot;margin-top:15px;&amp;quot;&amp;gt;
-&amp;lt;tr&amp;gt;
-&amp;lt;td valign='top' width=&amp;quot;200&amp;quot; align=&amp;quot;center&amp;quot;&amp;gt;
-
-&amp;lt;%
-String prac_pnr =(String)session.getAttribute(&amp;quot;prac_pnr&amp;quot;);
-if (prac_pnr ==null) prac_pnr =&amp;quot;&amp;quot;;
-
-
-YdpPssClient client = new YdpPssClient();
-String key=&amp;quot;&amp;quot;;
-String logaid=prac_pnr;
-String mode=&amp;quot;small&amp;quot;;
-LAOSL1.setPP_LANG(langs[lang]);
-LAOSL1.setPP_NSP(user_nsp);
-LAOSL1.setPP_NRZK(user_nrzk);
-LAOSL1.setPP_PNR(loga_pnr);
-Manager.refresh(LAOSL1,(String)session.getAttribute(&amp;quot;AdeliaKeyPoolName&amp;quot;));
-%&amp;gt;
-
-&amp;lt;%@ page import=&amp;quot;org.apache.axis.encoding.Base64&amp;quot; %&amp;gt;
-&amp;lt;%
-String encoded = Base64.encode(client.getUserFotoFromWServices(key,logaid,mode));
-%&amp;gt;
-
-&amp;lt;% if(encoded!= null) { %&amp;gt;
-  &amp;lt;IMG src=&amp;quot;data:image/png;base64,&amp;lt;%=encoded%&amp;gt;&amp;quot; border=&amp;quot;0&amp;quot; id=&amp;quot;test&amp;quot;&amp;gt;
-&amp;lt;% }else{ %&amp;gt;
-  &amp;lt;IMG height=&amp;quot;177&amp;quot; src=&amp;quot;pics/noImage.jpg&amp;quot; border=&amp;quot;0&amp;quot; id=&amp;quot;test&amp;quot;&amp;gt;
-&amp;lt;% } %&amp;gt;
-&amp;lt;/td&amp;gt;
-&amp;lt;/tr&amp;gt;
-&amp;lt;/table&amp;gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;To skip such convoluted code I&amp;#8217;ll use a more simple (simplistic) example- our legacy method is doing just string split and return the frist token.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;BusinessClass&lt;/span&gt; {
-
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; businessMethod(&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; param) {
-    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; param.split(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt; &lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;)[&lt;span class=&quot;integer&quot;&gt;0&lt;/span&gt;];
-  }
-
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;And the test we will be using (actually in this case it&amp;#8217;s more like a runner than the fully blown test).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;BusinessClassTest&lt;/span&gt; {
-
-  &lt;span class=&quot;annotation&quot;&gt;@ClassRule&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;static&lt;/span&gt; CharacterizationRule rule =
-      aRuleFor(BusinessClassTest.class)
-      .build();
-
-  &lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; BusinessClass service = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; BusinessClass();
-
-  &lt;span class=&quot;annotation&quot;&gt;@Test&lt;/span&gt;
-  &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; just_run_the_method() {
-    &lt;span class=&quot;directive&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; param = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;first parameter&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
-    &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.out.println(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;param = &lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; + param);
-    &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; output = service.businessMethod(param);
-    &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.out.println(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;after split = &lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; + output);
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;As you probably noticed, there are no assertions in the test. That&amp;#8217;s is deliberate - we are not asserting, because we probably don&amp;#8217;t have a clue what should be the desired outcome. What we do, is logging some output without drilling into the details.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The whole idea is to log as much as possible and use the log as the feedback is the behaviour of the class (output) is not changing. This is what Michael Feathers described as characterization test.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;quoteblock&quot;&gt;
-&lt;blockquote&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;A characterization test is a mean to describe (characterize) the actual behavior of an existing piece of software.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/blockquote&gt;
-&lt;div class=&quot;attribution&quot;&gt;
-&amp;#8212; Michael Feathers&lt;br&gt;
-&lt;cite&gt;Working Effectively with Legacy Code&lt;/cite&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;the-working-example&quot;&gt;The working example&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;So, we see we need two modes for our tests: logging and verification. We should have exacly the same test code which can be run in two modes; collect all possible output and verify if the output is still the same. My approach would be to use an environment variable (flag) and pass it over during test invocation.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; ENV_NAME_FOR_RECORDING = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;pinchpoint&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;;
-
-&lt;span class=&quot;directive&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;boolean&lt;/span&gt; isRecording() {
-  &lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; env = &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.getProperty(ENV_NAME_FOR_RECORDING);
-  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; (env != &lt;span class=&quot;predefined-constant&quot;&gt;null&lt;/span&gt;);
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;shell&quot;&gt;mvn test -Dpinchpoint=true -Dtest=BusinessCodeTest&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;div class=&quot;title&quot;&gt;The logging part&lt;/div&gt;
-&lt;p&gt;I&amp;#8217;ve written at the beginning we will be using junit rules to get the stuff done. Since version 4.7 jUnit provides rules, which are smarter runners - that can perform additional actions during test (think of aspects or interceptor). &lt;code&gt;External Resource&lt;/code&gt; is one of such classes&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;quoteblock&quot;&gt;
-&lt;blockquote&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;A base class for Rules that set up an external resource before a test and tear it down afterward.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/blockquote&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The actual logging, that save the complete output to a default temp folder, to a file named after the class undergoing the test, logging might look like so.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;FileOutputCapture&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;extends&lt;/span&gt; ExternalResource {
-
-  &lt;span class=&quot;directive&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; before() &lt;span class=&quot;directive&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;Throwable&lt;/span&gt; {
-    original = &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.out;
-    &lt;span class=&quot;predefined-type&quot;&gt;PrintStream&lt;/span&gt; pos = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;PrintStream&lt;/span&gt;(capturedStream);
-    &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.setOut(pos); &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;
-  }
-
-  &lt;span class=&quot;directive&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; after() {
-    &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.setOut(original);    &lt;b class=&quot;conum&quot;&gt;(2)&lt;/b&gt;
-    &lt;span class=&quot;keyword&quot;&gt;try&lt;/span&gt; {
-      Files.write(outputFile.toPath(),
-      capturedStream.toByteArray(),
-      StandardOpenOption.APPEND);   &lt;b class=&quot;conum&quot;&gt;(3)&lt;/b&gt;
-    } &lt;span class=&quot;keyword&quot;&gt;catch&lt;/span&gt; (&lt;span class=&quot;exception&quot;&gt;IOException&lt;/span&gt; e) {
-      &lt;span class=&quot;keyword&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;exception&quot;&gt;RuntimeException&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;File write failed! &lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;, e);
-    }
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;colist arabic&quot;&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Sustitute the standard &lt;code&gt;System.out&lt;/code&gt; with a stream to capturing all output&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Restore the original &lt;code&gt;PrintStream&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Write everything to file&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;div class=&quot;title&quot;&gt;The verification part&lt;/div&gt;
-&lt;p&gt;Now that we are good with the log, we can start refactoring the &lt;code&gt;BusinessClass&lt;/code&gt; and do the verification if the output has changed in any way. Obviously, we would need another capture, without saving to a file.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;StreamOutputCapture&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;extends&lt;/span&gt; ExternalResource {
-  &lt;span class=&quot;predefined-type&quot;&gt;PrintStream&lt;/span&gt; original;
-
-  &lt;span class=&quot;directive&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; before() &lt;span class=&quot;directive&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;Throwable&lt;/span&gt; {
-    original = &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.out;
-    &lt;span class=&quot;predefined-type&quot;&gt;PrintStream&lt;/span&gt; pos = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;PrintStream&lt;/span&gt;(capturedStream);
-    &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.setOut(pos);
-  }
-
-  &lt;span class=&quot;directive&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; after() {
-    &lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.setOut(original);
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Next thing is verification. Again, we will use jUnit goodies, this time a &lt;code&gt;Verifier&lt;/code&gt; class&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;quoteblock&quot;&gt;
-&lt;blockquote&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Verifier is a base class for Rules like ErrorCollector, which turns passing test methods into failing tests if a verification check is failed&lt;/p&gt;
-&lt;/div&gt;
-&lt;/blockquote&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;java&quot;&gt;&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;CaptureVerifier&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;extends&lt;/span&gt; Verifier {
-
-  &lt;span class=&quot;directive&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; verify() &lt;span class=&quot;directive&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;Throwable&lt;/span&gt; {
-    &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&amp;gt; actual = ReadLines.fromStream(capturedStream);
-    &lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&amp;gt; original = ReadLines.fromFile(pinchFile);
-
-    &lt;span class=&quot;predefined-type&quot;&gt;Patch&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;&amp;gt; patch = DiffUtils.diff(original, actual);
-
-    assertThat(patch, is(empty()));
-  }
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;And if something went wrong, we get a nice feedback.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;txt&quot;&gt;java.lang.AssertionError:
-File:
-  &amp;lt;/tmp/com.example.BusinessClassTest.txt&amp;gt;
-read with charset &amp;lt;UTF-8&amp;gt; does not have the expected content:
-line: &amp;lt;3&amp;gt;, expected:&amp;lt;something&amp;gt; but was:&amp;lt;something else&amp;gt;
-      at com.example.BusinessClassTest.should_create_master_output_file&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;instead-of-summary&quot;&gt;Instead of summary&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The code snippets above is not the actual implementation. These are samples, to give a clue what&amp;#8217;s happening in the code. If you find this useful or interesting in any way, take a look on the actual &lt;a href=&quot;https://github.com/kubamarchwicki/junit-characterization&quot;&gt;implementation on Github&lt;/a&gt; or use it directly in your project.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;pl.marchwicki&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;junit-characterization&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;tag&quot;&gt;&amp;lt;packaging&amp;gt;&lt;/span&gt;jar&lt;span class=&quot;tag&quot;&gt;&amp;lt;/packaging&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;0.3&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I&amp;#8217;m keen on feedback (say on &lt;a href=&quot;https://twitter.com/kubem&quot;&gt;@kubem at twitter&lt;/a&gt;) if you find it useful. For me, in my context, it worked and allow me to fairly safety replace the webservice connector (client) in the application I really didn&amp;#8217;t want to touch. Maybe it will work for you as well.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Some other references to this technique (also known as the Golden Master):&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;ulist&quot;&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://blog.thecodewhisperer.com/2014/09/28/surviving-legacy-code-with-golden-master-and-sampling/&quot; class=&quot;bare&quot;&gt;http://blog.thecodewhisperer.com/2014/09/28/surviving-legacy-code-with-golden-master-and-sampling/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;http://blog.adrianbolboaca.ro/2014/05/golden-master/&quot; class=&quot;bare&quot;&gt;http://blog.adrianbolboaca.ro/2014/05/golden-master/&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
-        <pubDate>Fri, 30 Jan 2015 00:00:00 +0000</pubDate>
-        <link>http://jakub.marchwicki.pl/posts/2015/01/30/characterize-your-legacy-junit-rules/</link>
-        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2015/01/30/characterize-your-legacy-junit-rules/</guid>
         
         
         <category>posts</category>
