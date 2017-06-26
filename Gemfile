@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'therubyracer'
-gem 'jekyll'
+gem 'jekyll', '3.4.0'
 gem 'jekyll-redirect-from'
 gem 'asciidoctor'
 gem 'coderay'
