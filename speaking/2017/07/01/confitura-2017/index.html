@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Microservices workshop : Notepack</title>
+    <title>Confitura 2017 : Notepack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A randomized pack of notes">
-    <link rel="canonical" href="http://jakub.marchwicki.pl/consultancy/microservices/">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/speaking/2017/07/01/confitura-2017/">
     <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
 
     <!-- Custom CSS -->
@@ -73,203 +73,54 @@
 
     <div class="page-content">
       <div class="wrap">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-	$(function() {
-		anchors.options.visible = 'always';
-		anchors.add('h2');
-	});
-</script>
-
-
-
-<div class="post">
+      <div class="post">
 
   <header class="post-header">
-    <h1>Microservices workshop</h1>
+    <h1>Confitura 2017</h1>
+    <p class="meta">
+      <span id="speakingdate">2017-07-01, Warsaw, Poland</span>
+      
+    </p>
   </header>
 
   <article class="post-content">
-  <div id="preamble">
+  <div class="sect1">
+<h2 id="java9-and-repl">Java9 and REPL</h2>
 <div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
 <div class="paragraph">
-<p>Microservies. Everybody is talking about microservices. Everybody says they do microservces. The definition of microservice architecture is quite broad and vague: functional decoupling into discrete services, hence the number of approaches, with different flavors and implementations is so great - everybody can do microservices differently.</p>
+<p>Forget debugging, welcome joy and productivity</p>
+</div>
+</blockquote>
+</div>
+<div class="sect2">
+<h3 id="abstract">Abstract</h3>
+<div class="paragraph">
+<p>Oh Java, my old, lousy and boiler plaited friend. For ages, trying anything new (which luckily wasn&#8217;t that frequent afterall) required starting a new project, followed by a <code>Sandbox</code> class and a <code>public static void main</code> method. Alternatively, a simple JUnit test was a nice entrypoint as well - if we were lucky enough to have some dependency management sorted out.</p>
 </div>
 <div class="paragraph">
-<p>Fact is, not everything needs to stand as autonomous Java applications communicating over HTTP with JSON as a transport language. Different architectures compromises different elements - which is great and show
-the true flexibility of the approach. However, regardless of implementation there is a set of practices that should be present in all solutions.</p>
-</div>
-<div class="paragraph">
-<div class="title">What you will learn</div>
-<p>During the workshop we will distill, name a couple of patterns for distributed application. Patterns will be named, discussed, analyzed and applied using most common tools available on the Java platform.</p>
-</div>
-<div class="paragraph">
-<p>The workshop is a combination of hands-on coding exercises (60% of time) with some theoretical introduction to the microservices as a concept (40% of time)</p>
+<p>Thankfully, things have changed. With the Java9 a REPL has been introduced, everybody can just run an up-to-date Java shell and try out new syntax, new APIs, new libraries. Now we can feel like Scala, CLojure, Ruby, JavaScript, PHP, call whatever language developers - finally there.In this talk I&#8217;ll walk through essential REPL examples, see how we can use JShell to try out new language features (like Java9 Streams enhancements), but foremost, we will use it to build a real-life web application. Expect meat-only talk without theory, diagrams, useless "javax.swing.*" application examples.</p>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="microservices-patterns">Microservices Patterns</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Patterns of distributed architecture covered during the workshop:</p>
-</div>
+<div class="sect2">
+<h3 id="additional-resources">Additional resources</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>API Gateway</p>
+<p><a href="https://github.com/kubamarchwicki/slides-java9-jshell/tree/master/slides">Slides source in <strong>asciidoctor</strong></a></p>
 </li>
 <li>
-<p>Circuit breakers</p>
-</li>
-<li>
-<p>Load balancing</p>
-</li>
-<li>
-<p>Service discovery and externalized configuration</p>
-</li>
-<li>
-<p>Service orchestration and choreography</p>
-</li>
-<li>
-<p>Consumer-driven contracts</p>
-</li>
-<li>
-<p>Centralized loggings and monitoring</p>
-</li>
-<li>
-<p>Authorisation and security</p>
+<p><a href="https://github.com/kubamarchwicki/slides-java9-jshell/">Code examples @ GitHub</a></p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="training-programme">Training programme</h2>
-<div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Basics of microservices architecture</dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p>Different approaches to <em>structuring</em> architecture</p>
-</li>
-<li>
-<p>Monolithic applications vs. microservices</p>
-</li>
-<li>
-<p>Conway&#8217;s Law</p>
-</li>
-<li>
-<p>Architecture around business capabilities</p>
-</li>
-<li>
-<p>Decomposing the domain with Domain Driven Design</p>
-</li>
-</ul>
-</div>
-</dd>
-<dt class="hdlist1">Designing microservices</dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p>Smart endpoints and dumb pipes</p>
-<div class="ulist">
-<ul>
-<li>
-<p>REST services</p>
-</li>
-<li>
-<p>Organizing multiple services with HATEOAS</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Data decentralization</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Splitting data for different microservices</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>User interface elements</p>
-</li>
-</ul>
-</div>
-</dd>
-<dt class="hdlist1">Implementing microservices</dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p>REST resources and their representation</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Designing application entry points and addresses</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Service registry and managing configuration</p>
-</li>
-<li>
-<p>Testing and versioning services</p>
-</li>
-<li>
-<p>Refactoring monoliths to microservices</p>
-</li>
-</ul>
-</div>
-</dd>
-<dt class="hdlist1">Interaction between microservices</dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p>Synchronous vs asynchronous communication</p>
-</li>
-<li>
-<p>Services monitoring - centralized logging</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Tracing transactions in distributed systems</p>
-</li>
-<li>
-<p>Business and technical metrics</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="get-in-touch">Get in touch</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>I&#8217;m happy to talk. I can be reached via <a href="http://twitter.com/kubem">twitter</a>, <a href="https://www.linkedin.com/in/kubamarchwicki">linkedin</a> or traditionally through <a href="mailto:kuba(d0t)marchwicki(at)gmail(d0t).com">kuba.marchwicki at gmail.com</a></p>
 </div>
 </div>
 </div>
   </article>
-</div>
 
-<!-- http://david.elbe.me/jekyll/2015/06/20/how-to-link-to-next-and-previous-post-with-jekyll.html -->
+</div>
 
       </div>
     </div>
