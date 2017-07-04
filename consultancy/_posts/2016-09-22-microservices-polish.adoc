@@ -23,7 +23,7 @@ Całość szkolenia przeprowadzana jest w formule wzorców projektowych: nazwani
 
 Wychodząc od klasycznych praw i teorii (twierdzenie CAP, 8 błędów przetwarzania rozproszonego), analizowane są pojawiające się problemy, sposoby ich mitygowania oraz minimalizacja zasięgu błędów.
 
-== Omawiane wzorce:
+== Omawiane wzorce
 
 * API Gateway
 * Circuit breakers
@@ -38,7 +38,7 @@ Wychodząc od klasycznych praw i teorii (twierdzenie CAP, 8 błędów przetwarza
 
 Podstawy teoretyczne architektury mikrousługowej::
 * Różne podejścia do strukturyzowania architektury
-* Monolityczne aplikacje i Micro Services
+* Monolityczne aplikacje i Microservices
 * Prawo Conway'a
 * Architektura wokół funkcjonalności biznesowych
 * Dekompozycja domeny wykorzystując Domain-Driven Design
@@ -53,9 +53,6 @@ Projektowanie mikrousług::
 Implementacja mikrousług::
 * Zasoby REST i ich reprezentacja
 ** Punkt wejścia i inne adresy
-* Dostęp do danych z wykorzystaniem Spring Data
-** Definiowanie interfejsów Repository
-** Tworzenie metod zapytań
 * Rejestr usługi i zarządzanie konfiguracją
 * Wersjonowanie i testowanie usług
 * Strategie refaktoryzacji systemów monolitycznych

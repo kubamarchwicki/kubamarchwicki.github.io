@@ -11,13 +11,53 @@ Fact is, not everything needs to stand as autonomous Java applications communica
 the true flexibility of the approach. However, regardless of implementation there is a set of practices that should be present in all solutions.
 
 .What you will learn
-During the workshop we will distill, name a couple of patterns and play with an example implementation of:
 
-* service registers and discovery
-* circuit breakers
-* consumer driven contracts
-* centralized logging and monitoring
-* approaches in front-end web architecture (API gateway)
+During the workshop we will distill, name a couple of patterns for distributed application. Patterns will be named, discussed, analyzed and applied using most common tools available on the Java platform.
+
+The workshop is a combination of hands-on coding exercises (60% of time) with some theoretical introduction to the microservices as a concept (40% of time)
+
+== Microservices Patterns
+
+Patterns of distributed architecture covered during the workshop:
+
+* API Gateway
+* Circuit breakers
+* Load balancing
+* Service discovery and externalized configuration
+* Service orchestration and choreography
+* Consumer-driven contracts
+* Centralized loggings and monitoring
+* Authorisation and security
+
+== Training programme
+
+Basics of microservices architecture::
+* Different approaches to _structuring_ architecture
+* Monolithic applications vs. microservices
+* Conway's Law
+* Architecture around business capabilities
+* Decomposing the domain with Domain Driven Design
+
+Designing microservices::
+* Smart endpoints and dumb pipes
+** REST services
+** Organizing multiple services with HATEOAS
+* Data decentralization
+** Splitting data for different microservices
+* User interface elements
+
+Implementing microservices::
+* REST resources and their representation
+** Designing application entry points and addresses
+* Service registry and managing configuration
+* Testing and versioning services
+* Refactoring monoliths to microservices
+
+Interaction between microservices::
+* Synchronous vs asynchronous communication
+* Services monitoring - centralized logging
+** Tracing transactions in distributed systems
+** Business and technical metrics
 
 == Get in touch
 
