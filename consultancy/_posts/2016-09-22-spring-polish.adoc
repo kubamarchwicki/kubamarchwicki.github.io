@@ -1,5 +1,5 @@
 = {title}
-:title: Integration Patterns
+:title: Spring Framework
 :page-layout: training
 :page-categories: [consultancy]
 :page-comments: false
@@ -8,44 +8,47 @@
 == Opis szkolenia
 
 .Co zyskasz?
-Zdobędziesz praktyczne umiejętności programowania z wykorzystaniem Spring Integration. Podczas szkolenia zaprezentowane zostaną metody realizacji wybranych scenariuszy, w oparciu o wzorce Integration Patterns.
+
+Cel szkolenia Spring to zdobycie praktycznych umiejętności programowania z wykorzystaniem frameworka Spring. Zdobędziesz wiedzę, jak poprawnie przygotować projekt, jak wykorzystać wstrzykiwania zależności (Kontener IoC) oraz poznasz zaawansowane techniki AOP. Dowiesz się, jak testować aplikacje oraz w jaki sposób integrować aplikację z bazą danych.
 
 .Profil uczestnika
-Warsztat dedykowany jest dla programistów znających język Java oraz Spring Framework. Przekrojowy charakter warsztatu może z powodzeniem służyć programistom pragnącym wykorzystywać wzorce w codziennej pracy, jak i developerom już korzystającym z frameworka w pewnym zakresie, ale pragnącym usystematyzować swoją wiedzę.
+
+Warsztat (80% programowanie - ćwiczenia, livecoding, 20% wykład) dedykowany jest dla programistów znających język Java. Przekrojowy charakter warsztatu może z powodzeniem służyć programistom pragnącym wykorzystywać framework Spring w codziennej pracy, jak i developerom już z niego korzystającym ale pragnącym usystematyzować swoją wiedzę na temat frameworka Spring.
 
 == Program szkolenia
 
-Przypadki użycia realizowane w ramach szkolenia „Wzorce Enterprise Integration Patterns z wykorzystaniem Spring Integration”
+Spring Framework Core::
+* Programowanie z wykorzystaniem komponentów
+* Spring jako fabryka
+* Inversion of control
+* Konfiguracja za konfiguracji Java i/lub pomocą pliku XML
+* Alternatywna konfiguracja z użyciem adnotacji
+* Programistyczne korzystanie z fabryki
+* Singletony i prototypy
+* Inicjalizacja stanu początkowego obiektu
 
-.Load Balancer
+Wstrzykiwanie zależności (Dependency Injection)::
+* Koncepcja wstrzykiwania zależności
+* Składanie obiektów
+* Automatyczna konfiguracja (autowiring)
+* Cykl życia obiektów
+* Zdarzenia kontenera
 
-W tym przypadku przedstawimy wykorzystanie wzorców EIP i Spring Integration w scenariuszu, gdzie zapytania do systemu będą rozdzielane pomiędzy wieloma instancjami, w celu osiągnięcia optymalnego wykorzystania zasobów systemu. Proponowany scenariusz będzie uwzględniał różne dostępne algorytmy podziału pracy, m.in. „round robin”, „least busy” i „sticky session”. Dla pełnego wykorzystania możliwości Spring Integration, prezentowany scenariusz zrealizujemy w oparciu o protokół synchroniczny i kolejki wiadomości przechowywane w pamięci operacyjnej. Przedstawione tu zostaną między innymi zastosowania wzorców „Message Filter”, „Dynamic Router” oraz „Point to Point Channel”.
+Aspekty::
+* Sposób działania oraz typy aspektów
+* Dołączenie aspektów do aplikacji
+* Przygotowanie i konfiguracja porad
+* Definiowanie punktów przecięcia
 
-.Scatter and Gather
+Transakcje::
+* ACID i właściwości transakcji
+* Transakcja po stronie bazy danych a transakcją aplikacji
+* Automatyczne zarządzanie transakcjami
+* Transakcje deklaratywne
+* Programistyczne zarządzanie transakcjami wykorzystując TransactionTemplate
 
-W tym scenariuszu pojedyncze zapytanie zostanie rozdzielone na mniejsze zadania. Realizację tych zadań wydelegujemy do innych komponentów/punktów integracji, rezultaty czego zostaną skonsolidowane przy pomocy Spring Integration. W tym scenariuszu przedstawimy praktyczne wykorzystanie wzorców „Multicast Router”, ”Splitter” i „Aggregator”.
-
-.Result Cache
-
-W tym przypadku „load balancer” zostanie rozbudowany o mechanizm przechowywania rezultatów w celu optymalizacji obciążenia systemu. Rezultaty zapytań będą przechowywane w pamięci dzięki zastosowaniu wzorca „Wire Tap”.
-
-.Pipe and Filter
-
-Scenariusz „Pipe and Filter” prezentuje metody tworzenia zaawansowanych integracji, poprzez kompozycję poszczególnych etapów przetwarzania w łańcuchy wywołań punktów integracji. Przedstawiony scenariusz będzie oparty o wykorzystanie wzorca „Routing Slip” oraz szerokiego wachlarza wzorców z kategorii „Message Transformer”.
-
-.Shared Space
-
-Spring Integration wykorzystamy do realizacji tzw. „blackboard model”, gdzie wszyscy uczestnicy integracji mają dostęp do współdzielonej przestrzeni, w której przechowywane są zarówno zadania, jak i cząstkowe rezultaty. Dzięki wykorzystaniu wzorca „Publish Subscribe Channel” oraz JMS API, wykonywanie zadań oraz dostęp do cząstkowych rezultatów zostaną udostępnione wszystkim uczestnikom integracji.
-
-.Execution Orchestrator
-
-W scenariuszu Execution Orchestrator zostaną przedstawione techniki orkiestracji usług poprzez stworzenie usługi sieciowej (REST). Ta będzie dostarczać nowej funkcjonalności biznesowej z wykorzystaniem usług już istniejących w innych systemach. Utworzona integracja będzie implementowała logikę biznesową poprzez wywołanie dostępnych punktów integracji oraz transformacje formatu wiadomości.
-
-.Protocol Adapter
-
-W tym przypadku wykorzystamy Spring Integration do zbudowania adaptacji wielu protokołów. Scenariusz przewiduje sytuację, w której ta sama funkcjonalność biznesowa jest realizowana przez wiele systemów, poprzez różne protokoły i formaty wiadomości. Celem scenariusza jest stworzenie wspólnego punktu dostępu korzystającego ze wspólnego protokołu i formatu wiadomości. Przy okazji przedstawimy wykorzystanie wzorców „Content based router” i „Content Enricher”.
-
-
-== Zapytaj o szkolenie
-
-Jestem dla Ciebie dostępny poprzez: link:http://twitter.com/kubem[twitter], link:https://www.linkedin.com/in/kubamarchwicki[linkedin] lub tradycyjnie przez email link:mailto:kuba(d0t)marchwicki(at)gmail(d0t).com[kuba.marchwicki at gmail.com]
+Trwałość danych::
+* Konfiguracja bazy danych
+* Wzorzec DAO i jego zastosowanie w architekturze warstwowej
+* Użyteczne sposoby korzystania ze źródeł danych w Springu
+* Baza danych bez JPA

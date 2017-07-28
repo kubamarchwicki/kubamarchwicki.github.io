@@ -3,7 +3,7 @@
 :page-layout: training
 :page-categories: [consultancy]
 :page-comments: false
-:page-permalink: /consultancy/spring-framework/
+:page-permalink: /consultancy/spring-integration/
 
 == Workshop description
 
