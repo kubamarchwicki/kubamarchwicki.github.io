@@ -6,15 +6,12 @@ branches:
 
 env:
   global:
-    secure: OUDk75GVgZMKfDHM7WKNXLWlzEFKelIapWddUmVmVN4KPw57OtHt91cyNg+ETDdQsJL/G8zE8VRArUv9lbcTaCqN+yydhYOMn6WAwhhplStjx912opWD9Ra1i3nAxuQYHaxQacnOnRWo5g9A7JJ94EvtI2GNu6GQlpDMAsCV7/Y=
-
+  - secure: QupyOBw12n+8ndGmdK8EIF+i5fNItHAEsCtBfkufzFHH1JXF3/9bOrakEDcKdyfY4aC2l5iZHBh/+/X1kGUTYym2iNoAtAX/eGBqckN6R/uKAarDWn4SXo+CMMEgdKaEPaU3DIIfnnq3QVxfHxSXE8amOZoK8t7pKzKXVgt8Dy4=
+  - secure: nmOe+0SiRmTAtrYAMM5m8wj6mKe2aG8QZ6Qb+yWZTYT1cREfTWSfu8Xrwnr0aYC121j4lSl6OJtxkO7R4QgtiWjQMMNd2yFzpgssktcKT64uM8IGw8SRr5F9gKgHzMaJiOdhPrISim35a4RYWaoYf6JxANC5NAaDYPRXCSJ/xgQ=
 
 rvm:
-  - 2.2.0
+- 2.2.0
 
 sudo: false
 
-before_script:
-  - git config --global user.name 'Travis CI'
-  - git config --global user.email 'kuba.marchwicki+travis@gmail.com'
-script: JEKYLL_ENV=production bundle exec rake deploy
+script: bundle exec rake deploy
