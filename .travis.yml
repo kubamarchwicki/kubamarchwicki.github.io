@@ -1,21 +1,14 @@
 language: ruby
-
 branches:
   only:
   - devel
-
 env:
   global:
-  - secure: QupyOBw12n+8ndGmdK8EIF+i5fNItHAEsCtBfkufzFHH1JXF3/9bOrakEDcKdyfY4aC2l5iZHBh/+/X1kGUTYym2iNoAtAX/eGBqckN6R/uKAarDWn4SXo+CMMEgdKaEPaU3DIIfnnq3QVxfHxSXE8amOZoK8t7pKzKXVgt8Dy4=
-  - secure: nmOe+0SiRmTAtrYAMM5m8wj6mKe2aG8QZ6Qb+yWZTYT1cREfTWSfu8Xrwnr0aYC121j4lSl6OJtxkO7R4QgtiWjQMMNd2yFzpgssktcKT64uM8IGw8SRr5F9gKgHzMaJiOdhPrISim35a4RYWaoYf6JxANC5NAaDYPRXCSJ/xgQ=
-
+    secure: OHXFuMxg9GojFdf4jy+l7nSb9LrL0aHuqLm7S4HwFfXBTsfKPxlgGz8jQIBODdq+NV7tPbLfcXW0D7VYR8kTdH+kBITnrLxQX9g9gAs5e8JFlyni8LWFPdm+isibEVlFsyZVHJX4RQzJ4DKVMs8reMmbiueGxEQyUYhOQEo+P2o=
 rvm:
 - 2.2.0
-
 sudo: false
-
 before_script:
-  - git config --global user.name 'Travis CI'
-  - git config --global user.email 'kuba.marchwicki+travis@gmail.com'
-
+- git config --global user.name 'Travis CI'
+- git config --global user.email 'kuba.marchwicki+travis@gmail.com'
 script: bundle exec rake deploy
