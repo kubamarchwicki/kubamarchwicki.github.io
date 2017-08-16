@@ -8,7 +8,7 @@ sudo: false
 before_script:
 - git config --global user.name 'Travis CI'
 - git config --global user.email 'kuba.marchwicki+travis@gmail.com'
-script: bundle exec rake deploy
+script: JEKYLL_ENV=production bundle exec rake deploy
 env:
   global:
     secure: ZPdC+KNokiyLzbYX+AXVnra/ByQMzF1h2B0Pn21IQq++i9Dxh3EH0Tj/3Vc2dDG74rfEtM4+s5TVLXyExKd7e5aqf6S9soLvahZHgsedJGaw0WgyRN84BOXY7VUznuMFAQnMcKcgN2/1cAlOOt76Ahu/IBTvfmIwuvGNJ4pbziY=
