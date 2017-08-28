@@ -25,6 +25,8 @@ Wychodząc od klasycznych praw i teorii (twierdzenie CAP, 8 błędów przetwarza
 
 == Omawiane wzorce
 
+Wzorce architektoniczne określają strukturę rozwiązania pewnego problemu w obrębie systemu informatycznego. Nie inaczej jest w przypadku mikro usług, gdzie udało się wykształcić kilka wzorców. Podczas szkolenia ćwiczenia praktyczne opierają się właśnie o analizę m.in. następujących wzorców.
+
 * API Gateway
 * Circuit breakers
 * Load balancing
@@ -36,39 +38,129 @@ Wychodząc od klasycznych praw i teorii (twierdzenie CAP, 8 błędów przetwarza
 
 == Program szkolenia
 
-Podstawy teoretyczne architektury mikrousługowej::
+==== {counter:cnt}. Podstawy teoretyczne architektury mikrousługowej
+
 * Różne podejścia do strukturyzowania architektury
 * Monolityczne aplikacje i Microservices
-* Prawo Conway'a
+* Prawo Conway’a
 * Architektura wokół funkcjonalności biznesowych
-* Dekompozycja domeny wykorzystując Domain-Driven Design
+* Dekompozycja domeny wykorzystując Domain-Driven Design, określanie granic mikro usług
 
-Projektowanie mikrousług::
-* Smart endpoints and dumb pipes
-** Usługi REST; koncepcja HATEOAS
+[TIP]
+.Cel modułu
+====
+Odpowiadamy na pytania:
+
+* po co w ogóle stosować architekturę mikro usług,
+* dlaczego stosujemy, jaki problem próbujemy rozwiązać,
+* w jaki sposób podzielić dziedzinę problemu na części odpowiadające pojedynczym usługom.
+====
+
+---
+
+==== {counter:cnt}. Projektowanie i implementacja mikrousług
+
+* _Smart endpoints and dumb pipes_
+** Zasoby REST i ich reprezentacja
+** Zasady projektowania URLi
+** Wersjonowanie i zarządzanie zasobami
+** Hypermedia as the Engine of Application State (HATEOAS)
 * Decentralizacja danych
+// shared database, sharding, replica sets, Tim Berglund presentation
 ** Podział danych pod kątem mikrousług
+** Relacyjne i nierelacyjne bazy danych
+** Wolumen, szybkość, spójność - w odniesieniu do dostępnych źródeł danych (CAP Theorem)
+** Projektowanie modeli pod kątem odczytu (CQRS)
 * Elementy interfejsu użytkownika
-
-Implementacja mikrousług::
-* Zasoby REST i ich reprezentacja
-** Punkt wejścia i inne adresy
-* Rejestr usługi i zarządzanie konfiguracją
-* Wersjonowanie i testowanie usług
 * Strategie refaktoryzacji systemów monolitycznych
 
-Komunikacja pomiędzy usługami::
-* Komunikacja synchroniczna vs. asynchroniczna
-* Definiowanie zależności pomiędzy usługami oraz ich dokumentacja
-* Kompatybilność usług, zmiany i kompatybilność wsteczna
-* Wprowadzenie do wzorca “circuit breaker” i konfiguracja bezpiecznika połączenia
+[TIP]
+.Cel modułu
+====
+Odpowiadamy na pytania:
 
-Monitoring i zarządzanie mikrousługami::
+* w jaki sposób zacząć implementować pojedyncze usługi,
+* jakie narzędzia frameworki mogą nam w tym pomóc (Spring Boot, Spring Cloud, Netflix OSS, Dropwizard, Spark Java itp),
+* jak od strony implementacji wyglądają poszczególne założenia mikrousług (decentralizacja danych, dowolność stosów technologicznych),
+* jak możemy dzielić i refaktoryzować istniejące aplikacje.
+====
+
+---
+
+==== {counter:cnt}. Komunikacja pomiędzy usługami
+
+* Komunikacja synchroniczna vs. asynchroniczna
+** Wprowadzenie do wzorca “Circuit Breaker” i konfiguracja bezpiecznika połączenia
+* Definiowanie zależności pomiędzy usługami oraz ich dokumentacja
+** Wprowadzenie do wzorca "API Gateway", "Service Discovery"
+** Modelowanie procesów w obrębie serwisów (orkiestracja i choreografia)
+* Kompatybilność usług, zmiany i kompatybilność wsteczna
+** Wprowadzenie do wzorca "Consumer Driven Contracts"
+** Testowanie usług w ujęciu _end-to-end_
+
+[TIP]
+.Cel modułu
+====
+Bazując na zestawie gotowych mikrousług obserwujemy problemy które mogą się pojawiać:
+
+* jak zabezpieczyć się przed niedostępnością określonych usług,
+* jak ukryć wewnętrzną złożoność platformy przed klientem,
+* w jaki sposób usługi mogą rozgłaszać informacje o swojej dostępności,
+* czy i w jaki sposób równoważyć obciążenie poszczególnych usług.
+====
+
+---
+
+==== {counter:cnt}. Produkcyjne wdrożenie mikrousług
+
+* Continious Integration / Continious Delivery
+* Infrastruktura jako kod
+** Automatyzacja procesów budujących (Jenkins DSL)
+** Automatyzacja tworzenia infrastruktury (Ansible)
+* Wirtualizacja i konteneryzacja
+* Wykorzystanie chmury (IaaS, PaaS) i związane z tym koszty
+* Zarządzenie rozproszoną konfiguracją
+
+[TIP]
+.Cel modułu
+====
+Odpowiadamy na pytania
+
+* jak zarządzać przygotowaniem różnorodnej infrastruktury,
+* jak dostosować się do różnych wymagań stawianych przez różne usługi,
+* jak w spójny i powtarzalny sposób zarządzać procesem budowania usług,
+* gdzie i jak wdrażać poszczególne usługi.
+====
+
+---
+
+==== {counter:cnt}. Utrzymanie i zarządzanie usługami
+
 * Standardowe metryki usługi (Actuator)
 * Monitoring usług - centralizacja logowania
 ** Śledzenie transakcji w obrębie systemu rozproszonego
 ** Metryki biznesowe oraz techniczne
 * Śledzenie przepływu komunikacji
+* Skalowanie systemów rozproszonych
+** Skalowanie pionowe _(scale-up)_ i poziome _(scale-out)_
+** Koncepcja automatycznego skalowania w środowiskach chmurowych
+// http://www.computerworld.pl/news/W-ktora-strone-skalowac,383163.html
+// wdrożenie do chmury
+// blue / green deployment, cannary releases
+
+
+[TIP]
+.Cel modułu
+====
+Staramy się odpowiedzieć na pytanie "Jak zrozumieć co dzieje się w systemie rozproszonym"
+
+* jak logować i raportować informacje z systemu,
+* gdzie dane z systemu gromadzić i w jaki sposób tego dokonać,
+* jak śledzić przepływ informacji pomiędzy poszczególnymi usługami,
+* jak reagować na problemy, i jak skalować aplikację w przy większym obciążeniu.
+====
+
+
 
 == Zapytaj o szkolenie
 
