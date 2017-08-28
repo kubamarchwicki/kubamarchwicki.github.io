@@ -154,10 +154,8 @@
 <div class="sect1">
 <h2 id="program-szkolenia">Program szkolenia</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Podstawy teoretyczne architektury mikrousługowej</dt>
-<dd>
+<div class="sect3">
+<h4 id="1-podstawy-teoretyczne-architektury-mikrousługowej">1. Podstawy teoretyczne architektury mikrousługowej</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -167,27 +165,65 @@
 <p>Monolityczne aplikacje i Microservices</p>
 </li>
 <li>
-<p>Prawo Conway&#8217;a</p>
+<p>Prawo Conway’a</p>
 </li>
 <li>
 <p>Architektura wokół funkcjonalności biznesowych</p>
 </li>
 <li>
-<p>Dekompozycja domeny wykorzystując Domain-Driven Design</p>
+<p>Dekompozycja domeny wykorzystując Domain-Driven Design, określanie granic mikro usług</p>
 </li>
 </ul>
 </div>
-</dd>
-<dt class="hdlist1">Projektowanie mikrousług</dt>
-<dd>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="title">Cel modułu</div>
+<div class="paragraph">
+<p>Odpowiadamy na pytania:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Smart endpoints and dumb pipes</p>
+<p>po co w ogóle stosować architekturę mikro usług,</p>
+</li>
+<li>
+<p>dlaczego stosujemy, jaki problem próbujemy rozwiązać,</p>
+</li>
+<li>
+<p>w jaki sposób podzielić dziedzinę problemu na części odpowiadające pojedynczym usługom.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="2-projektowanie-i-implementacja-mikrousług">2. Projektowanie i implementacja mikrousług</h4>
 <div class="ulist">
 <ul>
 <li>
-<p>Usługi REST; koncepcja HATEOAS</p>
+<p><em>Smart endpoints and dumb pipes</em></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Zasoby REST i ich reprezentacja</p>
+</li>
+<li>
+<p>Zasady projektowania URLi</p>
+</li>
+<li>
+<p>Wersjonowanie i zarządzanie zasobami</p>
+</li>
+<li>
+<p>Hypermedia as the Engine of Application State (HATEOAS)</p>
 </li>
 </ul>
 </div>
@@ -199,62 +235,200 @@
 <li>
 <p>Podział danych pod kątem mikrousług</p>
 </li>
+<li>
+<p>Relacyjne i nierelacyjne bazy danych</p>
+</li>
+<li>
+<p>Wolumen, szybkość, spójność - w odniesieniu do dostępnych źródeł danych (CAP Theorem)</p>
+</li>
+<li>
+<p>Projektowanie modeli pod kątem odczytu (CQRS)</p>
+</li>
 </ul>
 </div>
 </li>
 <li>
 <p>Elementy interfejsu użytkownika</p>
 </li>
-</ul>
-</div>
-</dd>
-<dt class="hdlist1">Implementacja mikrousług</dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p>Zasoby REST i ich reprezentacja</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Punkt wejścia i inne adresy</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Rejestr usługi i zarządzanie konfiguracją</p>
-</li>
-<li>
-<p>Wersjonowanie i testowanie usług</p>
-</li>
 <li>
 <p>Strategie refaktoryzacji systemów monolitycznych</p>
 </li>
 </ul>
 </div>
-</dd>
-<dt class="hdlist1">Komunikacja pomiędzy usługami</dt>
-<dd>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="title">Cel modułu</div>
+<div class="paragraph">
+<p>Odpowiadamy na pytania:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>w jaki sposób zacząć implementować pojedyncze usługi,</p>
+</li>
+<li>
+<p>jakie narzędzia frameworki mogą nam w tym pomóc (Spring Boot, Spring Cloud, Dropwizard itp),</p>
+</li>
+<li>
+<p>jak od strony implementacji wyglądają poszczególne założenia mikrousług (decentralizacja danych, dowolność stosów technologicznych),</p>
+</li>
+<li>
+<p>jak możemy dzielić i refaktoryzować istniejące aplikacje.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="3-komunikacja-pomiędzy-usługami">3. Komunikacja pomiędzy usługami</h4>
 <div class="ulist">
 <ul>
 <li>
 <p>Komunikacja synchroniczna vs. asynchroniczna</p>
-</li>
+<div class="ulist">
+<ul>
 <li>
-<p>Definiowanie zależności pomiędzy usługami oraz ich dokumentacja</p>
-</li>
-<li>
-<p>Kompatybilność usług, zmiany i kompatybilność wsteczna</p>
-</li>
-<li>
-<p>Wprowadzenie do wzorca “circuit breaker” i konfiguracja bezpiecznika połączenia</p>
+<p>Wprowadzenie do wzorca “Circuit Breaker” i konfiguracja bezpiecznika połączenia</p>
 </li>
 </ul>
 </div>
-</dd>
-<dt class="hdlist1">Monitoring i zarządzanie mikrousługami</dt>
-<dd>
+</li>
+<li>
+<p>Definiowanie zależności pomiędzy usługami oraz ich dokumentacja</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wprowadzenie do wzorca "API Gateway", "Service Discovery"</p>
+</li>
+<li>
+<p>Modelowanie procesów w obrębie serwisów (orkiestracja i choreografia)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Kompatybilność usług, zmiany i kompatybilność wsteczna</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wprowadzenie do wzorca "Consumer Driven Contracts"</p>
+</li>
+<li>
+<p>Testowanie usług w ujęciu <em>end-to-end</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="title">Cel modułu</div>
+<div class="paragraph">
+<p>Bazując na zestawie gotowych mikrousług obserwujemy problemy które mogą się pojawiać:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>jak zabezpieczyć się przed niedostępnością określonych usług,</p>
+</li>
+<li>
+<p>jak ukryć wewnętrzną złożoność platformy przed klientem,</p>
+</li>
+<li>
+<p>w jaki sposób usługi mogą rozgłaszać informacje o swojej dostępności,</p>
+</li>
+<li>
+<p>czy i w jaki sposób równoważyć obciążenie poszczególnych usług.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="4-produkcyjne-wdrożenie-mikrousług">4. Produkcyjne wdrożenie mikrousług</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Continious Integration / Continious Delivery</p>
+</li>
+<li>
+<p>Infrastruktura jako kod</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Automatyzacja procesów budujących (Jenkins DSL)</p>
+</li>
+<li>
+<p>Automatyzacja tworzenia infrastruktury (Ansible)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Wirtualizacja i konteneryzacja</p>
+</li>
+<li>
+<p>Wykorzystanie chmury (IaaS, PaaS) i związane z tym koszty</p>
+</li>
+<li>
+<p>Zarządzenie konfiguracją</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="title">Cel modułu</div>
+<div class="paragraph">
+<p>Odpowiadamy na pytania</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>jak zarządzać przygotowaniem różnorodnej infrastruktury,</p>
+</li>
+<li>
+<p>jak dostosować się do różnych wymagań stawianych przez różne usługi,</p>
+</li>
+<li>
+<p>jak w spójny i powtarzalny sposób zarządzać procesem budowania usług,</p>
+</li>
+<li>
+<p>gdzie i jak wdrażać poszczególne usługi.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="5-utrzymanie-i-zarządzanie-usługami">5. Utrzymanie i zarządzanie usługami</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -276,10 +450,52 @@
 <li>
 <p>Śledzenie przepływu komunikacji</p>
 </li>
+<li>
+<p>Skalowanie systemów rozproszonych</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Skalowanie pionowe <em>(scale-up)</em> i poziome <em>(scale-out)</em></p>
+</li>
+<li>
+<p>Koncepcja automatycznego skalowania w środowiskach chmurowych</p>
+</li>
 </ul>
 </div>
-</dd>
-</dl>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="title">Cel modułu</div>
+<div class="paragraph">
+<p>Staramy się odpowiedzieć na pytanie "Jak zrozumieć co dzieje się w systemie rozproszonym"</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>jak logować i raportować informacje z systemu,</p>
+</li>
+<li>
+<p>gdzie dane z systemu gromadzić i w jaki sposób tego dokonać,</p>
+</li>
+<li>
+<p>jak śledzić przepływ informacji pomiędzy poszczególnymi usługami,</p>
+</li>
+<li>
+<p>jak reagować i problemy, i jak skalować aplikację w przy większym obciążeniu.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
