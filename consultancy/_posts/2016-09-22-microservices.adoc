@@ -18,7 +18,7 @@ The workshop is a combination of hands-on coding exercises (60% of time) with so
 
 == Microservices Patterns
 
-Patterns of distributed architecture covered during the workshop:
+The intention behind architecture patterns is to describe the structure of a solution to a particular problem. It's no different among microservices, where a certain set of patterns emerged. During the workshop practical examples and exercises cover (among others) following patterns:
 
 * API Gateway
 * Circuit breakers
@@ -31,33 +31,122 @@ Patterns of distributed architecture covered during the workshop:
 
 == Training programme
 
-Basics of microservices architecture::
+==== {counter:cnt}. Basics of microservices architecture
+
 * Different approaches to _structuring_ architecture
 * Monolithic applications vs. microservices
 * Conway's Law
 * Architecture around business capabilities
 * Decomposing the domain with Domain Driven Design
 
-Designing microservices::
-* Smart endpoints and dumb pipes
-** REST services
+[TIP]
+.Module outcomes
+====
+Following problems / questions are covered within this module:
+
+* why microsevices in general,
+* where microservices are applicable, what problem are they trying to solve,
+* how to decompose problems space (domain) into more discrete elements and mapping them onto individual services.
+====
+
+---
+
+==== {counter:cnt}. Designing and implementins microservices
+
+* _Smart endpoints and dumb pipes_
+** REST services and their representation
+** Designing URLs; rules and patterns
+** Versioning and managing resources
 ** Organizing multiple services with HATEOAS
 * Data decentralization
 ** Splitting data for different microservices
+** Relational and non-relations data stores
+** Volume, speed and consistency in different database engines (CAP Theorem)
+** Desiging models for reads (CQRS)
 * User interface elements
+* Strategies for refactring monoliths
 
-Implementing microservices::
-* REST resources and their representation
-** Designing application entry points and addresses
-* Service registry and managing configuration
-* Testing and versioning services
-* Refactoring monoliths to microservices
+[TIP]
+.Module outcomes
+====
+Following problems / questions are covered within the module:
 
-Interaction between microservices::
+* how to start with implementing individual services,
+* what frameworks and tools can be helpful (Spring Boot, Spring Cloud, Netflix OSS, Dropwizard, Spark Java etc)
+* how different rules and assumptions of microservices look like from implementation perspective (data decentralization, polyglot programming),
+* how can systems can be split and refactor into smaller pieces.
+====
+
+---
+
+==== {counter:cnt}. Communication between services
+
 * Synchronous vs asynchronous communication
+** Introducing "Circuit breaker" pattern
+* Defining and documenting  dependencies between services
+** Introducing "API gateway" and "Service discovery" patterns
+** Modeling interactions between services (orchestration and choreography)
+* Backwards compatibility and changes
+** Introducing "Consumer Driven Contracts"
+** _End-to_end_ tests
+
+[TIP]
+.Module outcomes
+====
+Starting with a set of ready microservices, we observe problems that might arise:
+
+* how to protect services against unavailability of dependent services,
+* how to hide the inner complexity of the platform from a user,
+* how services should broadcast their health or availability status,
+* how to load balance different services and it that really needed?
+====
+
+---
+
+==== {counter:cnt}. Production deployment of microservices
+
+* Continious Integration / Continious Delivery
+* Infrastructure as code
+** Automation of build processes (Jenkins DSL)
+** Automation of infrastructure (Ansible)
+* Visualization and containers
+* Utilizing cloud service (Iaas, PaaS)
+* Managing distributed configuration
+
+---
+
+[TIP]
+.Module outcomes
+====
+Following problems / questions are covered within the module:
+
+* how to manage wide range of infrastructure,
+* how to adjust various requirements (sometimes conflicting) of different services,
+* how to build consistent and repeatable build and deployment process,
+* how to deploy different services.
+====
+
+==== {counter:cnt}. Maintaining and managing services at scale
+
+* Defining and understanding standard metrics
 * Services monitoring - centralized logging
 ** Tracing transactions in distributed systems
 ** Business and technical metrics
+* Tracing the communication flow among different services
+* Scaling distributed systems
+** Horizontal _(scale-out)_ and vertical _(scale-up)_ scaling
+** Autoscaling in cloud environments
+
+[TIP]
+.Module outcomes
+====
+We are trying to understand "What is happening in the distributed system" by understanding the following:
+
+* how to log and report system information,
+* where to collect logs and what are best ways to do it,
+* how to trace the information flow between services,
+* how to resolve issues and scale application.
+====
 
 == Get in touch
 
