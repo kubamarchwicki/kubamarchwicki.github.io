@@ -1,0 +1,15 @@
+= {title}
+:title: Contact
+:page-layout: default
+:icons: font
+
+:imagesdir: /assets
+
+[.home.offer]
+== Let's talk!
+
+image::mug_shot.jpg[role="mugshot"]
+
+Hi, my name is *Jakub Marchwicki* and I help teams deliver better software.
+
+You can reach me on Twitter (link:http://twitter.com/kubem[@kubem]), LinkedIn (link:https://www.linkedin.com/in/kubamarchwicki[kubamarchwicki]) or email (link:mailto:kuba(d0t)marchwicki(at)gmail(d0t).com[kuba.marchwicki at gmail.com])

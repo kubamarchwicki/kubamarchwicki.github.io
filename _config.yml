@@ -33,6 +33,9 @@ static_pages:
   - title: Consultancy
     url: /consultancy/
     css-icon: comments
+  - title: Contact
+    url: /contact/
+    css-icon: address-book
 
 
 asciidoctor:

@@ -3,7 +3,7 @@
   <div class="wrap">
 
     <div class="column">
-      <ul>
+      <ul  style="margin-bottom: 0 !important">
         {% for page in site.static_pages %}
           {% if page.title %}
           <li><a href="{{ page.url | prepend: site.baseurl }}">
@@ -13,6 +13,8 @@
           </li>
           {% endif %}
         {% endfor %}
+      </ul>
+      <ul>
         {% if site.github_username %}<li>
           <a href="https://github.com/{{ site.github_username }}">
             <span class="icon foundation-icon"><i class="fi-social-github"></i></span>
