@@ -113,7 +113,7 @@ the true flexibility of the approach. However, regardless of implementation ther
 <h2 id="microservices-patterns">Microservices Patterns</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Patterns of distributed architecture covered during the workshop:</p>
+<p>The intention behind architecture patterns is to describe the structure of a solution to a particular problem. It&#8217;s no different among microservices, where a certain set of patterns emerged. During the workshop practical examples and exercises cover (among others) following patterns:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -148,10 +148,8 @@ the true flexibility of the approach. However, regardless of implementation ther
 <div class="sect1">
 <h2 id="training-programme">Training programme</h2>
 <div class="sectionbody">
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Basics of microservices architecture</dt>
-<dd>
+<div class="sect3">
+<h4 id="1-basics-of-microservices-architecture">1. Basics of microservices architecture</h4>
 <div class="ulist">
 <ul>
 <li>
@@ -171,17 +169,52 @@ the true flexibility of the approach. However, regardless of implementation ther
 </li>
 </ul>
 </div>
-</dd>
-<dt class="hdlist1">Designing microservices</dt>
-<dd>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="title">Module outcomes</div>
+<div class="paragraph">
+<p>Following problems / questions are covered within this module:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Smart endpoints and dumb pipes</p>
+<p>why microsevices in general,</p>
+</li>
+<li>
+<p>where microservices are applicable, what problem are they trying to solve,</p>
+</li>
+<li>
+<p>how to decompose problems space (domain) into more discrete elements and mapping them onto individual services.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="2-designing-and-implementins-microservices">2. Designing and implementins microservices</h4>
 <div class="ulist">
 <ul>
 <li>
-<p>REST services</p>
+<p><em>Smart endpoints and dumb pipes</em></p>
+<div class="ulist">
+<ul>
+<li>
+<p>REST services and their representation</p>
+</li>
+<li>
+<p>Designing URLs; rules and patterns</p>
+</li>
+<li>
+<p>Versioning and managing resources</p>
 </li>
 <li>
 <p>Organizing multiple services with HATEOAS</p>
@@ -196,47 +229,204 @@ the true flexibility of the approach. However, regardless of implementation ther
 <li>
 <p>Splitting data for different microservices</p>
 </li>
+<li>
+<p>Relational and non-relations data stores</p>
+</li>
+<li>
+<p>Volume, speed and consistency in different database engines (CAP Theorem)</p>
+</li>
+<li>
+<p>Desiging models for reads (CQRS)</p>
+</li>
 </ul>
 </div>
 </li>
 <li>
 <p>User interface elements</p>
 </li>
+<li>
+<p>Strategies for refactring monoliths</p>
+</li>
 </ul>
 </div>
-</dd>
-<dt class="hdlist1">Implementing microservices</dt>
-<dd>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="title">Module outcomes</div>
+<div class="paragraph">
+<p>Following problems / questions are covered within the module:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>REST resources and their representation</p>
-<div class="ulist">
-<ul>
+<p>how to start with implementing individual services,</p>
+</li>
 <li>
-<p>Designing application entry points and addresses</p>
+<p>what frameworks and tools can be helpful (Spring Boot, Spring Cloud, Netflix OSS, Dropwizard, Spark Java etc)</p>
+</li>
+<li>
+<p>how different rules and assumptions of microservices look like from implementation perspective (data decentralization, polyglot programming),</p>
+</li>
+<li>
+<p>how can systems can be split and refactor into smaller pieces.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Service registry and managing configuration</p>
-</li>
-<li>
-<p>Testing and versioning services</p>
-</li>
-<li>
-<p>Refactoring monoliths to microservices</p>
-</li>
-</ul>
+</td>
+</tr>
+</table>
 </div>
-</dd>
-<dt class="hdlist1">Interaction between microservices</dt>
-<dd>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="3-communication-between-services">3. Communication between services</h4>
 <div class="ulist">
 <ul>
 <li>
 <p>Synchronous vs asynchronous communication</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Introducing "Circuit breaker" pattern</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Defining and documenting  dependencies between services</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Introducing "API gateway" and "Service discovery" patterns</p>
+</li>
+<li>
+<p>Modeling interactions between services (orchestration and choreography)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Backwards compatibility and changes</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Introducing "Consumer Driven Contracts"</p>
+</li>
+<li>
+<p><em>End-to_end</em> tests</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="title">Module outcomes</div>
+<div class="paragraph">
+<p>Starting with a set of ready microservices, we observe problems that might arise:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>how to protect services against unavailability of dependent services,</p>
+</li>
+<li>
+<p>how to hide the inner complexity of the platform from a user,</p>
+</li>
+<li>
+<p>how services should broadcast their health or availability status,</p>
+</li>
+<li>
+<p>how to load balance different services and it that really needed?</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="4-production-deployment-of-microservices">4. Production deployment of microservices</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Continious Integration / Continious Delivery</p>
+</li>
+<li>
+<p>Infrastructure as code</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Automation of build processes (Jenkins DSL)</p>
+</li>
+<li>
+<p>Automation of infrastructure (Ansible)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Visualization and containers</p>
+</li>
+<li>
+<p>Utilizing cloud service (Iaas, PaaS)</p>
+</li>
+<li>
+<p>Managing distributed configuration</p>
+</li>
+</ul>
+</div>
+<hr>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="title">Module outcomes</div>
+<div class="paragraph">
+<p>Following problems / questions are covered within the module:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>how to manage wide range of infrastructure,</p>
+</li>
+<li>
+<p>how to adjust various requirements (sometimes conflicting) of different services,</p>
+</li>
+<li>
+<p>how to build consistent and repeatable build and deployment process,</p>
+</li>
+<li>
+<p>how to deploy different services.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="5-maintaining-and-managing-services-at-scale">5. Maintaining and managing services at scale</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Defining and understanding standard metrics</p>
 </li>
 <li>
 <p>Services monitoring - centralized logging</p>
@@ -251,10 +441,55 @@ the true flexibility of the approach. However, regardless of implementation ther
 </ul>
 </div>
 </li>
+<li>
+<p>Tracing the communication flow among different services</p>
+</li>
+<li>
+<p>Scaling distributed systems</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Horizontal <em>(scale-out)</em> and vertical <em>(scale-up)</em> scaling</p>
+</li>
+<li>
+<p>Autoscaling in cloud environments</p>
+</li>
 </ul>
 </div>
-</dd>
-</dl>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="title">Module outcomes</div>
+<div class="paragraph">
+<p>We are trying to understand "What is happening in the distributed system" by understanding the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>how to log and report system information,</p>
+</li>
+<li>
+<p>where to collect logs and what are best ways to do it,</p>
+</li>
+<li>
+<p>how to trace the information flow between services,</p>
+</li>
+<li>
+<p>how to resolve issues and scale application.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
