@@ -1,0 +1,198 @@
+= {title}
+:title: Releasing in trunk based development
+:page-layout: post
+:page-categories: [posts]
+:page-excerpt: I've been looking into trunk based development recently. The struggle I got was related to releasing. How to keep the commits clean, but have the releases / versions human readable. 
+
+I've been looking into link:https://trunkbaseddevelopment.com[trunk based development] recently. What I do in one of the projects fits the approach nicely (small team, frequent releases, some direct commits or short-lived branches, etc.).
+
+## Problem
+
+The only struggle I have is tagging the releases. We do CI but not every coming goes to production, and we want to increment (change) the version once the code is shipped to the customer's environment.
+
+How in the trunk bases development (in an idiomatic way) should I do a release? How you feel with release commits on master? I can see two approaches (and the fact using Java + Maven bit that's just tooling that should come in the way).
+
+.Approach #1
+
+. //version information in trunk: 'SNAPSHOT'
+. `git checkout -b release/1.11`
+. // update version on release branch and commit
+. // build the complete project and release
+. `git checkout master`
+. // continue with features
+
+.Approach #2
+
+. // version information in trunk: '1.11-SNAPSHOT'
+. `git branch release/1.11`
+. // update version on the master branch to 1.12-SNAPSHOT'
+. git checkout release/1.11
+. // update version on release branch to '1.11' and commit
+. // build the complete project and release
+. `git checkout master`
+. // continue with features
+
+The second approach leaves a single commit in the repository's history, which I'm not sure how to feel about. The latter approach makes the code slightly more traceable and the release process a bit easier. 
+
+Couldn't decide so I ended up asking a link:https://stackoverflow.com/questions/54050444/release-version-commit-in-trunk-based-development/[stackoverflow question] and link:https://stackoverflow.com/a/54053085[got an answer pretty quickly].
+
+## Solution
+
+[quote, danielorn, https://stackoverflow.com/users/7146596/danielorn]
+Instead of creating release branches just to update the versions, *treat every commit as releasable in true CI/CD fashion*
+
+There is a fixed version in the source (say 'SNAPSHOT' or master), which is never edited by any developer. On every commit project is built, all tests run, and a releasable package is created. 
+
+The only outstanding issue is the unique, human-readable version numbers. I liked the solution suggested on stackoverfow
+
+[quote]
+____
+Let the CI tool substitute the SNAPSHOT version to something like `<git commit date>-<short git commit hash>``, which has the benefits of
+
+* Being truly unique (thanks to the hash)
+* Being easily interpreted and compared by a human (thanks to the date)
+* Being reproducible (thanks to using git information)
+____
+
+My thoughts were going a similar direction but not as straightforward as the one suggested by Daniel. 
+
+## Implementation
+
+I've mentioned project is Java + Maven, so no surprise an XML built tool was used for experimentation. It also appears many Maven plugins can support _dynamic versioning_  of either a project of an artifact (or both). Plugins like link:https://github.com/jgitver/jgitver-maven-plugin[jgitver-maven-plugin] or link:https://github.com/git-commit-id/maven-git-commit-id-plugin[maven-git-commit-id-plugin] can be used. As _jgitver_ requires running as a core extension, I've used the latter one for implementation.
+
+My current build (snippet) work like this. 
+
+[source, xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <groupId>mygroup</groupId>
+    <artifactId>myproject</artifactId>
+    <version>LATEST</version> <!--1-->
+    <packaging>jar</packaging>
+
+    <properties>
+        <maven.build.timestamp.format>
+            yyyyMMdd <!--2-->
+        </maven.build.timestamp.format> 
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>git_revision_in_finalName</id>
+            <activation>
+                <file>
+                    <exists>.git</exists> <!--3-->
+                </file>
+            </activation>
+            <build>
+                <finalName>
+                    ${project.name}-${maven.build.timestamp}_${git.commit.id.abbrev}
+                </finalName> <!--4-->
+            </build>
+        </profile>
+    </profiles>
+
+
+    <build>
+        <finalName>${project.name}-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>2.2.6</version>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <failOnNoGitDirectory>false</failOnNoGitDirectory> <!--5-->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>    
+</project>
+----
+<1> The default project version is *LATEST*
+<2> I format the Maven appropriately, to use in the _finalName_
+<3> When git repository is present use the date and commit id in the file name, otherwise use the default final Name
+<4> The resulting name is *myproject-20190105-e82886d.jar*
+<5> If there is no git folder, the plugin execution is skipped. 
+
+I'm happy with this approach. However, I fiddled a bit with a different approach: create a release branch, to keep the release code on a separate branch (to be able to deploy an existing version with hotfixes) and use more semantic versioning _(semver)_ approach. 
+
+[source, xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+
+    <groupId>mygroup</groupId>
+    <artifactId>myproject</artifactId>
+    <version>master</version> <!--1-->
+    <packaging>jar</packaging>
+
+    <profiles>
+        <profile>
+            <id>git_revision_in_finalName</id>
+            <activation>
+                <file>
+                    <exists>.git</exists> 
+                </file>
+            </activation>
+            <build>
+                <finalName>
+                    ${project.name}-${git.branch.release}
+                </finalName> <!--2-->
+            </build>
+        </profile>
+    </profiles>
+
+
+    <build>
+        <finalName>${project.name}-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>2.2.6</version>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <failOnNoGitDirectory>false</failOnNoGitDirectory> 
+                    <replacementProperties>
+                        <replacementProperty>
+                            <property>git.branch</property>
+                            <propertyOutputSuffix>release</propertyOutputSuffix>
+                            <token>^([^\/]*)\/([^\/]*)$</token>
+                            <value>$2</value>
+                            <regex>true</regex>
+                        </replacementProperty>
+                    </replacementProperties>
+                   
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>    
+</project>
+----
+<1> The default project version is *master* to keep it consistent with git-based naming (no matter if _.git_ folder is present or not)
+<2> The final name is based on the git branch name (either master or release number);  *myproject-1.3.jar* when built from branch `release/1.3`
+
+The latter approach works as well and produces a version as expected. However, I consider this much more fragile (more corner cases with different branch names), and I've stuck to the initial approach. 
+
+## Conclusions
+
+From now on, all the commits are potentially releasable and which artifact gets released is a subject of preference. Whichever goes to production, is traceable in a human-readable way. 
