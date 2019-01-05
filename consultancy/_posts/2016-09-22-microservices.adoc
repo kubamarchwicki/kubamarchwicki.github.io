@@ -31,7 +31,7 @@ The intention behind architecture patterns is to describe the structure of a sol
 
 == Training programme
 
-==== {counter:cnt}. Basics of microservices architecture
+=== {counter:cnt}. Basics of microservices architecture
 
 * Different approaches to _structuring_ architecture
 * Monolithic applications vs. microservices
@@ -51,7 +51,7 @@ Following problems / questions are covered within this module:
 
 ---
 
-==== {counter:cnt}. Designing and implementins microservices
+=== {counter:cnt}. Designing and implementins microservices
 
 * _Smart endpoints and dumb pipes_
 ** REST services and their representation
@@ -79,7 +79,7 @@ Following problems / questions are covered within the module:
 
 ---
 
-==== {counter:cnt}. Communication between services
+=== {counter:cnt}. Communication between services
 
 * Synchronous vs asynchronous communication
 ** Introducing "Circuit breaker" pattern
@@ -103,7 +103,7 @@ Starting with a set of ready microservices, we observe problems that might arise
 
 ---
 
-==== {counter:cnt}. Production deployment of microservices
+=== {counter:cnt}. Production deployment of microservices
 
 * Continious Integration / Continious Delivery
 * Infrastructure as code
@@ -126,7 +126,7 @@ Following problems / questions are covered within the module:
 * how to deploy different services.
 ====
 
-==== {counter:cnt}. Maintaining and managing services at scale
+=== {counter:cnt}. Maintaining and managing services at scale
 
 * Defining and understanding standard metrics
 * Services monitoring - centralized logging

@@ -38,7 +38,7 @@ Wzorce architektoniczne określają strukturę rozwiązania pewnego problemu w o
 
 == Program szkolenia
 
-==== {counter:cnt}. Podstawy teoretyczne architektury mikrousługowej
+=== {counter:cnt}. Podstawy teoretyczne architektury mikrousługowej
 
 * Różne podejścia do strukturyzowania architektury
 * Monolityczne aplikacje i Microservices
@@ -58,7 +58,7 @@ Odpowiadamy na pytania:
 
 ---
 
-==== {counter:cnt}. Projektowanie i implementacja mikrousług
+=== {counter:cnt}. Projektowanie i implementacja mikrousług
 
 * _Smart endpoints and dumb pipes_
 ** Zasoby REST i ich reprezentacja
@@ -87,7 +87,7 @@ Odpowiadamy na pytania:
 
 ---
 
-==== {counter:cnt}. Komunikacja pomiędzy usługami
+=== {counter:cnt}. Komunikacja pomiędzy usługami
 
 * Komunikacja synchroniczna vs. asynchroniczna
 ** Wprowadzenie do wzorca “Circuit Breaker” i konfiguracja bezpiecznika połączenia
@@ -111,7 +111,7 @@ Bazując na zestawie gotowych mikrousług obserwujemy problemy które mogą się
 
 ---
 
-==== {counter:cnt}. Produkcyjne wdrożenie mikrousług
+=== {counter:cnt}. Produkcyjne wdrożenie mikrousług
 
 * Continious Integration / Continious Delivery
 * Infrastruktura jako kod
@@ -120,6 +120,8 @@ Bazując na zestawie gotowych mikrousług obserwujemy problemy które mogą się
 * Wirtualizacja i konteneryzacja
 * Wykorzystanie chmury (IaaS, PaaS) i związane z tym koszty
 * Zarządzenie rozproszoną konfiguracją
+
+// funding, opportunity cost, iterate fast, infrastructure heavy
 
 [TIP]
 .Cel modułu
@@ -134,7 +136,7 @@ Odpowiadamy na pytania
 
 ---
 
-==== {counter:cnt}. Utrzymanie i zarządzanie usługami
+=== {counter:cnt}. Utrzymanie i zarządzanie usługami
 
 * Standardowe metryki usługi (Actuator)
 * Monitoring usług - centralizacja logowania
