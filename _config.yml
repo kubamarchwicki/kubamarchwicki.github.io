@@ -12,6 +12,7 @@ future: true
 gems:
   - jekyll-redirect-from
   - jekyll-asciidoc
+  - jekyll-sitemap
 
 analytics:
   account: UA-439480-4
