@@ -8,6 +8,7 @@ gem 'coderay'
 gem 'rake-jekyll'
 
 group :jekyll_plugins do
+  gem 'jekyll-sitemap'
   gem 'jekyll-asciidoc'
   gem 'asciidoctor-diagram'
 end

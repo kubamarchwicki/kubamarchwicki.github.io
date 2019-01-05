@@ -5,9 +5,313 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 14 Sep 2017 13:40:24 +0000</pubDate>
-    <lastBuildDate>Thu, 14 Sep 2017 13:40:24 +0000</lastBuildDate>
+    <pubDate>Sat, 05 Jan 2019 22:01:58 +0100</pubDate>
+    <lastBuildDate>Sat, 05 Jan 2019 22:01:58 +0100</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
+    
+      <item>
+        <title>Releasing in trunk based development</title>
+        <description>&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;ve been looking into &lt;a href=&quot;https://trunkbaseddevelopment.com&quot;&gt;trunk based development&lt;/a&gt; recently. What I do in one of the projects fits the approach nicely (small team, frequent releases, some direct commits or short-lived branches, etc.).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;problem&quot;&gt;Problem&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The only struggle I have is tagging the releases. We do CI but not every coming goes to production, and we want to increment (change) the version once the code is shipped to the customer&amp;#8217;s environment.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;How in the trunk bases development (in an idiomatic way) should I do a release? How you feel with release commits on master? I can see two approaches (and the fact using Java + Maven bit that&amp;#8217;s just tooling that should come in the way).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;olist arabic&quot;&gt;
+&lt;div class=&quot;title&quot;&gt;Approach #1&lt;/div&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;//version information in trunk: 'SNAPSHOT'&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;git checkout -b release/1.11&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;// update version on release branch and commit&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;// build the complete project and release&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;git checkout master&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;// continue with features&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;olist arabic&quot;&gt;
+&lt;div class=&quot;title&quot;&gt;Approach #2&lt;/div&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;// version information in trunk: '1.11-SNAPSHOT'&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;git branch release/1.11&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;// update version on the master branch to 1.12-SNAPSHOT'&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;git checkout release/1.11&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;// update version on release branch to '1.11' and commit&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;// build the complete project and release&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;git checkout master&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;// continue with features&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The second approach leaves a single commit in the repository&amp;#8217;s history, which I&amp;#8217;m not sure how to feel about. The latter approach makes the code slightly more traceable and the release process a bit easier.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Couldn&amp;#8217;t decide so I ended up asking a &lt;a href=&quot;https://stackoverflow.com/questions/54050444/release-version-commit-in-trunk-based-development/&quot;&gt;stackoverflow question&lt;/a&gt; and &lt;a href=&quot;https://stackoverflow.com/a/54053085&quot;&gt;got an answer pretty quickly&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;solution&quot;&gt;Solution&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+&lt;blockquote&gt;
+Instead of creating release branches just to update the versions, &lt;strong&gt;treat every commit as releasable in true CI/CD fashion&lt;/strong&gt;
+&lt;/blockquote&gt;
+&lt;div class=&quot;attribution&quot;&gt;
+&amp;#8212; danielorn&lt;br&gt;
+&lt;cite&gt;https://stackoverflow.com/users/7146596/danielorn&lt;/cite&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There is a fixed version in the source (say 'SNAPSHOT' or master), which is never edited by any developer. On every commit project is built, all tests run, and a releasable package is created.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The only outstanding issue is the unique, human-readable version numbers. I liked the solution suggested on stackoverfow&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+&lt;blockquote&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Let the CI tool substitute the SNAPSHOT version to something like &lt;code&gt;&amp;lt;git commit date&amp;gt;-&amp;lt;short git commit hash&amp;gt;`&lt;/code&gt;, which has the benefits of&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Being truly unique (thanks to the hash)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Being easily interpreted and compared by a human (thanks to the date)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Being reproducible (thanks to using git information)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;My thoughts were going a similar direction but not as straightforward as the one suggested by Daniel.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;implementation&quot;&gt;Implementation&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;ve mentioned project is Java + Maven, so no surprise an XML built tool was used for experimentation. It also appears many Maven plugins can support &lt;em&gt;dynamic versioning&lt;/em&gt;  of either a project of an artifact (or both). Plugins like &lt;a href=&quot;https://github.com/jgitver/jgitver-maven-plugin&quot;&gt;jgitver-maven-plugin&lt;/a&gt; or &lt;a href=&quot;https://github.com/git-commit-id/maven-git-commit-id-plugin&quot;&gt;maven-git-commit-id-plugin&lt;/a&gt; can be used. As &lt;em&gt;jgitver&lt;/em&gt; requires running as a core extension, I&amp;#8217;ve used the latter one for implementation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;My current build (snippet) work like this.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;project&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;xmlns&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;http://maven.apache.org/POM/4.0.0&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;attribute-name&quot;&gt;xmlns:xsi&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;http://www.w3.org/2001/XMLSchema-instance&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;attribute-name&quot;&gt;xsi:schemaLocation&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;mygroup&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;myproject&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;LATEST&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt; &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;packaging&amp;gt;&lt;/span&gt;jar&lt;span class=&quot;tag&quot;&gt;&amp;lt;/packaging&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;properties&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;maven.build.timestamp.format&amp;gt;&lt;/span&gt;
+            yyyyMMdd &lt;b class=&quot;conum&quot;&gt;(2)&lt;/b&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/maven.build.timestamp.format&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/properties&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;profiles&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;profile&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;git_revision_in_finalName&lt;span class=&quot;tag&quot;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;activation&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;file&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;tag&quot;&gt;&amp;lt;exists&amp;gt;&lt;/span&gt;.git&lt;span class=&quot;tag&quot;&gt;&amp;lt;/exists&amp;gt;&lt;/span&gt; &lt;b class=&quot;conum&quot;&gt;(3)&lt;/b&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;/file&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;/activation&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;finalName&amp;gt;&lt;/span&gt;
+                    ${project.name}-${maven.build.timestamp}_${git.commit.id.abbrev}
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;/finalName&amp;gt;&lt;/span&gt; &lt;b class=&quot;conum&quot;&gt;(4)&lt;/b&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/profile&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/profiles&amp;gt;&lt;/span&gt;
+
+
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;finalName&amp;gt;&lt;/span&gt;${project.name}-${project.version}&lt;span class=&quot;tag&quot;&gt;&amp;lt;/finalName&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;pl.project13.maven&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;git-commit-id-plugin&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;2.2.6&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;executions&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;tag&quot;&gt;&amp;lt;execution&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;tag&quot;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;get-the-git-infos&lt;span class=&quot;tag&quot;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;tag&quot;&gt;&amp;lt;goals&amp;gt;&lt;/span&gt;
+                            &lt;span class=&quot;tag&quot;&gt;&amp;lt;goal&amp;gt;&lt;/span&gt;revision&lt;span class=&quot;tag&quot;&gt;&amp;lt;/goal&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/goals&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/execution&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;/executions&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;tag&quot;&gt;&amp;lt;failOnNoGitDirectory&amp;gt;&lt;/span&gt;false&lt;span class=&quot;tag&quot;&gt;&amp;lt;/failOnNoGitDirectory&amp;gt;&lt;/span&gt; &lt;b class=&quot;conum&quot;&gt;(5)&lt;/b&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;colist arabic&quot;&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The default project version is &lt;strong&gt;LATEST&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I format the Maven appropriately, to use in the &lt;em&gt;finalName&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;When git repository is present use the date and commit id in the file name, otherwise use the default final Name&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The resulting name is &lt;strong&gt;myproject-20190105-e82886d.jar&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If there is no git folder, the plugin execution is skipped.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I&amp;#8217;m happy with this approach. However, I fiddled a bit with a different approach: create a release branch, to keep the release code on a separate branch (to be able to deploy an existing version with hotfixes) and use more semantic versioning &lt;em&gt;(semver)&lt;/em&gt; approach.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;preprocessor&quot;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;project&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;mygroup&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;myproject&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;master&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt; &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;packaging&amp;gt;&lt;/span&gt;jar&lt;span class=&quot;tag&quot;&gt;&amp;lt;/packaging&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;profiles&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;profile&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;git_revision_in_finalName&lt;span class=&quot;tag&quot;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;activation&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;file&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;tag&quot;&gt;&amp;lt;exists&amp;gt;&lt;/span&gt;.git&lt;span class=&quot;tag&quot;&gt;&amp;lt;/exists&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;/file&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;/activation&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;finalName&amp;gt;&lt;/span&gt;
+                    ${project.name}-${git.branch.release}
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;/finalName&amp;gt;&lt;/span&gt; &lt;b class=&quot;conum&quot;&gt;(2)&lt;/b&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/profile&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/profiles&amp;gt;&lt;/span&gt;
+
+
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;finalName&amp;gt;&lt;/span&gt;${project.name}-${project.version}&lt;span class=&quot;tag&quot;&gt;&amp;lt;/finalName&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;pl.project13.maven&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;git-commit-id-plugin&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;2.2.6&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;executions&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;tag&quot;&gt;&amp;lt;execution&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;tag&quot;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;get-the-git-infos&lt;span class=&quot;tag&quot;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;tag&quot;&gt;&amp;lt;goals&amp;gt;&lt;/span&gt;
+                            &lt;span class=&quot;tag&quot;&gt;&amp;lt;goal&amp;gt;&lt;/span&gt;revision&lt;span class=&quot;tag&quot;&gt;&amp;lt;/goal&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/goals&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/execution&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;/executions&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;tag&quot;&gt;&amp;lt;failOnNoGitDirectory&amp;gt;&lt;/span&gt;false&lt;span class=&quot;tag&quot;&gt;&amp;lt;/failOnNoGitDirectory&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;tag&quot;&gt;&amp;lt;replacementProperties&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;tag&quot;&gt;&amp;lt;replacementProperty&amp;gt;&lt;/span&gt;
+                            &lt;span class=&quot;tag&quot;&gt;&amp;lt;property&amp;gt;&lt;/span&gt;git.branch&lt;span class=&quot;tag&quot;&gt;&amp;lt;/property&amp;gt;&lt;/span&gt;
+                            &lt;span class=&quot;tag&quot;&gt;&amp;lt;propertyOutputSuffix&amp;gt;&lt;/span&gt;release&lt;span class=&quot;tag&quot;&gt;&amp;lt;/propertyOutputSuffix&amp;gt;&lt;/span&gt;
+                            &lt;span class=&quot;tag&quot;&gt;&amp;lt;token&amp;gt;&lt;/span&gt;^([^\/]*)\/([^\/]*)$&lt;span class=&quot;tag&quot;&gt;&amp;lt;/token&amp;gt;&lt;/span&gt;
+                            &lt;span class=&quot;tag&quot;&gt;&amp;lt;value&amp;gt;&lt;/span&gt;$2&lt;span class=&quot;tag&quot;&gt;&amp;lt;/value&amp;gt;&lt;/span&gt;
+                            &lt;span class=&quot;tag&quot;&gt;&amp;lt;regex&amp;gt;&lt;/span&gt;true&lt;span class=&quot;tag&quot;&gt;&amp;lt;/regex&amp;gt;&lt;/span&gt;
+                        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/replacementProperty&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/replacementProperties&amp;gt;&lt;/span&gt;
+
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;colist arabic&quot;&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The default project version is &lt;strong&gt;master&lt;/strong&gt; to keep it consistent with git-based naming (no matter if &lt;em&gt;.git&lt;/em&gt; folder is present or not)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The final name is based on the git branch name (either master or release number);  &lt;strong&gt;myproject-1.3.jar&lt;/strong&gt; when built from branch &lt;code&gt;release/1.3&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The latter approach works as well and produces a version as expected. However, I consider this much more fragile (more corner cases with different branch names), and I&amp;#8217;ve stuck to the initial approach.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;From now on, all the commits are potentially releasable and which artifact gets released is a subject of preference. Whichever goes to production, is traceable in a human-readable way.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        <pubDate>Sat, 05 Jan 2019 00:00:00 +0100</pubDate>
+        <link>http://jakub.marchwicki.pl/posts/2019/01/05/release-in-trunk-based-devel/</link>
+        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2019/01/05/release-in-trunk-based-devel/</guid>
+        
+        
+        <category>posts</category>
+        
+      </item>
     
       <item>
         <title>Microservices. I'm new here, where to start?</title>
@@ -56,7 +360,7 @@ Recently a friend of mine asked me if I have some useful microservces links and 
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;My take on the microservices journey is here: &lt;a href=&quot;http://jakub.marchwicki.pl/consultancy/microservices/&quot; class=&quot;bare&quot;&gt;http://jakub.marchwicki.pl/consultancy/microservices/&lt;/a&gt; - which can be a one, two or three days workshop.&lt;/p&gt;
 &lt;/div&gt;</description>
-        <pubDate>Mon, 26 Jun 2017 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 26 Jun 2017 00:00:00 +0200</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2017/06/26/microservices-still-a-thing/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2017/06/26/microservices-still-a-thing/</guid>
         
@@ -323,7 +627,7 @@ endif::[]&lt;/code&gt;&lt;/pre&gt;
 &lt;a href=&quot;#_footnoteref_3&quot;&gt;3&lt;/a&gt;. &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc&quot; class=&quot;bare&quot;&gt;https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc&lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Sat, 28 Jan 2017 00:00:00 +0000</pubDate>
+        <pubDate>Sat, 28 Jan 2017 00:00:00 +0100</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2017/01/28/asciidoctor-based-invoices/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2017/01/28/asciidoctor-based-invoices/</guid>
         
@@ -442,7 +746,7 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Mon, 01 Aug 2016 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 01 Aug 2016 00:00:00 +0200</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2016/08/01/reactive-geecon-part-ii/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2016/08/01/reactive-geecon-part-ii/</guid>
         
@@ -535,7 +839,7 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 04 Jul 2016 00:00:00 +0200</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2016/07/04/reactive-geecon/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2016/07/04/reactive-geecon/</guid>
         
@@ -580,7 +884,7 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Sat, 02 Jul 2016 00:00:00 +0000</pubDate>
+        <pubDate>Sat, 02 Jul 2016 00:00:00 +0200</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2016/07/02/typescript-setting-up-ide-part-2/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2016/07/02/typescript-setting-up-ide-part-2/</guid>
         
@@ -701,7 +1005,7 @@ liveReload {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Tue, 02 Feb 2016 00:00:00 +0000</pubDate>
+        <pubDate>Tue, 02 Feb 2016 00:00:00 +0100</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2016/02/02/typescript-setting-up-ide/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2016/02/02/typescript-setting-up-ide/</guid>
         
@@ -939,7 +1243,7 @@ main.hello();&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Sun, 31 Jan 2016 00:00:00 +0000</pubDate>
+        <pubDate>Sun, 31 Jan 2016 00:00:00 +0100</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2016/01/31/typescript-getting-started/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2016/01/31/typescript-getting-started/</guid>
         
@@ -1312,7 +1616,7 @@ schemaFiles.each { pageName -&amp;gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Wed, 26 Aug 2015 00:00:00 +0000</pubDate>
+        <pubDate>Wed, 26 Aug 2015 00:00:00 +0200</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2015/08/26/get-your-xsd-docs-as-build-process/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2015/08/26/get-your-xsd-docs-as-build-process/</guid>
         
@@ -1457,202 +1761,9 @@ As a regular conference attendee I struggle with that, always puzzled which talk
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Wed, 05 Aug 2015 00:00:00 +0000</pubDate>
+        <pubDate>Wed, 05 Aug 2015 00:00:00 +0200</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2015/08/05/microservice-geecon/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2015/08/05/microservice-geecon/</guid>
-        
-        
-        <category>posts</category>
-        
-      </item>
-    
-      <item>
-        <title>Wrapping Maven distribution together with a project</title>
-        <description>&lt;div id=&quot;preamble&quot;&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;There are few things that I&amp;#8217;ve been missing in Maven, that are available in Gradle out of the box (and no, I don&amp;#8217;t want to start a holy Gradle vs. Maven war). One of those was a Gradle wrapper; I wanted to create projects which are pretty environment agnostic and download whatever needed straight form the internet. While the build and dependency management tools do their job I was always struggling with the dependency management itself. Until now.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;but-why&quot;&gt;But why?&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Yeah - good question. Why on Earth would I need to have a dependency management tool as a 'compile time' dependency. In my particular case it was Jenkins fault, I wanted my continuous integration environment to be just an infrastructure: an operating system, latest Java installation, Git - and the project brings what&amp;#8217;s ever required by itself. That is keeping the CI infrastructure robust with minimal project specific dependencies.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I remember 'good old times' when certain project had to be built on particular swarms due to concrete Maven version being present or some system libraries being pre-installed. This approach doesn&amp;#8217;t scale and I was eager to fix it.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;maven-wrapper&quot;&gt;Maven wrapper&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;While the wrapper isn&amp;#8217;t a problem for Gradle, my Maven projects were still problematic. Until I found a &lt;strong&gt;maven-wrapper&lt;/strong&gt; - a copy of the Gradle wrapper ported for use with Apache Maven.
-&lt;sup class=&quot;footnote&quot; id=&quot;_footnote_maven-wrapper&quot;&gt;[&lt;a id=&quot;_footnoteref_1&quot; class=&quot;footnote&quot; href=&quot;#_footnote_1&quot; title=&quot;View footnote.&quot;&gt;1&lt;/a&gt;]&lt;/sup&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;As described on the project&amp;#8217;s wiki:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;quoteblock&quot;&gt;
-&lt;blockquote&gt;
-the Maven Command Line Wrapper will auto-download and install Apache Maven from the Internet and then run your Maven goals.
-&lt;/blockquote&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;If you are ok with manual installation, all that&amp;#8217;s needed is copying &lt;code&gt;mvnw&lt;/code&gt; files and &lt;code&gt;maven&lt;/code&gt; folder to your project - from say an example project.
-&lt;sup class=&quot;footnote&quot; id=&quot;_footnote_maven-wrapper-example&quot;&gt;[&lt;a id=&quot;_footnoteref_2&quot; class=&quot;footnote&quot; href=&quot;#_footnote_2&quot; title=&quot;View footnote.&quot;&gt;2&lt;/a&gt;]&lt;/sup&gt;
-This will make the file structure look pretty much like this.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code&gt;sample
- ├── maven
- │   ├── maven-wrapper.jar
- │   └── maven-wrapper.properties
- ├── src
- │   └── main
- │       └── java
- ├── mvnw
- ├── mvnw.bat
- └── pom.xml&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Now instead of running &lt;code&gt;mvn clean install&lt;/code&gt; we can just go with &lt;code&gt;./mvnw clean install&lt;/code&gt; that will do the thing.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;From my perspective that was quite handy - I didn&amp;#8217;t have to maintain a particular version of Maven in my CI environment. I had it defined together with a project. A first little success.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;automate-all-the-things&quot;&gt;Automate all the things&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Coping files is so nineties, so the next step would be to automatically get the wrapper through the Maven build process. This sounded reasonable, cause as the developer I obviously had Maven installed locally and the wrapper was targeting the continuous integration builds, not developers' machines.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Nothing easier, the Maven wrapper comes with a handy build plugin.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.rimerosolutions.maven.plugins&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wrapper-maven-plugin&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;0.0.4&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;mavenVersion&amp;gt;&lt;/span&gt;3.3.1&lt;span class=&quot;tag&quot;&gt;&amp;lt;/mavenVersion&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Running &lt;code&gt;mvn wrapper:wrapper&lt;/code&gt; does the job and the wrapper is installed.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;problems&quot;&gt;Problems?&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;That worked like a charm for a simple (very simple) project, a single project. But hey! we are doing enterprise here - our projects' structure is hardly ever flat!&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;So if my project gets slightly more complicated (with submodules), the Maven wrapper tasks, defined on the parent project - is repeated for each and every module. The output gets cumbersome and far from ideal.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;sample
- ├── maven
- │   ├── maven-wrapper.jar
- │   └── maven-wrapper.properties
- ├── module
- |   ├── maven
- │   |   ├── maven-wrapper.jar
- │   |   └── maven-wrapper.properties
- |   ├── mvnw
- |   ├── mvnw.bat
- |   └── pom.xml
- ├── module2
- |   ├── maven
- │   |   ├── maven-wrapper.jar
- │   |   └── maven-wrapper.properties
- |   ├── mvnw
- |   ├── mvnw.bat
- |   └── pom.xml
- ├── mvnw
- ├── mvnw.bat
- └── pom.xml&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;I see a &lt;code&gt;MavenWrappersOverflowException&lt;/code&gt;. However, as this is purely related to the Maven life cycle and parent-child relationship ('mother issues' everywhere) - this is fixable with the configuration itself.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.rimerosolutions.maven.plugins&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;wrapper-maven-plugin&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;0.0.4&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;inherited&amp;gt;&lt;/span&gt;false&lt;span class=&quot;tag&quot;&gt;&amp;lt;/inherited&amp;gt;&lt;/span&gt;        &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;tag&quot;&gt;&amp;lt;mavenVersion&amp;gt;&lt;/span&gt;3.3.1&lt;span class=&quot;tag&quot;&gt;&amp;lt;/mavenVersion&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;tag&quot;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;colist arabic&quot;&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;By default, plugin configuration should be propagated to child POMs, so to break the inheritance, you could uses the &lt;code&gt;&amp;lt;inherited&amp;gt;&lt;/code&gt; tag&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Now, we just need to run the goal for this particular project (while in the parent project&amp;#8217;s folder). This will generated the wrapper only where it&amp;#8217;s needed.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;listingblock&quot;&gt;
-&lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;CodeRay highlight&quot;&gt;&lt;code data-lang=&quot;bash&quot;&gt;mvn wrapper:wrapper -N         &lt;b class=&quot;conum&quot;&gt;(1)&lt;/b&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;colist arabic&quot;&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;The &lt;code&gt;-N&lt;/code&gt; argument stands for non-recursive builds, which prevents Maven from building submodules (only builds the project contained in the current directory).&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
-&lt;div class=&quot;sectionbody&quot;&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Just one thing: with the wrapper plugin and Polyglot for Maven
-&lt;sup class=&quot;footnote&quot; id=&quot;_footnote_polyglot-maven&quot;&gt;[&lt;a id=&quot;_footnoteref_3&quot; class=&quot;footnote&quot; href=&quot;#_footnote_3&quot; title=&quot;View footnote.&quot;&gt;3&lt;/a&gt;]&lt;/sup&gt;
-I&amp;#8217;ve gradually lost interest in any other build tools ;-)&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&quot;footnotes&quot;&gt;
-&lt;hr&gt;
-&lt;div class=&quot;footnote&quot; id=&quot;_footnote_1&quot;&gt;
-&lt;a href=&quot;#_footnoteref_1&quot;&gt;1&lt;/a&gt;. &lt;a href=&quot;https://github.com/rimerosolutions/maven-wrapper&quot; class=&quot;bare&quot;&gt;https://github.com/rimerosolutions/maven-wrapper&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class=&quot;footnote&quot; id=&quot;_footnote_2&quot;&gt;
-&lt;a href=&quot;#_footnoteref_2&quot;&gt;2&lt;/a&gt;. &lt;a href=&quot;https://github.com/rimerosolutions/maven-wrapper-example&quot; class=&quot;bare&quot;&gt;https://github.com/rimerosolutions/maven-wrapper-example&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class=&quot;footnote&quot; id=&quot;_footnote_3&quot;&gt;
-&lt;a href=&quot;#_footnoteref_3&quot;&gt;3&lt;/a&gt;. &lt;a href=&quot;https://github.com/takari/polyglot-maven&quot; class=&quot;bare&quot;&gt;https://github.com/takari/polyglot-maven&lt;/a&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
-        <pubDate>Thu, 04 Jun 2015 00:00:00 +0000</pubDate>
-        <link>http://jakub.marchwicki.pl/posts/2015/06/04/maven-wrapper/</link>
-        <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2015/06/04/maven-wrapper/</guid>
         
         
         <category>posts</category>

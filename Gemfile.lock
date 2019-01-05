@@ -4,11 +4,11 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     asciidoctor (1.5.6.1)
-    asciidoctor-diagram (1.5.5)
+    asciidoctor-diagram (1.5.9)
       asciidoctor (~> 1.5.0)
-    coderay (1.1.2)
+    coderay (1.1.1)
     colorator (1.1.0)
-    ffi (1.9.18)
+    ffi (1.9.25)
     forwardable-extended (2.6.0)
     jekyll (3.4.0)
       addressable (~> 2.4)
@@ -28,10 +28,12 @@ GEM
       jekyll (~> 3.3)
     jekyll-sass-converter (1.5.0)
       sass (~> 3.4)
+    jekyll-sitemap (1.1.1)
+      jekyll (~> 3.3)
     jekyll-watch (1.5.0)
       listen (~> 3.0, < 3.1)
-    kramdown (1.15.0)
-    libv8 (3.16.14.19)
+    kramdown (1.14.0)
+    libv8 (3.16.14.19-x86_64-linux)
     liquid (3.0.6)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -39,17 +41,17 @@ GEM
     mercenary (0.3.6)
     pathutil (0.14.0)
       forwardable-extended (~> 2.6)
-    public_suffix (3.0.0)
+    public_suffix (3.0.2)
     rake (10.5.0)
     rake-jekyll (1.1.0)
       rake (~> 10.0)
-    rb-fsevent (0.10.2)
+    rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     ref (2.0.0)
     rouge (1.11.1)
     safe_yaml (1.0.4)
-    sass (3.5.1)
+    sass (3.5.7)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -68,5 +70,9 @@ DEPENDENCIES
   jekyll (= 3.4.0)
   jekyll-asciidoc
   jekyll-redirect-from
+  jekyll-sitemap
   rake-jekyll
   therubyracer
+
+BUNDLED WITH
+   1.16.0
