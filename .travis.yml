@@ -3,7 +3,7 @@ branches:
   only:
   - devel
 rvm:
-- 2.2.0
+- 2.4.2
 sudo: false
 before_script:
 - git config --global user.name 'Travis CI'
