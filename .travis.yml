@@ -11,4 +11,4 @@ before_script:
 script: JEKYLL_ENV=production bundle exec rake deploy
 env:
   global:
-    secure: ZPdC+KNokiyLzbYX+AXVnra/ByQMzF1h2B0Pn21IQq++i9Dxh3EH0Tj/3Vc2dDG74rfEtM4+s5TVLXyExKd7e5aqf6S9soLvahZHgsedJGaw0WgyRN84BOXY7VUznuMFAQnMcKcgN2/1cAlOOt76Ahu/IBTvfmIwuvGNJ4pbziY=
+    secure: "u8aIe/27peyopiU3BX+JaF8AQ+sX04n9M490azsYlVH4pVv/91aXQleeKRdR5LRjiMq7W6ON4ojPSIyywrn1PWimdqeUqNnwFLYMt7QdQK/FFacuymrXwFbv679W/7bUIH3jOA4KDXm8yqZL30pAOE+EsbYDDOu1o66qYs7/wy8="

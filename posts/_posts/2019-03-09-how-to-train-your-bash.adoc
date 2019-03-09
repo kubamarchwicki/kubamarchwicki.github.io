@@ -1,0 +1,83 @@
+= {title}
+:title: How to train your bash?
+:page-layout: post
+:page-categories: [posts]
+:page-excerpt: ... or embrace your's everyday bash - as it gives you a productivity boost like no other tool. By examples.
+
+I have to confess. The title is not mine. It's from link:http://segfault.events/sites/gdansk2019/abstracts/jak-wytresowac-basha/[Marcin's talk at Segfault University in Gdańsk]. But I decided to borrow it, as we tackle similar principle. 
+
+In one of my recent projects, I was working with a sizeable dataset. It wasn't big data. It wasn't even medium data. It was a small data, but big enough to kill most of the visual editing tools (except vim). The files were either XML or JSON from a SOAP / REST services, easily exceeding 10 megabytes each. One of the daily routines was to check some data and compare (between different outputs). To avoid tedious visual comparison, I've come up with an ingenious set of bash tools, which I'd like to share with you. 
+
+## A bit of history 
+
+To give a slight context, the files and examples I'll be describing were all about public transportation data (like timetables) - but was principles applies to any other sizeable data structure. An XML document for a single bus fleet in my city, for a single day, is around 10MB in size. There are ten different bus or trams fleets in the area. 
+
+My primary driver for the CLI tooling was a fast and reliable way to compare the state of files between different processing stages. In the town I live, there are about 200 routes, which go through over 2500 different stops. So if we would like to extract all stops from different timetables from different fleets - the data are close to impossible to visually analyse, and the best way to figure out the completeness is to see if specific metrics hold, like TDD but a level statistician.
+
+## Not my SOAP client
+
+First and foremost, and that might be obvious for some, but not for everybody, SOAP web service is just another HTTP service, but only responding to POST requests, with a precisely designed response body. People usually use dedicated, schema-aware tools like SOAPui, but that not required. Simple curl is good enough. 
+
+----
+(DATE=2019-03-02; FLEET=18; cat << EOF) | curl -XPOST -d @- -H "Content-type: text/xml" http://172.30.100.93:8016/WSSchedulesExchange/WS/TimetablesWS.asmx | xmllint --format - > timetable.xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:x="http://tempuri.org/">
+  <soap:Header/>
+  <soap:Body>
+      <x:GetTimetable>
+         <x:date>$DATE</x:date>
+         <x:fleet>$FLEET</x:fleet>
+      </x:GetTimetable>
+  </soap:Body>
+</soap:Envelope>
+EOF
+----
+
+One might ask, why bother? It's faster, automation and batching friendly - and let do downstream processing faster. 
+
+## The basics and naive-ness
+
+Once the data is here, `grep` is here for some of the most basic processing. As grep / uniq / sort work _per line_ formatting the actual document makes much sense
+
+`curl {url} | python -m json.tool | grep "stopId" | sort | uniq | wc -l`
+
+`curl {url} | xmllint --format - | grep "stopId" | sort | uniq | wc -l`
+
+`grep` is a powerful tool, as it also allows you to output more than a single line (`grep -A1` or `grep -B2`) or use a perl regular expression for row matching (`grep -oP "(?<=<StopId>)[^<]+"`). It's all fine, until we would like to have a more 'holistic' approach and start missing things like _xPath_.
+
+## The real XML processing
+
+These are all fine as long as nothing extraordinary happens, just filtering lines of XML. What if we would like to get some of the pairs (bus number together with a route)? Like _xPath_ process the XML file. Then link:http://xmlstar.sourceforge.net/doc/UG/xmlstarlet-ug.html[XmlStarlet Command Line XML Toolkit] comes into play.
+
+----
+xmlstarlet sel -N x="http://tempuri.org/" \
+    -T -t -m "//x:Timetable" \
+    -n -v "concat('(',x:LineId,'  ', x:RouteId,')')" {file}
+----
+
+With support of namespaces, xPath functions - it quickly become one of my favorite hammers in my toolbox. 
+
+## But XML is so 90s - we do JSON here
+
+Yes, been there as well. One of the final steps was to compare generated JSON files (over to 10MB each) - if the output data hasn't changed, more or less a golden hammer technique. 
+There is a small JSON processor called link:https://stedolan.github.io/jq/[jq - lightweight and flexible command-line JSON processor] which can save you hours of meaningless fight with visual editors. 
+
+The JSON files were of following structure:
+
+----
+{
+    "lastUpdate": "2019-03-09 13:48:50",
+    "trips": [
+        {},
+        {}
+    ]
+}
+----
+
+The goal was to compare the content of the array. Every computer science student knows things are easiest to compare when sorted so to the collection sorted we can use:
+
+`curl | jq '.trips' | jq 'sort_by(.routeId, .tripId)`
+
+## A happy ending
+
+This whole story is based on a real life example. It was was done as a part of an opendata initiative, opening public transportation data in Gdańsk: https://ckan.multimediagdansk.pl/dataset/tristar/ 
