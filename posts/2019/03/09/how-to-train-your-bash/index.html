@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>How to train your bash? : Notepack</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A randomized pack of notes">
+    <link rel="canonical" href="http://jakub.marchwicki.pl/posts/2019/03/09/how-to-train-your-bash/">
+    <link href="http://jakub.marchwicki.pl/feed.xml" rel="alternate" type="application/atom+xml" title="Notepack" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/foundation.css"/>
+    <link rel="stylesheet" href="/css/coderay.css"/>
+    <link rel="stylesheet" href="/css/asciidoctor.css"/>
+    <script src="/js/vendor/modernizr.js"></script>    
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css">
+
+        
+    <!-- google analytics async -->
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-439480-4']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    
+
+</head>
+
+
+    <body>
+
+    <header class="site-header">
+
+  <div class="wrap">
+
+    <a class="site-title" href="/"><i class="fi-folder"></i>Notepack</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 18 15" enable-background="new 0 0 18 15" xml:space="preserve">
+          <path fill="#505050" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0
+            h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#505050" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484
+            h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#505050" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0
+            c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+      <div class="trigger">      
+        
+          <a class="page-link" href="/posts/">All posts</a>
+        
+          <a class="page-link" href="/speaking/">All speaking</a>
+        
+          <a class="page-link" href="/consultancy/">Consultancy</a>
+        
+          <a class="page-link" href="/contact/">Contact</a>
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrap">
+      <div class="post">
+
+  <header class="post-header">
+    <h1>How to train your bash?</h1>
+    <p class="meta">Mar 9, 2019</p>
+  </header>
+
+  <article class="post-content">
+  <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>I have to confess. The title is not mine. It&#8217;s from <a href="http://segfault.events/sites/gdansk2019/abstracts/jak-wytresowac-basha/">Marcin&#8217;s talk at Segfault University in Gdańsk</a>. But I decided to borrow it, as we tackle similar principle.</p>
+</div>
+<div class="paragraph">
+<p>In one of my recent projects, I was working with a sizeable dataset. It wasn&#8217;t big data. It wasn&#8217;t even medium data. It was a small data, but big enough to kill most of the visual editing tools (except vim). The files were either XML or JSON from a SOAP / REST services, easily exceeding 10 megabytes each. One of the daily routines was to check some data and compare (between different outputs). To avoid tedious visual comparison, I&#8217;ve come up with an ingenious set of bash tools, which I&#8217;d like to share with you.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="a-bit-of-history">A bit of history</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To give a slight context, the files and examples I&#8217;ll be describing were all about public transportation data (like timetables) - but was principles applies to any other sizeable data structure. An XML document for a single bus fleet in my city, for a single day, is around 10MB in size. There are ten different bus or trams fleets in the area.</p>
+</div>
+<div class="paragraph">
+<p>My primary driver for the CLI tooling was a fast and reliable way to compare the state of files between different processing stages. In the town I live, there are about 200 routes, which go through over 2500 different stops. So if we would like to extract all stops from different timetables from different fleets - the data are close to impossible to visually analyse, and the best way to figure out the completeness is to see if specific metrics hold, like TDD but a level statistician.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="not-my-soap-client">Not my SOAP client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First and foremost, and that might be obvious for some, but not for everybody, SOAP web service is just another HTTP service, but only responding to POST requests, with a precisely designed response body. People usually use dedicated, schema-aware tools like SOAPui, but that not required. Simple curl is good enough.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(DATE=2019-03-02; FLEET=18; cat &lt;&lt; EOF) | curl -XPOST -d @- -H "Content-type: text/xml" http://172.30.100.93:8016/WSSchedulesExchange/WS/TimetablesWS.asmx | xmllint --format - &gt; timetable.xml
+&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:x="http://tempuri.org/"&gt;
+  &lt;soap:Header/&gt;
+  &lt;soap:Body&gt;
+      &lt;x:GetTimetable&gt;
+         &lt;x:date&gt;$DATE&lt;/x:date&gt;
+         &lt;x:fleet&gt;$FLEET&lt;/x:fleet&gt;
+      &lt;/x:GetTimetable&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;
+EOF</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>One might ask, why bother? It&#8217;s faster, automation and batching friendly - and let do downstream processing faster.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="the-basics-and-naive-ness">The basics and naive-ness</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once the data is here, <code>grep</code> is here for some of the most basic processing. As grep / uniq / sort work <em>per line</em> formatting the actual document makes much sense</p>
+</div>
+<div class="paragraph">
+<p><code>curl {url} | python -m json.tool | grep "stopId" | sort | uniq | wc -l</code></p>
+</div>
+<div class="paragraph">
+<p><code>curl {url} | xmllint --format - | grep "stopId" | sort | uniq | wc -l</code></p>
+</div>
+<div class="paragraph">
+<p><code>grep</code> is a powerful tool, as it also allows you to output more than a single line (<code>grep -A1</code> or <code>grep -B2</code>) or use a perl regular expression for row matching (<code>grep -oP "(?&#8656;&lt;StopId&gt;)[^&lt;]+"</code>). It&#8217;s all fine, until we would like to have a more 'holistic' approach and start missing things like <em>xPath</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="the-real-xml-processing">The real XML processing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These are all fine as long as nothing extraordinary happens, just filtering lines of XML. What if we would like to get some of the pairs (bus number together with a route)? Like <em>xPath</em> process the XML file. Then <a href="http://xmlstar.sourceforge.net/doc/UG/xmlstarlet-ug.html">XmlStarlet Command Line XML Toolkit</a> comes into play.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>xmlstarlet sel -N x="http://tempuri.org/" \
+    -T -t -m "//x:Timetable" \
+    -n -v "concat('(',x:LineId,'  ', x:RouteId,')')" {file}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With support of namespaces, xPath functions - it quickly become one of my favorite hammers in my toolbox.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="but-xml-is-so-90s-we-do-json-here">But XML is so 90s - we do JSON here</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Yes, been there as well. One of the final steps was to compare generated JSON files (over to 10MB each) - if the output data hasn&#8217;t changed, more or less a golden hammer technique.
+There is a small JSON processor called <a href="https://stedolan.github.io/jq/">jq - lightweight and flexible command-line JSON processor</a> which can save you hours of meaningless fight with visual editors.</p>
+</div>
+<div class="paragraph">
+<p>The JSON files were of following structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>{
+    "lastUpdate": "2019-03-09 13:48:50",
+    "trips": [
+        {},
+        {}
+    ]
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The goal was to compare the content of the array. Every computer science student knows things are easiest to compare when sorted so to the collection sorted we can use:</p>
+</div>
+<div class="paragraph">
+<p><code>curl | jq '.trips' | jq 'sort_by(.routeId, .tripId)</code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="a-happy-ending">A happy ending</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This whole story is based on a real life example. It was was done as a part of an opendata initiative, opening public transportation data in Gdańsk: <a href="https://ckan.multimediagdansk.pl/dataset/tristar/" class="bare">https://ckan.multimediagdansk.pl/dataset/tristar/</a></p>
+</div>
+</div>
+</div>
+  </article>
+
+  
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+	    /* * * CONFIGURATION VARIABLES * * */
+	    var disqus_shortname = 'jakubblog';
+	    
+
+	    /* * * DON'T EDIT BELOW THIS LINE * * */
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+  
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrap">
+
+    <div class="column">
+      <ul  style="margin-bottom: 0 !important">
+        
+          
+          <li><a href="/posts/">
+            <span class="icon foundation-icon"><i class="fi-page-multiple"></i></span>
+            <span class="username">All posts</span>
+            </a>
+          </li>
+          
+        
+          
+          <li><a href="/speaking/">
+            <span class="icon foundation-icon"><i class="fi-microphone"></i></span>
+            <span class="username">All speaking</span>
+            </a>
+          </li>
+          
+        
+          
+          <li><a href="/consultancy/">
+            <span class="icon foundation-icon"><i class="fi-comments"></i></span>
+            <span class="username">Consultancy</span>
+            </a>
+          </li>
+          
+        
+          
+          <li><a href="/contact/">
+            <span class="icon foundation-icon"><i class="fi-address-book"></i></span>
+            <span class="username">Contact</span>
+            </a>
+          </li>
+          
+        
+      </ul>
+      <ul>
+        <li>
+          <a href="https://github.com/kubamarchwicki">
+            <span class="icon foundation-icon"><i class="fi-social-github"></i></span>
+            <span class="username">kubamarchwicki</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/kubem">
+            <span class="icon foundation-icon"><i class="fi-social-twitter"></i></span>
+            <span class="username">kubem</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/kubamarchwicki">
+            <span class="icon foundation-icon"><i class="fi-social-linkedin"></i></span>
+            <span class="username">kubamarchwicki</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/foundation/foundation.js"></script>
+    <script>
+      $(document).foundation();
+      var doc = document.documentElement;
+      doc.setAttribute('data-useragent', navigator.userAgent);
+    </script>
+
+    </body>
+</html>
