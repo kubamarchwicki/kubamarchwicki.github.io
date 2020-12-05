@@ -5,8 +5,8 @@
     <description>A randomized pack of notes</description>
     <link>http://jakub.marchwicki.pl/</link>
     <atom:link href="http://jakub.marchwicki.pl/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 09 Mar 2019 21:35:48 +0100</pubDate>
-    <lastBuildDate>Sat, 09 Mar 2019 21:35:48 +0100</lastBuildDate>
+    <pubDate>Sat, 05 Dec 2020 17:51:16 +0000</pubDate>
+    <lastBuildDate>Sat, 05 Dec 2020 17:51:16 +0000</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
@@ -131,7 +131,7 @@ There is a small JSON processor called &lt;a href=&quot;https://stedolan.github.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0100</pubDate>
+        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2019/03/09/how-to-train-your-bash/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2019/03/09/how-to-train-your-bash/</guid>
         
@@ -435,7 +435,7 @@ Instead of creating release branches just to update the versions, &lt;strong&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Sat, 05 Jan 2019 00:00:00 +0100</pubDate>
+        <pubDate>Sat, 05 Jan 2019 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2019/01/05/release-in-trunk-based-devel/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2019/01/05/release-in-trunk-based-devel/</guid>
         
@@ -491,7 +491,7 @@ Recently a friend of mine asked me if I have some useful microservces links and 
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;My take on the microservices journey is here: &lt;a href=&quot;http://jakub.marchwicki.pl/consultancy/microservices/&quot; class=&quot;bare&quot;&gt;http://jakub.marchwicki.pl/consultancy/microservices/&lt;/a&gt; - which can be a one, two or three days workshop.&lt;/p&gt;
 &lt;/div&gt;</description>
-        <pubDate>Mon, 26 Jun 2017 00:00:00 +0200</pubDate>
+        <pubDate>Mon, 26 Jun 2017 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2017/06/26/microservices-still-a-thing/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2017/06/26/microservices-still-a-thing/</guid>
         
@@ -758,7 +758,7 @@ endif::[]&lt;/code&gt;&lt;/pre&gt;
 &lt;a href=&quot;#_footnoteref_3&quot;&gt;3&lt;/a&gt;. &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc&quot; class=&quot;bare&quot;&gt;https://github.com/asciidoctor/asciidoctor-pdf/blob/master/docs/theming-guide.adoc&lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Sat, 28 Jan 2017 00:00:00 +0100</pubDate>
+        <pubDate>Sat, 28 Jan 2017 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2017/01/28/asciidoctor-based-invoices/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2017/01/28/asciidoctor-based-invoices/</guid>
         
@@ -877,7 +877,7 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Mon, 01 Aug 2016 00:00:00 +0200</pubDate>
+        <pubDate>Mon, 01 Aug 2016 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2016/08/01/reactive-geecon-part-ii/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2016/08/01/reactive-geecon-part-ii/</guid>
         
@@ -970,7 +970,7 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Mon, 04 Jul 2016 00:00:00 +0200</pubDate>
+        <pubDate>Mon, 04 Jul 2016 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2016/07/04/reactive-geecon/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2016/07/04/reactive-geecon/</guid>
         
@@ -1015,7 +1015,7 @@ And finally grok the concept of reactive programming!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Sat, 02 Jul 2016 00:00:00 +0200</pubDate>
+        <pubDate>Sat, 02 Jul 2016 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2016/07/02/typescript-setting-up-ide-part-2/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2016/07/02/typescript-setting-up-ide-part-2/</guid>
         
@@ -1136,7 +1136,7 @@ liveReload {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Tue, 02 Feb 2016 00:00:00 +0100</pubDate>
+        <pubDate>Tue, 02 Feb 2016 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2016/02/02/typescript-setting-up-ide/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2016/02/02/typescript-setting-up-ide/</guid>
         
@@ -1374,7 +1374,7 @@ main.hello();&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Sun, 31 Jan 2016 00:00:00 +0100</pubDate>
+        <pubDate>Sun, 31 Jan 2016 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2016/01/31/typescript-getting-started/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2016/01/31/typescript-getting-started/</guid>
         
@@ -1747,7 +1747,7 @@ schemaFiles.each { pageName -&amp;gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
-        <pubDate>Wed, 26 Aug 2015 00:00:00 +0200</pubDate>
+        <pubDate>Wed, 26 Aug 2015 00:00:00 +0000</pubDate>
         <link>http://jakub.marchwicki.pl/posts/2015/08/26/get-your-xsd-docs-as-build-process/</link>
         <guid isPermaLink="true">http://jakub.marchwicki.pl/posts/2015/08/26/get-your-xsd-docs-as-build-process/</guid>
         
