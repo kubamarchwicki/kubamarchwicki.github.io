@@ -1,0 +1,8 @@
+= {title}
+:title: ADB Meetup
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2017-10-24, Zielona Góra, Poland
+:page-file-location:  speaking/_posts/topics/microservice-everything-redux.adoc
+
+include::{page-file-location}[]

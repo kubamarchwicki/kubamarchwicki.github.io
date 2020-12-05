@@ -1,0 +1,8 @@
+= {title}
+:title: Devoxx 2017
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2017-11-06, Antwerp, Belgium
+:page-file-location:  speaking/_posts/topics/jshell.adoc
+
+include::{page-file-location}[]

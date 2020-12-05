@@ -1,0 +1,4 @@
+The moment when you code. You type. You type a lot. You type `LocalDateTime`. The moment you know you are doomed.  How hard can time be? Sometimes, time gives us a hard time. 
+
+This time, we will have a deeper dive into what it takes for a String of `2019-05-15T09:00:00` to become an instance of `java.time.Instant`. This is what this lightning talk will be about. 
+

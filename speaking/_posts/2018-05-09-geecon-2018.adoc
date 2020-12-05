@@ -1,0 +1,8 @@
+= {title}
+:title: GeeCON 2018
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2018-05-09, Kraków, Poland
+:page-file-location:  speaking/_posts/topics/voice-applications.adoc
+
+include::{page-file-location}[]

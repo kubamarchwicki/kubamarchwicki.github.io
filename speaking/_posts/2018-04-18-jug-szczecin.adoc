@@ -1,0 +1,8 @@
+= {title}
+:title: Szczecin JUG
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2018-04-18, Szczecin, Poland
+:page-file-location:  speaking/_posts/topics/jshell.adoc
+
+include::{page-file-location}[]

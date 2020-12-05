@@ -1,0 +1,8 @@
+= {title}
+:title: Confitura 2018
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2018-06-30, Warsaw, Poland
+:page-file-location:  speaking/_posts/topics/jak-rozwalic-zespol.adoc
+
+include::{page-file-location}[]

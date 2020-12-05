@@ -1,0 +1,14 @@
+:title: Jak rozwalić swój zespół?
+:subtitle: Od 3 do 12 spritów
+
+== {title}
+
+> {subtitle}
+
+=== Abstract
+
+Jest wiele prezentacji o komunikacji, o budowaniu zespołów, o wspólnej i efektywnej pracy. I one są wszystkie takie same: słodkie, cukierkowe. Dlatego mamy dla Was zupełnie coś innego. Nie będziemy silić się na wyszukane parafrazy – będziemy nazywać rzeczy jakimi są. Przedstawimy 7 podstawowych technik rozniesienia zespołu w drobny mak. Szybko, sprawnie, treściwie – od 3 do 12 sprintów i nie będzie co zbierać. Mało kto potrafi być tak efektywny.
+
+Co więcej, podpowiemy jak pracować z tymi którzy chcą zespołu bronić, którzy (pełni ideałów, adżajlowych frazesów) starają się uniemożliwić Wam waszą pracę. Na takich też mamy sposoby – i też się nimi podzielimy.
+
+Pamiętajcie, nie bierzemy jeńców, jesteśmy diabelnie skuteczni i zawsze osiągamy cel…

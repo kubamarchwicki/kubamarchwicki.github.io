@@ -1,0 +1,41 @@
+:title: Coding Java with no frameworks
+:subtitle: Getting maximum out of the Java standard library. Is it really possible to build a real application in Java, without frameworks.
+
+== {title}
+
+> {subtitle}
+
+=== Abstract
+
+Our applications get bigger and bigger, fatter and fatter. Not necessarily in terms of functionality (that would be actually quite good) but in terms of the volume of the code base. A simplest "Hello world!" application, in a framework X is about 20MB jar with millions lines of code which we don't use at the moment. Some of the code might be helpful in the future, some won't. Some of the code is just an abstraction on the top of things as old as Java 1.4 (like more than 10 years ago) - with is not needed anymore for modern JDK like 8, 9, 10 and so on. Or worse, some of the code actually can be used, but when faced with a problem, we rather go to stackoverflow.com and pull yet another library, because it was the most popular answer for the given problem. And things grow. 
+
+Can we do it differently? Do we need all those frameworks, libraries? How much can we get out of a standard Java library? What do these all beautiful frameworks give us, and what do they take? I've heard about Wirth Law? No... we will cover this as well. 
+
+In this talk we will run through a building blocks of a "real life" applications, looking how much Java standard library can offer us. We will be creating the basic building blocks for a web application, trying to understand the _magic_ behind different libraries and frameworks. We will call different libraries, different approaches and see how things are being implemented. We will be looking into impacts on performance, on startup time, on memory footprints etc. 
+
+I'm not saying we will end with a better implementation. It's that we don't always need servlets, enterprise grade database access, ORMs, messaging and so on. If we need, it's always better to understand how things work under the cover - we will cover first few steps to understand better. 
+
+.Polish abstract
+
+*Java bez frejłorków - czy to w ogóle możliwe?*
+
+Nasze systemy stają się coraz większe, niestety niekoniecznie funkcjonalnie (to akurat byłoby całkiem ok). One stają się tłustsze, grubsze, wręcz otyłe jeżeli chodzi o ilości kodu który zawierają. Najprostsza aplikacja typu "Witaj świecie!" zrobiona we frameworku X to jar około 20MB, miliony linijek niepotrzebnego kodu, który leży sobie tam, przez nikogo nie używany. Wręcz zapomniany. Czasami są to rzeczy które czasami się przydadzą, czasami nie. Czasami jest to kod który jest świetną abstrakcją na problemy języka Java sprzed ponad 10 lat, w Javie 1.4 - zupełnie bezużyteczne w Java 8, 9, 10 itd. Czasami jest jeszcze gorzej, gdy mierzymy się z problemem, nie szukamy rozwiązania w tym co już posiadamy na class pathie. Sięgamy po kolejną bibliotekę, framework, bo akuratnie na stackoverflow.com okazała się być najbardziej popularnym rozwiązaniem danego problemu. I systemy puchną. 
+
+Czy da się inaczej? Czy naprawdę potrzebujemy tych wszystkich bibliotek, frameworków? Ile możemy wycisnąć z biblioteki standardowej, z JDK które mamy zainstalowane na komputerze? Co dają nam te wszystkie piękne frameworki? A co zabierają? Czy ktoś słyszał o prawie Wirth'a? No właśnie - o tym też będzie.
+
+Podczas warsztatu skupimy się na częściach składowych "prawdziwej" aplikacji, patrząc z perspektywy _co standardowa biblioteka Javy może nam zaoferować?_. Będzie tworzyć te elementy i postaramy się zrozumieć gdzie jest _magia_ bibliotek, frameworków. Sięgniemy po kilka różnych rozwiązań, różne API, aby zrozumieć jak się sprawy mają. Z punktu widzenia wydajności, czasu startu aplikacji, zużycia pamięci - wszystkich tych rzeczy na które czasem średnio zwracamy uwagę. 
+
+Nie mówię że na koniec dnia skończymy z lepszą, wydajniejszą implementacją. Po prostu nie zawsze potrzebujemy tych wszystkich servletów, super narzędzi dostępu do danych, ORMów, kolejek itp. A gdy potrzebujemy, przynajmniej zdajemy sobie sprawę jak rzeczy działają pod spodem. 
+
+//outline 
+
+In this talk, we are looking under the hood of a web framework, understanding how things work internally and how different elements can be implemented in plain Java.
+
+We analyse things like (implementing every element in modern Java - JDK12 together with benchmarking each implementation)
+- routing
+- handling different requests methods
+- working with responses (with content)
+- making request asynchronous (more performant)
+- handling storage (any non-http I/O operations - database, file storage)
+
+We also look at elements like testing, managing configurations - everything in plain Java

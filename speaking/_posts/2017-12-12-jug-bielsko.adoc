@@ -1,0 +1,8 @@
+= {title}
+:title: Bielsko Biała JUG
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2017-12-12, Bielsko-Biała, Poland
+:page-file-location:  speaking/_posts/topics/jshell.adoc
+
+include::{page-file-location}[]

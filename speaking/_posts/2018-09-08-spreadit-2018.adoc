@@ -1,0 +1,8 @@
+= {title}
+:title: Spread IT 2018
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2018-09-08, Katowice, Poland
+:page-file-location:  speaking/_posts/topics/microservice-everything-redux.adoc
+
+include::{page-file-location}[]

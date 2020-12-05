@@ -17,14 +17,9 @@ At this session you will learn how to practically apply a couple of management p
 
 Are these a key, to make manager’s life so much easier? Are you interested in finding that key?
 
-== Videos
+.Polish abstract
 
-.Devoxx.pl 2016
-video::RaXTXXEcjU0[youtube, width=640, height=480]
-
-////
-Wersja Polska
-Title: Niańczenie programistów vs. zarządzanie dziećmi
+*Niańczenie programistów vs. zarządzanie dziećmi*
 
 Czy zostałeś ostatnio awansowany z dewelopera na menedżera i czujesz się zagubiony? Albo zajmujesz się programowaniem w power poincie od lat i nadal jesteś zaskakiwany przez swój zespół? Nie martw się – też to przechodziliśmy i chętnie podzielimy się doświadczeniem. Mamy także dzieci…
 
@@ -38,4 +33,7 @@ Podczas spotkania dowiesz się, jak w praktyce zastosować kilka zasad zarządza
 
 Czy powyższe jest sekretem do uczynienia życia managera dużo bardziej prostym? Czy jesteś zainteresowany znalezieniem tego klucza?
 
-////
+== Videos
+
+.Devoxx.pl 2016
+video::RaXTXXEcjU0[youtube, width=640, height=480]

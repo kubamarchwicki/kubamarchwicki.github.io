@@ -1,0 +1,24 @@
+:title: Demistifying voice using interfaces
+:subtitle: 
+
+== {title}
+
+> {subtitle}
+
+=== Abstract
+
+Ever since I’ve encountered voice user interfaces (which was like a decade ago) it has always been a future of human-computer interaction. It’s a future now. And it will be a future. We do believe we talk like Dave and HAL, but what we do is giving orders - very simple ones. And event these are hardly understandable by a machine. 
+
+In this session I’ll look behind the scenes of voice user interfaces. I’ll not talk about Alexa Skill nor Google Assistant. It’ll be a deep dive explanation how do computers recognize what is being spoken, not necessarily understanding what has been said. Expect some insights on the speech recognition theory, a bit of physics and statistics and some more or less sensible applications of voice user interfaces. 
+
+A futuristic vision of voice / virtual reality interconnected interfaces? A different way of hand-free ordering of the car insurance? Or improving security and user experience with voice biometrics? Afterall, voice interfaces have never changed our lives. Not with automatic automatic speech recognition in telecoms (in 2006), neither with Siri personal assistant (in 2011), not with Amazon Echo or Google Home (in 2014 and 2016 respectively). Still, we find the voice interfaces mysterious, interesting but hard to get head around. We will try to change it during this session.
+
+.Polish abstract
+
+*Usłyszeć nie znaczy zrozumieć, czyli jak komputery rozpoznają mowę*
+
+Z rozpoznawaniem mowy przez komputer zetknął się niemalże każdy. Na filmach, w życiu, zawsze z lekko futurystyczną otoczką, naturalny interfejs do komunikacji z maszyną. Od zawsze przedstawiana jako powiew przyszłości (albo przynajmniej od 10 lat, od kiedy pierwszy raz zawodowo zetknąłem się z tego typu interfejsami). Wyobrażamy sobie rozmowę z komputerem niczym filozoficzne dyskusje Dave z HALem w filmie "Odyseja kosmiczna", jednak to co robimy to wydawania prostych poleceń - niczym służącemu. A i tak nastręcza to komputerom wiele problemów. 
+
+Podczas tej prezentacji chciałbym abyśmy wspólnie zaglądnęli jak działa rozpoznawania mowy, tak od podszewki. Nie będzie to prezentacja na temat Alexy, ani asystenta Google. Zagłębimy się w sposób jaki komputery rozpoznają słowa które wypowiadamy, niekoniecznie je rozumiejąc (a w zasadzie w ogóle ich nie rozumiejąc). Wejdziemy w świat teorii związanych z rozpoznawaniem mowy, odrobiny fizyki, anatomii, statystyki i kilku mniej lub bardziej pożytecznych zastosowań głosowych interfejsów użytkownika. 
+
+Rozpoznawanie mowy jawi się jako niesamowicie zagadkowy i skompilowany temat. Postaramy się to nieco odczarować podczas  tej sesji. Nie dlatego że rozpoznawanie mowy zmieni świat. Nasze życie nie zmieniło się drastycznie gdy rozpoznawanie mowy pojawiło się w telefonii (automatyczna obsługa klienta w połowie lat 2000), nie zmieniło go nadejście Siri (w 2011), ani Amazon Echo czy Google Home (odpowiednio w 2014 i 2016 roku). Skoro jednak niemalże każde urządzenie w okolicy stara się nas podsłuchiwać, to przynajmniej spróbujmy zrozumieć na jakiej zasadzie to działa. 

@@ -1,0 +1,36 @@
+
+// abstract
+You start a new job. You’re excited - new domain, new knowledge to ingest, new practices to learn. Unfortunately, once you start digging into things, excitement starts to fade and is replaced by frustration. It turns out that there is no way to find out about the product unless you somehow get a hold of sales pitch presentation. You can only learn about architecture if you talk to “that guy” and only if he’ll have 3 hours to spare (spoiler alert: he won’t). In short - tribal knowledge is the only way to go.
+Docs say we use Cassandra to store our data? Well, we did - in 2010.
+
+Is there no way out of this hell? Does onboarding process have to be the rite of passage, where your enthusiasm is crushed by the heavy weight of hopelessness? How to write and maintain documentation in the way, that it is an actual advantage to you and yours, and not a pile of shame? 
+
+During our talk, we’ll analyze what are the actual issues with the docs, do we actually need it and how to go with quality, not quantity. Don’t worry, we won’t leave you without the tools to tackle this beast.
+
+//audience
+This presentation aims to analyse at "documentation" in projects from different perspectives, trying to find a sweet spot between up-2-date content and maintenance costs. 
+We will explore the concept of usability and user experience and apply is to different tools and approaches in writing the documentation, in different phases of the projects. This can be documenting domain / business knowledge, project's architecture and design decisions as well as local notes. 
+
+
+
+//outline 
+
+In this talk, we want to go beyond "documentation as code" or "everything as code" and analyse what is needed to effectively work-out project knowledge. Where these are:
+
+- domain, business concepts
+- architectural building blocks, high level architecture (servers, queues, databases)
+- component (design elements)
+
+The elements from the list have different "dynamics", different time-to-live. We will distinguish that, and for each point, we will share techniques and ideas about how to improve the usability of documentation. 
+
+For domain knowledge, it can be 
+ - EventStorming (for efficient onboarding and capturing the domain concepts by the whole team)
+ - building a ubiquitous language, a domain dictionary - to share the understanding of the domain concepts (business invariants)
+ 
+For high-level architectural decision 
+- architecture decision records and keeping them together with code (instead of wikis, word documents)
+
+For the code-level design:
+ - architectural conventions (not standardised frameworks) in terms of naming - minimise the unexpected
+- maximizing the level of automation 
+- visualisation instead of diagraming

@@ -1,0 +1,8 @@
+= {title}
+:title: Infoshare Roadshow 2017
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2017-12-05, Szczecin, Poland
+:page-file-location:  speaking/_posts/topics/microservice-everything-redux.adoc
+
+include::{page-file-location}[]

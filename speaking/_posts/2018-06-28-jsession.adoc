@@ -1,0 +1,8 @@
+= {title}
+:title: JSession
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2018-06-28, Białystok, Poland
+:page-file-location:  speaking/_posts/topics/microservice-everything-redux.adoc
+
+include::{page-file-location}[]

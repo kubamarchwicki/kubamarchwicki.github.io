@@ -7,12 +7,7 @@ redirect_from: /blog/index.html
 
   <ul class="list">
     {% for post in site.posts %}
-    {% if post.categories contains 'speaking'%}
-      <li class="speaking">
-        Speaking at <a href="{{ post.url }}">{{ post.title }}</a>
-        <span class="post-date">({{post.speaking-date}})</span>
-      </li>
-    {% elsif post.categories contains 'posts' %}
+    {% if post.categories contains 'posts' %}
       <li class="posts">
         <a href="{{ post.url }}">{{ post.title }}</a>
         <span class="post-date">({{post.date | date: "%Y-%m-%d"}})</span>

@@ -1,0 +1,39 @@
+:title: Microservice everything, redux
+:subtitle: Microservices, you keep using this term - like everywhere. Like not enterily understanding the implication, context, meaning. Let's challange that!
+
+== {title}
+
+> {subtitle}
+
+=== Abstract
+
+Micro Service Architecture is an architectural concept that aims to decouple a solution by decomposing functionality into discrete services. Think of it as applying many of the principles of SOLID at an architectural level, instead of classes you’ve got services” – we all know about it, everybody talks about it, a few implemented it, with (a moderate) success. The road to the microservices success is not a highway. Moreover, often the initial success turns to be a failure as if Schopenhauer invented the whole thing.
+
+In this session, I'll like to go beyond tools. I'd argue microservices are in the approach, in the attitude, in the mindset. I'll share some scenarios where the micro approach helped us move beyond legacy systems by consciously building a big ball of mud: duplicating code, duplicating functionalities, building proxies to wrap existing services, or to bypassing different ones.  
+
+Regardless of what was happening, there was this one thing, like a mantra — conscious decisions.  Microservices weren't about Kotlin based Spring Boot applications talking over HTTP; they were about locality and solving problems where they belong: whether it was business, infrastructure, application code or optimising the pager duties. 
+
+// As "the road to success is paved with doubters and haters" — welcome aboard!
+
+.Polish abstract
+*Mikroserwisy, wszędzie mikroserwisy*
+
+Micro Service Architecture is an architectural concept that aims to decouple a solution by decomposing functionality into discrete services. Think of it as applying many of the principles of SOLID at an architectural level, instead of classes you’ve got services” – teraz wszyscy to znamy, wszyscy o tym mówią, niektórzy z powodzeniem stosują.
+
+Ale… od teorii do praktyki jest długa i zawiła droga, wiele podejść, mnóstwo kroków pośrednich. W tej prezentacji, chciałbym pokazać kilka scenariuszy w których “mikroserwisowy sposób myślenia” pozwolił nam wyjść z problemów w systemach legacy: duplikując istniejące funkcjonalności, budując proxy do istniejących systemów, zarządzając szeregiem systemów typu embedded,  stopniowo migrując aplikację z jednej technologii na inną, z jednego języka na inny, tworząc nowe usługi obok istniejących, klasycznych big ball of mud. Bowiem mikro serwis to nie tylko szereg małych aplikacji w Spring Boot gadających ze sobą po HTTP – to sposób myślenia o problemach w skali mikro i platforma do dyskusji o rozwiązaniach tam gdzie one przynależą: w biznesie, w infrastrukturze itd.
+
+
+// outline
+
+This talk has been voted top 3 in several community conferences in Poland or meetups. The talk consists of three, distinct parts:
+
+Defining what are microservices, emphasising the definitions are vague. Therefore no one can tell one is doing microservices the right way. I propose a checklist of elements which is a good indication of directions (the list isn't exhaustive). 
+
+Once defined, experience from (two) legacy projects is shared as an example of the microservices journey. How a piecemeal growth, can lead us to an architecture evolution towards a distributed system (if it's needed).
+
+Finally, the architectural distribution comes with a price. In this talk, I focus on consistency vs availability and decompose the CAP piece but piece (to show that this can be one of many things people ten to overlook with microservices approach). 
+ - describing network fallacies
+ - defining CAP itself
+ - combine these two to emphasise partition is obvious for distributed systems
+ - define latencies (as in PACELC theorem)
+

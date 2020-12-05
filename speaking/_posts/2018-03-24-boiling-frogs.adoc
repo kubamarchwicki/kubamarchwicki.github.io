@@ -1,0 +1,8 @@
+= {title}
+:title: Boiling Frogs 2018
+:page-layout: speaking
+:page-categories: [speaking]
+:page-speaking-date: 2018-03-24, Wrocław, Poland
+:page-file-location:  speaking/_posts/topics/jak-rozwalic-zespol.adoc
+
+include::{page-file-location}[]
