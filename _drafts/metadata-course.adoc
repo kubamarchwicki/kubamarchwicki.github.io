@@ -1,7 +1,6 @@
----
-layout: post
-categories: posts
-title: Introduction to metadata
-excerpt: Summary of my notes during the "Introduction to metadata" course at http://coursera.org. Most important take aways - at least from my personal perspective.
+= {title}
 
----
+:page-layout: post
+:page-categories: [posts]
+:title: Introduction to metadata
+:page-excerpt: Summary of my notes during the "Introduction to metadata" course at http://coursera.org. Most important take aways - at least from my personal perspective.

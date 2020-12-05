@@ -1,9 +1,9 @@
----
-layout: post
-categories: posts
-title: From Java to Ruby
-excerpt: So I got this crazy idea and this will be what I'll be doing for the next couple of evenings - learning Ruby the hard way.
----
+= {title}
+
+:page-layout: post
+:page-categories: [posts]
+:title: From Java to Ruby
+:page-excerpt: So I got this crazy idea and this will be what I'll be doing for the next couple of evenings - learning Ruby the hard way.
 
 So I got this crazy idea and this will be what I'll be doing for the next couple of evenings - learning Ruby the hard way. The reason was somehow yak shaving'ish: I love http://asciidoctor.org[Asciidoctor] and I use it for everything: documents, notes, presentations. While the html output is great I need to send my "docs" over to somebody and (like it or not) a mainstream format is more welcome. And here comes my struggle: getting WordML or OpenDocument Text from HTML output is cumbersome, error prone and just painful. 
 

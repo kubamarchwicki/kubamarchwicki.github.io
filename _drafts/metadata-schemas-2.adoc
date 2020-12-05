@@ -1,10 +1,8 @@
----
-layout: post
-categories: posts
-title: Creating own metadata schema - first feedback
-excerpt: After initial research and trial about matadata schemas, I got first valueable feedback from a subject matter expert (an information scientist). Some notes, actions and ideas how to move things forward.
-
----
+= {title}
+:page-layout: post
+:page-categories: [posts]
+:title: Creating own metadata schema - first feedback
+:page-excerpt: After initial research and trial about matadata schemas, I got first valueable feedback from a subject matter expert (an information scientist). Some notes, actions and ideas how to move things forward.
 
 The previous post {{site.url}}/2014/09/01/metadata-schemas[about metadata] was summarizing quite intensive reseach about metadata (in general), schemas, ontologies and many different things how I (together) with a team was trying to get things right.
 

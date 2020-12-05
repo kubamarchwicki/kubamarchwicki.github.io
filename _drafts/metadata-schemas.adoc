@@ -1,9 +1,7 @@
----
-layout: post
-categories: posts
-title: Creating own metadata schema
-
----
+= {title}
+:page-layout: post
+:page-categories: [posts]
+:title: Creating own metadata schema
 
 
 Yada yada
